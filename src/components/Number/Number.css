@@ -1,0 +1,18 @@
+.num{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #CBB26A;
+    margin: 0;
+    text-align: center;
+}
+.number-section{
+    padding: 20px;
+    width: 100%;
+}
+
+.num-wrapper{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

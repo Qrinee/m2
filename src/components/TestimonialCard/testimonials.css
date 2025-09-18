@@ -1,0 +1,235 @@
+/* --- HERO --- */
+.testimonials-hero {
+  position: relative;
+  min-height: 420px;
+  background-image: url("https://images.unsplash.com/photo-1505691723518-36a6b156c9f7?auto=format&fit=crop&w=1800&q=60");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ciemna nakładka */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 23, 34, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* duży nagłówek */
+.hero-title {
+  color: #fff;
+  font-size: clamp(28px, 5vw, 56px);
+  letter-spacing: 0.35em;
+  text-transform: none;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+/* --- KONTAINER PONIŻEJ (gdzie karta się "wyłania") --- */
+.testimonials-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -120px; /* karta wychodzi z hero */
+  padding: 0 20px 80px;
+  box-sizing: border-box;
+}
+
+/* wrapper karuzeli */
+.carousel-wrapper {
+  position: relative;
+  max-width: 980px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* przyciski strzałek */
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #fff;
+  border: none;
+  box-shadow: 0 8px 18px rgba(8, 20, 30, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 40;
+}
+
+.arrow-btn svg { font-size: 18px; color: #111827; }
+
+.arrow-btn--left {
+  left: -26px;
+}
+
+.arrow-btn--right {
+  right: -26px;
+}
+
+/* karuzela i slide'y */
+.carousel-inner {
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Każdy slide ma - z reguły ukryte - ale active jest widoczne */
+.slide {
+  min-width: 900px;
+  max-width: 900px;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: all 350ms cubic-bezier(.2,.9,.3,1);
+  pointer-events: none;
+  position: absolute;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  position: relative;
+}
+
+/* --- KARTA --- */
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 30px 40px rgba(8, 20, 30, 0.08);
+  align-items: stretch;
+}
+
+/* lewa kolumna z treścią */
+.testimonial-content {
+  padding: 42px 44px;
+  width: 52%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.t-name {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.t-title {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.t-text {
+  margin: 0 0 20px;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+/* gwiazdki */
+.t-stars {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.star {
+  color: #f2b237;
+  font-size: 16px;
+}
+
+/* prawa kolumna ze zdjęciem */
+.testimonial-image-wrapper {
+  width: 48%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #fff, #f9fafb);
+}
+
+.testimonial-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-height: 320px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  /* lekko uniesione, by efekt był zbliżony do mockupu */
+  box-shadow: -8px 14px 30px rgba(8, 20, 30, 0.06);
+}
+
+/* kropki (dots) */
+.dots {
+  margin-top: 26px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transform: scale(0.9);
+  transition: transform 150ms;
+  opacity: 0.6;
+}
+
+.dot svg { font-size: 8px; color: #111827; }
+
+.dot--active {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 1024px) {
+  .slide, .slide.active { min-width: 760px; max-width: 760px; }
+  .testimonial-content { padding: 28px; }
+}
+
+@media (max-width: 820px) {
+  .slide, .slide.active { min-width: 92%; max-width: 92%; }
+  .testimonial-card { flex-direction: column-reverse; max-width: 720px; }
+  .testimonial-content { width: 100%; padding: 26px; }
+  .testimonial-image-wrapper { width: 100%; }
+  .testimonial-image { border-radius: 0 0 12px 12px; max-height: 360px; }
+  .arrow-btn--left { left: 12px; }
+  .arrow-btn--right { right: 12px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 26px; letter-spacing: 0.18em; }
+  .testimonial-content { padding: 18px; }
+  .t-text { font-size: 13px; }
+  .arrow-btn { width: 40px; height: 40px; }
+}

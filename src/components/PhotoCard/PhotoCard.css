@@ -1,0 +1,58 @@
+.photo-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  max-width: 320px;
+  margin: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.photo-card__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.photo-card__name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 12px 16px 4px;
+  color: #111827; /* ciemny */
+}
+
+.photo-card__status {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b7280; /* szary */
+  margin: 0 16px 8px;
+}
+
+.photo-card__description {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 0 16px 12px;
+  line-height: 1.4;
+}
+
+.photo-card__icons {
+  display: flex;
+  gap: 12px;
+  margin: 0 16px 16px;
+}
+
+.photo-card__icon {
+  font-size: 1.2rem;
+  color: #374151;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.photo-card__icon:hover {
+  color: #2563eb; /* niebieski przy hover */
+}

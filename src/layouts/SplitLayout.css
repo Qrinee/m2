@@ -1,0 +1,26 @@
+.split-layout {
+  display: flex;
+  height: 70vh;
+  width: 100%;
+}
+
+.split {
+  flex: 1; /* 50% each */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .split-layout {
+    flex-direction: column;
+  }
+
+  .split {
+    height: 50vh; /* Each takes half vertically */
+    width: 100%;
+  }
+}

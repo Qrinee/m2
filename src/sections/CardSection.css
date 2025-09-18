@@ -1,0 +1,28 @@
+.card-section{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+
+.card-section-wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F8F8;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.card-section__header{
+    display: flex;
+    width: calc(180px + 30vw);
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 10vh;
+    flex-direction: column;
+}

@@ -1,0 +1,22 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #555;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item .separator {
+  margin: 0 8px;
+  color: #999;
+}
+
+.breadcrumb-item:last-child {
+  font-weight: bold;
+  color: #000;
+}

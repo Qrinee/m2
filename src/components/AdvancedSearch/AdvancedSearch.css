@@ -1,0 +1,64 @@
+.search-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 320px;
+  font-family: Arial, sans-serif;
+}
+
+.search-container h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.search-input, 
+.search-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.price-range {
+  margin-bottom: 15px;
+}
+
+.price-range label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.price-range input[type="range"] {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.extra-options {
+  font-size: 14px;
+  color: #c49a3a;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.search-button {
+  width: 100%;
+  padding: 12px;
+  background: #c49a3a;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-button:hover {
+  background: #b3882a;
+}

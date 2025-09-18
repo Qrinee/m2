@@ -1,0 +1,59 @@
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0px auto;
+  position:relative;
+  top: -50px;
+}
+
+.searchbar__input {
+  flex: 1;
+  padding: 16px 22px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.searchbar__input:focus {
+  border-color: #c6a55b; /* złoty odcień */
+}
+
+.searchbar__select {
+  padding: 16px 22px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+.searchbar__button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #c6a55b;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 50px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.searchbar__button:hover {
+  background: #b09045;
+}
+
+.searchbar__icon {
+  font-size: 14px;
+}

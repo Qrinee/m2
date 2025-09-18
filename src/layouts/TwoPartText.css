@@ -1,0 +1,12 @@
+.two-part-text{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5vw;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.left, .right{
+    width: calc(180px + 20vw);
+}
