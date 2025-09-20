@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AdvancedRangeSlider from "./AdvancedRangeSlider";
 import "./AdvancedSearch.css";
 
 const AdvancedSearch = () => {
@@ -27,32 +28,12 @@ const AdvancedSearch = () => {
         <option>Wynajem</option>
       </select>
 
-      <div className="price-range">
-        <label>
-          Przedział cenowy: {priceRange[0].toLocaleString()} PLN do{" "}
-          {priceRange[1].toLocaleString()} PLN
-        </label>
-        <input
-          type="range"
-          min="0"
-          max="1500000"
-          step="10000"
-          value={priceRange[0]}
-          onChange={(e) =>
-            setPriceRange([+e.target.value, priceRange[1]])
-          }
-        />
-        <input
-          type="range"
-          min="0"
-          max="1500000"
-          step="10000"
-          value={priceRange[1]}
-          onChange={(e) =>
-            setPriceRange([priceRange[0], +e.target.value])
-          }
-        />
-      </div>
+      <AdvancedRangeSlider
+        min={0}
+        max={1500000}
+        step={10000}
+        onChange={(range) => setPriceRange(range)}
+      />
 
       <p className="extra-options">Dodatkowe Opcje Wyszukiwania</p>
 
