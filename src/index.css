@@ -33,6 +33,28 @@ body{
   margin-top: 10px;;
 }
 
+@media screen and (max-width: 1350px) {
+  .recent-container, .search-container {
+    display: none;
+  }
+
+  .listing-card{
+    width: calc(40vw - 30px)!important;
+  }
+
+  .list-grid{
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 900px) {
+
+ .listing-card{
+    width: 100%!important;
+  }
+}
+
+
+
 .a{
   text-decoration: none;
   color: #CBB26A;
