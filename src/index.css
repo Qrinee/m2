@@ -21,7 +21,9 @@ body{
 .separate{
   padding: 50px;
 }
-
+.sm-separate{
+  padding: 10px;
+}
 .input, .textarea, .select {
   font-family: inherit;
   border: 1px solid #dfdfdf;

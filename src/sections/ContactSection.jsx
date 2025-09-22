@@ -23,7 +23,7 @@ export default function ContactSection() {
           <input type="checkbox" required style={{marginRight: '10px'}} />
           Akceptuję <a href="/terms">regulamin</a> i <a href="/privacy">politykę prywatności</a>
           </label>
-        <button style={{marginTop: '20px'}} type="submit">Wyślij wiadomość</button>
+        <button className='button' style={{marginTop: '20px'}} type="submit">Wyślij wiadomość</button>
       </form>
       </div>
       }

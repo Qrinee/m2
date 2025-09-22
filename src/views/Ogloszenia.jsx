@@ -75,7 +75,8 @@ const listings = [
               <Breadcrumbs items={['Strona główna', "Ogłoszenia"]} />
               <h2 className='h2'>Ogłoszenia</h2>
               <FilterBar/>
-              <div className='separate'></div>
+              <div className='sm-separate'></div>
+              
                    <div className="list-grid">
                 {listings.map((item, index) => (
                       <ListingCard key={index} {...item} />

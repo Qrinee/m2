@@ -21,7 +21,7 @@ const AdvancedSearch = () => {
         className="search-input"
       />
   <CustomSelect options={["Typy", "Mieszkanie", "Dom", "Działka"]} />
-    <div className="sm-separate"></div>
+  <div style={{margin: '10px'}}> </div>
       <CustomSelect options={["Kategorie", "Sprzedaż", "Wynajem"]} />
       <p className="extra-options">Dodatkowe Opcje Wyszukiwania</p>
 
