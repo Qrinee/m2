@@ -12,6 +12,7 @@
 /* IMAGE */
 .listing-image {
   position: relative;
+  overflow: hidden; /* Dodane dla lepszego zarządzania zawartością */
 }
 
 /* Efekt hover na całej karcie */
@@ -28,19 +29,14 @@
 /* Efekt hover na obrazku */
 .listing-image img {
   transition: transform 0.4s ease;
-}
-
-.listing-card:hover .listing-image img {
-  transform: scale(1.05);
-}
-
-
-
-.listing-image img {
   width: 100%;
   height: auto;
   display: block;
   border-bottom: 1px solid #eee;
+}
+
+.listing-card:hover .listing-image img {
+  transform: scale(1.05);
 }
 
 .badge-container {
@@ -134,7 +130,7 @@
   gap: 5px;
 }
 
-/* FOOTER */
+/* FOOTER - ZMIANY DLA AVATARA */
 .listing-footer {
   display: flex;
   align-items: center;
@@ -146,6 +142,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  object-fit: cover; /* Kluczowa właściwość - zapobiega zniekształceniom */
+  flex-shrink: 0; /* Zapobiega zmianom rozmiaru */
 }
 
 .agent-name {

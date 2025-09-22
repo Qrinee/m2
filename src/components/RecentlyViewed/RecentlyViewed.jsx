@@ -1,36 +1,30 @@
 import React from "react";
 import "./RecentlyViewed.css";
-
+import rybnik from '../../assets/rybnik.jpg';
 const RecentlyViewed = () => {
   const items = [
     {
       id: 1,
       title: "SZEREGOWIEC 83 M2 | OKOLICA RYBNIKA",
       price: "900,000 PLN",
-      image: "https://via.placeholder.com/80x60.png?text=House+1"
+      image: rybnik
     },
     {
       id: 2,
       title: "Nowoczesny i energooszczędny dom i ...",
       price: "860,000 PLN",
-      image: "https://via.placeholder.com/80x60.png?text=House+2"
+      image: "https://m2notarialnie.pl/wp-content/uploads/2025/08/Zrzut-ekranu-2025-08-4-o-15.43.39-525x328.png"
     },
     {
       id: 3,
       title: "Nowoczesne, świeżo wyremontowane mi...",
       price: "420,000 PLN",
-      image: "https://via.placeholder.com/80x60.png?text=House+3"
+      image: "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zaw-2-525x328.jpg"
     },
-    {
-      id: 4,
-      title: "PRZESTRONNE WIELOFUNKCYJNE MIESZKAN...",
-      price: "419,000 PLN",
-      image: "https://via.placeholder.com/80x60.png?text=House+4"
-    }
   ];
 
   return (
-    <div className="recent-container">
+    <div className="recent-container" style={{marginTop: '20px'}}>
       <h3>Ostatnio oglądane</h3>
       <ul className="recent-list">
         {items.map((item) => (
