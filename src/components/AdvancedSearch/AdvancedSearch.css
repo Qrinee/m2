@@ -25,57 +25,113 @@
   box-sizing: border-box;
 }
 
+/* Price Range Slider Styles */
 .price-range {
   margin-bottom: 15px;
 }
 
-.price-range label {
-  display: block;
+.price-input-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.price-input {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.price-field {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.price-field span {
   font-size: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   color: #444;
 }
 
-.price-range input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
+.price-field input {
+  height: 35px;
+  font-size: 15px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
   width: 100%;
-  height: 14px;
-  border-radius: 5px;
-  background: #ddd;
-  outline: none;
-  margin-top: 10px;
-  cursor: pointer;
   box-sizing: border-box;
 }
 
-/* Pasek (Webkit: Chrome/Safari/Edge) */
-.price-range input[type="range"]::-webkit-slider-runnable-track {
-  height: 14px;
-  border-radius: 5px;
-  background: linear-gradient(to right, #CBB26A var(--value, 0%), #ddd var(--value, 0%));
+/* Remove number input arrows */
+.price-field input::-webkit-outer-spin-button,
+.price-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.price-range input[type="range"]::-webkit-slider-thumb {
+.price-field input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.slider {
+  height: 6px;
+  position: relative;
+  background: #e0e0e0;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.price-slider {
+  height: 100%;
+  position: absolute;
+  border-radius: 5px;
+  background: #CBB26A;
+  left: 0%;
+  right: 0%;
+}
+
+.range-input {
+  position: relative;
+  height: 6px;
+}
+
+.range-input input {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: none;
+  top: -6px;
+  pointer-events: none;
   -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
+}
+
+/* Range thumb styles */
+.range-input input[type="range"]::-webkit-slider-thumb {
+  height: 18px;
+  width: 18px;
   border-radius: 50%;
   background: #CBB26A;
   border: 2px solid #fff;
   box-shadow: 0 0 4px rgba(0,0,0,0.15);
+  pointer-events: auto;
+  -webkit-appearance: none;
   cursor: pointer;
-  margin-top: -3px; /* centruje kółko */
 }
 
-/* Pasek (Firefox) */
-.price-range input[type="range"]::-moz-range-track {
-  height: 14px;
-  border-radius: 5px;
-  background: #ddd;
+.range-input input[type="range"]::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #CBB26A;
+  border: 2px solid #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,0.15);
+  pointer-events: auto;
+  cursor: pointer;
+  border: none;
 }
-
 
 .extra-options {
   font-size: 14px;
@@ -101,47 +157,20 @@
   background: #b3882a;
 }
 
-
-
-
-
-
-
-
-
-
-
-.range-slider {
-  position: relative;
-  width: 100%;
-  height: 14px;
-}
-
-.range-slider input[type="range"] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 14px;
-  pointer-events: none; /* uchwyty będą aktywne dzięki thumb */
-  background: none;
-}
-
-.range-slider input[type="range"]::-webkit-slider-thumb {
-  pointer-events: all;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
-}
-
-.range-slider .slider-track {
-  position: absolute;
-  height: 14px;
-  border-radius: 5px;
-  background: #CBB26A;
-  z-index: 1;
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .search-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .price-input {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .price-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }

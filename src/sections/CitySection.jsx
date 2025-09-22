@@ -5,8 +5,8 @@ export default function CitySection() {
     <div>
       <div className='separate'></div>
               <div className='card-section__header'>
-        <h2>Działamy lokalnie, myślimy kompleksowo</h2>
-        <p>
+        <h2 className='h2'>Działamy lokalnie, myślimy kompleksowo</h2>
+        <p className='p'>
             Obsługujemy klientów w wielu miastach, zapewniając profesjonalne wsparcie prawne i rynkowe tam, gdzie go potrzebujesz. Sprawdź, w jakich lokalizacjach możesz skorzystać z naszych usług.
         </p>
         </div>

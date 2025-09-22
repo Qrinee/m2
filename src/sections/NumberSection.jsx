@@ -6,7 +6,7 @@ export default function NumberSection() {
     <div>
         <div className='separate'></div>
         <div className='card-section__header'>
-            <h2>Nasze liczby mówią same za siebie</h2>
+            <h2 className='h2'>Nasze liczby mówią same za siebie</h2>
             <div className='num-wrapper'>
                 <Number num={'98%'} desc={'klientów poleca nas dalej'} />
                 <Number num={'+200'} desc={'bezpiecznie przeprowadzonych transakcji'} />

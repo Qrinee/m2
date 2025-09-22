@@ -1,43 +1,128 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./AdvancedSearch.css";
 
-const AdvancedRangeSlider = ({ min = 0, max = 1500000, step = 10000 }) => {
-  const [values, setValues] = useState([0, 1500000]);
-  const rangeRef = useRef(null);
+const AdvancedRangeSlider = ({ min = 0, max = 1500000, step = 10000, onChange }) => {
+  const [minValue, setMinValue] = useState(min);
+  const [maxValue, setMaxValue] = useState(max);
+  const priceGap = 50000; // Minimum gap between min and max
 
-  // Oblicz szerokość wypełnienia
+  // Update parent component when values change
+  useEffect(() => {
+    if (onChange) {
+      onChange([minValue, maxValue]);
+    }
+  }, [minValue, maxValue, onChange]);
+
+  // Handle min input change
+  const handleMinInput = (e) => {
+    let value = parseInt(e.target.value) || min;
+    
+    if (value < min) {
+      value = min;
+    }
+    
+    if (value > maxValue - priceGap) {
+      value = maxValue - priceGap;
+    }
+    
+    setMinValue(value);
+  };
+
+  // Handle max input change
+  const handleMaxInput = (e) => {
+    let value = parseInt(e.target.value) || max;
+    
+    if (value > max) {
+      value = max;
+    }
+    
+    if (value < minValue + priceGap) {
+      value = minValue + priceGap;
+    }
+    
+    setMaxValue(value);
+  };
+
+  // Handle min range slider change
+  const handleMinRange = (e) => {
+    let value = parseInt(e.target.value);
+    
+    if (value > maxValue - priceGap) {
+      value = maxValue - priceGap;
+    }
+    
+    setMinValue(value);
+  };
+
+  // Handle max range slider change
+  const handleMaxRange = (e) => {
+    let value = parseInt(e.target.value);
+    
+    if (value < minValue + priceGap) {
+      value = minValue + priceGap;
+    }
+    
+    setMaxValue(value);
+  };
+
+  // Calculate slider track position
   const getTrackStyle = () => {
-    const percent1 = ((values[0] - min) / (max - min)) * 100;
-    const percent2 = ((values[1] - min) / (max - min)) * 100;
-    return { left: `${percent1}%`, width: `${percent2 - percent1}%` };
+    const left = ((minValue - min) / (max - min)) * 100;
+    const right = 100 - ((maxValue - min) / (max - min)) * 100;
+    return { left: `${left}%`, right: `${right}%` };
   };
 
   return (
     <div className="price-range">
-      <label>
-        Przedział cenowy: {values[0].toLocaleString()} PLN do {values[1].toLocaleString()} PLN
-      </label>
-      <div className="range-slider">
-        <div className="slider-track" style={getTrackStyle()}></div>
-        <input
-          type="range"
-          min={min}
-          max={max}
+      <div className="price-input-container">
+        <div className="price-input">
+          <div className="price-field">
+            <span>Cena minimalna</span>
+            <input 
+              type="number" 
+              className="min-input" 
+              value={minValue} 
+              onChange={handleMinInput}
+              min={min}
+              max={max}
+            />
+          </div>
+          <div className="price-field">
+            <span>Cena maksymalna</span>
+            <input 
+              type="number" 
+              className="max-input" 
+              value={maxValue} 
+              onChange={handleMaxInput}
+              min={min}
+              max={max}
+            />
+          </div>
+        </div>
+        
+        <div className="slider">
+          <div className="price-slider" style={getTrackStyle()}></div>
+        </div>
+      </div>
+
+      <div className="range-input">
+        <input 
+          type="range" 
+          className="min-range" 
+          min={min} 
+          max={max} 
+          value={minValue} 
           step={step}
-          value={values[0]}
-          onChange={(e) =>
-            setValues([Math.min(+e.target.value, values[1] - step), values[1]])
-          }
+          onChange={handleMinRange}
         />
-        <input
-          type="range"
-          min={min}
-          max={max}
+        <input 
+          type="range" 
+          className="max-range" 
+          min={min} 
+          max={max} 
+          value={maxValue} 
           step={step}
-          value={values[1]}
-          onChange={(e) =>
-            setValues([values[0], Math.max(+e.target.value, values[0] + step)])
-          }
+          onChange={handleMaxRange}
         />
       </div>
     </div>

@@ -6,8 +6,8 @@ export default function CardSection() {
   return (
     <div className='card-section-wrapper'>
         <div className='card-section__header'>
-        <h2>Raty notarialne – bezpieczna droga do własnej nieruchomości</h2>
-        <p>
+        <h2 className='h2'>Raty notarialne – bezpieczna droga do własnej nieruchomości</h2>
+        <p  className='p'>
           <b>  Spełnij marzenie o własnym M – bez kredytu i bez stresu. </b>
 Dzięki notarialnym ratom od M2Notarialnie, możesz kupić sprawdzoną nieruchomość bez weryfikacji zdolności kredytowej i z pełnym wsparciem prawnym.
         </p>

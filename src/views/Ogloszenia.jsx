@@ -22,7 +22,7 @@ const listings = [
       { text: "Dostępne", color: "yellow" },
     ],
     location: "Rybnik",
-    title: "SZEREGOWIEC 83 M2 | OKOLICA RYBNIKA",
+    title: "Szeregowiec 83 M2 | Okolica Rybnika",
     price: "900,000 PLN",
     description: "Na sprzedaż komfortowe mieszkanie o pow. 83 m²...",
     baths: 1,
@@ -38,7 +38,7 @@ const listings = [
       { text: "Dostępne", color: "yellow" },
     ],
     location: "Rybnik",
-    title: "SZEREGOWIEC 83 M2 | OKOLICA RYBNIKA",
+    title: "Szeregowiec 83 M2 | Okolica Rybnika",
     price: "900,000 PLN",
     description: "Na sprzedaż komfortowe mieszkanie o pow. 83 m²...",
     baths: 1,
@@ -54,7 +54,7 @@ const listings = [
       { text: "Dostępne", color: "yellow" },
     ],
     location: "Rybnik",
-    title: "SZEREGOWIEC 83 M2 | OKOLICA RYBNIKA",
+    title: "Szeregowiec 83 M2 | Okolica Rybnika",
     price: "900,000 PLN",
     description: "Na sprzedaż komfortowe mieszkanie o pow. 83 m²...",
     baths: 1,
@@ -73,7 +73,7 @@ const listings = [
           <div>
               <div className='section'>
               <Breadcrumbs items={['Strona główna', "Ogłoszenia"]} />
-              <h2>Ogłoszenia</h2>
+              <h2 className='h2'>Ogłoszenia</h2>
               <FilterBar/>
               <div className='separate'></div>
                    <div className="list-grid">

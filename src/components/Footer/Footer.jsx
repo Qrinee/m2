@@ -14,7 +14,7 @@ export default function Footer() {
         {/* O nas */}
         <div className="footer-section">
           <h3>O nas</h3>
-          <p>
+          <p className="p">
             M2Notarialnie to zespół łączący doświadczenie prawne z praktyczną
             znajomością rynku, by oferować klientom więcej niż standardową
             obsługę przy kupnie i sprzedaży nieruchomości.

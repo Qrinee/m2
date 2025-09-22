@@ -2,6 +2,7 @@ body{
   margin: 0;
     font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
+  background-color: rgba(243, 243, 243, 0.568);
 }
 
 .lay{
@@ -15,7 +16,7 @@ body{
   padding: 50px;
 }
 
-input, textarea, select {
+.input, .textarea, .select {
   font-family: inherit;
   border: 1px solid #dfdfdf;
   padding: 10px 20px;
@@ -24,13 +25,13 @@ input, textarea, select {
   margin-top: 10px;;
 }
 
-a{
+.a{
   text-decoration: none;
   color: #CBB26A;
   font-weight: 600;
 }
 
-label{
+.label{
   font-weight: 600;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -48,7 +49,7 @@ label{
   margin: auto;
 }
 
-button{
+.button{
   background-color: #CBB26A;
   color: white;
   border: none;
@@ -58,13 +59,13 @@ button{
   cursor: pointer;
 }
 
-h2{
+.h2{
     font-size: 30px;
         color: rgb(36, 36, 36);
     font-weight:800;
 }
 
-p{
+.p{
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6em;

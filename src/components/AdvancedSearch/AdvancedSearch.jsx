@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import AdvancedRangeSlider from "./AdvancedRangeSlider";
 import "./AdvancedSearch.css";
 
 const AdvancedSearch = () => {
   const [priceRange, setPriceRange] = useState([0, 1500000]);
+
+  // Use useCallback to memoize the function
+  const handlePriceRangeChange = useCallback((range) => {
+    setPriceRange(range);
+  }, []);
 
   return (
     <div className="search-container">
@@ -27,13 +32,6 @@ const AdvancedSearch = () => {
         <option>Sprzedaż</option>
         <option>Wynajem</option>
       </select>
-
-      <AdvancedRangeSlider
-        min={0}
-        max={1500000}
-        step={10000}
-        onChange={(range) => setPriceRange(range)}
-      />
 
       <p className="extra-options">Dodatkowe Opcje Wyszukiwania</p>
 

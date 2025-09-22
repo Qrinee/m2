@@ -12,14 +12,14 @@ export default function ContactSection() {
       <p>
           Wypełnij krótki formularz, a nasi agenci odezwą się do Ciebie w mniej niż 24 godziny.
       </p>
-      <h2>Chętnie Ci pomożemy</h2>
+      <h2 className='h2'>Chętnie Ci pomożemy</h2>
       </div>
       <form className='contact-form'>
-        <input type="text" placeholder="Imię i nazwisko" required />
-        <input type="email" placeholder="Email" required />
-        <input type="tel" placeholder="Telefon" required />
-        <textarea placeholder="Wiadomość" required></textarea>
-        <label >
+        <input type="text" placeholder="Imię i nazwisko" required className='input' />
+        <input type="email" placeholder="Email" required className='input' />
+        <input type="tel" placeholder="Telefon" required className='input' />
+        <textarea placeholder="Wiadomość" required className='textarea' ></textarea>
+        <label className='label' >
           <input type="checkbox" required style={{marginRight: '10px'}} />
           Akceptuję <a href="/terms">regulamin</a> i <a href="/privacy">politykę prywatności</a>
           </label>

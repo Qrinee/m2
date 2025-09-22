@@ -7,8 +7,8 @@ export default function TeamSection() {
   return (
     <div className='card-section-wrapper'>
         <div className='card-section__header'>
-        <h2>Zespół, któremu możesz zaufać</h2>
-        <p>Jesteśmy dumni z jakości usług, które świadczymy. Nasz zespół ekspertów pomoże Ci znaleźć idealną nieruchomość lub szybko sprzedać Twoją.</p>
+        <h2  className='h2'>Zespół, któremu możesz zaufać</h2>
+        <p  className='p'>Jesteśmy dumni z jakości usług, które świadczymy. Nasz zespół ekspertów pomoże Ci znaleźć idealną nieruchomość lub szybko sprzedać Twoją.</p>
        </div>
        <div className='card-section'>
         <PhotoCard 

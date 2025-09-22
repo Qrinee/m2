@@ -1,11 +1,12 @@
 import React from "react";
 import "./ListingCard.css";
-import { FaBath, FaBed, FaLocationArrow, FaMap, FaMapPin, FaRulerCombined } from "react-icons/fa";
+import { FaBath, FaBed, FaRulerCombined, FaMapMarkerAlt, FaEye } from "react-icons/fa";
 
 const ListingCard = ({
   image,
   badges = [],
   location,
+  views,
   title,
   price,
   description,
@@ -27,11 +28,16 @@ const ListingCard = ({
             </span>
           ))}
         </div>
+        <span className="location">
+          <FaMapMarkerAlt /> {location}
+        </span>
+        <div className="views">
+          <FaEye /> {views}
+        </div>
       </div>
 
       {/* Content Section */}
       <div className="listing-content">
-        <span className="location"><FaMapPin/> {location}</span>
         <h3 className="title">{title}</h3>
         <p className="price">{price}</p>
         <p className="description">{description}</p>
