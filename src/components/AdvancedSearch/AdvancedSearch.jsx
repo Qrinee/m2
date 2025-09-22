@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import AdvancedRangeSlider from "./AdvancedRangeSlider";
 import "./AdvancedSearch.css";
+import CustomSelect from "../CustomSelect/CustomSelect";
 
 const AdvancedSearch = () => {
   const [priceRange, setPriceRange] = useState([0, 1500000]);
@@ -19,20 +20,9 @@ const AdvancedSearch = () => {
         placeholder="Wpisz adres, stan, miasto lub obszar"
         className="search-input"
       />
-
-      <select className="search-select">
-        <option>Typy</option>
-        <option>Mieszkanie</option>
-        <option>Dom</option>
-        <option>Działka</option>
-      </select>
-
-      <select className="search-select">
-        <option>Kategoria</option>
-        <option>Sprzedaż</option>
-        <option>Wynajem</option>
-      </select>
-
+  <CustomSelect options={["Typy", "Mieszkanie", "Dom", "Działka"]} />
+    <div className="sm-separate"></div>
+      <CustomSelect options={["Kategorie", "Sprzedaż", "Wynajem"]} />
       <p className="extra-options">Dodatkowe Opcje Wyszukiwania</p>
 
       <button className="search-button">Szukaj</button>

@@ -13,7 +13,7 @@ export default function PropertyForm() {
       <div className="form-content">
         <h2>Zgłoś nieruchomość do sprzedaży</h2>
 
-        <form>
+        <form className="form">
           <div className="form-row">
             <div className="form-group">
               <label>Imię*</label>
@@ -41,7 +41,7 @@ export default function PropertyForm() {
             <textarea placeholder="Treść wiadomości"></textarea>
           </div>
 
-          <button type="submit">Wyślij</button>
+          <button className="button" type="submit">Wyślij</button>
         </form>
       </div>
     </div>

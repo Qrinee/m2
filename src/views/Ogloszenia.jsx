@@ -70,7 +70,7 @@ const listings = [
         <Header black />
         <div className='separate'></div>
         <div className='lay'>
-          <div>
+          <div className='main-sec'>
               <div className='section'>
               <Breadcrumbs items={['Strona główna', "Ogłoszenia"]} />
               <h2 className='h2'>Ogłoszenia</h2>

@@ -10,6 +10,12 @@ body{
     justify-content: center;
     flex-wrap: wrap-reverse;
     gap: 30px;
+
+}
+
+.main-sec{
+    max-width: 900px;
+    width: 100%;
 }
 
 .separate{
@@ -29,6 +35,13 @@ body{
   text-decoration: none;
   color: #CBB26A;
   font-weight: 600;
+}
+
+.listing-grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .label{

@@ -2,8 +2,10 @@
 .filter-bar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
   background: #fff;
+
   padding: 10px 16px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -13,19 +15,17 @@
 .filter-selects {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex: 1;
 }
 
 .filter-select {
-  padding: 8px 12px;
+  padding: 8px 6px;
   border: 1px solid #e0e0e0;
   color: rgb(41, 41, 41);
   border-radius: 6px;
-  font-size: 14px;
   background: #fff;
   cursor: pointer;
-  min-width: 120px;
 }
 
 .filter-select:focus {
@@ -42,7 +42,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   color: #c9a33d;
   transition: color 0.2s ease;
   padding: 6px;

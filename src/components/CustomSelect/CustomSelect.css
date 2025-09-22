@@ -1,0 +1,136 @@
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Trigger button */
+.custom-select-trigger {
+  display: flex;
+  align-items: center;
+    width: 100%;
+  justify-content: space-between;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.24);
+  color: #363636;
+  padding: 10px 16px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.custom-select-trigger:hover {
+  border-color: #c9a33d;
+  box-shadow: 0 4px 8px rgba(201, 163, 61, 0.1);
+}
+
+.custom-select-trigger.open {
+  border-color: #c9a33d;
+  box-shadow: 0 4px 12px rgba(201, 163, 61, 0.2);
+}
+
+/* Animated arrow icon */
+.arrow-icon {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+  color: #666;
+}
+
+.custom-select-trigger.open .arrow-icon {
+  transform: rotate(180deg);
+  color: #c9a33d;
+}
+
+/* Dropdown container with animation */
+.custom-options-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  width: 100%;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.custom-options-container.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Options list */
+.custom-options {
+  background: #fff;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 4px 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.custom-option {
+  padding: 10px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  border-left: 3px solid transparent;
+}
+
+.custom-option:hover {
+  background: #f8f9fa;
+  border-left-color: #c9a33d;
+  padding-left: 20px;
+}
+
+.custom-option.selected {
+  background: #fef6e0;
+  color: #8b6e2c;
+  font-weight: 500;
+  border-left-color: #c9a33d;
+}
+
+/* Smooth entry animation for individual options */
+.custom-options-container.open .custom-option {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.custom-options-container.open .custom-option:nth-child(1) { animation-delay: 0.05s; }
+.custom-options-container.open .custom-option:nth-child(2) { animation-delay: 0.1s; }
+.custom-options-container.open .custom-option:nth-child(3) { animation-delay: 0.15s; }
+.custom-options-container.open .custom-option:nth-child(4) { animation-delay: 0.2s; }
+.custom-options-container.open .custom-option:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Focus states for accessibility */
+.custom-select-trigger:focus {
+  outline: none;
+  border-color: #c9a33d;
+  box-shadow: 0 0 0 3px rgba(201, 163, 61, 0.1);
+}
+
+.custom-option:focus {
+  outline: none;
+  background: #f8f9fa;
+}

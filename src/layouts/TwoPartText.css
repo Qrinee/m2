@@ -7,6 +7,21 @@
     justify-content: center;
 }
 
+.sm-separate{
+    margin: 10px;
+}
+
 .left, .right{
     width: calc(180px + 20vw);
+}
+
+@media (max-width: 900px){
+    .two-part-text{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .left, .right{
+        width: 100%;
+    }
 }
