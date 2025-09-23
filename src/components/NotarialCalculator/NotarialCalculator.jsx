@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import "./NotarialCalculator.css";
 
 const NotarialCalculator = () => {
-  const [propertyPrice, setPropertyPrice] = useState(520000);
-  const [ownContribution, setOwnContribution] = useState(24);
-  const [repaymentMonths, setRepaymentMonths] = useState(60);
+  const [propertyPrice, setPropertyPrice] = useState(300000);
+  const [ownContribution, setOwnContribution] = useState(50);
+  const [repaymentMonths, setRepaymentMonths] = useState(120);
 
+  // Stałe oprocentowanie 8% w skali roku
+  const annualInterestRate = 0.08;
+  const monthlyInterestRate = annualInterestRate / 12;
+  
   const loanAmount = propertyPrice * (1 - ownContribution / 100);
-  const monthlyRate = loanAmount / repaymentMonths;
+  
+  // Obliczanie raty annuitetowej (stałej) z oprocentowaniem
+  const monthlyRate = loanAmount * 
+    (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, repaymentMonths)) / 
+    (Math.pow(1 + monthlyInterestRate, repaymentMonths) - 1);
 
   // Format currency with proper spacing
   const formatCurrency = (value) => {
@@ -25,7 +33,11 @@ const NotarialCalculator = () => {
     const remainingMonths = months % 12;
     
     if (years === 0) return `${months} miesięcy`;
-    if (remainingMonths === 0) return `${years} lat`;
+    if (remainingMonths === 0) {
+      if (years === 1) return '1 rok';
+      if (years < 5) return `${years} lata`;
+      return `${years} lat`;
+    }
     return `${years} lat ${remainingMonths} miesięcy`;
   };
 
@@ -33,13 +45,13 @@ const NotarialCalculator = () => {
     <div className="calculator-container">
       <div className="calculator-header">
         <h2>Kalkulator rat notarialnych</h2>
-        <p>Oblicz swoją miesięczną ratę kredytu</p>
+        <p>Oblicz swoją miesięczną ratę</p>
       </div>
 
       <div className="calculator-body">
         <div className="slider-group">
           <div className="slider-label">
-            <label htmlFor="propertyPrice">Cena nieruchomości</label>
+            <label htmlFor="propertyPrice">Cena nieruchomości - stan deweloperski zamknięty</label>
             <span className="value-display">{formatCurrency(propertyPrice)}</span>
           </div>
           <input
@@ -66,7 +78,7 @@ const NotarialCalculator = () => {
           <input
             id="ownContribution"
             type="range"
-            min="0"
+            min="50"
             max="100"
             step="1"
             value={ownContribution}
@@ -74,7 +86,7 @@ const NotarialCalculator = () => {
             className="slider-input"
           />
           <div className="slider-minmax">
-            <span>0%</span>
+            <span>50%</span>
             <span>100%</span>
           </div>
         </div>
@@ -88,7 +100,7 @@ const NotarialCalculator = () => {
             id="repaymentMonths"
             type="range"
             min="12"
-            max="360"
+            max="120"
             step="12"
             value={repaymentMonths}
             onChange={(e) => setRepaymentMonths(Number(e.target.value))}
@@ -96,7 +108,7 @@ const NotarialCalculator = () => {
           />
           <div className="slider-minmax">
             <span>1 rok</span>
-            <span>30 lat</span>
+            <span>10 lat</span>
           </div>
         </div>
 
@@ -114,7 +126,10 @@ const NotarialCalculator = () => {
         <div className="result-container">
           <div className="result-label">Twoja miesięczna rata wyniesie:</div>
           <div className="result-amount">{formatCurrency(Math.round(monthlyRate))}</div>
-          <div className="result-note">* Symulacja ma charakter poglądowy i nie stanowi oferty kredytowej</div>
+          <div className="result-note">
+            * Symulacja ma charakter poglądowy i nie stanowi oferty kredytowej<br />
+            Kalkulacja uwzględnia stałe oprocentowanie w wysokości 8% w skali roku
+          </div>
         </div>
       </div>
     </div>
