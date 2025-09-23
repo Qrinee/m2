@@ -7,7 +7,7 @@ const NotarialCalculator = () => {
   const [repaymentMonths, setRepaymentMonths] = useState(120);
 
   // Stałe oprocentowanie 8% w skali roku
-  const annualInterestRate = 0.08;
+  const annualInterestRate = 0.1;
   const monthlyInterestRate = annualInterestRate / 12;
   
   const loanAmount = propertyPrice * (1 - ownContribution / 100);
@@ -128,7 +128,7 @@ const NotarialCalculator = () => {
           <div className="result-amount">{formatCurrency(Math.round(monthlyRate))}</div>
           <div className="result-note">
             * Symulacja ma charakter poglądowy i nie stanowi oferty kredytowej<br />
-            Kalkulacja uwzględnia stałe oprocentowanie w wysokości 8% w skali roku
+            Kalkulacja uwzględnia stałe oprocentowanie w wysokości 10% w skali roku
           </div>
         </div>
       </div>
