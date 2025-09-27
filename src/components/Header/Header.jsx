@@ -3,11 +3,13 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaPhoneAlt, FaUserCircle, FaHeart, FaBars, FaTimes } from "react-icons/fa";
+import AuthModal from "../AuthModal/AuthModal";
 
 const Header = ({ black }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleDropdown = (menu) => {
     setOpenDropdown(openDropdown === menu ? null : menu);
@@ -124,11 +126,15 @@ const menuItems = [
         </nav>
 
         {/* Kontakt i przycisk */}
+              {open && <AuthModal onClose={() => setOpen(false)} />}
         <div className="header__actions">
           <span className="header__phone">
             <FaPhoneAlt /> +48 728 866 825
           </span>
-          <FaUserCircle className="header__icon" />
+          <button onClick={() => setOpen(true)}>
+              <FaUserCircle className="header__icon" />
+              
+          </button>
           <Link to={"/zglos-nieruchomosc"}>
             <button className="header__btn">Dodaj ogłoszenie</button>
           </Link>
