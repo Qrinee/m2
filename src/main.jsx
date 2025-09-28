@@ -13,6 +13,7 @@ import Aktualnosci from './views/Aktualnosci.jsx'
 import Kontakt from './views/Kontakt.jsx'
 import Ulubione from './views/Ulubione.jsx'
 import WidokOgloszenia from './views/WidokOgloszenia.jsx'
+import ZglosNieruchomosc from './views/ZglosNieruchomosc.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -27,7 +28,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/ulubione' element={<Ulubione />} />
         <Route path='/ogloszenie' element={<WidokOgloszenia />} />
         <Route path='/aktualnosci' element={<Aktualnosci />} />
-           <Route path="/zglos-nieruchomosc" element={<Ogloszenia />} />
+           <Route path="/zglos-nieruchomosc" element={<ZglosNieruchomosc />} />
         <Route path="/dlaczego-warto" element={<DlaczegoWarto />} />
         <Route path="/zostan-partnerem-pracownikiem" element={<ZostanPartneremLubPracownikiem />} />
          <Route path="/o-nas" element={<ONas />} />
