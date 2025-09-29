@@ -279,7 +279,7 @@ export default function Add() {
 
         <div className="actions">
           {/* globalny przycisk Zapisz — zostawiam jeśli chcesz */}
-          <button className="btn ghost">Zapisz roboczo</button>
+          {/* <button className="btn ghost">Zapisz roboczo</button> */}
         </div>
       </div>
     </div>
