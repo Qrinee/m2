@@ -2,7 +2,9 @@ import React from 'react'
 import './CardSection.css'
 import InfoCard from '../components/InfoCard/InfoCard'
 import { FaChartBar, FaHandHolding, FaShieldAlt } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 export default function CardSection() {
+  const navigator = useNavigate();
   return (
     <div className='card-section-wrapper'>
         <div className='card-section__header'>
@@ -23,7 +25,7 @@ Dzięki notarialnym ratom od M2Notarialnie, możesz kupić sprawdzoną nieruchom
           "Harmonogram podany z góry – 100% przejrzystości"
         ]}
         buttonText="Oblicz ratę"
-        onButtonClick={() => alert("Kliknięto oblicz ratę")}
+        onButtonClick={() => navigator('/oblicz-rate')}
       />
     <InfoCard
         icon={<FaHandHolding width={40} height={40} />}
@@ -35,7 +37,7 @@ Dzięki notarialnym ratom od M2Notarialnie, możesz kupić sprawdzoną nieruchom
           "Wystarczy Twoja decyzja i chęć zakupu"
         ]}
         buttonText="Dowiedz się więcej"
-        onButtonClick={() => alert("Kliknięto oblicz ratę")}
+        onButtonClick={() => navigator('/czym-sa-raty-notarialne')}
       />
     <InfoCard
         icon={<FaShieldAlt width={40} height={40} />}

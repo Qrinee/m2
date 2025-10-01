@@ -72,7 +72,6 @@ body{margin:0;background:var(--bg);color:#111}
 .field{display:block;margin-bottom:12px}
 .field-label{font-size:13px;color:var(--muted);margin-bottom:6px}
 input[type="text"],input[type="number"],input[type="email"],input[type="password"],select,textarea,input[type="date"]{
-  width:100%;
   padding:10px 12px;
   border-radius:8px;
   border:1px solid var(--border);

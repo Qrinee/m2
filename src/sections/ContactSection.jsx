@@ -21,7 +21,7 @@ export default function ContactSection() {
         <textarea placeholder="Wiadomość" required className='textarea' ></textarea>
         <label className='label' >
           <input type="checkbox" required style={{marginRight: '10px'}} />
-          Akceptuję <a href="/terms">regulamin</a> i <a href="/privacy">politykę prywatności</a>
+          Akceptuję <a href="/terms" className='a'>regulamin</a> i <a className='a' href="/privacy">politykę prywatności</a>
           </label>
         <button className='button' style={{marginTop: '20px'}} type="submit">Wyślij wiadomość</button>
       </form>

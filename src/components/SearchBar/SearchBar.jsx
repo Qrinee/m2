@@ -6,6 +6,7 @@ const SearchBar = () => {
   return (
     <div className="searchbar">
       <input
+
         type="text"
         placeholder="Wprowadź adres, województwo, miasto, województwo lub kod pocztowy"
         className="searchbar__input"

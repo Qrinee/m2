@@ -1,0 +1,109 @@
+.app {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.info-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.info-section h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.address {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.social-icons {
+  margin: 0.5rem 0;
+}
+
+.social-icons svg {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.contact {
+  margin: 0.2rem 0;
+}
+
+.values ul {
+  padding-left: 1rem;
+}
+
+.contact-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.contact-form h2 {
+  margin-bottom: 1rem;
+}
+
+.inputs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.inputs-row input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.gdpr {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.gdpr label {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+button {
+  padding: 0.7rem 1.5rem;
+  background: #c9a85f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b48b4f;
+}
+
+@media (max-width: 768px) {
+  .inputs-row {
+    flex-direction: column;
+  }
+}
