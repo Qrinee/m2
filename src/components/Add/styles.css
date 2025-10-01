@@ -71,7 +71,7 @@ body{margin:0;background:var(--bg);color:#111}
 
 .field{display:block;margin-bottom:12px}
 .field-label{font-size:13px;color:var(--muted);margin-bottom:6px}
-input[type="text"],input[type="number"],select,textarea,input[type="date"]{
+input[type="text"],input[type="number"],input[type="email"],input[type="password"],select,textarea,input[type="date"]{
   width:100%;
   padding:10px 12px;
   border-radius:8px;
@@ -156,6 +156,37 @@ textarea{resize:vertical}
 .actions{display:flex;justify-content:flex-end;padding-top:12px}
 .btn.ghost{margin-right:auto}
 
+
+
+.error-message {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #c00;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  background: #efe;
+  border: 1px solid #cfc;
+  color: #080;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
 /* responsive */
 @media (max-width:900px){
   .grid-3{grid-template-columns:repeat(2,1fr)}
@@ -166,3 +197,5 @@ textarea{resize:vertical}
   .grid-2,.grid-3{grid-template-columns:1fr}
   .thumb{width:100%}
 }
+
+

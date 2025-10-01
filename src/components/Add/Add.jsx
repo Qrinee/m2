@@ -11,6 +11,9 @@ const TABS = [
 
 export default function Add() {
   const [active, setActive] = useState("opis");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   // dane wszystkich zakładek (hoistowane do rodzica)
   const [opis, setOpis] = useState({
@@ -190,21 +193,105 @@ export default function Add() {
     });
   }
 
-  // wyslanie (tutaj tylko demonstracja)
-  function submitAll() {
+  // WYSYŁANIE DO BACKENDU
+  async function submitAll() {
     // jeszcze raz waliduj ostatnie pola
     if (!validateTab("szczegoly")) return;
 
-    // przygotuj payload — tu możesz wysłać do backendu
-    const payload = {
-      opis,
-      files: files.map((f) => ({ name: f.file.name, type: f.file.type })), // pliki trzeba wysyłać multipart/form-data
-      lokalizacja,
-      szczegoly,
-    };
+    setIsSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(false);
 
-    console.log("Payload", payload);
-    alert("Nieruchomość zgłoszona (demo). Sprawdź konsolę.");
+    try {
+      const formData = new FormData();
+      
+      // Dodaj dane jako JSON string
+      formData.append('opis', JSON.stringify(opis));
+      formData.append('lokalizacja', JSON.stringify(lokalizacja));
+      formData.append('szczegoly', JSON.stringify(szczegoly));
+      
+      // Dodaj pliki
+      files.forEach(file => {
+        formData.append('files', file.file);
+      });
+
+      const response = await fetch('http://localhost:5000/api/properties', {
+        method: 'POST',
+        body: formData,
+        // headers nie są potrzebne dla FormData - browser ustawi boundary automatycznie
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `Błąd HTTP: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Success:", result);
+      setSubmitSuccess(true);
+      alert("Nieruchomość została pomyślnie zgłoszona!");
+
+      // Opcjonalnie: reset formularza po sukcesie
+      // resetForm();
+
+    } catch (error) {
+      console.error("Błąd podczas wysyłania:", error);
+      setSubmitError(error.message);
+      resetForm();
+      alert(`Wystąpił błąd: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  // Funkcja do resetowania formularza (opcjonalnie)
+  function resetForm() {
+    setOpis({
+      nazwa: "",
+      opis: "",
+      cena: "",
+      poCenie: "",
+      przedCena: "",
+      podatek: "",
+      oplata: "",
+      kategoria: "",
+      wystawioneNa: "",
+      status: "",
+    });
+    setFiles([]);
+    setLokalizacja({
+      adres: "",
+      wojewodztwo: "",
+      miasto: "",
+      powiat: "",
+      kod: "",
+      kraj: "Polska",
+      lat: "",
+      lon: "",
+      streetViewAngle: "",
+    });
+    setSzczegoly({
+      rozmiar_m2: "",
+      wielkosc_dzialki: "",
+      pokoje: "",
+      sypialnie: "",
+      id_nieruchomosci: "",
+      rok_budowy: "",
+      garaz: "",
+      wielkosc_garazu: "",
+      dostepna_od: "",
+      piwnica: "",
+      konstrukcja_zew: "",
+      material_elewacji: "",
+      dach: "",
+      typ_konstrukcji: "",
+      liczba_pieter: "",
+      uwagi: "",
+      klasa_energetyczna: "",
+      wskaznik_energetyczny: "",
+    });
+    setActive("opis");
+    idRef.current = 1;
   }
 
   return (
@@ -215,12 +302,10 @@ export default function Add() {
             <button
               key={t.id}
               className={`tab-trigger ${active === t.id ? "active" : ""}`}
-              // kliknięcie w zakładki jest zablokowane (nawigacja tylko przyciskami)
               onClick={(e) => {
                 if (tabClickAllowed) setActive(t.id);
                 else {
                   e.preventDefault();
-                  // można rozwinąć powiadomienie: alert("Użyj przycisku 'Dalej' aby przejść dalej.");
                 }
               }}
               aria-selected={active === t.id}
@@ -273,6 +358,9 @@ export default function Add() {
               all={{ opis, files, lokalizacja, szczegoly }}
               onBack={back}
               onSubmit={submitAll}
+              isSubmitting={isSubmitting}
+              submitError={submitError}
+              submitSuccess={submitSuccess}
             />
           )}
         </div>
@@ -728,12 +816,24 @@ function TabSzczegoly({ value, setValue, onNext, onBack }) {
   );
 }
 
-function TabZglos({ all, onBack, onSubmit }) {
+function TabZglos({ all, onBack, onSubmit, isSubmitting, submitError, submitSuccess }) {
   const { opis, files, lokalizacja, szczegoly } = all;
 
   return (
     <div className="tab-content">
       <h3 className="section-title">Podsumowanie</h3>
+
+      {submitError && (
+        <div className="error-message">
+          <strong>Błąd:</strong> {submitError}
+        </div>
+      )}
+
+      {submitSuccess && (
+        <div className="success-message">
+          <strong>Sukces!</strong> Nieruchomość została pomyślnie zgłoszona.
+        </div>
+      )}
 
       <div className="summary">
         <h4>Opis</h4>
@@ -755,13 +855,17 @@ function TabZglos({ all, onBack, onSubmit }) {
 
       <div className="nav-row">
         <div>
-          <button className="btn ghost" onClick={onBack}>
+          <button className="btn ghost" onClick={onBack} disabled={isSubmitting}>
             Wstecz
           </button>
         </div>
         <div>
-          <button className="btn" onClick={onSubmit}>
-            Zgłoś nieruchomość
+          <button 
+            className="btn" 
+            onClick={onSubmit} 
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Wysyłanie..." : "Zgłoś nieruchomość"}
           </button>
         </div>
       </div>
