@@ -79,7 +79,6 @@ export default function Ogloszenia() {
           area: property.szczegoly?.rozmiar_m2 || 0,
           agentImage: "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zrzut-ekranu-2025-07-14-o-15.47.03-120x120.png",
           agentName: "Zespół M2 Notarialnie",
-          views: Math.floor(Math.random() * 100) + 1 // Losowe wyświetlenia dla demo
         };
       });
 

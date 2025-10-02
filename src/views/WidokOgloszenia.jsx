@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./styles.css";
 import Header from './../components/Header/Header';
-import { FaLocationPin } from "react-icons/fa6";
+import { FaHouse, FaLocationPin, FaMessage, FaSquareBehance } from "react-icons/fa6";
+import { FaArrowCircleDown, FaBed, FaCheck, FaHeart, FaPhone, FaRuler, FaShower, FaSquare, FaSquarespace, FaWhatsapp } from "react-icons/fa";
 
 const sampleImages = [
   "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=80&auto=format&fit=crop",
@@ -390,10 +391,10 @@ function ContactCard() {
         
         <div className="prop-contact-actions">
           <button className="prop-btn secondary">
-            <span className="btn-icon">📞</span> Dzwoń
+            <span className="btn-icon"><FaPhone/></span> Dzwoń
           </button>
           <button className="prop-btn secondary">
-            <span className="btn-icon">💬</span> WhatsApp
+            <span className="btn-icon"><FaWhatsapp/></span> WhatsApp
           </button>
         </div>
       </div>
@@ -405,22 +406,22 @@ function InfoBar({ property }) {
   return (
     <div className="prop-info-bar">
       <div className="prop-info-item">
-        <div className="prop-info-icon">🔄</div>
+        <div className="prop-info-icon"><FaArrowCircleDown/></div>
         <div className="prop-info-value">{property.updated}</div>
         <div className="prop-info-label">Ostatnia aktualizacja</div>
       </div>
       <div className="prop-info-item">
-        <div className="prop-info-icon">🛏️</div>
+        <div className="prop-info-icon"><FaBed/></div>
         <div className="prop-info-value">{property.bedrooms}</div>
         <div className="prop-info-label">Sypialnie</div>
       </div>
       <div className="prop-info-item">
-        <div className="prop-info-icon">🚿</div>
+        <div className="prop-info-icon"><FaShower/></div>
         <div className="prop-info-value">{property.bathrooms}</div>
         <div className="prop-info-label">Łazienki</div>
       </div>
       <div className="prop-info-item">
-        <div className="prop-info-icon">📐</div>
+        <div className="prop-info-icon"><FaSquarespace/></div>
         <div className="prop-info-value">{property.area} m²</div>
         <div className="prop-info-label">Powierzchnia</div>
       </div>
@@ -431,7 +432,7 @@ function InfoBar({ property }) {
 function Feature({ title, value }) {
   return (
     <div className="prop-feature">
-      <div className="prop-feature-icon">🏷️</div>
+      <div className="prop-feature-icon"><FaCheck color="green"/></div>
       <div className="prop-feature-content">
         <div className="prop-feature-title">{title}</div>
         <div className="prop-feature-value">{value}</div>
@@ -451,7 +452,6 @@ function SimilarCard({ title, price, img }) {
     <div className="prop-similar-card-item">
       <div className="similar-image-container">
         <img src={img} alt={title} />
-        <button className="favorite-btn">❤️</button>
       </div>
       <div className="prop-similar-meta">
         <div className="prop-sim-title">{title}</div>
@@ -474,19 +474,19 @@ function SummaryCard({ property, price, updated }) {
       <div className="summary-price">{format(price)}</div>
       <div className="summary-details">
         <div className="detail-item">
-          <span className="detail-icon">🏠</span>
+          <span className="detail-icon"><FaHouse/></span>
           <span>{property.rooms} pokoje • {property.bedrooms} sypialnie</span>
         </div>
         <div className="detail-item">
-          <span className="detail-icon">🚿</span>
+          <span className="detail-icon"><FaShower/></span>
           <span>{property.bathrooms} łazienki</span>
         </div>
         <div className="detail-item">
-          <span className="detail-icon">📐</span>
+          <span className="detail-icon"><FaSquarespace/></span>
           <span>Powierzchnia: {property.area} m²</span>
         </div>
         <div className="detail-item">
-          <span className="detail-icon">🔄</span>
+          <span className="detail-icon"><FaArrowCircleDown/></span>
           <span>Aktualizacja: {updated}</span>
         </div>
       </div>

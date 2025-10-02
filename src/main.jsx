@@ -14,6 +14,12 @@ import Kontakt from './views/Kontakt.jsx'
 import Ulubione from './views/Ulubione.jsx'
 import WidokOgloszenia from './views/WidokOgloszenia.jsx'
 import ZglosNieruchomosc from './views/ZglosNieruchomosc.jsx'
+import AdminPanel from './components/AdminPanel/AdminPanel.jsx'
+import Dashboard from './components/AdminPanel/sections/Dashboard.jsx'
+import Forms from './components/AdminPanel/sections/Forms.jsx'
+import Properties from './components/AdminPanel/sections/Properties.jsx'
+import FAQ from './components/AdminPanel/sections/FAQ.jsx'
+import News from './components/AdminPanel/sections/News.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -26,12 +32,20 @@ createRoot(document.getElementById('root')).render(
         <Route path='/oblicz-rate' element={<ObliczRate />} />
         <Route path='/kontakt' element={<Kontakt />} />
         <Route path='/ulubione' element={<Ulubione />} />
-        <Route path='/ogloszenie' element={<WidokOgloszenia />} />
+        <Route path='/ogloszenie/:id' element={<WidokOgloszenia />} />
         <Route path='/aktualnosci' element={<Aktualnosci />} />
            <Route path="/zglos-nieruchomosc" element={<ZglosNieruchomosc />} />
         <Route path="/dlaczego-warto" element={<DlaczegoWarto />} />
         <Route path="/zostan-partnerem-pracownikiem" element={<ZostanPartneremLubPracownikiem />} />
          <Route path="/o-nas" element={<ONas />} />
+
+         <Route path="/admin" element={<AdminPanel />}>
+            <Route index element={<Dashboard />} />
+            <Route path="forms" element={<Forms />} />
+            <Route path="properties" element={<Properties />} />
+            <Route path="faq" element={<FAQ />} />
+          
+          </Route>
       </Routes>
     </BrowserRouter>
 

@@ -122,6 +122,10 @@
   border-left: 4px solid #d4af37; /* Original gold color */
 }
 
+.form-group{
+  margin-top: 20px;
+}
+
 .card-label {
   font-size: 0.9rem;
   color: #7f8c8d;

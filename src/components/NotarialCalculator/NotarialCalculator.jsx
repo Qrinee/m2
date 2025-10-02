@@ -5,6 +5,13 @@ const NotarialCalculator = () => {
   const [propertyPrice, setPropertyPrice] = useState(300000);
   const [ownContribution, setOwnContribution] = useState(50);
   const [repaymentMonths, setRepaymentMonths] = useState(120);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   // Stałe oprocentowanie - 10% do 5 lat, 15% powyżej 5 lat
   const annualInterestRateFirst5 = 0.10;
@@ -69,6 +76,56 @@ const NotarialCalculator = () => {
     }
     
     return result;
+  };
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const submissionData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        propertyPrice: propertyPrice,
+        ownContribution: ownContributionAmount,
+        loanTerm: repaymentMonths,
+        monthlyPayment: monthlyRateData.monthlyRate
+      };
+
+      const response = await fetch('http://localhost:5000/api/emails/loan-inquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus({ type: 'success', message: result.message });
+        // Reset form
+        setFormData({ name: "", email: "", phone: "" });
+      } else {
+        setSubmitStatus({ type: 'error', message: result.error });
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'Wystąpił błąd podczas wysyłania formularza' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const totalYears = Math.ceil(repaymentMonths / 12);
@@ -185,6 +242,65 @@ const NotarialCalculator = () => {
             }
           </div>
         </div>
+
+        {/* Formularz kontaktowy */}
+        <form className="contact-form" onSubmit={handleSubmit}>
+          
+          {submitStatus && (
+            <div className={`submit-status ${submitStatus.type}`}>
+              {submitStatus.message}
+            </div>
+          )}
+
+          <div className="form-group">
+            <label htmlFor="name">Imię *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="phone">Telefon</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              disabled={isSubmitting}
+              placeholder="+48 123 456 789"
+            />
+          </div>
+
+          <div className="sm-separate"> </div>
+          <button 
+            type="submit" 
+            className="submit-button"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Wysyłanie...' : 'Wyślij zapytanie'}
+          </button>
+
+        </form>
       </div>
     </div>
   );

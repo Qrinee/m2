@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaPhoneAlt, FaUserCircle, FaHeart, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
 import AuthModal from "../AuthModal/AuthModal";
+import { FaHouse } from "react-icons/fa6";
 
 const Header = ({ black }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -135,15 +136,6 @@ const Header = ({ black }) => {
       ],
     },
     { label: "Kontakt", href: "/kontakt" },
-    {
-      label: (
-        <>
-          <FaHeart /> Ulubione
-        </>
-      ),
-      href: "/ulubione",
-      className: "header__favorite",
-    },
   ];
 
   return (
@@ -236,7 +228,7 @@ const Header = ({ black }) => {
                       className="dropdown-item"
                       onClick={() => setOpenDropdown(null)}
                     >
-                      🏠 Moje nieruchomości
+                      <FaHouse/> Moje nieruchomości
                     </Link>
                     <Link 
                       to="/favorites" 

@@ -31,9 +31,6 @@ const ListingCard = ({
         <span className="location">
           <FaMapMarkerAlt /> {location}
         </span>
-        <div className="views">
-          <FaEye /> {views}
-        </div>
       </div>
 
       {/* Content Section */}
