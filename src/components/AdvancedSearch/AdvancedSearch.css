@@ -1,176 +1,100 @@
-/* === Advanced Search === */
-.search-container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 320px;
-  font-family: Arial, sans-serif;
-}
-
-.search-container h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.search-input,
-.search-select {
-  width: 100%;
-  padding: 10px 20px;
-  margin-bottom: 12px;
-  border: 1px solid #ddd;
+/* AdvancedSearch.css */
+.advanced-search {
+  background: white;
   border-radius: 8px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-/* Price Range Slider Styles */
-.price-range {
-  margin-bottom: 15px;
-}
-
-.price-input-container {
-  width: 100%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
-.price-input {
-  width: 100%;
+.advanced-search-header {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.advanced-search-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.expand-icon {
+  transition: transform 0.3s ease;
+  color: #6c757d;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.advanced-search-content {
+  padding: 20px;
+}
+
+.search-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
   margin-bottom: 15px;
 }
 
-.price-field {
+.search-group {
   display: flex;
   flex-direction: column;
-  width: 48%;
 }
 
-.price-field span {
-  font-size: 14px;
+.search-group label {
   margin-bottom: 5px;
-  color: #444;
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 0.9rem;
 }
 
-.price-field input {
-  height: 35px;
-  font-size: 15px;
-  border-radius: 8px;
-  text-align: center;
+.search-group input {
+  padding: 10px;
   border: 1px solid #ddd;
-  background: #f8f8f8;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Remove number input arrows */
-.price-field input::-webkit-outer-spin-button,
-.price-field input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.price-field input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.slider {
-  height: 6px;
-  position: relative;
-  background: #e0e0e0;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.price-slider {
-  height: 100%;
-  position: absolute;
-  border-radius: 5px;
-  background: #CBB26A;
-  left: 0%;
-  right: 0%;
-}
-
-.range-input {
-  position: relative;
-  height: 6px;
-}
-
-.range-input input {
-  position: absolute;
-  width: 100%;
-  height: 6px;
-  background: none;
-  top: -6px;
-  pointer-events: none;
-  -webkit-appearance: none;
-}
-
-/* Range thumb styles */
-.range-input input[type="range"]::-webkit-slider-thumb {
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  background: #CBB26A;
-  border: 2px solid #fff;
-  box-shadow: 0 0 4px rgba(0,0,0,0.15);
-  pointer-events: auto;
-  -webkit-appearance: none;
-  cursor: pointer;
-}
-
-.range-input input[type="range"]::-moz-range-thumb {
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  background: #CBB26A;
-  border: 2px solid #fff;
-  box-shadow: 0 0 4px rgba(0,0,0,0.15);
-  pointer-events: auto;
-  cursor: pointer;
-  border: none;
-}
-
-.extra-options {
+  border-radius: 4px;
   font-size: 14px;
-  color: #c49a3a;
-  margin-bottom: 15px;
-  cursor: pointer;
 }
 
-.search-button {
-  width: 100%;
-  padding: 12px;
-  background: #CBB26A;
+.search-group input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.search-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+
+.btn-secondary {
+  background: #95a5a6;
+  color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.search-button:hover {
-  background: #b3882a;
+.btn-secondary:hover {
+  background: #7f8c8d;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-  .search-container {
-    width: 90%;
-    margin: 0 auto;
+@media (max-width: 768px) {
+  .search-row {
+    grid-template-columns: 1fr;
   }
   
-  .price-input {
+  .search-actions {
     flex-direction: column;
-    align-items: center;
-  }
-  
-  .price-field {
-    width: 100%;
-    margin-bottom: 10px;
   }
 }

@@ -2,14 +2,18 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import "./CustomSelect.css";
 
-const CustomSelect = ({ options, defaultIndex = 0 }) => {
-  const [selected, setSelected] = useState(options[defaultIndex]);
+const CustomSelect = ({ options, selected, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
 
-  const toggleOpen = () => setIsOpen(!isOpen);
+  const toggleOpen = () => {
+    console.log('Toggle select, isOpen:', !isOpen); // Debug
+    setIsOpen(!isOpen);
+  };
+
   const handleSelect = (option) => {
-    setSelected(option);
+    console.log('Wybrano opcję:', option); // Debug
+    onSelect(option);
     setIsOpen(false);
   };
 
@@ -25,28 +29,31 @@ const CustomSelect = ({ options, defaultIndex = 0 }) => {
   }, []);
 
   return (
-    <div className="custom-select" ref={containerRef} >
+    <div className="custom-select" ref={containerRef}>
       <button 
         className={`custom-select-trigger ${isOpen ? "open" : ""}`} 
         onClick={toggleOpen}
+        type="button"
       >
         <span>{selected}</span>
         <FaArrowDown className="arrow-icon" />
       </button>
       
-      <div className={`custom-options-container ${isOpen ? "open" : ""}`}>
-        <ul className="custom-options">
-          {options.map((opt, i) => (
-            <li
-              key={i}
-              className={`custom-option ${opt === selected ? "selected" : ""}`}
-              onClick={() => handleSelect(opt)}
-            >
-              {opt}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {isOpen && (
+        <div className="custom-options-container open">
+          <ul className="custom-options">
+            {options.map((opt, i) => (
+              <li
+                key={i}
+                className={`custom-option ${opt === selected ? "selected" : ""}`}
+                onClick={() => handleSelect(opt)}
+              >
+                {opt}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

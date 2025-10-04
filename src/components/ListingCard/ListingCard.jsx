@@ -54,7 +54,7 @@ const ListingCard = ({
 
       {/* Footer */}
       <div className="listing-footer">
-        <img src={agentImage} alt={agentName} className="agent-avatar" />
+        <img src={"http://localhost:5000" + agentImage} alt={agentName} className="agent-avatar" />
         <span className="agent-name">{agentName}</span>
       </div>
     </div>

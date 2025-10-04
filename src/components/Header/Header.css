@@ -433,6 +433,11 @@
   }
 }
 
+.header__avatar{
+  width: 32px;
+  border-radius: 100%;
+}
+
 /* Aktualizacja istniejących stylów dla lepszego wyglądu */
 .header__actions {
   display: flex;

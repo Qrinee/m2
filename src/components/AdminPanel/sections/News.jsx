@@ -181,29 +181,7 @@ const News = () => {
             </div>
 
             <div className="form-row">
-              <div className="form-group">
-                <label>Kategoria:</label>
-                <select
-                  value={formData.category}
-                  onChange={(e) => setFormData({...formData, category: e.target.value})}
-                >
-                  <option value="news">Aktualności</option>
-                  <option value="tips">Porady</option>
-                  <option value="market">Rynek nieruchomości</option>
-                  <option value="company">Firma</option>
-                </select>
-              </div>
 
-              <div className="form-group">
-                <label>Status:</label>
-                <select
-                  value={formData.status}
-                  onChange={(e) => setFormData({...formData, status: e.target.value})}
-                >
-                  <option value="draft">Szkic</option>
-                  <option value="published">Opublikowany</option>
-                </select>
-              </div>
 
               <div className="form-group">
                 <label>Obraz:</label>

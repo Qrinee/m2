@@ -73,10 +73,125 @@ export default function ZostanPartneremLubPracownikiem() {
             left={<h3>Razem możemy stworzyć coś więcej niż tylko współpracę — możemy zbudować partnerstwo oparte na wzajemnym rozwoju i zaufaniu, które przyniesie korzyści nie tylko nam, ale przede wszystkim naszym klientom.</h3>}
             right={<h3>W M2Notarialnie wierzymy, że sukces to efekt wspólnej pracy, pasji i ciągłego rozwoju — dołączając do nas, stajesz się częścią zespołu, który naprawdę dba o Twój rozwój i satysfakcję z pracy.</h3> }
         />
+
+        {/* Sekcja z formularzami */}
+        <TwoPartText
+            left={
+                <form className="contact-form">
+                    <h3>Formularz partnerski</h3>
+                    
+                    <div className="form-group">
+                        <label htmlFor="company-name">Imię i nazwisko / nazwa firmy *</label>
+                        <input 
+                            type="text" 
+                            id="company-name"
+                            name="company-name"
+                            required 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="partner-email">Adres e-mail *</label>
+                        <input 
+                            type="email" 
+                            id="partner-email"
+                            name="partner-email"
+                            required 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="partner-phone">Numer telefonu *</label>
+                        <input 
+                            type="tel" 
+                            id="partner-phone"
+                            name="partner-phone"
+                            required 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="partner-message">Propozycja współpracy / wiadomość *</label>
+                        <textarea 
+                            id="partner-message"
+                            name="partner-message"
+                            rows="5"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" className="btn btn-primary">
+                        Wyślij propozycję współpracy
+                    </button>
+                </form>
+            }
+            right={
+                <form className="contact-form">
+                    <h3>Formularz rekrutacyjny</h3>
+                    
+                    <div className="form-group">
+                        <label htmlFor="full-name">Imię i nazwisko *</label>
+                        <input 
+                            type="text" 
+                            id="full-name"
+                            name="full-name"
+                            required 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="employee-email">Adres e-mail *</label>
+                        <input 
+                            type="email" 
+                            id="employee-email"
+                            name="employee-email"
+                            required 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="employee-phone">Numer telefonu *</label>
+                        <input 
+                            type="tel" 
+                            id="employee-phone"
+                            name="employee-phone"
+                            required 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="employee-message">Krótka wiadomość / list motywacyjny *</label>
+                        <textarea 
+                            id="employee-message"
+                            name="employee-message"
+                            rows="4"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="cv-upload">Załącz swoje CV (PDF, DOC, max 5MB) *</label>
+                        <input 
+                            type="file" 
+                            id="cv-upload"
+                            name="cv-upload"
+                            accept=".pdf,.doc,.docx"
+                            required
+                        />
+                        <small>Akceptowane formaty: PDF, DOC, DOCX. Maksymalny rozmiar: 5MB</small>
+                    </div>
+
+                    <button type="submit" className="btn btn-primary">
+                        Wyślij aplikację
+                    </button>
+                </form>
+            }
+        />
+
+
                 
     <TeamSection />
     <NumberSection/>
     </div>
-
   )
 }

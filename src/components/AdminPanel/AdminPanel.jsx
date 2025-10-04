@@ -8,45 +8,71 @@ import { FaHouse } from 'react-icons/fa6';
 const AdminPanel = () => {
   const [user, setUser] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const API_BASE_URL = "http://localhost:5000/api";
 
   useEffect(() => {
     checkAdminAccess();
   }, []);
 
-  const checkAdminAccess = () => {
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-
-    if (!token || !userData) {
-      navigate('/login');
-      return;
-    }
-
+  const checkAdminAccess = async () => {
     try {
-      const parsedUser = JSON.parse(userData);
-      if (parsedUser.role !== 'admin') {
+      setLoading(true);
+      const response = await fetch(`${API_BASE_URL}/auth/me`, {
+        credentials: 'include'
+      });
+
+      if (!response.ok) {
+        throw new Error('Nieautoryzowany dostęp');
+      }
+
+      const data = await response.json();
+      
+      if (data.data.user.role !== 'admin') {
         navigate('/');
         return;
       }
-      setUser(parsedUser);
+      
+      setUser(data.data.user);
     } catch (error) {
-      console.error('Błąd parsowania danych użytkownika:', error);
+      console.error('Błąd autoryzacji:', error);
       navigate('/login');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/');
+  const logout = async () => {
+    try {
+      await fetch(`${API_BASE_URL}/auth/logout`, {
+        method: "POST",
+        credentials: 'include'
+      });
+    } catch (error) {
+      console.error("Błąd wylogowania:", error);
+    } finally {
+      setUser(null);
+      window.dispatchEvent(new CustomEvent('userLoggedOut'));
+      navigate('/');
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="admin-loading">
+        <div className="loading-spinner"></div>
+        <p>Sprawdzanie uprawnień...</p>
+      </div>
+    );
+  }
 
   if (!user) {
     return (
       <div className="admin-loading">
         <div className="loading-spinner"></div>
-        <p>Sprawdzanie uprawnień...</p>
+        <p>Przekierowywanie...</p>
       </div>
     );
   }
@@ -56,7 +82,7 @@ const AdminPanel = () => {
       {/* Sidebar */}
       <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="sidebar-header">
-          <h2>Panel Admina</h2>
+          <Link to={'/'} style={{color: 'inherit', textDecoration: 'none'}}><h2> M2Notarialnie</h2></Link>
           <button 
             className="sidebar-toggle"
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -104,7 +130,7 @@ const AdminPanel = () => {
             </span>
             {sidebarOpen && (
               <div className="user-details">
-                <span className="user-name">{user.fullName}</span>
+                <span className="user-name">{user.name} {user.surname}</span>
                 <span className="user-role">Administrator</span>
               </div>
             )}

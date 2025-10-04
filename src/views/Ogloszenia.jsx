@@ -8,27 +8,96 @@ import Footer from '../components/Footer/Footer';
 import AdvancedSearch from './../components/AdvancedSearch/AdvancedSearch';
 import RecentlyViewed from '../components/RecentlyViewed/RecentlyViewed';
 import Pagination from '../components/Pagination/Pagination';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Ogloszenia() {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filterLoading, setFilterLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [filterOptions, setFilterOptions] = useState({
+    kategorie: [],
+    wojewodztwa: [],
+    miasta: [],
+    statusy: []
+  });
+  
+  const location = useLocation();
+  
+  // Odczytaj parametry z URL przy inicjalizacji
+  const getInitialFiltersFromURL = () => {
+    const params = new URLSearchParams(location.search);
+    return {
+      search: params.get('search') || '',
+      typ: params.get('typ') || '',
+      kategoria: params.get('kategoria') || '',
+      wojewodztwo: params.get('wojewodztwo') || '',
+      miasto: params.get('miasto') || '',
+      cenaMin: params.get('cenaMin') || '',
+      cenaMax: params.get('cenaMax') || '',
+      powierzchniaMin: params.get('powierzchniaMin') || '',
+      powierzchniaMax: params.get('powierzchniaMax') || '',
+      pokoje: params.get('pokoje') || '',
+      sort: params.get('sort') || 'data-desc'
+    };
+  };
 
-  // Pobierz dane z backendu przy montowaniu komponentu
+  const [filters, setFilters] = useState(getInitialFiltersFromURL());
+
+  // Pobierz opcje filtrów przy montowaniu komponentu
+  useEffect(() => {
+    fetchFilterOptions();
+  }, []);
+
+  // Pobierz nieruchomości przy zmianie strony, filtrów lub URL
   useEffect(() => {
     fetchProperties();
-  }, [currentPage]);
+  }, [currentPage, filters, location.search]);
+
+  // Aktualizuj filtry gdy zmienia się URL (np. z SearchBar)
+  useEffect(() => {
+    const newFilters = getInitialFiltersFromURL();
+    setFilters(newFilters);
+    setCurrentPage(1); // Resetuj do pierwszej strony przy zmianie URL
+  }, [location.search]);
+
+  const fetchFilterOptions = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/properties/filters/options');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setFilterOptions(data.data);
+        }
+      }
+    } catch (error) {
+      console.error('Błąd pobierania opcji filtrów:', error);
+    }
+  };
 
   const fetchProperties = async () => {
     try {
       setLoading(true);
       setError(null);
       
+      // Budowanie URL z parametrami
+      const params = new URLSearchParams({
+        page: currentPage,
+        limit: '9',
+        ...filters
+      });
+
+      // Usuń puste parametry
+      Object.keys(filters).forEach(key => {
+        if (!filters[key]) {
+          params.delete(key);
+        }
+      });
+
       const response = await fetch(
-        `http://localhost:5000/api/properties?page=${currentPage}&limit=9`
+        `http://localhost:5000/api/properties/search/advanced?${params.toString()}`
       );
       
       if (!response.ok) {
@@ -36,7 +105,6 @@ export default function Ogloszenia() {
       }
       
       const data = await response.json();
-      console.log('Otrzymane dane z backendu:', data); // Debug
       
       // Transformuj dane z backendu na format komponentu ListingCard
       const transformedListings = data.properties.map(property => {
@@ -77,13 +145,11 @@ export default function Ogloszenia() {
           baths: calculateBaths(property.szczegoly),
           beds: property.szczegoly?.pokoje || 0,
           area: property.szczegoly?.rozmiar_m2 || 0,
-          agentImage: "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zrzut-ekranu-2025-07-14-o-15.47.03-120x120.png",
-          agentName: "Zespół M2 Notarialnie",
+          agentImage: property.user?.profilePicture || "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zrzut-ekranu-2025-07-14-o-15.47.03-120x120.png",
+          agentName: property.user ? `${property.user.name} ${property.user.surname}` : "Zespół M2 Notarialnie",
         };
       });
 
-      console.log('Przekształcone ogłoszenia:', transformedListings); // Debug
-      
       setListings(transformedListings);
       setTotalPages(data.totalPages);
       
@@ -92,6 +158,7 @@ export default function Ogloszenia() {
       setError(err.message);
     } finally {
       setLoading(false);
+      setFilterLoading(false);
     }
   };
 
@@ -128,9 +195,25 @@ export default function Ogloszenia() {
   };
 
   const calculateBaths = (szczegoly) => {
-    // Przybliżona liczba łazienek na podstawie liczby pokoi
     const pokoje = szczegoly?.pokoje || 0;
     return Math.max(1, Math.floor(pokoje / 2));
+  };
+
+  const handleFilterChange = (newFilters) => {
+    setFilterLoading(true);
+    setFilters(newFilters);
+    setCurrentPage(1); // Resetuj do pierwszej strony przy zmianie filtrów
+    
+    // Aktualizuj URL bez przeładowania strony
+    const params = new URLSearchParams();
+    Object.entries(newFilters).forEach(([key, value]) => {
+      if (value) {
+        params.append(key, value);
+      }
+    });
+    
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.pushState({}, '', newUrl);
   };
 
   const handlePageChange = (page) => {
@@ -138,7 +221,28 @@ export default function Ogloszenia() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (loading) {
+  const resetFilters = () => {
+    setFilterLoading(true);
+    setFilters({
+      search: '',
+      typ: '',
+      kategoria: '',
+      wojewodztwo: '',
+      miasto: '',
+      cenaMin: '',
+      cenaMax: '',
+      powierzchniaMin: '',
+      powierzchniaMax: '',
+      pokoje: '',
+      sort: 'data-desc'
+    });
+    setCurrentPage(1);
+    
+    // Wyczyść URL
+    window.history.pushState({}, '', '/ogloszenia');
+  };
+
+  if (loading && !filterLoading) {
     return (
       <div>
         <Header black />
@@ -148,7 +252,12 @@ export default function Ogloszenia() {
             <div className='section'>
               <Breadcrumbs items={['Strona główna', "Ogłoszenia"]} />
               <h2 className='h2'>Ogłoszenia</h2>
-              <FilterBar/>
+              <FilterBar 
+                filters={filters}
+                filterOptions={filterOptions}
+                onFilterChange={handleFilterChange}
+                onResetFilters={resetFilters}
+              />
               <div className='sm-separate'></div>
               <div className="loading-message">Ładowanie ogłoszeń...</div>
             </div>
@@ -169,7 +278,12 @@ export default function Ogloszenia() {
             <div className='section'>
               <Breadcrumbs items={['Strona główna', "Ogłoszenia"]} />
               <h2 className='h2'>Ogłoszenia</h2>
-              <FilterBar/>
+              <FilterBar 
+                filters={filters}
+                filterOptions={filterOptions}
+                onFilterChange={handleFilterChange}
+                onResetFilters={resetFilters}
+              />
               <div className='sm-separate'></div>
               <div className="error-message">
                 <h3>Wystąpił błąd podczas ładowania ogłoszeń</h3>
@@ -196,48 +310,69 @@ export default function Ogloszenia() {
           <div className='section'>
             <Breadcrumbs items={['Strona główna', "Ogłoszenia"]} />
             <h2 className='h2'>Ogłoszenia ({listings.length})</h2>
-            <FilterBar/>
+            <FilterBar 
+              filters={filters}
+              filterOptions={filterOptions}
+              onFilterChange={handleFilterChange}
+              onResetFilters={resetFilters}
+              loading={filterLoading}
+            />
             <div className='sm-separate'></div>
             
-            {listings.length === 0 ? (
-              <div className="no-listings">
-                <h3>Brak dostępnych ogłoszeń</h3>
-                <p>Nie znaleziono żadnych nieruchomości w bazie danych.</p>
-                <button onClick={fetchProperties} className="btn">
-                  Odśwież
-                </button>
+            {/* Loading Overlay dla filtrów */}
+            {filterLoading && (
+              <div className="filter-loading-overlay">
+                <div className="filter-loading-spinner"></div>
+                <p>Aktualizowanie wyników...</p>
               </div>
-            ) : (
-              <>
-                <div className="list-grid">
-                  {listings.map((item) => (
-                    <Link 
-                      key={item.id} 
-                      to={`/ogloszenie/${item.id}`} 
-                      style={{ textDecoration: 'none', color: 'inherit' }}
-                    >
-                      <ListingCard {...item} />
-                    </Link>
-                  ))}
-                </div>
-                
-                <div className='separate'></div>
-                
-                {totalPages > 1 && (
-                  <Pagination 
-                    currentPage={currentPage} 
-                    totalPages={totalPages} 
-                    onPageChange={handlePageChange} 
-                  />
-                )}
-              </>
             )}
+            
+            <div className={`listings-container ${filterLoading ? 'loading' : ''}`}>
+              {listings.length === 0 ? (
+                <div className="no-listings">
+                  <h3>Brak dostępnych ogłoszeń</h3>
+                  <p>Nie znaleziono żadnych nieruchomości spełniających kryteria wyszukiwania.</p>
+                  <button onClick={resetFilters} className="btn">
+                    Wyczyść filtry
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <div className="list-grid">
+                    {listings.map((item) => (
+                      <Link 
+                        key={item.id} 
+                        to={`/ogloszenie/${item.id}`} 
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                      >
+                        <ListingCard {...item} />
+                      </Link>
+                    ))}
+                  </div>
+                  
+                  <div className='separate'></div>
+                  
+                  {totalPages > 1 && (
+                    <Pagination 
+                      currentPage={currentPage} 
+                      totalPages={totalPages} 
+                      onPageChange={handlePageChange} 
+                    />
+                  )}
+                </>
+              )}
+            </div>
             
             <div className='separate'></div>
           </div>
         </div>
         <div>
-          <AdvancedSearch/>
+          <AdvancedSearch
+            filters={filters}
+            filterOptions={filterOptions}
+            onFilterChange={handleFilterChange}
+            onResetFilters={resetFilters}
+          />
           <RecentlyViewed/>
         </div>
       </div>

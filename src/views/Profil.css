@@ -1,0 +1,40 @@
+.info-section__avatar{
+    width: 380px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.f{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about{
+    padding: 15px;
+}
+
+.info-section__text{
+    margin-left: 30px;
+}
+.info-section__name{
+    margin-bottom: 5px;
+}
+
+.info-section__phone, .info-section__email{
+    font-size: 15px;
+    font-weight: bold;
+    color: #cbb26a;
+}
+.form{
+    padding: 12px;
+}
+.info-section__bio{
+    font-size: 16px;
+    color: rgb(58, 58, 58);
+}
+
+.info-section__position{
+    margin: 0;
+    color: gray;
+}

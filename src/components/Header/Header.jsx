@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaPhoneAlt, FaUserCircle, FaHeart, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
 import AuthModal from "../AuthModal/AuthModal";
-import { FaHouse } from "react-icons/fa6";
+import { FaHouse, FaShield } from "react-icons/fa6";
 
 const Header = ({ black }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -12,7 +12,10 @@ const Header = ({ black }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const API_BASE_URL = "http://localhost:5000/api";
 
   // Sprawdź czy użytkownik jest zalogowany przy ładowaniu komponentu
   useEffect(() => {
@@ -38,19 +41,24 @@ const Header = ({ black }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const checkAuthStatus = () => {
-    const token = localStorage.getItem("token");
-    const userData = localStorage.getItem("user");
-    
-    if (token && userData) {
-      try {
-        setUser(JSON.parse(userData));
-      } catch (error) {
-        console.error("Błąd parsowania danych użytkownika:", error);
-        logout();
+  const checkAuthStatus = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${API_BASE_URL}/auth/me`, {
+        credentials: 'include'
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data.data.user);
+      } else {
+        setUser(null);
       }
-    } else {
+    } catch (error) {
+      console.error("Błąd sprawdzania autoryzacji:", error);
       setUser(null);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,16 +81,23 @@ const Header = ({ black }) => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setUser(null);
-    
-    // Wywołaj event dla innych komponentów
-    window.dispatchEvent(new CustomEvent('userLoggedOut'));
-    
-    // Przekieruj na stronę główną
-    navigate("/");
+  const logout = async () => {
+    try {
+      await fetch(`${API_BASE_URL}/auth/logout`, {
+        method: "POST",
+        credentials: 'include'
+      });
+    } catch (error) {
+      console.error("Błąd wylogowania:", error);
+    } finally {
+      setUser(null);
+      
+      // Wywołaj event dla innych komponentów
+      window.dispatchEvent(new CustomEvent('userLoggedOut'));
+      
+      // Przekieruj na stronę główną
+      navigate("/");
+    }
   };
 
   const toggleDropdown = (menu) => {
@@ -131,12 +146,31 @@ const Header = ({ black }) => {
       key: "onas",
       href: "/o-nas",
       children: [
-        { label: "Poznaj nasz zespół", href: "#" },
+        { label: "Poznaj nasz zespół", href: "/nasz-zespol" },
         { label: "Aktualności", href: "/aktualnosci" },
       ],
     },
     { label: "Kontakt", href: "/kontakt" },
   ];
+
+  if (loading) {
+    return (
+      <header className={`header ${scrolled || black ? "scrolled" : ""}`}>
+        <div className="header__container">
+          <Link to="/">
+            <div className="header__logo">
+              <img src={logo} alt="M2Notarialnie" />
+            </div>
+          </Link>
+          <div className="header__actions">
+            <span className="header__phone">
+              <FaPhoneAlt /> +48 728 866 825
+            </span>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className={`header ${scrolled || black ? "scrolled" : ""}`}>
@@ -210,19 +244,38 @@ const Header = ({ black }) => {
                   className="user-btn"
                   onClick={() => setOpenDropdown(openDropdown === 'user' ? null : 'user')}
                 >
-                  <FaUserCircle className="header__icon" />
+                  {
+                    user.role === 'admin' ? (
+                      <img src={"http://localhost:5000" + user.profilePicture} alt="Admin" className="header__avatar" />
+                    ) : <FaUserCircle className="header__icon" />
+                  }
+
                   <span className="user-name">{user.name}</span>
                 </button>
                 
                 {openDropdown === 'user' && (
                   <div className="user-dropdown-menu">
-                    <Link 
-                      to="/my-profile" 
-                      className="dropdown-item"
-                      onClick={() => setOpenDropdown(null)}
-                    >
-                      <FaUserCircle /> Mój profil
-                    </Link>
+                    {
+                      user.role === 'admin' ? (
+                        <Link 
+                          to="/admin" 
+                          className="dropdown-item"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          <FaShield /> Admin Panel
+                        </Link>
+                      ) : (
+                        <Link 
+                          to="/my-profile" 
+                          className="dropdown-item"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          <FaUserCircle /> Mój profil
+                        </Link>
+                      )
+
+                    }
+
                     <Link 
                       to="/my-properties" 
                       className="dropdown-item"

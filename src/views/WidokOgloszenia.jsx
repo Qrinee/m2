@@ -1,46 +1,160 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./styles.css";
 import Header from './../components/Header/Header';
 import { FaHouse, FaLocationPin, FaMessage, FaSquareBehance } from "react-icons/fa6";
-import { FaArrowCircleDown, FaBed, FaCheck, FaHeart, FaPhone, FaRuler, FaShower, FaSquare, FaSquarespace, FaWhatsapp } from "react-icons/fa";
+import { FaArrowCircleDown, FaBed, FaCheck, FaEnvelope, FaHeart, FaPhone, FaRuler, FaShower, FaSquare, FaSquarespace, FaWhatsapp } from "react-icons/fa";
 
-const sampleImages = [
-  "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1505691723518-36a0a6b3c5c2?w=1400&q=80&auto=format&fit=crop",
-];
+const API_BASE_URL = "http://localhost:5000/api";
 
 export default function WidokOgloszenia() {
+  const { id } = useParams();
+  const [property, setProperty] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
-  const price = 2590000;
-  const title = "Wyjątkowy Apartament z Linią Brzegową i Prywatną Kęją | MAZURY";
-  const location = "WĘGORZEWO, Węgorzewo";
-
-  const property = {
-    area: 120,
-    rooms: 3,
-    bedrooms: 2,
-    bathrooms: 2,
-    updated: "11 lipca, 2025",
-  };
 
   const [down, setDown] = useState(0);
   const [years, setYears] = useState(30);
 
-  const loanAmount = Math.max(0, price - Number(down || 0));
-  const monthlyRate = 0.05 / 12;
-  const n = years * 12;
-  const monthlyPayment =
-    loanAmount === 0
-      ? 0
-      : (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n));
+  useEffect(() => {
+    const fetchProperty = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${API_BASE_URL}/properties/${id}`);
+        
+        if (!response.ok) {
+          throw new Error('Nie znaleziono nieruchomości');
+        }
+        
+        const responseData = await response.json();
+        
+        // Poprawka: używamy responseData.property zamiast responseData
+        if (responseData.success && responseData.property) {
+          setProperty(responseData.property);
+          
+          // Ustaw początkową wpłatę własną na 10% ceny
+          if (responseData.property.cena) {
+            const priceNumber = parseFloat(responseData.property.cena.replace(/[^\d,]/g, '').replace(',', '.'));
+            setDown(priceNumber * 0.1);
+          }
+        } else {
+          throw new Error('Nieprawidłowa struktura danych z serwera');
+        }
+        
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const formatPLN = (v) =>
-    v.toLocaleString("pl-PL", {
+    if (id) {
+      fetchProperty();
+    }
+  }, [id]);
+
+  // Funkcje pomocnicze do konwersji danych
+  const parsePrice = (priceString) => {
+    if (!priceString) return 0;
+    return parseFloat(priceString.replace(/[^\d,]/g, '').replace(',', '.'));
+  };
+
+  const formatPLN = (value) => {
+    if (typeof value === 'string') {
+      // Jeśli już jest sformatowana cena, zwróć ją
+      if (value.includes('zł') || value.includes('PLN')) {
+        return value;
+      }
+      value = parsePrice(value);
+    }
+    return value.toLocaleString("pl-PL", {
       style: "currency",
       currency: "PLN",
       maximumFractionDigits: 0,
     });
+  };
+
+  // Obliczenia kredytu
+  const price = property ? parsePrice(property.cena) : 0;
+  const loanAmount = Math.max(0, price - Number(down || 0));
+  const monthlyRate = 0.05 / 12;
+  const n = years * 12;
+  const monthlyPayment = loanAmount === 0 ? 0 : 
+    (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n));
+
+  if (loading) {
+    return (
+      <>
+        <Header black />
+        <div className="separate"></div>
+        <div className="prop-page-wrap">
+          <div className="prop-container">
+            <div className="loading-state">Ładowanie nieruchomości...</div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Header black />
+        <div className="separate"></div>
+        <div className="prop-page-wrap">
+          <div className="prop-container">
+            <div className="error-state">Błąd: {error}</div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (!property) {
+    return (
+      <>
+        <Header black />
+        <div className="separate"></div>
+        <div className="prop-page-wrap">
+          <div className="prop-container">
+            <div className="error-state">Nie znaleziono nieruchomości</div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // Przygotowanie danych do wyświetlenia
+  const images = property.files && property.files.length > 0 
+    ? property.files.map(file => {
+        // Poprawne tworzenie URL do zdjęć
+        if (file.path.startsWith('http')) {
+          return file.path;
+        } else if (file.path.startsWith('uploads/')) {
+          return `${API_BASE_URL}/${file.path}`;
+        } else {
+          return `${API_BASE_URL}/uploads/${file.filename}`;
+        }
+      })
+    : ["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=80&auto=format&fit=crop"];
+
+  const title = property.nazwa || "Brak tytułu";
+  const location = property.lokalizacja 
+    ? `${property.lokalizacja.miasto || ""}, ${property.lokalizacja.wojewodztwo || ""}`.trim()
+    : "Brak lokalizacji";
+
+  const propertyDetails = {
+    area: property.szczegoly?.rozmiar_m2 || "0",
+    rooms: property.szczegoly?.pokoje || "0",
+    bedrooms: property.szczegoly?.sypialnie || "0",
+    bathrooms: "1", // Zakładamy domyślnie 1 łazienkę jeśli nie ma danych
+    updated: property.updatedAt ? new Date(property.updatedAt).toLocaleDateString('pl-PL', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }) : "Nieznana data"
+  };
 
   return (
     <>
@@ -50,7 +164,7 @@ export default function WidokOgloszenia() {
         <div className="prop-container">
           
           {/* Breadcrumbs at the top */}
-          <Breadcrumbs />
+          <Breadcrumbs property={property} />
           
           {/* Main Property Grid */}
           <div className="prop-main-grid">
@@ -61,7 +175,7 @@ export default function WidokOgloszenia() {
               {/* Gallery Section */}
               <div className="prop-gallery-section">
                 <Gallery
-                  images={sampleImages}
+                  images={images}
                   index={galleryIndex}
                   setIndex={setGalleryIndex}
                 />
@@ -70,54 +184,57 @@ export default function WidokOgloszenia() {
               {/* Title and Basic Info */}
               <div className="prop-title-section">
                 <div className="prop-labels">
-                  <span className="prop-label">Sprzedaż</span>
-                  <span className="prop-label">Apartamenty</span>
+                  <span className="prop-label">{getStatusText(property.status)}</span>
+                  <span className="prop-label">{getCategoryText(property.kategoria)}</span>
                 </div>
 
                 <h1 className="prop-title">{title}</h1>
                 <div className="prop-subline"><FaLocationPin/> {location}</div>
 
                 <div className="prop-price-block">
-                  <div className="prop-price">{formatPLN(price)}</div>
-                  <div className="prop-action-row">
-                    <button className="prop-btn ghost">Podziel się</button>
-                    <button className="prop-btn ghost">Ulubione</button>
-                    <button className="prop-btn ghost">Z nadrukami</button>
-                  </div>
+                  <div className="prop-price">{formatPLN(property.cena)}</div>
+                  {property.przedCena && (
+                    <div className="prop-old-price">{formatPLN(property.przedCena)}</div>
+                  )}
                 </div>
               </div>
 
               {/* Info Bar */}
-              <InfoBar property={property} />
+              <InfoBar property={propertyDetails} />
 
               {/* Description */}
               <section className="prop-card">
                 <h3>Opis</h3>
                 <p>
-                  Zapraszamy do odkrycia niezwykłego apartamentu położonego na
-                  urokliwym półwyspie Kal w gminie Węgorzewo... (tekst przykładowy)
-                  — treść możesz podmienić na pełny opis oferty. Apartament oferuje
-                  nowoczesne udogodnienia, wysoki standard wyposażenia oraz
-                  prywatny dostęp do jeziora.
+                  {property.opis || "Brak opisu nieruchomości."}
                 </p>
-                <p>
-                  Przydatne informacje: dostęp do pomostu, basen, sauna, bliskość
-                  centrum i sklepów — wszystko to wpływa na atrakcyjność oferty
-                  zarówno dla klientów indywidualnych, jak i najmu
-                  krótkoterminowego.
-                </p>
+                {property.szczegoly?.uwagi && (
+                  <p>{property.szczegoly.uwagi}</p>
+                )}
               </section>
 
               {/* Features */}
               <section className="prop-card">
                 <h3>Cecha nieruchomości</h3>
                 <div className="prop-features-grid">
-                  <Feature title="Powierzchnia" value={`${property.area} m²`} />
-                  <Feature title="Sypialnie" value={`${property.bedrooms}`} />
-                  <Feature title="Łazienki" value={`${property.bathrooms}`} />
-                  <Feature title="Ilość pokoi" value={`${property.rooms}`} />
-                  <Feature title="Rok budowy" value={"2018"} />
-                  <Feature title="Garaż" value={"Tak"} />
+                  <Feature title="Powierzchnia" value={`${propertyDetails.area} m²`} />
+                  <Feature title="Sypialnie" value={propertyDetails.bedrooms} />
+                  <Feature title="Łazienki" value={propertyDetails.bathrooms} />
+                  <Feature title="Ilość pokoi" value={propertyDetails.rooms} />
+                  <Feature title="Rok budowy" value={property.szczegoly?.rok_budowy || "Nieznany"} />
+                  <Feature title="Garaż" value={getGarageText(property.szczegoly?.garaz)} />
+                  {property.szczegoly?.wielkosc_dzialki && (
+                    <Feature title="Wielkość działki" value={`${property.szczegoly.wielkosc_dzialki} m²`} />
+                  )}
+                  {property.szczegoly?.klasa_energetyczna && (
+                    <Feature title="Klasa energetyczna" value={property.szczegoly.klasa_energetyczna} />
+                  )}
+                  {property.szczegoly?.liczba_pieter && (
+                    <Feature title="Liczba pięter" value={property.szczegoly.liczba_pieter} />
+                  )}
+                  {property.szczegoly?.dostepna_od && (
+                    <Feature title="Dostępne od" value={property.szczegoly.dostepna_od} />
+                  )}
                 </div>
               </section>
 
@@ -148,7 +265,7 @@ export default function WidokOgloszenia() {
             <aside className="prop-right-col">
               
               {/* Contact Card - Top of sidebar */}
-              <ContactCard />
+              <ContactCard property={property} />
               
               {/* Mortgage Widget */}
               <MortgageWidget
@@ -162,13 +279,11 @@ export default function WidokOgloszenia() {
 
               {/* Summary Card */}
               <SummaryCard
-                property={property}
-                price={price}
-                updated={property.updated}
+                property={propertyDetails}
+                price={property.cena}
+                updated={propertyDetails.updated}
               />
 
-              {/* Search Widget */}
-              <SearchWidget />
 
               {/* Watched List */}
               <WatchedList />
@@ -180,17 +295,46 @@ export default function WidokOgloszenia() {
   );
 }
 
+// Funkcje pomocnicze do tłumaczenia wartości
+function getStatusText(status) {
+  switch (status) {
+    case 'na_sprzedaz': return 'Sprzedaż';
+    case 'do_wynajecia': return 'Wynajem';
+    case 'sprzedane': return 'Sprzedane';
+    default: return status || 'Na sprzedaż';
+  }
+}
+
+function getCategoryText(kategoria) {
+  switch (kategoria) {
+    case 'dom': return 'Dom';
+    case 'mieszkanie': return 'Mieszkanie';
+    case 'dzialka': return 'Działka';
+    case 'lokal': return 'Lokal';
+    default: return kategoria || 'Nieruchomość';
+  }
+}
+
+function getGarageText(garaz) {
+  switch (garaz) {
+    case 'tak': return 'Tak';
+    case 'nie': return 'Nie';
+    case 'brak': return 'Brak';
+    default: return garaz || 'Nie';
+  }
+}
+
 /* =========================
    PODKOMPONENTY
    ========================= */
 
-function Breadcrumbs() {
+function Breadcrumbs({ property }) {
   return (
     <nav className="prop-breadcrumbs">
       <ol>
         <li>Strona główna</li>
-        <li>Apartamenty</li>
-        <li>Wyjątkowy Apartament z Linią Brzegową i Prywatną Kęją</li>
+        <li>{getCategoryText(property?.kategoria) || "Nieruchomości"}</li>
+        <li>{property?.nazwa || "Szczegóły oferty"}</li>
       </ol>
     </nav>
   );
@@ -203,17 +347,19 @@ function Gallery({ images, index, setIndex }) {
         <img src={images[index]} alt={`photo-${index}`} />
         <div className="gallery-counter">{index + 1} / {images.length}</div>
       </div>
-      <div className="prop-thumbs">
-        {images.map((src, i) => (
-          <button
-            key={i}
-            className={`prop-thumb-btn ${i === index ? "active" : ""}`}
-            onClick={() => setIndex(i)}
-          >
-            <img src={src} alt={`thumb-${i}`} />
-          </button>
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="prop-thumbs">
+          {images.map((src, i) => (
+            <button
+              key={i}
+              className={`prop-thumb-btn ${i === index ? "active" : ""}`}
+              onClick={() => setIndex(i)}
+            >
+              <img src={src} alt={`thumb-${i}`} />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -233,6 +379,13 @@ function MortgageWidget({
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const dash = (loanPercent / 100) * circumference;
+
+  const formatPLN = (v) =>
+    v.toLocaleString("pl-PL", {
+      style: "currency",
+      currency: "PLN",
+      maximumFractionDigits: 0,
+    });
 
   return (
     <div className="prop-card prop-mortgage-widget">
@@ -283,7 +436,7 @@ function MortgageWidget({
           <input 
             className="form-input" 
             type="text" 
-            value={price.toLocaleString("pl-PL")} 
+            value={formatPLN(price)} 
             readOnly 
           />
         </label>
@@ -316,49 +469,98 @@ function MortgageWidget({
   );
 }
 
-function ContactCard() {
+function ContactCard({ property }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     msg: "",
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const formData = {
+      ...form,
+      propertyId: property?._id,
+      propertyTitle: property?.nazwa,
+      propertyPrice: property?.cena,
+      agentId: property?.user?._id, // Dodajemy ID agenta
+      agentName: property?.user?.name, // Dodajemy imię agenta
+      agentSurname: property?.user?.surname // Dodajemy nazwisko agenta
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/loan-inquiry`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        alert('Wiadomość została wysłana pomyślnie!');
+        setForm({ name: "", email: "", phone: "", msg: "" });
+      } else {
+        alert('Wystąpił błąd podczas wysyłania wiadomości: ' + result.error);
+      }
+    } catch (error) {
+      alert('Wystąpił błąd podczas wysyłania wiadomości');
+    }
+  };
+
+  // Pobierz dane właściciela nieruchomości
+  const owner = property?.user;
+  
+  // Jeśli nie ma właściciela, użyj domyślnych danych
+  const agentName = owner?.name || "Administrator";
+  const agentSurname = owner?.surname || "Systemu";
+  const agentRole = owner?.position || owner?.role === 'admin' ? 'Administrator' : 'Agent nieruchomości';
+  const agentAvatar = owner?.profilePicture 
+    ? `http://localhost:5000${owner.profilePicture}`
+    : "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop";
+  
+  const agentPhone = owner?.phone || '+48 123 456 789';
+  const agentEmail = owner?.contactEmail || owner?.email || 'kontakt@biuronieruchomosci.pl';
+
   return (
     <div className="prop-card prop-contact-card">
       <div className="prop-agent">
         <img
           className="prop-agent-avatar"
-          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop"
-          alt="agent"
+          src={agentAvatar}
+          alt={`${agentName} ${agentSurname}`}
         />
         <div className="prop-agent-info">
-          <div className="prop-agent-name">Wiktoria Kisio</div>
-          <div className="prop-agent-role">Członek zarządu | CEO</div>
-          <div className="prop-agent-rating">
-            <div className="stars">★★★★★</div>
-            <div className="rating-text">(48 opinii)</div>
-          </div>
+          <div className="prop-agent-name">{agentName} {agentSurname}</div>
+          <div className="prop-agent-role">{agentRole}</div>
         </div>
       </div>
 
-      <div className="prop-contact-form">
+      <form className="prop-contact-form" onSubmit={handleSubmit}>
         <label className="form-label">
-          <span className="label-text">Twoje imię</span>
+          <span className="label-text">Twoje imię *</span>
           <input
             className="form-input"
             placeholder="Wpisz swoje imię"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
+            required
           />
         </label>
 
         <label className="form-label">
-          <span className="label-text">Twój Adres e-mail</span>
+          <span className="label-text">Twój Adres e-mail *</span>
           <input
             className="form-input"
+            type="email"
             placeholder="email@przykład.pl"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
+            required
           />
         </label>
 
@@ -384,20 +586,42 @@ function ContactCard() {
         </label>
 
         <label className="prop-gdpr">
-          <input type="checkbox" /> Wyrażam zgodę na Warunki GDPR
+          <input type="checkbox" required /> Wyrażam zgodę na Warunki GDPR
         </label>
 
-        <button className="prop-btn primary full-width">Wyślij E-Mail</button>
+        <button type="submit" className="prop-btn primary full-width">
+          Wyślij E-Mail
+        </button>
         
         <div className="prop-contact-actions">
-          <button className="prop-btn secondary">
+          <a 
+            href={`tel:${agentPhone}`} 
+            className="prop-btn secondary"
+          >
             <span className="btn-icon"><FaPhone/></span> Dzwoń
-          </button>
-          <button className="prop-btn secondary">
+          </a>
+          <a 
+            href={`https://wa.me/${agentPhone.replace(/[^\d]/g, '')}?text=Witam,%20jestem%20zainteresowany%20nieruchomością:%20${encodeURIComponent(property?.nazwa || '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="prop-btn secondary"
+          >
             <span className="btn-icon"><FaWhatsapp/></span> WhatsApp
-          </button>
+          </a>
         </div>
-      </div>
+
+        {/* Dodatkowe informacje kontaktowe */}
+        <div className="prop-contact-details">
+          <div className="contact-detail">
+            <FaPhone className="contact-icon" />
+            <span> {agentPhone}</span>
+          </div>
+          <div className="contact-detail">
+            <FaEnvelope className="contact-icon" />
+            <span> {agentEmail}</span>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
@@ -463,12 +687,18 @@ function SimilarCard({ title, price, img }) {
 }
 
 function SummaryCard({ property, price, updated }) {
-  const format = (p) =>
-    p.toLocaleString("pl-PL", {
+  const format = (p) => {
+    if (typeof p === 'string' && (p.includes('zł') || p.includes('PLN'))) {
+      return p;
+    }
+    const num = typeof p === 'string' ? parseFloat(p.replace(/[^\d,]/g, '').replace(',', '.')) : p;
+    return num.toLocaleString("pl-PL", {
       style: "currency",
       currency: "PLN",
       maximumFractionDigits: 0,
     });
+  };
+
   return (
     <div className="prop-card prop-summary-aside">
       <div className="summary-price">{format(price)}</div>
@@ -503,51 +733,6 @@ function SummaryCard({ property, price, updated }) {
   );
 }
 
-function SearchWidget() {
-  return (
-    <div className="prop-card prop-search-card">
-      <h4>Zaawansowane wyszukiwanie</h4>
-      
-      <label className="form-label">
-        Lokalizacja
-        <input 
-          className="form-input" 
-          placeholder="Wpisz adres, stan, miasto lub obszar" 
-        />
-      </label>
-
-      <label className="form-label">
-        Typ nieruchomości
-        <select className="form-select">
-          <option>Wybierz typ</option>
-          <option>Mieszkanie</option>
-          <option>Dom</option>
-          <option>Działka</option>
-        </select>
-      </label>
-
-      <label className="form-label">
-        Kategoria
-        <select className="form-select">
-          <option>Wybierz kategorię</option>
-          <option>Sprzedaż</option>
-          <option>Wynajem</option>
-        </select>
-      </label>
-
-      <label className="form-label">
-        Przedział cenowy
-        <div className="prop-price-range">
-          <input className="form-input" placeholder="0 PLN" />
-          <span className="range-separator">-</span>
-          <input className="form-input" placeholder="1,500,000 PLN" />
-        </div>
-      </label>
-
-      <button className="prop-btn primary full-width">Szukaj</button>
-    </div>
-  );
-}
 
 function WatchedList() {
   return (

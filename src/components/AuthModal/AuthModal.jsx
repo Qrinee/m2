@@ -1,14 +1,13 @@
-// AuthModal.jsx
+// AuthModal.jsx - zaktualizowany
 import React, { useState } from "react";
 import "./AuthModal.css";
 
-export default function AuthModal({ onClose }) {
-  const [screen, setScreen] = useState("login"); // "login" | "register" | "reset"
+export default function AuthModal({ onClose, onAuthSuccess }) {
+  const [screen, setScreen] = useState("login");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Stan dla formularza rejestracji
   const [registerData, setRegisterData] = useState({
     name: "",
     surname: "",
@@ -18,49 +17,36 @@ export default function AuthModal({ onClose }) {
     phone: ""
   });
 
-  // Stan dla formularza logowania
   const [loginData, setLoginData] = useState({
     email: "",
     password: ""
   });
 
-  // Stan dla resetowania hasła
-  const [resetData, setResetData] = useState({
-    email: ""
-  });
-
+  const [resetData, setResetData] = useState({ email: "" });
   const [showPassword, setShowPassword] = useState(false);
 
-  // Obsługa zmian w formularzach
+  const API_BASE_URL = "http://localhost:5000/api";
+
+  // Obsługa formularzy
   const handleRegisterChange = (e) => {
-    setRegisterData({
-      ...registerData,
-      [e.target.name]: e.target.value
-    });
+    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
 
   const handleLoginChange = (e) => {
-    setLoginData({
-      ...loginData,
-      [e.target.name]: e.target.value
-    });
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   const handleResetChange = (e) => {
-    setResetData({
-      ...resetData,
-      [e.target.name]: e.target.value
-    });
+    setResetData({ ...resetData, [e.target.name]: e.target.value });
   };
 
-  // Rejestracja użytkownika
+  // Rejestracja
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setSuccess("");
 
-    // Walidacja
     if (registerData.password !== registerData.confirmPassword) {
       setError("Hasła nie są identyczne");
       setLoading(false);
@@ -74,18 +60,11 @@ export default function AuthModal({ onClose }) {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${API_BASE_URL}/auth/register`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: registerData.name.split(' ')[0], // Pierwsze słowo jako imię
-          surname: registerData.name.split(' ').slice(1).join(' ') || registerData.name.split(' ')[0], // Reszta jako nazwisko
-          email: registerData.email,
-          password: registerData.password,
-          phone: registerData.phone
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registerData),
+        credentials: 'include'
       });
 
       const data = await response.json();
@@ -96,16 +75,10 @@ export default function AuthModal({ onClose }) {
 
       setSuccess("Rejestracja pomyślna! Możesz się teraz zalogować.");
       
-      // Automatyczne przejście do logowania po 2 sekundach
       setTimeout(() => {
         setScreen("login");
         setRegisterData({
-          name: "",
-          surname: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          phone: ""
+          name: "", surname: "", email: "", password: "", confirmPassword: "", phone: ""
         });
         setSuccess("");
       }, 2000);
@@ -117,7 +90,7 @@ export default function AuthModal({ onClose }) {
     }
   };
 
-  // Logowanie użytkownika
+  // Logowanie
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -125,12 +98,11 @@ export default function AuthModal({ onClose }) {
     setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData),
+        credentials: 'include'
       });
 
       const data = await response.json();
@@ -139,30 +111,26 @@ export default function AuthModal({ onClose }) {
         throw new Error(data.error || "Błąd logowania");
       }
 
-      // Zapisz token i dane użytkownika w localStorage
-      localStorage.setItem("token", data.data.token);
-      localStorage.setItem("user", JSON.stringify(data.data.user));
-      
       setSuccess("Logowanie pomyślne!");
       
-      // Zamknij modal po 1 sekundzie
       setTimeout(() => {
         onClose();
-        // Możesz dodać callback do odświeżenia stanu użytkownika w rodzicu
-        if (window.onAuthSuccess) {
-          window.onAuthSuccess(data.data.user);
+        if (onAuthSuccess && data.data && data.data.user) {
+          onAuthSuccess(data.data.user);
         }
+        window.dispatchEvent(new CustomEvent('userLoggedIn', { 
+          detail: { user: data.data.user } 
+        }));
       }, 1000);
 
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
-      window.location.reload(); 
     }
   };
 
-  // Resetowanie hasła (placeholder - wymaga implementacji w backendzie)
+  // Resetowanie hasła
   const handleResetPassword = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -170,13 +138,11 @@ export default function AuthModal({ onClose }) {
     setSuccess("");
 
     try {
-      // TODO: Zaimplementuj endpoint resetowania hasła w backendzie
-      const response = await fetch("http://localhost:5000/api/auth/reset-password", {
+      const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resetData),
+        credentials: 'include'
       });
 
       const data = await response.json();
@@ -185,7 +151,7 @@ export default function AuthModal({ onClose }) {
         throw new Error(data.error || "Błąd resetowania hasła");
       }
 
-      setSuccess("Link do resetowania hasła został wysłany na podany email.");
+      setSuccess(data.message || "Link do resetowania hasła został wysłany na podany email.");
       
       setTimeout(() => {
         setScreen("login");
@@ -199,7 +165,6 @@ export default function AuthModal({ onClose }) {
     }
   };
 
-  // Resetuj błędy przy zmianie ekranu
   const handleScreenChange = (newScreen) => {
     setScreen(newScreen);
     setError("");
@@ -212,187 +177,80 @@ export default function AuthModal({ onClose }) {
         <button className="close-btn" onClick={onClose}>✖</button>
 
         <div className="modal-content">
-          {/* LEFT IMAGE + TEXT */}
           <div className="modal-left">
             <div className="overlay-text">
               <h2>Witaj w <br /> M2Notarialnie</h2>
             </div>
           </div>
 
-          {/* RIGHT FORM */}
           <div className="modal-right">
-            {/* Komunikat o błędzie */}
-            {error && (
-              <div className="error-message">
-                {error}
-              </div>
-            )}
+            {error && <div className="error-message">{error}</div>}
+            {success && <div className="success-message">{success}</div>}
 
-            {/* Komunikat o sukcesie */}
-            {success && (
-              <div className="success-message">
-                {success}
-              </div>
-            )}
-
-            {/* LOGIN */}
             {screen === "login" && (
               <form onSubmit={handleLogin}>
                 <h3>Zaloguj się na swoje konto</h3>
-                
                 <input 
-                  type="email" 
-                  name="email"
-                  placeholder="Email" 
-                  value={loginData.email}
-                  onChange={handleLoginChange}
-                  required
-                  disabled={loading}
+                  type="email" name="email" placeholder="Email" 
+                  value={loginData.email} onChange={handleLoginChange} required disabled={loading}
                 />
- 
-                
                 <div className="password-field">
                   <input 
-                    type={showPassword ? "text" : "password"} 
-                    name="password"
-                    placeholder="Hasło" 
-                    value={loginData.password}
-                    onChange={handleLoginChange}
-                    required
-                    disabled={loading}
+                    type={showPassword ? "text" : "password"} name="password" placeholder="Hasło" 
+                    value={loginData.password} onChange={handleLoginChange} required disabled={loading}
                   />
-                  <span 
-                    className="toggle-eye"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
+                  <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? "🙈" : "👁️"}
                   </span>
                 </div>
-                
-                <button 
-                  type="submit" 
-                  className="btn-primary"
-                  disabled={loading}
-                >
+                <button type="submit" className="btn-primary" disabled={loading}>
                   {loading ? "Logowanie..." : "Wejście"}
                 </button>
-
                 <div className="links">
-                  <span onClick={() => handleScreenChange("register")}>
-                    Zarejestruj się tutaj!
-                  </span>
-                  <span onClick={() => handleScreenChange("reset")}>
-                    Nie pamiętasz hasła?
-                  </span>
+                  <span onClick={() => handleScreenChange("register")}>Zarejestruj się tutaj!</span>
+                  <span onClick={() => handleScreenChange("reset")}>Nie pamiętasz hasła?</span>
                 </div>
               </form>
             )}
 
-            {/* REGISTER */}
             {screen === "register" && (
               <form onSubmit={handleRegister}>
                 <h3>Rejestracja</h3>
-                
-                <input 
-                  type="text" 
-                  name="name"
-                  placeholder="Imię i Nazwisko" 
-                  value={registerData.name}
-                  onChange={handleRegisterChange}
-                  required
-                  disabled={loading}
-                />
-                
-                <input 
-                  type="email" 
-                  name="email"
-                  placeholder="Email" 
-                  value={registerData.email}
-                  onChange={handleRegisterChange}
-                  required
-                  disabled={loading}
-                />
-                
-                <input 
-                  type="text" 
-                  name="phone"
-                  placeholder="Numer telefonu (opcjonalnie)" 
-                  value={registerData.phone}
-                  onChange={handleRegisterChange}
-                  disabled={loading}
-                />
-                
+                <input type="text" name="name" placeholder="Imię" value={registerData.name} onChange={handleRegisterChange} required disabled={loading} />
+                <input type="text" name="surname" placeholder="Nazwisko" value={registerData.surname} onChange={handleRegisterChange} required disabled={loading} />
+                <input type="email" name="email" placeholder="Email" value={registerData.email} onChange={handleRegisterChange} required disabled={loading} />
+                <input type="text" name="phone" placeholder="Numer telefonu (opcjonalnie)" value={registerData.phone} onChange={handleRegisterChange} disabled={loading} />
                 <div className="password-field">
                   <input 
-                    type={showPassword ? "text" : "password"} 
-                    name="password"
-                    placeholder="Hasło" 
-                    value={registerData.password}
-                    onChange={handleRegisterChange}
-                    required
-                    disabled={loading}
+                    type={showPassword ? "text" : "password"} name="password" placeholder="Hasło" 
+                    value={registerData.password} onChange={handleRegisterChange} required disabled={loading}
                   />
-                  <span 
-                    className="toggle-eye"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
+                  <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? "🙈" : "👁️"}
                   </span>
                 </div>
-                
                 <input 
-                  type={showPassword ? "text" : "password"} 
-                  name="confirmPassword"
-                  placeholder="Powtórz hasło" 
-                  value={registerData.confirmPassword}
-                  onChange={handleRegisterChange}
-                  required
-                  disabled={loading}
+                  type={showPassword ? "text" : "password"} name="confirmPassword" placeholder="Powtórz hasło" 
+                  value={registerData.confirmPassword} onChange={handleRegisterChange} required disabled={loading}
                 />
-                
-                <button 
-                  type="submit" 
-                  className="btn-primary"
-                  disabled={loading}
-                >
+                <button type="submit" className="btn-primary" disabled={loading}>
                   {loading ? "Rejestracja..." : "Zarejestruj"}
                 </button>
-
                 <div className="links">
-                  <span onClick={() => handleScreenChange("login")}>
-                    Masz konto? Zaloguj się
-                  </span>
+                  <span onClick={() => handleScreenChange("login")}>Masz konto? Zaloguj się</span>
                 </div>
               </form>
             )}
 
-            {/* RESET PASSWORD */}
             {screen === "reset" && (
               <form onSubmit={handleResetPassword}>
                 <h3>Reset hasła</h3>
-                
-                <input 
-                  type="email" 
-                  name="email"
-                  placeholder="Podaj email" 
-                  value={resetData.email}
-                  onChange={handleResetChange}
-                  required
-                  disabled={loading}
-                />
-                
-                <button 
-                  type="submit" 
-                  className="btn-primary"
-                  disabled={loading}
-                >
+                <input type="email" name="email" placeholder="Podaj email" value={resetData.email} onChange={handleResetChange} required disabled={loading} />
+                <button type="submit" className="btn-primary" disabled={loading}>
                   {loading ? "Wysyłanie..." : "Wyślij link resetujący"}
                 </button>
-
                 <div className="links">
-                  <span onClick={() => handleScreenChange("login")}>
-                    Powrót do logowania
-                  </span>
+                  <span onClick={() => handleScreenChange("login")}>Powrót do logowania</span>
                 </div>
               </form>
             )}

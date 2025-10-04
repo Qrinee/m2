@@ -20,6 +20,10 @@ import Forms from './components/AdminPanel/sections/Forms.jsx'
 import Properties from './components/AdminPanel/sections/Properties.jsx'
 import FAQ from './components/AdminPanel/sections/FAQ.jsx'
 import News from './components/AdminPanel/sections/News.jsx'
+import Profil from './views/Profil.jsx'
+import Users from './views/Users';
+import MojProfil from './views/MojProfil.jsx'
+import NaszZespol from './views/NaszZespol.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -31,6 +35,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/raty-notarialne" element={<Ogloszenia />} />
         <Route path='/oblicz-rate' element={<ObliczRate />} />
         <Route path='/kontakt' element={<Kontakt />} />
+        <Route path='/nasz-zespol' element={<NaszZespol />} />
         <Route path='/ulubione' element={<Ulubione />} />
         <Route path='/ogloszenie/:id' element={<WidokOgloszenia />} />
         <Route path='/aktualnosci' element={<Aktualnosci />} />
@@ -38,10 +43,13 @@ createRoot(document.getElementById('root')).render(
         <Route path="/dlaczego-warto" element={<DlaczegoWarto />} />
         <Route path="/zostan-partnerem-pracownikiem" element={<ZostanPartneremLubPracownikiem />} />
          <Route path="/o-nas" element={<ONas />} />
-
+            <Route path="/estate_agent/:id" element={<Profil />} />
+           <Route path='/my-profile' element={<MojProfil />} />
          <Route path="/admin" element={<AdminPanel />}>
             <Route index element={<Dashboard />} />
+            <Route path="users" element={<Users />} />
             <Route path="forms" element={<Forms />} />
+            <Route path="news" element={<News />} />
             <Route path="properties" element={<Properties />} />
             <Route path="faq" element={<FAQ />} />
           

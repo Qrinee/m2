@@ -31,7 +31,7 @@ export default function DlaczegoWarto() {
         <h2>Co zyskujesz dzięki takiej formie sprzedaży?</h2>
         <p>Utilizing our exceptional experience and knowledge of the luxury waterfront markets,we serve an extensive and elite worldwide client base. </p>
         </div>
-        
+        <div style={{padding: '0 20px'}}>
         <TwoPartText left={
           <>
           <h2>Pewną, bezpieczną i szybką transakcję</h2>
@@ -56,6 +56,7 @@ export default function DlaczegoWarto() {
           </>
         }
         />
+        </div>
         <div className='separate'></div>
         <PropertyForm/>
     </div>
