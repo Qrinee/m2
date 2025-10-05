@@ -476,22 +476,44 @@ function ContactCard({ property }) {
     phone: "",
     msg: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState({ text: "", type: "" }); // type: 'success' | 'error' | ''
+
+  // Czyszczenie komunikatu po 5 sekundach
+  useEffect(() => {
+    if (message.text) {
+      const timer = setTimeout(() => {
+        setMessage({ text: "", type: "" });
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     const formData = {
-      ...form,
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      msg: form.msg,
       propertyId: property?._id,
-      propertyTitle: property?.nazwa,
-      propertyPrice: property?.cena,
-      agentId: property?.user?._id, // Dodajemy ID agenta
-      agentName: property?.user?.name, // Dodajemy imię agenta
-      agentSurname: property?.user?.surname // Dodajemy nazwisko agenta
     };
 
+    // Walidacja podstawowych pól
+    if (!formData.name || !formData.email) {
+      setMessage({ 
+        text: 'Proszę wypełnić wymagane pola: imię i email', 
+        type: 'error' 
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setMessage({ text: "", type: "" });
+
     try {
-      const response = await fetch(`${API_BASE_URL}/loan-inquiry`, {
+      const response = await fetch(`${API_BASE_URL}/inquiry`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -502,13 +524,25 @@ function ContactCard({ property }) {
       const result = await response.json();
       
       if (result.success) {
-        alert('Wiadomość została wysłana pomyślnie!');
+        setMessage({ 
+          text: 'Wiadomość została wysłana pomyślnie! Sprawdź swoją skrzynkę email.', 
+          type: 'success' 
+        });
         setForm({ name: "", email: "", phone: "", msg: "" });
       } else {
-        alert('Wystąpił błąd podczas wysyłania wiadomości: ' + result.error);
+        setMessage({ 
+          text: 'Wystąpił błąd podczas wysyłania wiadomości: ' + result.error, 
+          type: 'error' 
+        });
       }
     } catch (error) {
-      alert('Wystąpił błąd podczas wysyłania wiadomości');
+      console.error('Błąd podczas wysyłania wiadomości:', error);
+      setMessage({ 
+        text: 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.', 
+        type: 'error' 
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -540,6 +574,27 @@ function ContactCard({ property }) {
         </div>
       </div>
 
+      {/* Komunikat o statusie */}
+      {message.text && (
+        <div className={`form-message ${message.type}`}>
+          <div className="message-content">
+            {message.type === 'success' && (
+              <div className="message-icon success">✓</div>
+            )}
+            {message.type === 'error' && (
+              <div className="message-icon error">!</div>
+            )}
+            <span>{message.text}</span>
+          </div>
+          <button 
+            className="message-close"
+            onClick={() => setMessage({ text: "", type: "" })}
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       <form className="prop-contact-form" onSubmit={handleSubmit}>
         <label className="form-label">
           <span className="label-text">Twoje imię *</span>
@@ -549,6 +604,7 @@ function ContactCard({ property }) {
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
+            disabled={isSubmitting}
           />
         </label>
 
@@ -561,6 +617,7 @@ function ContactCard({ property }) {
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             required
+            disabled={isSubmitting}
           />
         </label>
 
@@ -571,6 +628,7 @@ function ContactCard({ property }) {
             placeholder="+48 123 456 789"
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            disabled={isSubmitting}
           />
         </label>
 
@@ -582,15 +640,32 @@ function ContactCard({ property }) {
             value={form.msg}
             onChange={(e) => setForm({ ...form, msg: e.target.value })}
             rows={4}
+            disabled={isSubmitting}
           />
         </label>
 
         <label className="prop-gdpr">
-          <input type="checkbox" required /> Wyrażam zgodę na Warunki GDPR
+          <input 
+            type="checkbox" 
+            required 
+            disabled={isSubmitting}
+          /> 
+          Wyrażam zgodę na Warunki GDPR
         </label>
 
-        <button type="submit" className="prop-btn primary full-width">
-          Wyślij E-Mail
+        <button 
+          type="submit" 
+          className={`prop-btn primary full-width ${isSubmitting ? 'submitting' : ''}`}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>
+              <div className="button-spinner"></div>
+              Wysyłanie...
+            </>
+          ) : (
+            'Wyślij E-Mail'
+          )}
         </button>
         
         <div className="prop-contact-actions">

@@ -2,7 +2,6 @@
 .testimonials-hero {
   position: relative;
   min-height: 420px;
-  background-image: url("https://images.unsplash.com/photo-1505691723518-36a6b156c9f7?auto=format&fit=crop&w=1800&q=60");
   background-size: cover;
   background-position: center;
   display: flex;

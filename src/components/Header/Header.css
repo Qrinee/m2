@@ -435,7 +435,9 @@
 
 .header__avatar{
   width: 32px;
-  border-radius: 100%;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 /* Aktualizacja istniejących stylów dla lepszego wyglądu */

@@ -276,20 +276,6 @@ const Header = ({ black }) => {
 
                     }
 
-                    <Link 
-                      to="/my-properties" 
-                      className="dropdown-item"
-                      onClick={() => setOpenDropdown(null)}
-                    >
-                      <FaHouse/> Moje nieruchomości
-                    </Link>
-                    <Link 
-                      to="/favorites" 
-                      className="dropdown-item"
-                      onClick={() => setOpenDropdown(null)}
-                    >
-                      <FaHeart /> Ulubione
-                    </Link>
                     <button 
                       className="dropdown-item logout-btn"
                       onClick={logout}

@@ -1,0 +1,22 @@
+/* Wpis.css */
+.blog-post__image {
+  width: 100%;
+  height: 300px; /* Stała wysokość */
+  object-fit: cover; /* Kluczowa właściwość - obraz wypełnia kontener bez rozciągania */
+  object-position: center; /* Wyśrodkowanie obrazu */
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Opcjonalnie: responsywność dla mniejszych ekranów */
+@media (max-width: 768px) {
+  .blog-post__image {
+    height: 300px; /* Mniejsza wysokość na tabletach */
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-post__image {
+    height: 250px; /* Jeszcze mniejsza wysokość na telefonach */
+  }
+}

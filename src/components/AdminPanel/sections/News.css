@@ -1,0 +1,10 @@
+.news-carda .news-image{
+    width: 200px; /* Stała szerokość na desktopie */
+    height: 200px; /* Stała wysokość na desktopie */
+    flex-shrink: 0;
+}
+
+.news-carda{
+    display: flex;
+    background-color: white;
+}

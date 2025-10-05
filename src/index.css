@@ -5,6 +5,16 @@ body{
   background-color: rgba(243, 243, 243, 0.568);
 }
 
+.polityka a{
+  text-decoration: none;
+  color: #CBB26A;
+  font-weight: 600;
+} 
+
+.polityka p{
+  color: #424242;
+}
+
 .lay{
     display: flex;
     justify-content: center;

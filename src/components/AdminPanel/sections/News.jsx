@@ -12,83 +12,77 @@ const News = () => {
     content: '',
     excerpt: '',
     image: null,
-    status: 'draft',
-    category: 'news'
   });
 
   useEffect(() => {
     fetchNews();
   }, []);
 
-  const fetchNews = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/admin/news', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+const fetchNews = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/blog', {
+      credentials: 'include'
+    });
 
-      if (response.ok) {
-        const data = await response.json();
-        setNews(data.data);
+    if (response.ok) {
+      const result = await response.json();
+      if (result.success) {
+        setNews(result.data); // używaj result.data zamiast result.data
       }
-    } catch (error) {
-      console.error('Błąd pobierania aktualności:', error);
-    } finally {
-      setLoading(false);
     }
-  };
+  } catch (error) {
+    console.error('Błąd pobierania aktualności:', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  const submitData = new FormData();
+  submitData.append('title', formData.title);
+  submitData.append('content', formData.content); // backend mapuje to na 'text'
+  submitData.append('excerpt', formData.excerpt); // backend mapuje to na 'shortText'
+  
+  if (formData.image) {
+    submitData.append('image', formData.image);
+  }
+
+  try {
+    const url = editingNews 
+      ? `http://localhost:5000/api/blog/${editingNews._id}`
+      : 'http://localhost:5000/api/blog';
     
-    const submitData = new FormData();
-    submitData.append('title', formData.title);
-    submitData.append('content', formData.content);
-    submitData.append('excerpt', formData.excerpt);
-    submitData.append('status', formData.status);
-    submitData.append('category', formData.category);
-    
-    if (formData.image) {
-      submitData.append('image', formData.image);
-    }
+    const method = editingNews ? 'PUT' : 'POST';
 
-    try {
-      const token = localStorage.getItem('token');
-      const url = editingNews 
-        ? `http://localhost:5000/api/admin/news/${editingNews._id}`
-        : 'http://localhost:5000/api/admin/news';
-      
-      const method = editingNews ? 'PUT' : 'POST';
+    const response = await fetch(url, {
+      method,
+      credentials: 'include',
+      body: submitData
+    });
 
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-        body: submitData
-      });
-
-      if (response.ok) {
+    if (response.ok) {
+      const result = await response.json();
+      if (result.success) {
         fetchNews();
         resetForm();
       }
-    } catch (error) {
-      console.error('Błąd zapisywania aktualności:', error);
+    } else {
+      console.error('Błąd zapisywania:', await response.text());
     }
-  };
+  } catch (error) {
+    console.error('Błąd zapisywania aktualności:', error);
+  }
+};
 
   const deleteNews = async (newsId) => {
     if (!window.confirm('Czy na pewno chcesz usunąć ten wpis?')) return;
 
     try {
-      const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/api/admin/news/${newsId}`, {
+      await fetch(`http://localhost:5000/api/blog/${newsId}`, {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
+        credentials: 'include'
       });
       fetchNews();
     } catch (error) {
@@ -103,8 +97,6 @@ const News = () => {
       content: newsItem.content,
       excerpt: newsItem.excerpt,
       image: null,
-      status: newsItem.status,
-      category: newsItem.category
     });
     setShowForm(true);
   };
@@ -115,8 +107,6 @@ const News = () => {
       content: '',
       excerpt: '',
       image: null,
-      status: 'draft',
-      category: 'news'
     });
     setEditingNews(null);
     setShowForm(false);
@@ -206,32 +196,28 @@ const News = () => {
       )}
 
       <div className="news-grid">
-        {news.length === 0 ? (
+        {news && news.length === 0 ? (
           <div className="empty-state">
             <p>Brak aktualności</p>
           </div>
         ) : (
           news.map(item => (
-            <div key={item._id} className="news-card">
-              <div className="news-image">
-                {item.image ? (
-                  <img 
-                    src={`http://localhost:5000/${item.image}`} 
-                    alt={item.title}
-                  />
-                ) : (
-                  <div className="no-image">Brak obrazu</div>
-                )}
-                <div className={`status-badge ${item.status}`}>
-                  {item.status === 'published' ? 'Opublikowany' : 'Szkic'}
+            <div key={item._id} className="news-carda">
+                <div className="news-image">
+                  {item.image ? (
+                    <img 
+                      src={`http://localhost:5000${item.image}`} // używaj item.image zamiast item.imageSrc
+                      alt={item.title}
+                    />
+                  ) : (
+                    <div className="no-image">Brak obrazu</div>
+                  )}
                 </div>
-              </div>
 
               <div className="news-content">
                 <h3>{item.title}</h3>
                 <p className="news-excerpt">{item.excerpt}</p>
                 <div className="news-meta">
-                  <span className="news-category">{item.category}</span>
                   <span className="news-date">
                     {new Date(item.createdAt).toLocaleDateString('pl-PL')}
                   </span>
@@ -252,7 +238,7 @@ const News = () => {
                   </button>
                   <button 
                     className="btn-primary"
-                    onClick={() => window.open(`/aktualnosci/${item.slug}`, '_blank')}
+                    onClick={() => window.open(`/wpis/${item._id}`, '_blank')}
                   >
                     Podgląd
                   </button>

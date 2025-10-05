@@ -24,6 +24,8 @@ import Profil from './views/Profil.jsx'
 import Users from './views/Users';
 import MojProfil from './views/MojProfil.jsx'
 import NaszZespol from './views/NaszZespol.jsx'
+import Wpis from './views/Wpis.jsx'
+import PolitykaPrywatnosci from './views/PolitykaPrywatnosci.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -34,6 +36,8 @@ createRoot(document.getElementById('root')).render(
          <Route path="/czym-sa-raty-notarialne" element={<CzymSaRatyNotarialne />} />
         <Route path="/raty-notarialne" element={<Ogloszenia />} />
         <Route path='/oblicz-rate' element={<ObliczRate />} />
+        <Route path='/wpis/:id' element={<Wpis />} />
+        <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />
         <Route path='/kontakt' element={<Kontakt />} />
         <Route path='/nasz-zespol' element={<NaszZespol />} />
         <Route path='/ulubione' element={<Ulubione />} />

@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { FaCircle } from "react-icons/fa";
 import ArrowButton from "../ArrowButton/ArrowButton";
 import TestimonialCard from "../TestimonialCard/TestimonialCard";
-
+import Anna from '../../assets/Anna.jpg'
+import Marek from '../../assets/MarekT.jpg'
+import Background from '../../assets/bread-scaled-1-scaled.jpg'
+import Piotr from '../../assets/slide1.jpeg'
 /*
   Przykładowe dane - podmieniaj obrazy / teksty wg potrzeb.
 */
@@ -14,7 +17,7 @@ const testimonials = [
     text:
       'Nie spodziewałem się, że można kupić mieszkanie z taką pewnością, że wszystko jest sprawdzone od A do Z. Świetne połączenie wiedzy prawniczej i znajomości rynku. Na pewno wrócę przy kolejnej inwestycji.',
     image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=60",
+      Marek,
     stars: 5,
   },
   {
@@ -24,17 +27,17 @@ const testimonials = [
     text:
       "Profesjonalne wsparcie i szybka obsługa. Wszystkie formalności ogarnięte sprawnie i bez stresu. Polecam serdecznie!",
     image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=60",
+      Anna,
     stars: 5,
   },
   {
     id: 3,
-    name: "Piotr B.",
+    name: "Katarzyna i Piotr R.",
     title: "Inwestor",
     text:
-      "Dzięki nim moja inwestycja przyniosła zysk szybciej niż planowałem. Rzetelność i konkretna wiedza na pierwszym miejscu.",
+      "Szukaliśmy nie tylko agencji, ale i partnera, który zadba o nasze interesy. Zespół M2Notarialnie doradził nam najlepsze rozwiązania i dopilnował każdego szczegółu. Czuliśmy się naprawdę bezpiecznie.",
     image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=60",
+      Piotr,
     stars: 5,
   },
 ];
@@ -54,7 +57,7 @@ export default function TestimonialSection() {
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
 
   return (
-    <section className="testimonials-hero">
+    <section className="testimonials-hero" style={{backgroundImage: `url(${Background})`}}>
       <div className="hero-overlay">
         <h2 className="hero-title">Opinie mówią same za siebie</h2>
       </div>

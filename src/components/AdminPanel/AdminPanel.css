@@ -7,7 +7,7 @@
 
 .admin-sidebar {
   width: 280px;
-  background: #2c3e50;
+  background: #50432c;
   color: white;
   transition: width 0.3s ease;
   display: flex;
@@ -20,7 +20,7 @@
 
 .sidebar-header {
   padding: 20px;
-  border-bottom: 1px solid #34495e;
+  border-bottom: 1px solid #5e4c34;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,7 +54,7 @@
 }
 
 .nav-item:hover, .nav-item.active {
-  background: #34495e;
+  background: #5e4034;
   color: white;
 }
 
@@ -66,7 +66,7 @@
 
 .sidebar-footer {
   padding: 20px;
-  border-top: 1px solid #34495e;
+  border-top: 1px solid #5e4034;
 }
 
 .user-info {
@@ -219,4 +219,15 @@
 .status-badge.default {
   background: #e2e3e5;
   color: #383d41;
+
+
+}
+.stat-card{
+  width: 100%;
+}
+.stats-grid{
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+
 }

@@ -26,11 +26,9 @@ const NotarialCalculator = () => {
       return { monthlyRate: 0, interestRate: annualInterestRateFirst5 };
     }
 
-    // Wybieramy oprocentowanie w zależności od okresu spłaty
     const annualInterestRate = repaymentMonths <= 60 ? annualInterestRateFirst5 : annualInterestRateAfter5;
     const monthlyInterestRate = annualInterestRate / 12;
     
-    // Obliczamy ratę dla wybranego oprocentowania
     const monthlyRate = loanAmount * 
       (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, repaymentMonths)) / 
       (Math.pow(1 + monthlyInterestRate, repaymentMonths) - 1);
@@ -94,15 +92,16 @@ const NotarialCalculator = () => {
     setSubmitStatus(null);
 
     try {
-      const submissionData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        propertyPrice: propertyPrice,
-        ownContribution: ownContributionAmount,
-        loanTerm: repaymentMonths,
-        monthlyPayment: monthlyRateData.monthlyRate
-      };
+const submissionData = {
+  name: formData.name,
+  email: formData.email,
+  phone: formData.phone,
+  propertyPrice: propertyPrice,
+  ownContribution: ownContributionAmount,
+  loanTerm: repaymentMonths,
+  monthlyPayment: monthlyRateData.monthlyRate,
+  interestRate: formatPercentage(monthlyRateData.interestRate) // Dodaj tę linię
+};
 
       const response = await fetch('http://localhost:5000/api/emails/loan-inquiry', {
         method: 'POST',
@@ -115,20 +114,31 @@ const NotarialCalculator = () => {
       const result = await response.json();
 
       if (result.success) {
-        setSubmitStatus({ type: 'success', message: result.message });
-        // Reset form
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Zapytanie zostało wysłane pomyślnie! Skontaktujemy się z Tobą w ciągu 24 godzin.' 
+        });
         setFormData({ name: "", email: "", phone: "" });
       } else {
-        setSubmitStatus({ type: 'error', message: result.error });
+        setSubmitStatus({ 
+          type: 'error', 
+          message: result.error || 'Wystąpił błąd podczas wysyłania formularza.' 
+        });
       }
     } catch (error) {
-      setSubmitStatus({ type: 'error', message: 'Wystąpił błąd podczas wysyłania formularza' });
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.' 
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const totalYears = Math.ceil(repaymentMonths / 12);
+  // Close status message
+  const closeStatusMessage = () => {
+    setSubmitStatus(null);
+  };
 
   return (
     <div className="calculator-container">
@@ -138,9 +148,6 @@ const NotarialCalculator = () => {
       </div>
 
       <div className="calculator-body">
-        <div className="interest-rate-info">
-        </div>
-
         <div className="slider-group">
           <div className="slider-label">
             <label htmlFor="propertyPrice">Cena nieruchomości - stan deweloperski zamknięty</label>
@@ -246,9 +253,24 @@ const NotarialCalculator = () => {
         {/* Formularz kontaktowy */}
         <form className="contact-form" onSubmit={handleSubmit}>
           
+          {/* Status Message */}
           {submitStatus && (
             <div className={`submit-status ${submitStatus.type}`}>
-              {submitStatus.message}
+              <div className="status-content">
+                <div className={`status-icon ${submitStatus.type}`}>
+                  {submitStatus.type === 'success' ? '✓' : '!'}
+                </div>
+                <div className="status-text">
+                  {submitStatus.message}
+                </div>
+              </div>
+              <button 
+                type="button" 
+                className="status-close"
+                onClick={closeStatusMessage}
+              >
+                ×
+              </button>
             </div>
           )}
 
@@ -291,15 +313,22 @@ const NotarialCalculator = () => {
             />
           </div>
 
-          <div className="sm-separate"> </div>
+          <div className="form-separator"></div>
+          
           <button 
             type="submit" 
-            className="submit-button"
+            className={`submit-button ${isSubmitting ? 'loading' : ''}`}
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Wysyłanie...' : 'Wyślij zapytanie'}
+            {isSubmitting ? (
+              <>
+                <span className="button-spinner"></span>
+                Wysyłanie...
+              </>
+            ) : (
+              'Wyślij zapytanie'
+            )}
           </button>
-
         </form>
       </div>
     </div>
