@@ -5,11 +5,13 @@
   background: rgba(0,0,0,0.5);
   display: flex; justify-content: center; align-items: center;
   z-index: 1000;
+  padding: 10px;
 }
 
 .modal {
   background: #fff;
   width: 800px;
+  max-width: 100%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -34,8 +36,7 @@
 /* LEFT SIDE */
 .modal-left {
   flex: 1;
-  background: url("../login-modal.jpeg")
-    center/cover no-repeat;
+  background: url("../login-modal.jpeg") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -122,4 +123,91 @@
   text-decoration: underline;
 }
 
+/* ✅ RESPONSIVE DESIGN */
 
+/* Medium screens (tablets) */
+@media (max-width: 900px) {
+  .modal {
+    width: 90%;
+    height: auto;
+  }
+
+  .modal-content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .modal-left {
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .overlay-text h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .modal-right {
+    padding: 25px 20px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .modal {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .modal-content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .modal-left {
+    height: 150px;
+    background-position: center;
+    padding: 10px;
+  }
+
+  .overlay-text h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .modal-right {
+    padding: 20px 15px;
+    gap: 10px;
+  }
+
+  .modal-right h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .modal-right input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn-primary {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+  }
+
+  .close-btn {
+    top: 8px;
+    right: 8px;
+    font-size: 16px;
+  }
+}
