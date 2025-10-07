@@ -4,7 +4,7 @@ import city from '../assets/city_contact3-2.jpeg'
 import './ContactSection.css'
 
 export default function ContactSection() {
-  const backend = import.meta.env.VITE_BACKEND + "/api"
+  const backend = import.meta.env.VITE_BACKEND + "/api/inquiry"
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,7 +35,7 @@ export default function ContactSection() {
     setMessage('')
 
     try {
-      const response = await fetch(`${backend}/emails/contact`, {
+      const response = await fetch(`${backend}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ export default function ContactSection() {
             </div>
             
             {message && (
-              <div className={`message ${message.includes('Błąd') ? 'error' : 'success'}`}>
+              <div className={`contact-message ${message.includes('Błąd') ? 'error' : 'success'}`}>
                 {message}
               </div>
             )}
@@ -136,7 +136,7 @@ export default function ContactSection() {
                 Akceptuję <a href="/terms" className='a'>regulamin</a> i <a className='a' href="/privacy">politykę prywatności</a>
               </label>
               <button 
-                className='button' 
+                className={`contact-button ${isLoading ? 'loading' : ''}`} 
                 style={{marginTop: '20px'}} 
                 type="submit"
                 disabled={isLoading}
