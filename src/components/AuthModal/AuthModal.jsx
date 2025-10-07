@@ -25,7 +25,7 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
   const [resetData, setResetData] = useState({ email: "" });
   const [showPassword, setShowPassword] = useState(false);
 
-  const API_BASE_URL = "http://localhost:5000/api";
+  const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
   // Obsługa formularzy
   const handleRegisterChange = (e) => {

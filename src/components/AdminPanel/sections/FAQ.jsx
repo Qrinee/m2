@@ -21,7 +21,7 @@ const FAQ = () => {
   const fetchFAQs = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/admin/faq', {
+      const response = await fetch(import.meta.env.VITE_BACKEND + '/api/admin/faq', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -44,8 +44,8 @@ const FAQ = () => {
     try {
       const token = localStorage.getItem('token');
       const url = editingFaq 
-        ? `http://localhost:5000/api/admin/faq/${editingFaq._id}`
-        : 'http://localhost:5000/api/admin/faq';
+        ? `${import.meta.env.VITE_BACKEND}/api/admin/faq/${editingFaq._id}`
+        : import.meta.env.VITE_BACKEND + '/api/admin/faq';
       
       const method = editingFaq ? 'PUT' : 'POST';
 
@@ -72,7 +72,7 @@ const FAQ = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/api/admin/faq/${faqId}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND}/api/admin/faq/${faqId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

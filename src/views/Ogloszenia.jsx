@@ -65,7 +65,7 @@ export default function Ogloszenia() {
 
   const fetchFilterOptions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/properties/filters/options');
+      const response = await fetch(import.meta.env.VITE_BACKEND + '/api/properties/filters/options');
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
@@ -97,7 +97,7 @@ export default function Ogloszenia() {
       });
 
       const response = await fetch(
-        `http://localhost:5000/api/properties/search/advanced?${params.toString()}`
+        `${import.meta.env.VITE_BACKEND}/api/properties/search/advanced?${params.toString()}`
       );
       
       if (!response.ok) {
@@ -116,10 +116,10 @@ export default function Ogloszenia() {
           // Konwertuj ścieżkę Windows na URL - usuń część przed 'uploads'
           const pathParts = coverFile.path.split('uploads\\');
           if (pathParts.length > 1) {
-            imageUrl = `http://localhost:5000/uploads/${pathParts[1]}`;
+            imageUrl = `${import.meta.env.VITE_BACKEND}/uploads/${pathParts[1]}`;
           } else {
             // Jeśli ścieżka jest już względna
-            imageUrl = `http://localhost:5000/${coverFile.path}`;
+            imageUrl = `${import.meta.env.VITE_BACKEND}/${coverFile.path}`;
           }
         }
 
@@ -145,7 +145,7 @@ export default function Ogloszenia() {
           baths: calculateBaths(property.szczegoly),
           beds: property.szczegoly?.pokoje || 0,
           area: property.szczegoly?.rozmiar_m2 || 0,
-          agentImage: property.user?.profilePicture || "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zrzut-ekranu-2025-07-14-o-15.47.03-120x120.png",
+          agentImage: property.user?.profilePicture || " ",
           agentName: property.user ? `${property.user.name} ${property.user.surname}` : "Zespół M2 Notarialnie",
         };
       });

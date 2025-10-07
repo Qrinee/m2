@@ -7,7 +7,7 @@ const NewsCard = ({ imageSrc, title, date, excerpt, onReadMore }) => {
       <div className="news-card__image-wrapper">
         {imageSrc ? (
           <img 
-            src={"http://localhost:5000" + imageSrc} 
+            src={import.meta.env.VITE_BACKEND + imageSrc} 
             alt={title} 
             className="news-card__image" 
           />

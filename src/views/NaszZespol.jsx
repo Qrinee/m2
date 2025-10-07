@@ -5,7 +5,7 @@ import PhotoCard from '../components/PhotoCard/PhotoCard'
 import './NaszZespol.css'
 import { Link } from 'react-router-dom'
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
 export default function NaszZespol() {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -108,7 +108,7 @@ export default function NaszZespol() {
                             <Link to={`/estate_agent/${member._id}`} style={{textDecoration: 'none', color: 'inherit'}}>
                                 <PhotoCard
                                   key={member._id}
-                                  image={member.profilePicture ? `http://localhost:5000${member.profilePicture}` : '/default-avatar.png'}
+                                  image={member.profilePicture ? `${import.meta.env.VITE_BACKEND}${member.profilePicture}` : '/default-avatar.png'}
                                   name={`${member.name} ${member.surname}`}
                                   position={member.position}
                                   description={member.bio}

@@ -7,7 +7,7 @@ import { FaEnvelope, FaPhone } from 'react-icons/fa';
 
 
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
 export default function Profil() {
       const { id } = useParams();
@@ -51,7 +51,7 @@ export default function Profil() {
                     <div className='sm-separate'></div>
                     <div className="info-section ">
                        <div className='f'>
-                            <img src={user && "http://localhost:5000" + user?.data.user.profilePicture} alt={user?.name || 'Avatar'} className="info-section__avatar" />
+                            <img src={user && import.meta.env.VITE_BACKEND + user?.data.user.profilePicture} alt={user?.name || 'Avatar'} className="info-section__avatar" />
                             <div className='info-section__text'>
                                 <h2 className="info-section__name">{user?.data.user.name} {user?.data.user.surname}</h2>
                                 <p className='info-section__position'>{user?.data.user.position}</p>

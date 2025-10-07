@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import './MojProfil.css';
 import { FaEnvelope, FaPhone, FaEdit, FaSave, FaTimes, FaUser } from 'react-icons/fa';
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
 export default function MojProfil() {
   const { id } = useParams();

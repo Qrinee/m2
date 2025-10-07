@@ -7,7 +7,7 @@ import { FaEnvelope, FaPhone } from 'react-icons/fa';
 import './Wpis.css'
 
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = `${import.meta.env.VITE_BACKEND}/api`;
 
 export default function Wpis() {
       const { id } = useParams();
@@ -51,7 +51,7 @@ export default function Wpis() {
                     <div className="info-section ">
                           {blog && (
                             <div className='blog-post'>
-                                  <img src={"http://localhost:5000" + blog?.data.image} alt={'Blog Image'} className="blog-post__image" />
+                                  <img src={import.meta.env.VITE_BACKEND + blog?.data.image} alt={'Blog Image'} className="blog-post__image" />
                                 <h1 className="blog-post__title">{blog?.data.title}</h1>
                                 <p className="blog-post__date">{new Date(blog?.data.date || blog?.data.createdAt).toLocaleDateString('pl-PL')}</p>
                                 <div className="blog-post__content" dangerouslySetInnerHTML={{ __html: blog?.data.content }}></div>

@@ -5,7 +5,7 @@ import Header from './../components/Header/Header';
 import { FaHouse, FaLocationPin, FaMessage, FaSquareBehance } from "react-icons/fa6";
 import { FaArrowCircleDown, FaBed, FaCheck, FaEnvelope, FaHeart, FaPhone, FaRuler, FaShower, FaSquare, FaSquarespace, FaWhatsapp } from "react-icons/fa";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
 export default function WidokOgloszenia() {
   const { id } = useParams();
@@ -554,7 +554,7 @@ function ContactCard({ property }) {
   const agentSurname = owner?.surname || "Systemu";
   const agentRole = owner?.position || owner?.role === 'admin' ? 'Administrator' : 'Agent nieruchomości';
   const agentAvatar = owner?.profilePicture 
-    ? `http://localhost:5000${owner.profilePicture}`
+    ? `${import.meta.env.VITE_BACKEND}${owner.profilePicture}`
     : "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop";
   
   const agentPhone = owner?.phone || '+48 123 456 789';

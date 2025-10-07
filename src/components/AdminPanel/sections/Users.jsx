@@ -14,7 +14,7 @@ const Users = () => {
   const fetchForms = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/admin/forms', {
+      const response = await fetch(import.meta.env.VITE_BACKEND + '/api/admin/forms', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -34,7 +34,7 @@ const Users = () => {
   const markAsRead = async (formId) => {
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/api/admin/forms/${formId}/read`, {
+      await fetch(`${import.meta.env.VITE_BACKEND}/api/admin/forms/${formId}/read`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -51,7 +51,7 @@ const Users = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/api/admin/forms/${formId}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND}/api/admin/forms/${formId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

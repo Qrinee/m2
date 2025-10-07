@@ -14,7 +14,7 @@ const Users = () => {
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
 
-  const API_BASE_URL = "http://localhost:5000/api";
+  const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
   useEffect(() => {
     fetchUsers();
@@ -238,7 +238,7 @@ const Users = () => {
                   <div className="user-avatar-small">
                     {user.profilePicture ? (
                       <img 
-                        src={`http://localhost:5000${user.profilePicture}`} 
+                        src={`${import.meta.env.VITE_BACKEND}${user.profilePicture}`} 
                         alt={`${user.name} ${user.surname}`}
                         className="user-avatar-img"
                       />
@@ -342,7 +342,7 @@ const Users = () => {
                     <>
                       {editingUser.profilePicture ? (
                         <img 
-                          src={`http://localhost:5000${editingUser.profilePicture}`} 
+                          src={`${import.meta.env.VITE_BACKEND}${editingUser.profilePicture}`} 
                           alt={`${editingUser.name} ${editingUser.surname}`}
                           className="avatar-preview"
                         />

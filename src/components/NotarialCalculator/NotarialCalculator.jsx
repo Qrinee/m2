@@ -103,7 +103,7 @@ const submissionData = {
   interestRate: formatPercentage(monthlyRateData.interestRate) // Dodaj tę linię
 };
 
-      const response = await fetch('http://localhost:5000/api/emails/loan-inquiry', {
+      const response = await fetch(import.meta.env.VITE_BACKEND + '/api/emails/loan-inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -215,7 +215,7 @@ export default function Add() {
         formData.append('files', file.file);
       });
 
-      const response = await fetch('http://localhost:5000/api/properties', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/properties`, {
         method: 'POST',
         body: formData,
         // headers nie są potrzebne dla FormData - browser ustawi boundary automatycznie

@@ -13,7 +13,7 @@ const Properties = () => {
 
   const fetchProperties = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/properties?limit=100', {
+      const response = await fetch(import.meta.env.VITE_BACKEND + '/api/properties?limit=100', {
         credentials: 'include'
       });
 
@@ -41,7 +41,7 @@ const Properties = () => {
 
   const updatePropertyStatus = async (propertyId, isActive) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/properties/${propertyId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/properties/${propertyId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const Properties = () => {
     if (!window.confirm('Czy na pewno chcesz usunąć tę ofertę?')) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/properties/${propertyId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/properties/${propertyId}`, {
         method: 'DELETE',
         credentials: 'include'
       });
@@ -189,7 +189,7 @@ const Properties = () => {
                 <div className="property-image">
                   {coverImage ? (
                     <img 
-                      src={`http://localhost:5000/${coverImage.path}`} 
+                      src={`${import.meta.env.VITE_BACKEND}/${coverImage.path}`} 
                       alt={property.nazwa}
                       onError={(e) => {
                         e.target.style.display = 'none';

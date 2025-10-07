@@ -16,7 +16,7 @@ const Forms = () => {
   const fetchForms = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/emails/submissions?page=${currentPage}&limit=20`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/emails/submissions?page=${currentPage}&limit=20`, {
         credentials: 'include'
       });
 
@@ -36,7 +36,7 @@ const Forms = () => {
 
   const updateFormStatus = async (formId, status, notes = '') => {
     try {
-      const response = await fetch(`http://localhost:5000/api/emails/submissions/${formId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/emails/submissions/${formId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const Forms = () => {
     if (!window.confirm('Czy na pewno chcesz usunąć ten formularz?')) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/emails/submissions/${formId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/emails/submissions/${formId}`, {
         method: 'DELETE',
         credentials: 'include'
       });

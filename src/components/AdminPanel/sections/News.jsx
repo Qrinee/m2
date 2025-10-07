@@ -20,7 +20,7 @@ const News = () => {
 
 const fetchNews = async () => {
   try {
-    const response = await fetch('http://localhost:5000/api/blog', {
+    const response = await fetch(import.meta.env.VITE_BACKEND + '/api/blog', {
       credentials: 'include'
     });
 
@@ -51,8 +51,8 @@ const handleSubmit = async (e) => {
 
   try {
     const url = editingNews 
-      ? `http://localhost:5000/api/blog/${editingNews._id}`
-      : 'http://localhost:5000/api/blog';
+      ? `${import.meta.env.VITE_BACKEND}/api/blog/${editingNews._id}`
+      : import.meta.env.VITE_BACKEND + '/api/blog';
     
     const method = editingNews ? 'PUT' : 'POST';
 
@@ -80,7 +80,7 @@ const handleSubmit = async (e) => {
     if (!window.confirm('Czy na pewno chcesz usunąć ten wpis?')) return;
 
     try {
-      await fetch(`http://localhost:5000/api/blog/${newsId}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND}/api/blog/${newsId}`, {
         method: 'DELETE',
         credentials: 'include'
       });
@@ -206,7 +206,7 @@ const handleSubmit = async (e) => {
                 <div className="news-image">
                   {item.image ? (
                     <img 
-                      src={`http://localhost:5000${item.image}`} // używaj item.image zamiast item.imageSrc
+                      src={`${import.meta.env.VITE_BACKEND}${item.image}`} // używaj item.image zamiast item.imageSrc
                       alt={item.title}
                     />
                   ) : (

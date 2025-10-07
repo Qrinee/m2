@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 import { FaSearch } from "react-icons/fa";
@@ -7,6 +7,7 @@ const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [type, setType] = useState("");
   const navigate = useNavigate();
+
 
   const handleSearch = () => {
     // Przygotuj parametry zapytania
@@ -40,6 +41,7 @@ const SearchBar = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyPress={handleKeyPress}
       />
+
       <select 
         className="searchbar__select"
         value={type}
