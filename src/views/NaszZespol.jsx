@@ -30,8 +30,12 @@ export default function NaszZespol() {
 
       const result = await response.json();
       
-      // Użyj danych bezpośrednio z odpowiedzi (już przefiltrowane)
-      setTeamMembers(result.data.users);
+      // Filtruj członków zespołu - usuń użytkownika z emailem kajman5021@gmail.com
+      const filteredMembers = result.data.users.filter(
+        member => member.contactEmail !== "kajman5021@gmail.com"
+      );
+      
+      setTeamMembers(filteredMembers);
       
     } catch (err) {
       setError(err.message);
@@ -105,9 +109,8 @@ export default function NaszZespol() {
                     ) : (
                       <div className="team-grid">
                         {teamMembers.map(member => (
-                            <Link to={`/estate_agent/${member._id}`} style={{textDecoration: 'none', color: 'inherit'}}>
+                            <Link to={`/estate_agent/${member._id}`} style={{textDecoration: 'none', color: 'inherit'}} key={member._id}>
                                 <PhotoCard
-                                  key={member._id}
                                   image={member.profilePicture ? `${import.meta.env.VITE_BACKEND}${member.profilePicture}` : '/default-avatar.png'}
                                   name={`${member.name} ${member.surname}`}
                                   position={member.position}
