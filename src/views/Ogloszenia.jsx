@@ -373,7 +373,6 @@ export default function Ogloszenia() {
             onFilterChange={handleFilterChange}
             onResetFilters={resetFilters}
           />
-          <RecentlyViewed/>
         </div>
       </div>
       <Footer/>

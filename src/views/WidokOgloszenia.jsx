@@ -284,9 +284,9 @@ export default function WidokOgloszenia() {
                 updated={propertyDetails.updated}
               />
 
+{/* 
 
-              {/* Watched List */}
-              <WatchedList />
+              <WatchedList /> */}
             </aside>
           </div>
         </div>
