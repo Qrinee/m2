@@ -34,7 +34,7 @@
 /* LEFT SIDE */
 .modal-left {
   flex: 1;
-  background: url("login-modal.jpeg")
+  background: url("public/login-modal.jpeg")
     center/cover no-repeat;
   display: flex;
   justify-content: center;
