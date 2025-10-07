@@ -35,7 +35,7 @@ export default function ContactSection() {
     setMessage('')
 
     try {
-      const response = await fetch(`${backend}/inquiry/contact`, {
+      const response = await fetch(`${backend}/emails/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
