@@ -1,6 +1,10 @@
 import React from 'react'
 import ListingCard from '../components/ListingCard/ListingCard';
 import rybnik from '../assets/rybnik.jpg';
+import second from '../assets/11.jpg'
+import wiktoria from '../assets/wiktoria.jpg'
+import piotr from '../assets/piotr.png'
+import third from '../assets/22.png'
 export default function ListingSection() {
 
 
@@ -18,11 +22,11 @@ const listings = [
     baths: 1,
     beds: 2,
     area: 83,
-    agentImage: "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zrzut-ekranu-2025-07-14-o-15.47.03-120x120.png",
+    agentImage: piotr,
     agentName: "Piotr Strzelecki",
   },
     {
-    image: "https://m2notarialnie.pl/wp-content/uploads/2025/08/Zrzut-ekranu-2025-08-4-o-15.43.39-525x328.png",
+    image: second,
     badges: [
       { text: "Sprzedaż", color: "green" },
       { text: "Dostępne", color: "yellow" },
@@ -34,11 +38,11 @@ const listings = [
     baths: 1,
     beds: 2,
     area: 83,
-    agentImage: "https://m2notarialnie.pl/wp-content/uploads/2025/06/wiktoria-1-525x328.jpg",
+    agentImage: wiktoria,
     agentName: "Wiktoria Kisio",
   },
     {
-    image: "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zaw-2-525x328.jpg",
+    image: third,
     badges: [
       { text: "Sprzedaż", color: "green" },
       { text: "Dostępne", color: "yellow" },
@@ -50,7 +54,7 @@ const listings = [
     baths: 1,
     beds: 2,
     area: 83,
-    agentImage: "https://m2notarialnie.pl/wp-content/uploads/2025/07/Zrzut-ekranu-2025-07-14-o-15.47.03-120x120.png",
+    agentImage: piotr,
     agentName: "Piotr Strzelecki",
   },
 ];
