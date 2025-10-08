@@ -19,7 +19,6 @@ import {
   GiModernCity 
 } from 'react-icons/gi';
 
-import thumbnail from '../assets/ex/2-5.jpg';
 
 export default function ProjektyDomow() {
   const [activeFilter, setActiveFilter] = useState("Wszystkie");
@@ -34,7 +33,7 @@ export default function ProjektyDomow() {
       id: 1,
       name: "Modułowy DOM 84",
       area: "84 m²",
-      thumbnail: thumbnail,
+      thumbnail: "",
       shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
       initialPrice: "299 000 zł",
       tags: ["Dla rodziny", "Energooszczędny"],
@@ -42,30 +41,7 @@ export default function ProjektyDomow() {
       bedrooms: 3,
       bathrooms: 1
     },
-    {
-      id: 2,
-      name: "Modułowy DOM 100",
-      area: "100 m²",
-      thumbnail: thumbnail,
-      shortDesc: "Dom parterowy, 4 sypialnie, 2 łazienki",
-      initialPrice: "359 000 zł",
-      tags: ["Nowoczesny", "Smart Home"],
-      features: ["Taras", "Garaż", "Kominek"],
-      bedrooms: 4,
-      bathrooms: 2
-    },
-    {
-      id: 3,
-      name: "Modułowy DOM 120",
-      area: "120 m²",
-      thumbnail: thumbnail,
-      shortDesc: "Dom piętrowy, 5 sypialni, 2 łazienki",
-      initialPrice: "429 000 zł",
-      tags: ["Premium", "Dla dużej rodziny"],
-      features: ["Taras", "Garaż", "Kominek", "Ogród"],
-      bedrooms: 5,
-      bathrooms: 2
-    },
+
   ];
 
   const handleProjectClick = (projectId) => {
