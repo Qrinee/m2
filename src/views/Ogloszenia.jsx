@@ -315,7 +315,7 @@ export default function Ogloszenia() {
         <div className='main-sec'>
           <div className='section'>
             <Breadcrumbs items={['Strona główna', "Ogłoszenia"]} />
-            <h2 className='h2'>Ogłoszenia ({listings.length})</h2>
+            <h2 className='h2'>Ogłoszenia</h2>
             <FilterBar 
               filters={filters}
               filterOptions={filterOptions}
