@@ -238,27 +238,6 @@ export default function WidokOgloszenia() {
                 </div>
               </section>
 
-              {/* Similar Properties */}
-              <section className="prop-card">
-                <h3>Podobne oferty</h3>
-                <div className="prop-similar-grid">
-                  <SimilarCard
-                    title="SZEREGOWIEC 83 m²"
-                    price={900000}
-                    img="https://images.unsplash.com/photo-1598928506312-7b5f5dd4e3b9?w=800&q=60&auto=format&fit=crop"
-                  />
-                  <SimilarCard
-                    title="Nowoczesny energooszczędny dom"
-                    price={860000}
-                    img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=60&auto=format&fit=crop"
-                  />
-                  <SimilarCard
-                    title="100 m2 mieszkanie z ogródkiem"
-                    price={780000}
-                    img="https://images.unsplash.com/photo-1505691723518-36a0a6b3c5c2?w=800&q=60&auto=format&fit=crop"
-                  />
-                </div>
-              </section>
             </div>
 
             {/* Right Column - Sidebar */}
