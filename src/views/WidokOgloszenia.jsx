@@ -205,7 +205,7 @@ export default function WidokOgloszenia() {
               {/* Description */}
               <section className="prop-card">
                 <h3>Opis</h3>
-                <p>
+                <p style={{ whiteSpace: 'pre-line' }}>
                   {property.opis || "Brak opisu nieruchomości."}
                 </p>
                 {property.szczegoly?.uwagi && (
