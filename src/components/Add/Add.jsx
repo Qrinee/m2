@@ -73,7 +73,7 @@ export default function Add() {
     const arr = Array.from(fileList).map((f) => {
       const id = idRef.current++;
       const src = f.type.startsWith("image/") ? URL.createObjectURL(f) : null;
-      return { id, file: f, src, isCover: false };
+      return { id, file: f, src, isCover: files.length === 0 && idRef.current === 2 }; // pierwszy plik jako cover
     });
     setFiles((s) => [...s, ...arr]);
   }
@@ -112,7 +112,7 @@ export default function Add() {
           alert("Podaj poprawną liczbę Pokoi (tylko liczby).");
           return false;
         }
-        if (!isPositiveInteger(szczegoly.rok_budowy)) {
+        if (szczegoly.rok_budowy && !isPositiveInteger(szczegoly.rok_budowy)) {
           alert("Podaj poprawny Rok budowy.");
           return false;
         }
@@ -123,11 +123,13 @@ export default function Add() {
   }
 
   function isPositiveNumber(v) {
-    if (v === null || v === undefined) return false;
+    if (v === null || v === undefined || v === "") return false;
     const n = Number(String(v).replace(",", "."));
     return !Number.isNaN(n) && n >= 0;
   }
+
   function isPositiveInteger(v) {
+    if (v === null || v === undefined || v === "") return false;
     const n = Number(v);
     return Number.isInteger(n) && n > 0;
   }
@@ -157,29 +159,36 @@ export default function Add() {
     if (e.dataTransfer?.files) addFiles(e.dataTransfer.files);
     if (dropRef.current) dropRef.current.classList.remove("dragover");
   }
+  
   function onDragOver(e) {
     e.preventDefault();
     if (dropRef.current) dropRef.current.classList.add("dragover");
   }
+  
   function onDragLeave() {
     if (dropRef.current) dropRef.current.classList.remove("dragover");
   }
+  
   function onFileInputChange(e) {
     addFiles(e.target.files);
     e.target.value = null;
   }
+  
   function toggleCover(id) {
     setFiles((s) => s.map((f) => ({ ...f, isCover: f.id === id })));
   }
+  
   function removeFile(id) {
     setFiles((s) => s.filter((f) => f.id !== id));
   }
+  
   // reorder
   const dragItem = useRef();
   function onDragStartThumb(e, idx) {
     dragItem.current = idx;
     e.dataTransfer.effectAllowed = "move";
   }
+  
   function onDragOverThumb(e, idx) {
     e.preventDefault();
     const from = dragItem.current;
@@ -218,80 +227,79 @@ export default function Add() {
       const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/properties`, {
         method: 'POST',
         body: formData,
-        // headers nie są potrzebne dla FormData - browser ustawi boundary automatycznie
+        credentials: 'include'
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
+        const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.error || `Błąd HTTP: ${response.status}`);
       }
 
       const result = await response.json();
       console.log("Success:", result);
       setSubmitSuccess(true);
-      alert("Nieruchomość została pomyślnie zgłoszona!");
-
-      // Opcjonalnie: reset formularza po sukcesie
-      // resetForm();
-
+      
+      // Resetuj formularz tylko po sukcesie
+      resetForm();
+      
     } catch (error) {
       console.error("Błąd podczas wysyłania:", error);
       setSubmitError(error.message);
-      resetForm();
-      alert(`Wystąpił błąd: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
   }
 
-  // Funkcja do resetowania formularza (opcjonalnie)
+  // Funkcja do resetowania formularza (tylko po sukcesie)
   function resetForm() {
-    setOpis({
-      nazwa: "",
-      opis: "",
-      cena: "",
-      poCenie: "",
-      przedCena: "",
-      podatek: "",
-      oplata: "",
-      kategoria: "",
-      wystawioneNa: "",
-      status: "",
-    });
-    setFiles([]);
-    setLokalizacja({
-      adres: "",
-      wojewodztwo: "",
-      miasto: "",
-      powiat: "",
-      kod: "",
-      kraj: "Polska",
-      lat: "",
-      lon: "",
-      streetViewAngle: "",
-    });
-    setSzczegoly({
-      rozmiar_m2: "",
-      wielkosc_dzialki: "",
-      pokoje: "",
-      sypialnie: "",
-      id_nieruchomosci: "",
-      rok_budowy: "",
-      garaz: "",
-      wielkosc_garazu: "",
-      dostepna_od: "",
-      piwnica: "",
-      konstrukcja_zew: "",
-      material_elewacji: "",
-      dach: "",
-      typ_konstrukcji: "",
-      liczba_pieter: "",
-      uwagi: "",
-      klasa_energetyczna: "",
-      wskaznik_energetyczny: "",
-    });
-    setActive("opis");
-    idRef.current = 1;
+    if (submitSuccess) {
+      setOpis({
+        nazwa: "",
+        opis: "",
+        cena: "",
+        poCenie: "",
+        przedCena: "",
+        podatek: "",
+        oplata: "",
+        kategoria: "",
+        wystawioneNa: "",
+        status: "",
+      });
+      setFiles([]);
+      setLokalizacja({
+        adres: "",
+        wojewodztwo: "",
+        miasto: "",
+        powiat: "",
+        kod: "",
+        kraj: "Polska",
+        lat: "",
+        lon: "",
+        streetViewAngle: "",
+      });
+      setSzczegoly({
+        rozmiar_m2: "",
+        wielkosc_dzialki: "",
+        pokoje: "",
+        sypialnie: "",
+        id_nieruchomosci: "",
+        rok_budowy: "",
+        garaz: "",
+        wielkosc_garazu: "",
+        dostepna_od: "",
+        piwnica: "",
+        konstrukcja_zew: "",
+        material_elewacji: "",
+        dach: "",
+        typ_konstrukcji: "",
+        liczba_pieter: "",
+        uwagi: "",
+        klasa_energetyczna: "",
+        wskaznik_energetyczny: "",
+      });
+      setActive("opis");
+      idRef.current = 1;
+    }
   }
 
   return (
@@ -400,7 +408,7 @@ function TabOpis({ value, setValue, onNext }) {
         <label className="field">
           <div className="field-label">Cena w PLN (tylko cyfry)</div>
           <input
-           className="input"
+            className="input"
             inputMode="numeric"
             pattern="\d*"
             value={value.cena}
@@ -414,22 +422,22 @@ function TabOpis({ value, setValue, onNext }) {
 
         <label className="field">
           <div className="field-label">Po cenie (np. "miesięcznie")</div>
-          <input  className="input" value={value.poCenie} onChange={handle("poCenie")} />
+          <input className="input" value={value.poCenie} onChange={handle("poCenie")} />
         </label>
 
         <label className="field">
           <div className="field-label">Przed ceną (np. "od")</div>
-          <input  className="input" value={value.przedCena} onChange={handle("przedCena")} />
+          <input className="input" value={value.przedCena} onChange={handle("przedCena")} />
         </label>
 
         <label className="field">
           <div className="field-label">Roczna stawka podatku (opcjonalnie)</div>
-          <input  className="input" value={value.podatek} onChange={handle("podatek")} />
+          <input className="input" value={value.podatek} onChange={handle("podatek")} />
         </label>
 
         <label className="field">
           <div className="field-label">Opłata Stowarzyszenia (opcjonalnie)</div>
-          <input  className="input" value={value.oplata} onChange={handle("oplata")} />
+          <input className="input" value={value.oplata} onChange={handle("oplata")} />
         </label>
       </div>
 
@@ -437,7 +445,7 @@ function TabOpis({ value, setValue, onNext }) {
       <div className="grid-3">
         <label className="field">
           <div className="field-label">Kategoria</div>
-          <select value={value.kategoria} onChange={handle("kategoria")}>
+          <select className="input" value={value.kategoria} onChange={handle("kategoria")}>
             <option value="">-- wybierz --</option>
             <option value="mieszkanie">Mieszkanie</option>
             <option value="dom">Dom</option>
@@ -448,12 +456,12 @@ function TabOpis({ value, setValue, onNext }) {
 
         <label className="field">
           <div className="field-label">Wystawione na</div>
-          <input  className="input" value={value.wystawioneNa} onChange={handle("wystawioneNa")} />
+          <input className="input" value={value.wystawioneNa} onChange={handle("wystawioneNa")} />
         </label>
 
         <label className="field">
           <div className="field-label">Status nieruchomości</div>
-          <select value={value.status} onChange={handle("status")}>
+          <select className="input" value={value.status} onChange={handle("status")}>
             <option value="">-- wybierz --</option>
             <option value="na_sprzedaz">Na sprzedaż</option>
             <option value="do_wynajecia">Do wynajęcia</option>
@@ -558,11 +566,11 @@ function TabZdjecia({
       <div className="media-links grid-2">
         <label className="field">
           <div className="field-label">Selekcja wideo (Vimeo)</div>
-          <input  className="input" placeholder="Wklej link do wideo" />
+          <input className="input" placeholder="Wklej link do wideo" />
         </label>
         <label className="field">
           <div className="field-label">Wirtualna Wycieczka</div>
-          <input  className="input" placeholder="Wklej link do wirtualnej wycieczki" />
+          <input className="input" placeholder="Wklej link do wirtualnej wycieczki" />
         </label>
       </div>
 
@@ -591,35 +599,35 @@ function TabLokalizacja({ value, setValue, onNext, onBack }) {
 
       <label className="field">
         <div className="field-label">*Adres</div>
-        <input  className="input" value={value.adres} onChange={h("adres")} placeholder="Wprowadź adres" />
+        <input className="input" value={value.adres} onChange={h("adres")} placeholder="Wprowadź adres" />
       </label>
 
       <div className="grid-3">
         <label className="field">
           <div className="field-label">Województwo</div>
-          <input  className="input" value={value.wojewodztwo} onChange={h("wojewodztwo")} />
+          <input className="input" value={value.wojewodztwo} onChange={h("wojewodztwo")} />
         </label>
 
         <label className="field">
           <div className="field-label">Miasto</div>
-          <input  className="input" value={value.miasto} onChange={h("miasto")} />
+          <input className="input" value={value.miasto} onChange={h("miasto")} />
         </label>
 
         <label className="field">
           <div className="field-label">Powiat (opcjonalnie)</div>
-          <input  className="input" value={value.powiat} onChange={h("powiat")} />
+          <input className="input" value={value.powiat} onChange={h("powiat")} />
         </label>
       </div>
 
       <div className="grid-3">
         <label className="field">
           <div className="field-label">Kod pocztowy</div>
-          <input  className="input" value={value.kod} onChange={h("kod")} />
+          <input className="input" value={value.kod} onChange={h("kod")} />
         </label>
 
         <label className="field">
           <div className="field-label">Kraj</div>
-          <input  className="input" value={value.kraj} onChange={h("kraj")} />
+          <input className="input" value={value.kraj} onChange={h("kraj")} />
         </label>
 
         <div className="field">
@@ -631,11 +639,11 @@ function TabLokalizacja({ value, setValue, onNext, onBack }) {
       <div className="grid-2">
         <label className="field">
           <div className="field-label">Szerokość geograficzna</div>
-          <input  className="input" value={value.lat} onChange={h("lat")} placeholder="np. 50.06143" />
+          <input className="input" value={value.lat} onChange={h("lat")} placeholder="np. 50.06143" />
         </label>
         <label className="field">
           <div className="field-label">Długość geograficzna</div>
-          <input  className="input" value={value.lon} onChange={h("lon")} placeholder="np. 19.93658" />
+          <input className="input" value={value.lon} onChange={h("lon")} placeholder="np. 19.93658" />
         </label>
       </div>
 
@@ -643,7 +651,7 @@ function TabLokalizacja({ value, setValue, onNext, onBack }) {
         <div className="field-label">
           Google Street View - kąt widzenia kamery (0–360) (opcjonalnie)
         </div>
-        <input  className="input" value={value.streetViewAngle} onChange={h("streetViewAngle")} />
+        <input className="input" value={value.streetViewAngle} onChange={h("streetViewAngle")} />
       </label>
 
       <div className="nav-row">
@@ -689,85 +697,85 @@ function TabSzczegoly({ value, setValue, onNext, onBack }) {
       <div className="grid-2">
         <label className="field">
           <div className="field-label">Rozmiar w m² *(tylko liczby)</div>
-          <input  className="input" value={value.rozmiar_m2} onChange={h("rozmiar_m2")} />
+          <input className="input" value={value.rozmiar_m2} onChange={h("rozmiar_m2")} />
         </label>
 
         <label className="field">
           <div className="field-label">Wielkość działki *(tylko liczby)</div>
-          <input  className="input" value={value.wielkosc_dzialki} onChange={h("wielkosc_dzialki")} />
+          <input className="input" value={value.wielkosc_dzialki} onChange={h("wielkosc_dzialki")} />
         </label>
 
         <label className="field">
           <div className="field-label">Pokoje *(tylko liczby)</div>
-          <input  className="input" value={value.pokoje} onChange={h("pokoje")} />
+          <input className="input" value={value.pokoje} onChange={h("pokoje")} />
         </label>
 
         <label className="field">
           <div className="field-label">Sypialnie (opcjonalnie)</div>
-          <input  className="input" value={value.sypialnie} onChange={h("sypialnie")} />
+          <input className="input" value={value.sypialnie} onChange={h("sypialnie")} />
         </label>
       </div>
 
       <div className="grid-2">
         <label className="field">
           <div className="field-label">ID nieruchomości (opcjonalnie)</div>
-          <input  className="input" value={value.id_nieruchomosci} onChange={h("id_nieruchomosci")} />
+          <input className="input" value={value.id_nieruchomosci} onChange={h("id_nieruchomosci")} />
         </label>
 
         <label className="field">
           <div className="field-label">Rok budowy (*liczba)</div>
-          <input  className="input" value={value.rok_budowy} onChange={h("rok_budowy")} />
+          <input className="input" value={value.rok_budowy} onChange={h("rok_budowy")} />
         </label>
 
         <label className="field">
           <div className="field-label">Garaż (opcjonalnie)</div>
-          <input  className="input" value={value.garaz} onChange={h("garaz")} />
+          <input className="input" value={value.garaz} onChange={h("garaz")} />
         </label>
 
         <label className="field">
           <div className="field-label">Wielkość garażu (opcjonalnie)</div>
-          <input  className="input" value={value.wielkosc_garazu} onChange={h("wielkosc_garazu")} />
+          <input className="input" value={value.wielkosc_garazu} onChange={h("wielkosc_garazu")} />
         </label>
       </div>
 
       <div className="grid-2">
         <label className="field">
           <div className="field-label">Nieruchomość dostępna od</div>
-          <input  className="input" type="date" value={value.dostepna_od} onChange={h("dostepna_od")} />
+          <input className="input" type="date" value={value.dostepna_od} onChange={h("dostepna_od")} />
         </label>
 
         <label className="field">
           <div className="field-label">Piwnica (opcjonalnie)</div>
-          <input  className="input" value={value.piwnica} onChange={h("piwnica")} />
+          <input className="input" value={value.piwnica} onChange={h("piwnica")} />
         </label>
       </div>
 
       <label className="field">
         <div className="field-label">Konstrukcja zewnętrzna (opcjonalnie)</div>
-        <input  className="input" value={value.konstrukcja_zew} onChange={h("konstrukcja_zew")} />
+        <input className="input" value={value.konstrukcja_zew} onChange={h("konstrukcja_zew")} />
       </label>
 
       <div className="grid-2">
         <label className="field">
           <div className="field-label">Materiał elewacji (opcjonalnie)</div>
-          <input  className="input" value={value.material_elewacji} onChange={h("material_elewacji")} />
+          <input className="input" value={value.material_elewacji} onChange={h("material_elewacji")} />
         </label>
 
         <label className="field">
           <div className="field-label">Dach (opcjonalnie)</div>
-          <input  className="input" value={value.dach} onChange={h("dach")} />
+          <input className="input" value={value.dach} onChange={h("dach")} />
         </label>
       </div>
 
       <div className="grid-2">
         <label className="field">
           <div className="field-label">Typ konstrukcji (opcjonalnie)</div>
-          <input  className="input" value={value.typ_konstrukcji} onChange={h("typ_konstrukcji")} />
+          <input className="input" value={value.typ_konstrukcji} onChange={h("typ_konstrukcji")} />
         </label>
 
         <label className="field">
           <div className="field-label">Liczba pięter (opcjonalnie)</div>
-          <input  className="input" value={value.liczba_pieter} onChange={h("liczba_pieter")} />
+          <input className="input" value={value.liczba_pieter} onChange={h("liczba_pieter")} />
         </label>
       </div>
 
@@ -775,14 +783,14 @@ function TabSzczegoly({ value, setValue, onNext, onBack }) {
         <div className="field-label">
           Uwagi właściciela / pełnomocnika (dla handlowca, nie są widoczne w ogłoszeniu)
         </div>
-        <textarea rows="3" value={value.uwagi} onChange={h("uwagi")} />
+        <textarea className="input" rows="3" value={value.uwagi} onChange={h("uwagi")} />
       </label>
 
       <h4 className="sub-title">Klasa energetyczna</h4>
       <div className="grid-2">
         <label className="field">
           <div className="field-label">Klasa energetyczna (opcjonalnie)</div>
-          <select value={value.klasa_energetyczna} onChange={h("klasa_energetyczna")}>
+          <select className="input" value={value.klasa_energetyczna} onChange={h("klasa_energetyczna")}>
             <option value="">-- wybierz --</option>
             <option value="A">A</option>
             <option value="B">B</option>
@@ -796,7 +804,7 @@ function TabSzczegoly({ value, setValue, onNext, onBack }) {
 
         <label className="field">
           <div className="field-label">Wskaźnik energetyczny (kWh/m²/rok)</div>
-          <input value={value.wskaznik_energetyczny} onChange={h("wskaznik_energetyczny")} />
+          <input className="input" value={value.wskaznik_energetyczny} onChange={h("wskaznik_energetyczny")} />
         </label>
       </div>
 

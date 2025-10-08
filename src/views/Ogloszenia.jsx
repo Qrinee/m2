@@ -113,14 +113,7 @@ export default function Ogloszenia() {
         let imageUrl = rybnik; // fallback
         
         if (coverFile && coverFile.path) {
-          // Konwertuj ścieżkę Windows na URL - usuń część przed 'uploads'
-          const pathParts = coverFile.path.split('uploads\\');
-          if (pathParts.length > 1) {
-            imageUrl = `${import.meta.env.VITE_BACKEND}/uploads/${pathParts[1]}`;
-          } else {
-            // Jeśli ścieżka jest już względna
-            imageUrl = `${import.meta.env.VITE_BACKEND}/${coverFile.path}`;
-          }
+          imageUrl = transformImageUrl(coverFile.path);
         }
 
         return {
@@ -197,6 +190,19 @@ export default function Ogloszenia() {
   const calculateBaths = (szczegoly) => {
     const pokoje = szczegoly?.pokoje || 0;
     return Math.max(1, Math.floor(pokoje / 2));
+  };
+
+  // PROSTE ROZWIĄZANIE DLA OBRAZKÓW
+  const transformImageUrl = (originalUrl) => {
+    if (!originalUrl) return rybnik;
+    
+    // Po prostu użyj bezpośrednio URL z WordPress
+    if (originalUrl.startsWith('http')) {
+      return originalUrl;
+    }
+    
+    // Fallback do lokalnego obrazka
+    return rybnik;
   };
 
   const handleFilterChange = (newFilters) => {
