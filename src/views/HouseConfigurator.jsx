@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaInfoCircle, FaHome, FaRulerCombined, FaBed, FaBath, FaBolt, FaFilePdf, FaHeart, FaExchangeAlt, FaEye, FaCheck, FaPhone, FaEnvelope, FaUser, FaArrowRight } from 'react-icons/fa';
-import './HouseConfigurator.css';
+// import './HouseConfigurator.css';
 import Header from '../components/Header/Header';
 
 import p1 from '../assets/ex/2-5.jpg';
