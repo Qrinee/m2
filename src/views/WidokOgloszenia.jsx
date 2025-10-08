@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import "./styles.css";
 import Header from './../components/Header/Header';
 import { FaHouse, FaLocationPin, FaMessage, FaSquareBehance } from "react-icons/fa6";
-import { FaArrowCircleDown, FaBed, FaCheck, FaEnvelope, FaHeart, FaPhone, FaRuler, FaShower, FaSquare, FaSquarespace, FaWhatsapp } from "react-icons/fa";
+import { FaArrowCircleDown, FaArrowCircleLeft, FaArrowCircleRight, FaBed, FaCheck, FaEnvelope,FaChevronLeft, FaChevronRight, FaExpand, FaCompress, FaTimes,  FaHeart, FaPhone, FaRuler, FaShower, FaSquare, FaSquarespace, FaWhatsapp } from "react-icons/fa";
+
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
@@ -323,27 +324,218 @@ function Breadcrumbs({ property }) {
   );
 }
 
+
 function Gallery({ images, index, setIndex }) {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [direction, setDirection] = useState(0); // -1: left, 1: right, 0: none
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Płynna zmiana obrazków
+  const changeImage = (newIndex, newDirection) => {
+    if (isTransitioning || newIndex === index) return;
+    
+    setIsTransitioning(true);
+    setDirection(newDirection);
+    setIndex(newIndex);
+    
+    setTimeout(() => {
+      setIsTransitioning(false);
+      setDirection(0);
+    }, 300); // Czas trwania animacji
+  };
+
+  const nextImage = () => {
+    const newIndex = (index + 1) % images.length;
+    changeImage(newIndex, 1);
+  };
+
+  const prevImage = () => {
+    const newIndex = (index - 1 + images.length) % images.length;
+    changeImage(newIndex, -1);
+  };
+
+  // Obsługa klawiatury w trybie pełnoekranowym
+  useEffect(() => {
+    if (!isFullscreen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsFullscreen(false);
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === ' ') {
+        // Spacja przełącza pełny ekran
+        setIsFullscreen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isFullscreen, index, images.length]);
+
+  // Blokowanie scrollowania body w trybie pełnoekranowym
+  useEffect(() => {
+    if (isFullscreen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isFullscreen]);
+
+  // Swipe dla urządzeń mobilnych
+  const [touchStart, setTouchStart] = useState(null);
+  
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!touchStart) return;
+    
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    
+    if (Math.abs(diff) > 50) { // Minimalny dystans swipe
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+    
+    setTouchStart(null);
+  };
+
   return (
-    <div className="prop-gallery">
-      <div className="prop-main-photo">
-        <img src={images[index]} alt={`photo-${index}`} />
-        <div className="gallery-counter">{index + 1} / {images.length}</div>
+    <>
+      <div className={`prop-gallery ${isFullscreen ? 'fullscreen' : ''}`}>
+        <div 
+          className="prop-main-photo"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className={`image-container ${direction === 1 ? 'slide-left' : direction === -1 ? 'slide-right' : ''}`}>
+            <img 
+              src={images[index]} 
+              alt={`photo-${index}`}
+              onClick={() => setIsFullscreen(true)}
+            />
+          </div>
+          
+          <div className="gallery-counter">{index + 1} / {images.length}</div>
+
+          {/* Strzałki nawigacyjne */}
+          {images.length > 1 && (
+            <>
+              <button 
+              style={{padding: 'inherit'}}
+                className="gallery-arrow gallery-arrow-left" 
+                onClick={prevImage}
+                aria-label="Poprzednie zdjęcie"
+              >
+                <FaChevronLeft size={20} />
+              </button>
+              <button 
+                            style={{padding: 'inherit'}}
+                className="gallery-arrow gallery-arrow-right" 
+                onClick={nextImage}
+                aria-label="Następne zdjęcie"
+              >
+                <FaChevronRight size={20} />
+              </button>
+            </>
+          )}
+
+          {/* Przycisk pełnego ekranu */}
+          <button 
+                        style={{padding: 'inherit'}}
+            className="gallery-fullscreen-btn"
+            onClick={() => setIsFullscreen(!isFullscreen)}
+            aria-label={isFullscreen ? "Zamknij pełny ekran" : "Otwórz pełny ekran"}
+          >
+            {isFullscreen ? (
+              <FaCompress size={16} />
+            ) : (
+              <FaExpand size={16} />
+            )}
+          </button>
+        </div>
+
+        {/* Miniatury - ukrywamy w trybie pełnoekranowym */}
+        {!isFullscreen && images.length > 1 && (
+          <div className="prop-thumbs">
+            {images.map((src, i) => (
+              <button
+                            style={{padding: 'inherit'}}
+                key={i}
+                className={`prop-thumb-btn ${i === index ? "active" : ""}`}
+                onClick={() => changeImage(i, 0)}
+              >
+                <img src={src} alt={`thumb-${i}`} />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-      {images.length > 1 && (
-        <div className="prop-thumbs">
-          {images.map((src, i) => (
-            <button
-              key={i}
-              className={`prop-thumb-btn ${i === index ? "active" : ""}`}
-              onClick={() => setIndex(i)}
+
+      {/* Overlay dla trybu pełnoekranowego */}
+      {isFullscreen && (
+        <div 
+          className="gallery-overlay"
+          onClick={() => setIsFullscreen(false)}
+        >
+          <div 
+            className="gallery-fullscreen-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={`image-container ${direction === 1 ? 'slide-left' : direction === -1 ? 'slide-right' : ''}`}>
+              <img 
+                src={images[index]} 
+                alt={`photo-${index}`}
+              />
+            </div>
+            
+            <div className="gallery-fullscreen-counter">{index + 1} / {images.length}</div>
+
+            {images.length > 1 && (
+              <>
+                <button 
+                              style={{padding: 'inherit'}}
+                  className="gallery-arrow gallery-arrow-left" 
+                  onClick={prevImage}
+                  aria-label="Poprzednie zdjęcie"
+                >
+                  <FaChevronLeft size={24} />
+                </button>
+                <button 
+                              style={{padding: 'inherit'}}
+                  className="gallery-arrow gallery-arrow-right" 
+                  onClick={nextImage}
+                  aria-label="Następne zdjęcie"
+                >
+                  <FaChevronRight size={24} />
+                </button>
+              </>
+            )}
+
+            <button 
+                          style={{padding: 'inherit'}}
+              className="gallery-close-fullscreen"
+              onClick={() => setIsFullscreen(false)}
+              aria-label="Zamknij pełny ekran"
             >
-              <img src={src} alt={`thumb-${i}`} />
+              <FaTimes size={20} />
             </button>
-          ))}
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
