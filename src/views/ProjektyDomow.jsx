@@ -1,39 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import './ProjektyDomow.css';
 import Header from '../components/Header/Header';
 import { 
-  FaRulerCombined, 
-  FaBed, 
-  FaBath, 
-  FaBolt, 
-  FaFilePdf, 
-  FaHeart, 
-  FaExchangeAlt,
-  FaEye,
-  FaHome,
-  FaCheck,
-  FaArrowRight
+  FaRulerCombined, FaBed, FaBath, FaBolt, FaFilePdf, 
+  FaHeart, FaExchangeAlt, FaEye, FaHome, FaCheck, FaArrowRight 
 } from 'react-icons/fa';
-import { 
-  GiFamilyHouse, 
-  GiModernCity 
-} from 'react-icons/gi';
+import { GiFamilyHouse, GiModernCity } from 'react-icons/gi';
 
+// Upewnij się że ścieżka do thumbnail jest poprawna
+import thumbnail from '../assets/ex/2-5.jpg';
 
 export default function ProjektyDomow() {
   const [activeFilter, setActiveFilter] = useState("Wszystkie");
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   const houseProjects = [
     {
       id: 1,
       name: "Modułowy DOM 84",
       area: "84 m²",
-      thumbnail: "",
+      thumbnail: thumbnail,
       shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
       initialPrice: "299 000 zł",
       tags: ["Dla rodziny", "Energooszczędny"],
@@ -41,7 +25,7 @@ export default function ProjektyDomow() {
       bedrooms: 3,
       bathrooms: 1
     },
-
+    // ... reszta projektów
   ];
 
   const handleProjectClick = (projectId) => {
@@ -55,147 +39,85 @@ export default function ProjektyDomow() {
   return (
     <>
       <Header black red />
-      <div className='separate'></div>
-      <div className={`projekty-domow-container ${isVisible ? 'page-loaded' : ''}`}>
-        <header className="projekty-header">
-          <div className="header-content">
-            <h1 className="title-animate">Skonfiguruj dom szyty na miarę</h1>
-            <p className="subtitle-animate">Wybierz jeden z naszych gotowych projektów i dostosuj go do swoich potrzeb</p>
-            <div className="header-stats">
-              <div className="stat stat-animate" style={{animationDelay: '0.1s'}}>
-                <GiModernCity className="stat-icon" />
-                <span className="stat-number">24</span>
-                <span className="stat-label">Gotowe projekty</span>
-              </div>
-              <div className="stat stat-animate" style={{animationDelay: '0.2s'}}>
-                <GiFamilyHouse className="stat-icon" />
-                <span className="stat-number">100+</span>
-                <span className="stat-label">Zrealizowanych inwestycji</span>
-              </div>
-              <div className="stat stat-animate" style={{animationDelay: '0.3s'}}>
-                <FaHome className="stat-icon" />
-                <span className="stat-number">15</span>
-                <span className="stat-label">Lat doświadczenia</span>
-              </div>
-            </div>
+      <div style={separatorStyle}></div>
+      <div style={containerStyle}>
+        <header style={headerStyle}>
+          <div style={headerContentStyle}>
+            <h1 style={titleStyle}>Skonfiguruj dom szyty na miarę</h1>
+            <p style={subtitleStyle}>Wybierz jeden z naszych gotowych projektów i dostosuj go do swoich potrzeb</p>
           </div>
         </header>
 
-        <div className="projects-filter filter-animate">
-          <button 
-            className={`filter-btn ${activeFilter === "Wszystkie" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Wszystkie")}
-          >
-            Wszystkie
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Parterowe" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Parterowe")}
-          >
-            Parterowe
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Piętrowe" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Piętrowe")}
-          >
-            Piętrowe
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Energooszczędne" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Energooszczędne")}
-          >
-            Energooszczędne
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Nowoczesne" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Nowoczesne")}
-          >
-            Nowoczesne
-          </button>
+        <div style={filterContainerStyle}>
+          {["Wszystkie", "Parterowe", "Piętrowe", "Energooszczędne", "Nowoczesne"].map(filter => (
+            <button
+              key={filter}
+              style={{
+                ...filterButtonStyle,
+                ...(activeFilter === filter ? activeFilterButtonStyle : {})
+              }}
+              onClick={() => handleFilterClick(filter)}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
 
-        <div className="projects-grid">
-          {houseProjects.map((project, index) => (
-            <div 
-              key={project.id} 
-              className="project-card card-animate"
-              style={{animationDelay: `${index * 0.1}s`}}
-            >
-              <div className="project-image">
-                <img src={project.thumbnail} alt={project.name} />
-                <div className="project-badge floating-badge">Popularny</div>
-                <div className="project-tags">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="tag tag-animate">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="image-overlay">
-                  <button className="quick-view-btn slide-in-btn">
-                    <FaEye className="btn-icon" />
-                    Szybki podgląd
-                  </button>
-                </div>
+        <div style={gridStyle}>
+          {houseProjects.map((project) => (
+            <div key={project.id} style={cardStyle}>
+              <div style={imageContainerStyle}>
+                <img 
+                  src={project.thumbnail} 
+                  alt={project.name} 
+                  style={imageStyle}
+                />
+                <div style={badgeStyle}>Popularny</div>
               </div>
               
-              <div className="project-info">
-                <div className="project-header">
-                  <h3 className="title-hover">{project.name}</h3>
-                  <div className="price-tag price-pulse">{project.initialPrice}</div>
+              <div style={infoStyle}>
+                <div style={headerRowStyle}>
+                  <h3 style={projectTitleStyle}>{project.name}</h3>
+                  <div style={priceStyle}>{project.initialPrice}</div>
                 </div>
                 
-                <div className="project-specs">
-                  <div className="spec-grid">
-                    <div className="spec-item bounce-on-hover">
-                      <FaRulerCombined className="spec-icon" />
-                      <span className="spec-value">{project.area}</span>
+                <div style={specsStyle}>
+                  <div style={specGridStyle}>
+                    <div style={specItemStyle}>
+                      <FaRulerCombined style={specIconStyle} />
+                      <span>{project.area}</span>
                     </div>
-                    <div className="spec-item bounce-on-hover">
-                      <FaBed className="spec-icon" />
-                      <span className="spec-value">{project.bedrooms} sypialnie</span>
+                    <div style={specItemStyle}>
+                      <FaBed style={specIconStyle} />
+                      <span>{project.bedrooms} sypialnie</span>
                     </div>
-                    <div className="spec-item bounce-on-hover">
-                      <FaBath className="spec-icon" />
-                      <span className="spec-value">{project.bathrooms} łazienka{project.bathrooms > 1 ? 'i' : ''}</span>
+                    <div style={specItemStyle}>
+                      <FaBath style={specIconStyle} />
+                      <span>{project.bathrooms} łazienka{project.bathrooms > 1 ? 'i' : ''}</span>
                     </div>
                   </div>
                   
-                  <p className="project-desc fade-in-text">{project.shortDesc}</p>
+                  <p style={descStyle}>{project.shortDesc}</p>
                   
-                  <div className="project-features">
+                  <div style={featuresStyle}>
                     {project.features.map((feature, index) => (
-                      <span key={index} className="feature-tag feature-animate">
-                        <FaCheck className="feature-icon" />
+                      <span key={index} style={featureStyle}>
+                        <FaCheck style={featureIconStyle} />
                         {feature}
                       </span>
                     ))}
                   </div>
                 </div>
                 
-                <div className="project-actions">
+                <div style={actionsStyle}>
                   <button 
-                    className="btn-primaryd glow-on-hover"
+                    style={primaryButtonStyle}
                     onClick={() => handleProjectClick(project.id)}
                   >
-                    <FaBolt className="btn-icon" />
+                    <FaBolt style={buttonIconStyle} />
                     Spersonalizuj ten projekt
-                    <FaArrowRight className="btn-arrow" />
+                    <FaArrowRight style={buttonArrowStyle} />
                   </button>
-                  <div className="action-buttons">
-                    <button className="btn-secondary bounce-on-hover">
-                      <FaFilePdf className="btn-icon" />
-                      PDF
-                    </button>
-                    <button className="btn-secondary bounce-on-hover">
-                      <FaHeart className="btn-icon" />
-                      Zapisz
-                    </button>
-                    <button className="btn-secondary bounce-on-hover">
-                      <FaExchangeAlt className="btn-icon" />
-                      Porównaj
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -205,3 +127,210 @@ export default function ProjektyDomow() {
     </>
   );
 }
+
+// Podstawowe style inline
+const containerStyle = {
+  minHeight: '100vh',
+  backgroundColor: '#f8f9fa',
+  fontFamily: 'Arial, sans-serif',
+  padding: '20px'
+};
+
+const separatorStyle = {
+  height: '80px'
+};
+
+const headerStyle = {
+  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  color: 'white',
+  padding: '60px 20px',
+  textAlign: 'center',
+  marginBottom: '40px'
+};
+
+const headerContentStyle = {
+  maxWidth: '1200px',
+  margin: '0 auto'
+};
+
+const titleStyle = {
+  fontSize: '2.5rem',
+  marginBottom: '1rem',
+  fontWeight: 'bold'
+};
+
+const subtitleStyle = {
+  fontSize: '1.2rem',
+  opacity: 0.9,
+  marginBottom: '2rem'
+};
+
+const filterContainerStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  gap: '10px',
+  marginBottom: '40px',
+  flexWrap: 'wrap'
+};
+
+const filterButtonStyle = {
+  padding: '10px 20px',
+  border: '2px solid #667eea',
+  backgroundColor: 'transparent',
+  color: '#667eea',
+  borderRadius: '25px',
+  cursor: 'pointer',
+  fontSize: '14px',
+  transition: 'all 0.3s ease'
+};
+
+const activeFilterButtonStyle = {
+  backgroundColor: '#667eea',
+  color: 'white'
+};
+
+const gridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+  gap: '30px',
+  maxWidth: '1200px',
+  margin: '0 auto'
+};
+
+const cardStyle = {
+  backgroundColor: 'white',
+  borderRadius: '15px',
+  overflow: 'hidden',
+  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+  transition: 'transform 0.3s ease'
+};
+
+const imageContainerStyle = {
+  position: 'relative',
+  height: '250px',
+  overflow: 'hidden'
+};
+
+const imageStyle = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover'
+};
+
+const badgeStyle = {
+  position: 'absolute',
+  top: '15px',
+  left: '15px',
+  backgroundColor: '#ff4757',
+  color: 'white',
+  padding: '5px 10px',
+  borderRadius: '15px',
+  fontSize: '12px',
+  fontWeight: 'bold'
+};
+
+const infoStyle = {
+  padding: '25px'
+};
+
+const headerRowStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  marginBottom: '15px'
+};
+
+const projectTitleStyle = {
+  margin: '0',
+  fontSize: '1.4rem',
+  color: '#333'
+};
+
+const priceStyle = {
+  backgroundColor: '#667eea',
+  color: 'white',
+  padding: '5px 10px',
+  borderRadius: '15px',
+  fontSize: '14px',
+  fontWeight: 'bold'
+};
+
+const specsStyle = {
+  marginBottom: '20px'
+};
+
+const specGridStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  marginBottom: '15px'
+};
+
+const specItemStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '5px',
+  fontSize: '14px',
+  color: '#666'
+};
+
+const specIconStyle = {
+  color: '#667eea'
+};
+
+const descStyle = {
+  color: '#666',
+  marginBottom: '15px',
+  lineHeight: '1.5'
+};
+
+const featuresStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '8px'
+};
+
+const featureStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '5px',
+  backgroundColor: '#f1f3f4',
+  padding: '5px 10px',
+  borderRadius: '15px',
+  fontSize: '12px'
+};
+
+const featureIconStyle = {
+  color: '#4CAF50',
+  fontSize: '10px'
+};
+
+const actionsStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '10px'
+};
+
+const primaryButtonStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '8px',
+  backgroundColor: '#667eea',
+  color: 'white',
+  border: 'none',
+  padding: '12px 20px',
+  borderRadius: '8px',
+  fontSize: '14px',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s ease'
+};
+
+const buttonIconStyle = {
+  fontSize: '16px'
+};
+
+const buttonArrowStyle = {
+  fontSize: '14px',
+  marginLeft: 'auto'
+};
