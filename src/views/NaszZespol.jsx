@@ -98,7 +98,16 @@ export default function NaszZespol() {
                     <Breadcrumbs items={['Strona główna', "Nasz Zespół"]} />
                     <div className='page-header'>
                       <h1>Poznaj nasz zespół</h1>
-                      <p className='page-subtitle'>Nasi doświadczeni agenci są gotowi pomóc Ci znaleźć wymarzoną nieruchomość</p>
+                      <p className='page-subtitle'><b>Twój zespół ekspertów od bezpiecznych nieruchomości</b></p>
+                      <p className='page-subtitle'>Za każdą udaną transakcją stoją ludzie – doświadczeni, zaangażowani i pełni pasji do tego, co robią. Nasi agenci to nie tylko doradcy ds. nieruchomości, ale również osoby przeszkolone w zakresie prawa, negocjacji i obsługi klienta na najwyższym poziomie.</p>
+                    <p className='page-subtitle'>Każdy z nich działa w oparciu o indywidualne podejście do klienta, analizując potrzeby, cele i możliwości. Pomagają nie tylko znaleźć idealne mieszkanie, dom czy działkę – ale przede wszystkim zadbać o to, by cały proces przebiegał spokojnie, bezpiecznie i bez stresu.</p>
+                     <p className='page-subtitle'>Znają rynek lokalny od podszewki, rozumieją zmieniające się przepisy i potrafią odpowiednio doradzić – niezależnie od sytuacji. Współpraca z nimi to gwarancja, że masz po swojej stronie nie tylko pośrednika, ale prawdziwego partnera w całym procesie.</p>
+                     <hr></hr>
+                      <p className='page-subtitle'><b>Zobacz, kto czeka, by pomóc Ci zrobić kolejny krok w stronę nowej nieruchomości. Poznaj nasz zespół.</b></p>
+                    
+                    
+                    
+                    
                     </div>
                     <div className='sm-separate'></div>
                     
