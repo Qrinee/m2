@@ -727,7 +727,7 @@ function ContactCard({ property }) {
   // Jeśli nie ma właściciela, użyj domyślnych danych
   const agentName = owner?.name || "Administrator";
   const agentSurname = owner?.surname || "Systemu";
-  const agentRole = owner?.position || owner?.role === 'admin' ? 'Administrator' : 'Agent nieruchomości';
+  const agentRole = owner?.position || 'Użytkownik';
   const agentAvatar = owner?.profilePicture 
     ? `${import.meta.env.VITE_BACKEND}${owner.profilePicture}`
     : "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop";

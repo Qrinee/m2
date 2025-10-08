@@ -8,7 +8,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   max-width: 900px;
   margin: 0px auto;
-  position:relative;
+  position: relative;
   top: -50px;
 }
 
@@ -17,14 +17,14 @@
   padding: 16px 22px;
   border: 1px solid #eee;
   border-radius: 8px;
-  width: 100%!important;
+  width: 100% !important;
   font-size: 16px;
   outline: none;
   transition: border 0.2s ease;
 }
 
 .searchbar__input:focus {
-  border-color: #c6a55b; /* złoty odcień */
+  border-color: #c6a55b;
 }
 
 .searchbar__select {
@@ -35,6 +35,7 @@
   outline: none;
   background: #fff;
   cursor: pointer;
+  min-width: 140px;
 }
 
 .searchbar__button {
@@ -49,6 +50,7 @@
   padding: 16px 50px;
   cursor: pointer;
   transition: background 0.2s ease;
+  white-space: nowrap;
 }
 
 .searchbar__button:hover {
@@ -57,4 +59,80 @@
 
 .searchbar__icon {
   font-size: 14px;
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .searchbar {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px;
+    top: -30px;
+    margin: 0 15px;
+  }
+
+  .searchbar__input {
+    flex: 1 1 100%;
+    order: 1;
+    padding: 14px 18px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .searchbar__select {
+    flex: 1;
+    order: 2;
+    min-width: auto;
+    padding: 14px 18px;
+  }
+
+  .searchbar__button {
+    flex: 1;
+    order: 3;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .searchbar {
+    top: -20px;
+    margin: 0 10px;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .searchbar__input {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .searchbar__select {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .searchbar__button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .searchbar__icon {
+    font-size: 12px;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 360px) {
+  .searchbar {
+    flex-direction: column;
+  }
+
+  .searchbar__input,
+  .searchbar__select,
+  .searchbar__button {
+    flex: none;
+    width: 100%;
+    order: 0; /* Reset order */
+  }
 }

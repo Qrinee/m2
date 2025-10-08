@@ -39,6 +39,7 @@
   margin-top: 12px;
   color: #555;
   line-height: 1.5;
+  white-space: pre-line;
   opacity: 0;
   transition: opacity 0.3s ease;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 import { FaSearch } from "react-icons/fa";
@@ -8,9 +8,7 @@ const SearchBar = () => {
   const [type, setType] = useState("");
   const navigate = useNavigate();
 
-
   const handleSearch = () => {
-    // Przygotuj parametry zapytania
     const params = new URLSearchParams();
     
     if (searchTerm) {
@@ -21,7 +19,6 @@ const SearchBar = () => {
       params.append("typ", type);
     }
 
-    // Przekieruj na stronę ogłoszeń z parametrami
     navigate(`/ogloszenia?${params.toString()}`);
   };
 
@@ -35,7 +32,7 @@ const SearchBar = () => {
     <div className="searchbar">
       <input
         type="text"
-        placeholder="Wprowadź adres, województwo, miasto, województwo lub kod pocztowy"
+        placeholder="Wprowadź adres, miasto, województwo lub kod pocztowy"
         className="searchbar__input"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -51,8 +48,10 @@ const SearchBar = () => {
         <option value="sprzedaz">Sprzedaż</option>
         <option value="wynajem">Wynajem</option>
       </select>
+      
       <button className="searchbar__button" onClick={handleSearch}>
-        <FaSearch className="searchbar__icon" /> Szukaj
+        <FaSearch className="searchbar__icon" /> 
+        <span className="searchbar__button-text">Szukaj</span>
       </button>
     </div>
   );

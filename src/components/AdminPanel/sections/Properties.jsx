@@ -189,7 +189,7 @@ const Properties = () => {
                 <div className="property-image">
                   {coverImage ? (
                     <img 
-                      src={`${import.meta.env.VITE_BACKEND}/${coverImage.path}`} 
+                      src={coverImage.path} 
                       alt={property.nazwa}
                       onError={(e) => {
                         e.target.style.display = 'none';

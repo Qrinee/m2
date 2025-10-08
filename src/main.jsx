@@ -26,40 +26,51 @@ import MojProfil from './views/MojProfil.jsx'
 import NaszZespol from './views/NaszZespol.jsx'
 import Wpis from './views/Wpis.jsx'
 import PolitykaPrywatnosci from './views/PolitykaPrywatnosci.jsx'
+import ProjektyDomow from './views/ProjektyDomow.jsx'
+import HouseConfigurator from './views/HouseConfigurator.jsx'
+import Prace from './views/Prace.jsx'
+// Zmień tę wartość na false, aby wyłączyć tryb prac
+const MAINTENANCE_MODE = true;
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/ogloszenia" element={<Ogloszenia />} />
-         <Route path="/czym-sa-raty-notarialne" element={<CzymSaRatyNotarialne />} />
-        <Route path="/raty-notarialne" element={<Ogloszenia />} />
-        <Route path='/oblicz-rate' element={<ObliczRate />} />
-        <Route path='/wpis/:id' element={<Wpis />} />
-        <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />
-        <Route path='/kontakt' element={<Kontakt />} />
-        <Route path='/nasz-zespol' element={<NaszZespol />} />
-        <Route path='/ulubione' element={<Ulubione />} />
-        <Route path='/ogloszenie/:id' element={<WidokOgloszenia />} />
-        <Route path='/aktualnosci' element={<Aktualnosci />} />
-           <Route path="/zglos-nieruchomosc" element={<ZglosNieruchomosc />} />
-        <Route path="/dlaczego-warto" element={<DlaczegoWarto />} />
-        <Route path="/zostan-partnerem-pracownikiem" element={<ZostanPartneremLubPracownikiem />} />
-         <Route path="/o-nas" element={<ONas />} />
-            <Route path="/estate_agent/:id" element={<Profil />} />
-           <Route path='/my-profile' element={<MojProfil />} />
-         <Route path="/admin" element={<AdminPanel />}>
+      {MAINTENANCE_MODE ? (
+       <>
+        <Prace/>
+       </>
+      ) : (
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/ogloszenia" element={<Ogloszenia />} />
+          <Route path="/czym-sa-raty-notarialne" element={<CzymSaRatyNotarialne />} />
+          <Route path="/raty-notarialne" element={<Ogloszenia />} />
+          <Route path='/oblicz-rate' element={<ObliczRate />} />
+          <Route path='/wpis/:id' element={<Wpis />} />
+          <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />
+          <Route path='/kontakt' element={<Kontakt />} />
+          <Route path='/nasz-zespol' element={<NaszZespol />} />
+          <Route path='/ulubione' element={<Ulubione />} />
+          <Route path='/ogloszenie/:id' element={<WidokOgloszenia />} />
+          <Route path='/aktualnosci' element={<Aktualnosci />} />
+          <Route path="/zglos-nieruchomosc" element={<ZglosNieruchomosc />} />
+          <Route path="/dlaczego-warto" element={<DlaczegoWarto />} />
+          <Route path="/zostan-partnerem-pracownikiem" element={<ZostanPartneremLubPracownikiem />} />
+          <Route path="/o-nas" element={<ONas />} />
+          <Route path='/konfigurator' element={<HouseConfigurator />} />
+          <Route path='/projekty-domow' element={<ProjektyDomow />} />
+          <Route path="/estate_agent/:id" element={<Profil />} />
+          <Route path='/my-profile' element={<MojProfil />} />
+          <Route path="/admin" element={<AdminPanel />}>
             <Route index element={<Dashboard />} />
             <Route path="users" element={<Users />} />
             <Route path="forms" element={<Forms />} />
             <Route path="news" element={<News />} />
             <Route path="properties" element={<Properties />} />
             <Route path="faq" element={<FAQ />} />
-          
           </Route>
-      </Routes>
+        </Routes>
+      )}
     </BrowserRouter>
-
   </StrictMode>,
 )
