@@ -20,6 +20,7 @@ const Header = ({ black, red }) => {
 
   // Wykrywanie urządzenia mobilnego
   useEffect(() => {
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -186,11 +187,11 @@ const Header = ({ black, red }) => {
               <img src={logo} alt="M2Notarialnie" />
             </div>
           </Link>
-          <div className="header__actions">
+          {/* <div className="header__actions">
             <span className="header__phone">
               <FaPhoneAlt /> +48 728 866 825
             </span>
-          </div>
+          </div> */}
         </div>
       </header>
     );
@@ -329,9 +330,9 @@ const Header = ({ black, red }) => {
         )}
         
         <div className="header__actions desktop-actions">
-          <span className="header__phone">
+          {/* <span className="header__phone">
             <FaPhoneAlt /> +48 728 866 825
-          </span>
+          </span> */}
           
           {/* Menu użytkownika */}
 {/* Menu użytkownika - POPRAWIONA WERSJA */}

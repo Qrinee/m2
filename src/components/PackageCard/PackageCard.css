@@ -1,0 +1,143 @@
+.package-card {
+  position: relative;
+  border-radius: 20px;
+  color: white;
+  overflow: hidden;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #5f1616;
+  isolation: isolate; /* ważne dla blendowania */
+  margin-bottom: 24px;
+}
+
+/* Obrazek w tle */
+.package-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.package-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+}
+
+/* Gradient, który daje płynne przejście */
+.package-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgb(95, 22, 22) 0%,
+    rgba(95, 22, 22, 0.95) 30%,
+    rgba(95, 22, 22, 0.7) 60%,
+    rgba(95, 22, 22, 0.4) 100%
+  );
+  z-index: -1;
+}
+
+/* Treść */
+.package-content {
+  position: relative;
+  z-index: 1;
+}
+
+.package-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.vat {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.package-options {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.package-option {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.package-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.package-option.selected {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.option-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+.package-option.selected .dot {
+  background: #ffd700;
+  box-shadow: 0 0 8px #ffd700;
+}
+
+.info {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 8px 0;
+}
+
+.prices {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  
+  font-weight: 1000;
+  margin-top: 4px;
+}
+
+.package-option.selected .price {
+  color: #ffffff;
+}
+
+/* Efekt po najechaniu – delikatne rozjaśnienie tła */
+.package-card:hover .package-image img {
+  opacity: 0.65;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .package-options {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .package-option {
+    min-width: auto;
+  }
+}
