@@ -1,4 +1,4 @@
-/* ProjektyDomow.css - Minimalistic Modern Style with Animations */
+/* ProjektyDomow.css - Fixed Version */
 
 /* ===== VARIABLES ===== */
 :root {
@@ -147,8 +147,6 @@
 /* ===== BASE STYLES WITH ANIMATIONS ===== */
 .projekty-domow-container {
   max-width: 1200px;
-  -webkit-box-shadow: 0px 0px 24px -15px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 0px 24px -15px rgba(66, 68, 90, 1);
   box-shadow: 0px 0px 24px -15px rgba(66, 68, 90, 1);
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -169,7 +167,8 @@
   text-align: center;
   margin-bottom: 3rem;
   padding: 3rem 2rem;
-  background-image: url('/2-5.png');
+  /* Remove or fix the background-image URL */
+  background: linear-gradient(135deg, var(--neutral-light) 0%, var(--neutral-white) 100%);
   border: 2px solid var(--neutral-dark);
   border-radius: var(--border-radius-lg);
   position: relative;
@@ -521,7 +520,8 @@
   padding: 1.5rem;
 }
 
-.project-headerd {
+/* Fixed class name - was .project-headerd, should be .project-header */
+.project-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -844,7 +844,7 @@
     margin-bottom: 2rem;
   }
   
-  .header-content h1 {
+  .title-animate {
     font-size: 2rem;
   }
   
@@ -858,7 +858,7 @@
     gap: 1.5rem;
   }
   
-  .project-headerd {
+  .project-header {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
@@ -870,7 +870,7 @@
 }
 
 @media (max-width: 480px) {
-  .header-content h1 {
+  .title-animate {
     font-size: 1.75rem;
   }
   

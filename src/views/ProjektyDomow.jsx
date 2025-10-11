@@ -4,7 +4,7 @@ import Header from '../components/Header/Header';
 import et from '../assets/ex/2-5.jpg';
 import et2 from '../assets/ex/3-5.jpg';
 import et3 from '../assets/ex/4-5.jpg';
-import '../views/ProjektyDomow.css';
+import './ProjektyDomow.css';
 import { 
   FaRulerCombined, 
   FaBed, 
