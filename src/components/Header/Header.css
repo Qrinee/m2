@@ -6,7 +6,7 @@
   top: 0;
   z-index: 1000;
   transition: all 0.3s ease;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.712);
   backdrop-filter: blur(0px);
 }
 
@@ -268,7 +268,10 @@
 }
 
 .header__btn {
-  background: #d4af37;
+background: #ED213A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
@@ -281,9 +284,9 @@
 }
 
 .header__btn:hover {
-  background: #b8912e;
+  background: #b82e2e;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(212, 55, 55, 0.3);
 }
 
 .header__avatar {

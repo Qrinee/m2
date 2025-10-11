@@ -16,7 +16,7 @@ const Configurator = ({
 }) => {
   return (
     <section className="configurator-section">
-      <div className="container">
+      <div className="containerd">
         <div className="configurator-header">
           <h2 className="section-title">KONFIGURATOR DOMU</h2>
           <p className="section-subtitle">Wybierz pakiety dodatkowe i dostosuj dom do swoich potrzeb</p>

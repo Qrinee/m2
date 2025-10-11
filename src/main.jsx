@@ -29,6 +29,7 @@ import PolitykaPrywatnosci from './views/PolitykaPrywatnosci.jsx'
 import ProjektyDomow from './views/ProjektyDomow.jsx'
 import HouseConfigurator from './views/HouseConfigurator.jsx'
 import Prace from './views/Prace.jsx'
+import Nieruchomosci from './views/Nieruchomosci.jsx'
 // Zmień tę wartość na false, aby wyłączyć tryb prac
 const MAINTENANCE_MODE = true;
 
@@ -47,6 +48,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/raty-notarialne" element={<Ogloszenia />} />
           <Route path='/oblicz-rate' element={<ObliczRate />} />
           <Route path='/wpis/:id' element={<Wpis />} />
+          <Route path='/nieruchomosci' element={<Nieruchomosci/>}></Route>
           <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />
           <Route path='/kontakt' element={<Kontakt />} />
           <Route path='/nasz-zespol' element={<NaszZespol />} />

@@ -521,7 +521,7 @@
   padding: 1.5rem;
 }
 
-.project-header {
+.project-headerd {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -858,7 +858,7 @@
     gap: 1.5rem;
   }
   
-  .project-header {
+  .project-headerd {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;

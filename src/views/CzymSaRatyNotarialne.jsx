@@ -6,11 +6,12 @@ import Marquee from '../components/Marquee/Marquee'
 import TwoPartText from '../layouts/TwoPartText'
 import FAQItem from '../components/FAQItem/FAQItem'
 import Footer from '../components/Footer/Footer'
+import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci'
 export default function CzymSaRatyNotarialne() {
   return (
     <div>
       <Header/>
-        <Hero
+        <HeroNieruchomosci
         img={Background}
         content={
             <>

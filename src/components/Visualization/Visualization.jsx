@@ -27,7 +27,7 @@ const Visualization = ({ houseImages, activeImage, setActiveImage }) => {
 
   return (
     <section className="visualization">
-      <div className="container">
+      <div className="containerd">
         <div className="visualization-grid">
           <div className="image-section">
             <div className="main-image-container">

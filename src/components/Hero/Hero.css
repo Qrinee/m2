@@ -1,46 +1,302 @@
 .hero {
   width: 100%;
-  height: 70vh;
- /* <- podmień na swoją ścieżkę */
-  background-size: cover;   /* dopasowanie proporcjonalne */
-  background-position: center; /* wyśrodkowanie */
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.hero__half {
+  flex: 1;
+  position: relative;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: white;
+  overflow: hidden;
+  transform: scale(1.02); /* Zapobiega białym liniom przy krawędziach */
+}
+
+.hero__half::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+  transition: all 0.6s ease;
+}
+
+.hero__half.left::before {
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+}
+
+.hero__half.right::before {
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.hero__half:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
 }
 
 .hero__content {
-  background: rgba(0, 0, 0, 0.651); /* półprzezroczyste tło dla czytelności */
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.4s;
+}
+
+.hero__half.visible .hero__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.l{
+  text-align: left;
+}
+
+.r{
+  text-align: right;
+}
+
+.l h2, .r h2{
+  font-size: 40px!important;
+  font-weight: 1000!important;
+}
+
+.content-wrapper h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.content-wrapper h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.content-wrapper p {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  line-height: 1.6;
+}
+
+/* Przyciski z animacjami */
+.hero__buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero__button {
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero__button.primary {
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
+  color: #000;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+.hero__button.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.hero__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
 }
 
-.hero__content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+.hero__button:hover::before {
+  left: 100%;
 }
 
-.hero__content p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+.hero__button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
 }
 
-.hero__content button {
+.hero__button.secondary:hover {
+  background: white;
+  color: #000;
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4);
+}
+
+.hero__button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Element łączący z animacją */
+.connection-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 4;
+  transition: transform 0.8s ease 1s;
+}
+
+.hero__container .hero__half.visible ~ .connection-element {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.pulse-dot {
+  width: 12px;
+  height: 12px;
   background: #d4af37;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
 }
 
-.hero__content button:hover {
-  background: #b8912e;
+/* Animacje */
+@keyframes titleGlow {
+  0% {
+    text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
+  }
+  100% {
+    text-shadow: 2px 2px 20px rgba(212, 175, 55, 0.8), 
+                 0 0 30px rgba(212, 175, 55, 0.4);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+/* Efekt parallax dla tła */
+.hero__half {
+  background-attachment: fixed;
+}
+
+/* Responsywność */
+@media (max-width: 968px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .hero__container {
+    flex-direction: column;
+  }
+  
+  .hero__half {
+    min-height: 50vh;
+    width: 100%;
+  }
+  
+  .hero__half.left::before {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  
+  .hero__half.right::before {
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  }
+  
+  .content-wrapper h1 {
+    font-size: 2.5rem;
+  }
+  
+  .content-wrapper h2 {
+    font-size: 1.5rem;
+  }
+  
+  .content-wrapper p {
+    font-size: 1.1rem;
+  }
+  
+  .hero__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero__button {
+    width: 80%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper h1 {
+    font-size: 2rem;
+  }
+  
+  .content-wrapper h2 {
+    font-size: 1.2rem;
+  }
+  
+  .hero__content {
+    max-width: 90%;
+  }
+  
+  .hero__half.left::before {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  
+  .hero__half.right::before {
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
 }

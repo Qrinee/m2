@@ -6,7 +6,7 @@ import { FaPhoneAlt, FaUserCircle, FaHeart, FaBars, FaTimes, FaSignOutAlt, FaChe
 import AuthModal from "../AuthModal/AuthModal";
 import { FaHouse, FaShield } from "react-icons/fa6";
 
-const Header = ({ black, red }) => {
+const Header = ({ black, red = true }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -155,6 +155,7 @@ const Header = ({ black, red }) => {
       key: "kupujacy",
       children: [
         { label: "Czym są raty notarialne?", href: "/czym-sa-raty-notarialne" },
+        { label: "Dodaj ogłoszenie", href: "/zglos-nieruchomosc" },
         { label: "Oblicz ratę", href: "/oblicz-rate" },
       ],
     },
@@ -313,9 +314,9 @@ const Header = ({ black, red }) => {
               )}
             </div>
             
-            <Link to={"/zglos-nieruchomosc"} onClick={handleLinkClick}>
+            <Link to={"/konfigurator"} onClick={handleLinkClick}>
               <button className="header__btn mobile-add-btn" style={{backgroundColor: red && '#a81616', color: red && 'white'}}>
-                Dodaj ogłoszenie
+                Skonfiguruj swój dom
               </button>
             </Link>
           </div>
@@ -410,9 +411,9 @@ const Header = ({ black, red }) => {
   )}
 </div>
           
-          <Link to={"/zglos-nieruchomosc"}>
-            <button className="header__btn" style={{backgroundColor: red && '#a81616', color: red && 'white'}}>
-              Dodaj ogłoszenie
+          <Link to={"/konfigurator"}>
+            <button className="header__btn" style={{color: 'white'}}>
+              <FaHouse style={{marginRight: 8, paddingTop: 3}}/> Skonfiguruj swój dom
             </button>
           </Link>
         </div>

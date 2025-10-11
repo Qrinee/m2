@@ -7,7 +7,7 @@ const SplitLayout = ({ leftContent, rightContent, leftBg = "#222", rightBg = "#4
       <div
         className="split left"
         style={{
-          backgroundImage: `url(${leftBg})`,
+          background: leftBg,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

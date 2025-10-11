@@ -1,0 +1,302 @@
+/* ModularCollection.css */
+.modular-collection {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+.m-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-subtitle {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #666;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Carousel Styles */
+.gallery-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fafafa;
+  height: 800px;
+}
+
+.carousel-container {
+  overflow: hidden;
+  border-radius: 12px;
+    height: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.slide-image {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Upewnij się, że to jest cover */
+  object-position: center; /* Wyśrodkuj obraz */
+  transition: transform 0.8s ease;
+  display: block; /* Usuwa domyślny margines pod obrazem */
+}
+
+.carousel-slide.active .slide-image img {
+  transform: scale(1.02);
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem;
+  opacity: 1;
+}
+
+.slide-overlay h3 {
+  color: white;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.slide-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 16px 40px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.slide-btn:hover {
+  background: white;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.carousel-btn:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-btn-prev {
+  left: 40px;
+}
+
+.carousel-btn-next {
+  right: 40px;
+}
+
+/* Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0; /* Dodaj to */
+  margin: 0; /* Dodaj to */
+  flex-shrink: 0; /* Zapobiega ściskaniu */
+}
+
+
+.indicator.active {
+  background: white;
+  transform: scale(1.3);
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+/* Progress Bar */
+.carousel-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.progress-bar {
+  height: 100%;
+  background: white;
+  width: 0%;
+  transition: width 4s linear;
+}
+
+.carousel-slide.active .progress-bar {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  .carousel-track {
+    height: 500px;
+  }
+  
+  .slide-overlay {
+    padding: 3rem;
+  }
+  
+  .slide-overlay h3 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modular-collection {
+    padding: 80px 0;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  .carousel-track {
+    height: 400px;
+  }
+  
+  .slide-overlay {
+    padding: 2rem;
+  }
+  
+  .slide-overlay h3 {
+    font-size: 1.8rem;
+  }
+  
+  .slide-btn {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+  
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+  
+  .carousel-btn-prev {
+    left: 20px;
+  }
+  
+  .carousel-btn-next {
+    right: 20px;
+  }
+  
+  .carousel-indicators {
+    bottom: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .carousel-track {
+    height: 350px;
+  }
+  
+  .slide-overlay h3 {
+    font-size: 1.5rem;
+  }
+  
+  .slide-overlay {
+    padding: 1.5rem;
+  }
+  
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+}

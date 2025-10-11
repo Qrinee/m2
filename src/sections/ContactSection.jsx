@@ -146,7 +146,7 @@ export default function ContactSection() {
             </form>
           </div>
         }
-        leftBg={city}
+        leftBg={`url('${city}')`}
         rightBg="#F8F8F8"
       />
     </div>

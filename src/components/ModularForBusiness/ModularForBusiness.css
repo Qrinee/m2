@@ -1,0 +1,257 @@
+.modular-business {
+  padding: 80px 0;
+  background: white;
+}
+
+.m-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.business-card {
+  position: relative;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.business-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Circular Video Button */
+.circular-video-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.circular-video-btn:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.circular-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: rotateText 10s linear infinite;
+}
+
+.circular-text svg {
+  width: 100%;
+  height: 100%;
+}
+
+.play-icon-center {
+  position: relative;
+  z-index: 3;
+  width: 35px;
+  height: 35px;
+  background: #d43737;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.circular-video-btn:hover .play-icon-center {
+  background: #b82e2e;
+  transform: scale(1.1);
+}
+
+.play-icon {
+  color: white;
+  font-size: 0.9rem;
+  margin-left: 2px;
+}
+
+/* Animations */
+@keyframes rotateText {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modal */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  animation: slideUp 0.3s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #d4af37;
+  transform: scale(1.1);
+}
+
+.video-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsywność */
+@media (max-width: 968px) {
+
+  .business-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .business-card {
+    height: 300px;
+  }
+  
+  .circular-video-btn {
+    width: 70px;
+    height: 70px;
+    top: 15px;
+    right: 15px;
+  }
+  
+  .play-icon-center {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .business-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .business-card {
+    height: 250px;
+  }
+  
+  .circular-video-btn {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .play-icon-center {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .play-icon {
+    font-size: 0.7rem;
+  }
+  
+  .video-modal-content {
+    width: 95%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  
+  .business-card {
+    height: 200px;
+  }
+  
+  .circular-video-btn {
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .play-icon-center {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .play-icon {
+    font-size: 0.6rem;
+  }
+}

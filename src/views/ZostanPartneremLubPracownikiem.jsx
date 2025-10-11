@@ -5,6 +5,7 @@ import Marquee from '../components/Marquee/Marquee'
 import TwoPartText from '../layouts/TwoPartText'
 import TeamSection from '../sections/TeamSection'
 import NumberSection from '../sections/NumberSection'
+import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci'
 
 export default function ZostanPartneremLubPracownikiem() {
   const backend = import.meta.env.VITE_BACKEND + "/api/inquiry"
@@ -162,7 +163,7 @@ export default function ZostanPartneremLubPracownikiem() {
   return (
     <div>
       <Header />
-      <Hero 
+      <HeroNieruchomosci 
         img={'partner-scaled.jpg'}
         content={
           <>

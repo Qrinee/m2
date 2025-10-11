@@ -6,12 +6,13 @@ import TwoPartText from '../layouts/TwoPartText'
 import TeamSection from '../sections/TeamSection'
 import NumberSection from '../sections/NumberSection'
 import PropertyForm from '../components/PropertyForm/PropertyFrom'
+import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci'
 
 export default function DlaczegoWarto() {
   return (
     <div>
         <Header/>
-        <Hero img={
+        <HeroNieruchomosci img={
             'bread-scaled3-scaled.jpg'
         }
         content={

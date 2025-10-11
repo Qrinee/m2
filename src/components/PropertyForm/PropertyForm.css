@@ -1,7 +1,7 @@
 /* PropertyForm.css */
-.form-container {
+.property-form-container {
   display: flex;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 40px auto;
   background: #fff;
   border-radius: 12px;
@@ -9,18 +9,18 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.form-image {
+.property-form-image {
   flex: 1;
-  min-width: 45%;
+  min-width: 25%;
 }
 
-.form-image img {
+.property-form-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.form-content {
+.property-form-content {
   flex: 1;
   padding: 40px;
   display: flex;
@@ -28,37 +28,37 @@
   justify-content: center;
 }
 
-.form-content h2 {
+.property-form-content h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 24px;
 }
 
-.form {
+.property-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.form-row {
+.property-form-row {
   display: flex;
   gap: 20px;
 }
 
-.form-group {
+.property-form-group {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.property-form-group label {
   font-size: 14px;
   margin-bottom: 6px;
   color: #333;
 }
 
-.form-group input,
-.form-group textarea {
+.property-form-group input,
+.property-form-group textarea {
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -66,8 +66,8 @@
   background: #f9f9f9;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.property-form-group input:focus,
+.property-form-group textarea:focus {
   outline: none;
   border-color: #c7a74e;
   background: #fff;
@@ -95,36 +95,36 @@
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .form-container {
+  .property-form-container {
     flex-direction: column;
     margin: 20px;
     border-radius: 8px;
   }
   
-  .form-image {
+  .property-form-image {
     display: none;/* Limit image height on mobile */
   }
   
-  .form-content {
+  .property-form-content {
     padding: 25px;
   }
   
-  .form-content h2 {
+  .property-form-content h2 {
     font-size: 20px;
     margin-bottom: 20px;
     text-align: center;
   }
   
-  .form-row {
+  .property-form-row {
     flex-direction: column;
     gap: 15px;
   }
   
-  .form {
+  .property-form {
     gap: 15px;
   }
   
-  .button {
+  .property-button {
     font-size: 15px;
     padding: 12px;
   }

@@ -11,6 +11,11 @@ body{
   font-weight: 600;
 } 
 
+.btn-primary{
+  letter-spacing: 1px;
+  font-weight: 600!important;
+}
+
 .polityka p{
   color: #424242;
 }

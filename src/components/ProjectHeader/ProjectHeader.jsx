@@ -4,7 +4,7 @@ import { FaRulerCombined, FaBed, FaBath, FaHome } from 'react-icons/fa';
 const ProjectHeader = ({ basePrice }) => {
   return (
     <section className="project-header">
-      <div className="container">
+      <div className="containerd">
         <h1 className="project-title">Modułowy DOM 84</h1>
         <p className="project-subtitle">Nowoczesny dom parterowy dla wymagającej rodziny</p>
         
