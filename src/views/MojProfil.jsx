@@ -4,7 +4,25 @@ import Header from '../components/Header/Header';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { useParams } from 'react-router-dom';
 import './MojProfil.css';
-import { FaEnvelope, FaPhone, FaEdit, FaSave, FaTimes, FaUser } from 'react-icons/fa';
+import { 
+  FaEnvelope, 
+  FaPhone, 
+  FaEdit, 
+  FaSave, 
+  FaTimes, 
+  FaUser, 
+  FaChartLine,
+  FaKey,
+  FaInbox,
+  FaBell,
+  FaCog,
+  FaHome,
+  FaEye,
+  FaEyeSlash,
+  FaCalendar,
+  FaMoneyBillWave,
+  FaMapMarkerAlt
+} from 'react-icons/fa';
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
@@ -14,15 +32,23 @@ export default function MojProfil() {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  const [activeTab, setActiveTab] = useState('dashboard');
   const [editLoading, setEditLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [userProperties, setUserProperties] = useState([]);
+  const [propertiesLoading, setPropertiesLoading] = useState(false);
   
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
     phone: '',
     email: ''
+  });
+
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
   });
 
   useEffect(() => {
@@ -33,6 +59,13 @@ export default function MojProfil() {
       fetchCurrentUserAsUser();
     }
   }, [id]);
+
+  // Pobierz nieruchomości użytkownika gdy zakładka jest aktywna
+  useEffect(() => {
+    if (activeTab === 'properties' && currentUser) {
+      fetchUserProperties();
+    }
+  }, [activeTab, currentUser]);
 
   const fetchCurrentUserAsUser = async () => {
     try {
@@ -101,20 +134,26 @@ export default function MojProfil() {
     }
   };
 
-  const handleEditToggle = () => {
-    if (isEditing) {
-      if (user) {
-        setFormData({
-          name: user.data.user.name || '',
-          surname: user.data.user.surname || '',
-          phone: user.data.user.phone || '',
-          email: user.data.user.email || ''
-        });
+  const fetchUserProperties = async () => {
+    try {
+      setPropertiesLoading(true);
+      const response = await fetch(`${API_BASE_URL}/properties/user/moje`, {
+        credentials: 'include'
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success) {
+          setUserProperties(result.properties);
+        }
+      } else {
+        console.error('Błąd pobierania nieruchomości');
       }
+    } catch (err) {
+      console.error('Błąd pobierania nieruchomości:', err);
+    } finally {
+      setPropertiesLoading(false);
     }
-    setIsEditing(!isEditing);
-    setSuccessMessage('');
-    setError('');
   };
 
   const handleInputChange = (e) => {
@@ -125,7 +164,15 @@ export default function MojProfil() {
     }));
   };
 
-  const handleSave = async () => {
+  const handlePasswordChange = (e) => {
+    const { name, value } = e.target;
+    setPasswordData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSaveProfile = async () => {
     try {
       setEditLoading(true);
       setError(null);
@@ -151,9 +198,7 @@ export default function MojProfil() {
 
       const result = await response.json();
       setUser(result);
-      setIsEditing(false);
       setSuccessMessage('Profil został pomyślnie zaktualizowany');
-      
       fetchCurrentUser();
       
     } catch (err) {
@@ -161,6 +206,106 @@ export default function MojProfil() {
     } finally {
       setEditLoading(false);
     }
+  };
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    try {
+      setEditLoading(true);
+      setError(null);
+
+      if (passwordData.newPassword !== passwordData.confirmPassword) {
+        throw new Error('Nowe hasła nie są identyczne');
+      }
+
+      const response = await fetch(`${API_BASE_URL}/auth/change-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          currentPassword: passwordData.currentPassword,
+          newPassword: passwordData.newPassword
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Błąd zmiany hasła');
+      }
+
+      setSuccessMessage('Hasło zostało pomyślnie zmienione');
+      setPasswordData({
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: ''
+      });
+      
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setEditLoading(false);
+    }
+  };
+
+  const handlePropertyStatusChange = async (propertyId, currentStatus) => {
+    try {
+      const newStatus = currentStatus === 'aktywne' ? 'nieaktywne' : 'aktywne';
+      
+      const response = await fetch(`${API_BASE_URL}/properties/${propertyId}/status`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ status: newStatus })
+      });
+
+      if (response.ok) {
+        setSuccessMessage(`Status nieruchomości zmieniony na ${newStatus}`);
+        fetchUserProperties(); // Odśwież listę
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || 'Błąd zmiany statusu');
+      }
+    } catch (err) {
+      setError('Błąd zmiany statusu nieruchomości');
+    }
+  };
+
+  const handlePropertyDelete = async (propertyId) => {
+    if (!window.confirm('Czy na pewno chcesz usunąć tę nieruchomość?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/properties/${propertyId}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Nieruchomość została usunięta');
+        fetchUserProperties(); // Odśwież listę
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error || 'Błąd usuwania nieruchomości');
+      }
+    } catch (err) {
+      setError('Błąd usuwania nieruchomości');
+    }
+  };
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('pl-PL', {
+      style: 'currency',
+      currency: 'PLN'
+    }).format(price);
+  };
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('pl-PL');
   };
 
   const displayUser = user ? user.data.user : currentUser;
@@ -190,162 +335,431 @@ export default function MojProfil() {
             <div className='sm-separate'></div>
             
             {successMessage && (
-              <div className="success-message">
+              <div className="mp-alert mp-alert--success">
                 {successMessage}
-                <button onClick={() => setSuccessMessage('')} className="success-close">
+                <button onClick={() => setSuccessMessage('')} className="mp-alert__close">
                   ×
                 </button>
               </div>
             )}
 
             {error && (
-              <div className="error-message">
+              <div className="mp-alert mp-alert--error">
                 {error}
-                <button onClick={() => setError('')} className="error-close">
+                <button onClick={() => setError('')} className="mp-alert__close">
                   ×
                 </button>
               </div>
             )}
 
-            <div className="info-section">
-              <div className="profile-header">
-                <h1>Mój profil</h1>
-                {isOwner && (
-                  <div className="edit-controls">
-                    {isEditing ? (
-                      <>
-                        <button 
-                          onClick={handleSave} 
-                          className="btn-save"
-                          disabled={editLoading}
-                        >
-                          <FaSave style={{ marginRight: '8px' }} />
-                          {editLoading ? 'Zapisywanie...' : 'Zapisz zmiany'}
-                        </button>
-                        <button 
-                          onClick={handleEditToggle} 
-                          className="btn-cancel"
-                          disabled={editLoading}
-                        >
-                          <FaTimes style={{ marginRight: '8px' }} />
-                          Anuluj
-                        </button>
-                      </>
-                    ) : (
-                      <button onClick={handleEditToggle} className="btn-edit">
-                        <FaEdit style={{ marginRight: '8px' }} />
-                        Edytuj dane
-                      </button>
-                    )}
+            <div className="mp-container">
+              <div className="mp-header">
+                <h1 className="mp-title">Mój profil</h1>
+                <div className="mp-user-badge">
+                  <div className="mp-avatar">
+                    <FaUser className="mp-avatar__icon" />
                   </div>
-                )}
+                  <span className="mp-user-name">{formData.name} {formData.surname}</span>
+                </div>
               </div>
 
-              <div className='profile-content user-profile'>
-                <div className='profile-main'>
-                  <div className='profile-avatar-section'>
-                    <div className="avatar-container">
-                      <div className="default-avatar user-avatar">
-                        <FaUser className="avatar-icon" />
+              <div className="mp-layout">
+                {/* Sidebar z zakładkami */}
+                <div className="mp-sidebar">
+                  <nav className="mp-nav">
+                    <button 
+                      className={`mp-nav__item ${activeTab === 'dashboard' ? 'mp-nav__item--active' : ''}`}
+                      onClick={() => setActiveTab('dashboard')}
+                    >
+                      <FaChartLine className="mp-nav__icon" />
+                      <span>Panel informacyjny</span>
+                    </button>
+                    
+                    <button 
+                      className={`mp-nav__item ${activeTab === 'profile' ? 'mp-nav__item--active' : ''}`}
+                      onClick={() => setActiveTab('profile')}
+                    >
+                      <FaUser className="mp-nav__icon" />
+                      <span>Mój profil</span>
+                    </button>
+                    
+                    <button 
+                      className={`mp-nav__item ${activeTab === 'properties' ? 'mp-nav__item--active' : ''}`}
+                      onClick={() => setActiveTab('properties')}
+                    >
+                      <FaHome className="mp-nav__icon" />
+                      <span>Moje nieruchomości</span>
+                    </button>
+                    
+                    <button 
+                      className={`mp-nav__item ${activeTab === 'password' ? 'mp-nav__item--active' : ''}`}
+                      onClick={() => setActiveTab('password')}
+                    >
+                      <FaKey className="mp-nav__icon" />
+                      <span>Zmień hasło</span>
+                    </button>
+                    
+                    <button 
+                      className={`mp-nav__item ${activeTab === 'messages' ? 'mp-nav__item--active' : ''}`}
+                      onClick={() => setActiveTab('messages')}
+                    >
+                      <FaInbox className="mp-nav__icon" />
+                      <span>Skrzynka pocztowa</span>
+                    </button>
+                    
+                    <button 
+                      className={`mp-nav__item ${activeTab === 'settings' ? 'mp-nav__item--active' : ''}`}
+                      onClick={() => setActiveTab('settings')}
+                    >
+                      <FaCog className="mp-nav__icon" />
+                      <span>Ustawienia</span>
+                    </button>
+                  </nav>
+                </div>
+
+                {/* Główna zawartość */}
+                <div className="mp-content">
+                  {/* Panel informacyjny */}
+                  {activeTab === 'dashboard' && (
+                    <div className="mp-tab-content">
+                      <h2 className="mp-tab-title">Panel informacyjny</h2>
+                      <div className="mp-stats-grid">
+                        <div className="mp-stat-card">
+                          <div className="mp-stat-card__icon mp-stat-card__icon--primary">
+                            <FaUser />
+                          </div>
+                          <div className="mp-stat-card__content">
+                            <h3>Aktywność profilu</h3>
+                            <p>Konto aktywne od: {new Date(displayUser.createdAt).toLocaleDateString('pl-PL')}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="mp-stat-card">
+                          <div className="mp-stat-card__icon mp-stat-card__icon--success">
+                            <FaHome />
+                          </div>
+                          <div className="mp-stat-card__content">
+                            <h3>Moje nieruchomości</h3>
+                            <p>{userProperties.length} nieruchomości</p>
+                          </div>
+                        </div>
+                        
+                        <div className="mp-stat-card">
+                          <div className="mp-stat-card__icon mp-stat-card__icon--info">
+                            <FaInbox />
+                          </div>
+                          <div className="mp-stat-card__content">
+                            <h3>Wiadomości</h3>
+                            <p>0 nieprzeczytanych wiadomości</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    
-                    <div className='profile-info'>
-                      {isEditing ? (
-                        <div className="edit-form">
-                          <div className="form-row">
-                            <div className="form-group">
-                              <label>Imię:</label>
+                  )}
+
+                  {/* Edycja profilu */}
+                  {activeTab === 'profile' && (
+                    <div className="mp-tab-content">
+                      <h2 className="mp-tab-title">Edycja danych profilowych</h2>
+                      <div className="mp-form-section">
+                        <form className="mp-form">
+                          <div className="mp-form__row">
+                            <div className="mp-form__group">
+                              <label className="mp-form__label">Imię</label>
                               <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleInputChange}
-                                className="form-input"
+                                className="mp-form__input"
                                 placeholder="Wprowadź imię"
                               />
                             </div>
-                            <div className="form-group">
-                              <label>Nazwisko:</label>
+                            <div className="mp-form__group">
+                              <label className="mp-form__label">Nazwisko</label>
                               <input
                                 type="text"
                                 name="surname"
                                 value={formData.surname}
                                 onChange={handleInputChange}
-                                className="form-input"
+                                className="mp-form__input"
                                 placeholder="Wprowadź nazwisko"
                               />
                             </div>
                           </div>
 
-                          <div className="form-group">
-                            <label>Email:</label>
+                          <div className="mp-form__group">
+                            <label className="mp-form__label">Email</label>
                             <input
                               type="email"
                               name="email"
                               value={formData.email}
                               onChange={handleInputChange}
-                              className="form-input"
+                              className="mp-form__input"
                               placeholder="twój@email.pl"
                             />
                           </div>
 
-                          <div className="form-group">
-                            <label>Telefon:</label>
+                          <div className="mp-form__group">
+                            <label className="mp-form__label">Telefon</label>
                             <input
                               type="tel"
                               name="phone"
                               value={formData.phone}
                               onChange={handleInputChange}
-                              className="form-input"
+                              className="mp-form__input"
                               placeholder="+48 123 456 789"
                             />
                           </div>
+
+                          <div className="mp-form__actions">
+                            <button 
+                              type="button"
+                              onClick={handleSaveProfile}
+                              className="mp-btn mp-btn--primary"
+                              disabled={editLoading}
+                            >
+                              <FaSave className="mp-btn__icon" />
+                              {editLoading ? 'Zapisywanie...' : 'Zapisz zmiany'}
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Moje nieruchomości */}
+                  {activeTab === 'properties' && (
+                    <div className="mp-tab-content">
+                      <div className="mp-properties-header">
+                        <h2 className="mp-tab-title">Moje nieruchomości</h2>
+                        <button 
+                          className="mp-btn mp-btn--primary"
+                          onClick={() => window.open('/zglos-nieruchomosc', '_blank')}
+                        >
+                          + Dodaj nieruchomość
+                        </button>
+                      </div>
+
+                      {propertiesLoading ? (
+                        <div className="mp-loading">
+                          <div className="mp-loading__spinner"></div>
+                          <p>Ładowanie nieruchomości...</p>
+                        </div>
+                      ) : userProperties.length === 0 ? (
+                        <div className="mp-empty-state">
+                          <FaHome className="mp-empty-state__icon" />
+                          <h3>Brak nieruchomości</h3>
+                          <p>Nie dodałeś jeszcze żadnych nieruchomości.</p>
+                          <button 
+                            className="mp-btn mp-btn--primary"
+                            onClick={() => window.open('/dodaj-nieruchomosc', '_blank')}
+                          >
+                            Dodaj pierwszą nieruchomość
+                          </button>
                         </div>
                       ) : (
-                        <>
-                          <h2 className="profile-name">{formData.name} {formData.surname}</h2>
-                          <div className="user-contact-info">
-                            <p className="profile-email">
-                              <FaEnvelope style={{marginRight: '10px', color: '#666'}}/> 
-                              {formData.email || 'Brak adresu email'}
-                            </p>
-                            <p className="profile-phone">
-                              <FaPhone style={{marginRight: '10px', color: '#666'}}/> 
-                              {formData.phone || 'Brak numeru telefonu'}
-                            </p>
-                          </div>
-                        </>
+                        <div className="mp-properties-grid">
+                          {userProperties.map(property => (
+                            <div key={property._id} className="mp-property-card">
+                              <div className="mp-property-card__image">
+                                {property.multimedia?.zdjecia?.[0] ? (
+                                  <img 
+                                    src={`${import.meta.env.VITE_BACKEND}/${property.multimedia.zdjecia[0].path}`} 
+                                    alt={property.tytul}
+                                    className="mp-property-card__img"
+                                  />
+                                ) : (
+                                  <div className="mp-property-card__no-image">
+                                    <FaHome className="mp-property-card__no-image-icon" />
+                                  </div>
+                                )}
+                                <div className={`mp-property-card__status mp-property-card__status--${property.status}`}>
+                                  {property.status === 'aktywne' ? 'AKTYWNE' : 'NIEAKTYWNE'}
+                                </div>
+                              </div>
+
+                              <div className="mp-property-card__content">
+                                <h3 className="mp-property-card__title">{property.tytul}</h3>
+                                
+                                <div className="mp-property-card__details">
+                                  <div className="mp-property-card__detail">
+                                    <FaMoneyBillWave className="mp-property-card__detail-icon" />
+                                    <span>{formatPrice(property.cena?.calkowita || 0)}</span>
+                                  </div>
+                                  
+                                  <div className="mp-property-card__detail">
+                                    <FaMapMarkerAlt className="mp-property-card__detail-icon" />
+                                    <span>
+                                      {property.lokalizacja?.miasto}
+                                      {property.lokalizacja?.dzielnica && `, ${property.lokalizacja.dzielnica}`}
+                                    </span>
+                                  </div>
+                                  
+                                  <div className="mp-property-card__detail">
+                                    <FaCalendar className="mp-property-card__detail-icon" />
+                                    <span>Dodano: {formatDate(property.daty?.dataPublikacji)}</span>
+                                  </div>
+                                </div>
+
+                                <div className="mp-property-card__type">
+                                  <span className="mp-property-card__type-badge">
+                                    {property.rodzajOferty?.typ} • {property.rodzajOferty?.rynek}
+                                  </span>
+                                </div>
+
+                                <div className="mp-property-card__actions">
+                                  <button 
+                                    className={`mp-property-card__btn ${
+                                      property.status === 'aktywne' 
+                                        ? 'mp-property-card__btn--warning' 
+                                        : 'mp-property-card__btn--success'
+                                    }`}
+                                    onClick={() => handlePropertyStatusChange(property._id, property.status)}
+                                  >
+                                    {property.status === 'aktywne' ? (
+                                      <>
+                                        <FaEyeSlash className="mp-property-card__btn-icon" />
+                                        Ukryj
+                                      </>
+                                    ) : (
+                                      <>
+                                        <FaEye className="mp-property-card__btn-icon" />
+                                        Aktywuj
+                                      </>
+                                    )}
+                                  </button>
+                                  
+                                  <button 
+                                    className="mp-property-card__btn mp-property-card__btn--secondary"
+                                    onClick={() => window.open(`/nieruchomosci/${property._id}`, '_blank')}
+                                  >
+                                    Podgląd
+                                  </button>
+                                  
+                                  <button 
+                                    className="mp-property-card__btn mp-property-card__btn--danger"
+                                    onClick={() => handlePropertyDelete(property._id)}
+                                  >
+                                    Usuń
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       )}
                     </div>
-                  </div>
+                  )}
 
-                  {isOwner && (
-                    <div className='user-actions-section'>
-                      <h3>Zarządzanie kontem</h3>
-                      <div className="user-actions">
-                        <button className="action-btn btn-change-password">
-                          Zmień hasło
-                        </button>
-                        <button className="action-btn btn-saved-offers">
-                          Ulubione oferty
-                        </button>
-                        <button className="action-btn btn-search-history">
-                          Historia wyszukiwań
-                        </button>
+                  {/* Zmiana hasła */}
+                  {activeTab === 'password' && (
+                    <div className="mp-tab-content">
+                      <h2 className="mp-tab-title">Zmiana hasła</h2>
+                      <div className="mp-form-section">
+                        <form className="mp-form" onSubmit={handleChangePassword}>
+                          <div className="mp-form__group">
+                            <label className="mp-form__label">Aktualne hasło</label>
+                            <input
+                              type="password"
+                              name="currentPassword"
+                              value={passwordData.currentPassword}
+                              onChange={handlePasswordChange}
+                              className="mp-form__input"
+                              placeholder="Wprowadź aktualne hasło"
+                              required
+                            />
+                          </div>
+
+                          <div className="mp-form__group">
+                            <label className="mp-form__label">Nowe hasło</label>
+                            <input
+                              type="password"
+                              name="newPassword"
+                              value={passwordData.newPassword}
+                              onChange={handlePasswordChange}
+                              className="mp-form__input"
+                              placeholder="Wprowadź nowe hasło"
+                              required
+                            />
+                          </div>
+
+                          <div className="mp-form__group">
+                            <label className="mp-form__label">Potwierdź nowe hasło</label>
+                            <input
+                              type="password"
+                              name="confirmPassword"
+                              value={passwordData.confirmPassword}
+                              onChange={handlePasswordChange}
+                              className="mp-form__input"
+                              placeholder="Powtórz nowe hasło"
+                              required
+                            />
+                          </div>
+
+                          <div className="mp-form__actions">
+                            <button 
+                              type="submit"
+                              className="mp-btn mp-btn--primary"
+                              disabled={editLoading}
+                            >
+                              <FaKey className="mp-btn__icon" />
+                              {editLoading ? 'Zmienianie...' : 'Zmień hasło'}
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Skrzynka pocztowa */}
+                  {activeTab === 'messages' && (
+                    <div className="mp-tab-content">
+                      <h2 className="mp-tab-title">Skrzynka pocztowa</h2>
+                      <div className="mp-messages">
+                        <div className="mp-messages-empty">
+                          <FaInbox className="mp-messages-empty__icon" />
+                          <h3>Brak wiadomości</h3>
+                          <p>Twoja skrzynka pocztowa jest pusta</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Ustawienia */}
+                  {activeTab === 'settings' && (
+                    <div className="mp-tab-content">
+                      <h2 className="mp-tab-title">Ustawienia konta</h2>
+                      <div className="mp-settings">
+                        <div className="mp-settings-group">
+                          <h3 className="mp-settings-group__title">Powiadomienia</h3>
+                          <div className="mp-settings-item">
+                            <label className="mp-settings-item__label">
+                              <input type="checkbox" defaultChecked className="mp-settings-item__checkbox" />
+                              Powiadomienia email
+                            </label>
+                          </div>
+                          <div className="mp-settings-item">
+                            <label className="mp-settings-item__label">
+                              <input type="checkbox" defaultChecked className="mp-settings-item__checkbox" />
+                              Powiadomienia o nowych ofertach
+                            </label>
+                          </div>
+                        </div>
+                        
+                        <div className="mp-settings-group">
+                          <h3 className="mp-settings-group__title">Prywatność</h3>
+                          <div className="mp-settings-item">
+                            <label className="mp-settings-item__label">
+                              <input type="checkbox" defaultChecked className="mp-settings-item__checkbox" />
+                              Publiczny profil
+                            </label>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
                 </div>
-
-                {!isOwner && (
-                  <div className="user-public-info">
-                    <div className="public-profile-card">
-                      <h3>Profil użytkownika</h3>
-                      <p>To jest publiczny profil użytkownika. Aby zobaczyć więcej informacji, zaloguj się na swoje konto.</p>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -355,7 +769,7 @@ export default function MojProfil() {
   );
 }
 
-// Komponenty pomocnicze
+// Komponenty pomocnicze (pozostały bez zmian)
 function LoadingScreen() {
   return (
     <div>
@@ -366,8 +780,8 @@ function LoadingScreen() {
           <div className="container">
             <Breadcrumbs items={['Strona główna', 'Mój profil']} />
             <div className='sm-separate'></div>
-            <div className="loading-container">
-              <div className="loading-spinner"></div>
+            <div className="mp-loading">
+              <div className="mp-loading__spinner"></div>
               <p>Ładowanie profilu...</p>
             </div>
           </div>
@@ -387,9 +801,9 @@ function ErrorScreen({ error }) {
           <div className="container">
             <Breadcrumbs items={['Strona główna', 'Mój profil']} />
             <div className='sm-separate'></div>
-            <div className="error-container">
+            <div className="mp-error">
               <p>{error}</p>
-              <button onClick={() => window.history.back()} className="btn-primary">
+              <button onClick={() => window.history.back()} className="mp-btn mp-btn--primary">
                 Powrót
               </button>
             </div>

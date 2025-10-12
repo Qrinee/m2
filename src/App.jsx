@@ -12,6 +12,7 @@ import first from './assets/logistics.jpg'
 import second from './assets/644729945574533_0.jpg'
 import TwoPartText from "./layouts/TwoPartText";
 import SplitLayout from "./layouts/SplitLayout";
+import Reels from "./views/Reels/Reels";
 
 
 

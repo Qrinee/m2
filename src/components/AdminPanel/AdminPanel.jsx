@@ -107,7 +107,7 @@ const AdminPanel = () => {
             {sidebarOpen && <span className="nav-text">Oferty</span>}
           </Link>
 
-          <Link to="/admin/faq" className="nav-item">
+          <Link to="/admin/reels" className="nav-item">
             <span className="nav-icon"><FaVideo/></span>
             {sidebarOpen && <span className="nav-text">Rolki</span>}
           </Link>

@@ -4,7 +4,6 @@
 }
 
 .m-container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -18,7 +17,7 @@
 
 .business-card {
   position: relative;
-  height: 400px;
+  height: 30vw;
   border-radius: 15px;
   overflow: hidden;
   background-size: cover;

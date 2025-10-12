@@ -348,7 +348,7 @@
 /* ===== PROJECTS GRID ===== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
   gap: 2rem;
 }
 
@@ -392,7 +392,7 @@
 /* Project Image Section */
 .project-image {
   position: relative;
-  height: 260px;
+  height: 400px;
   overflow: hidden;
   background: var(--neutral-light);
 }

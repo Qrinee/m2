@@ -1,0 +1,729 @@
+/* src/components/MojProfil/MojProfil.css */
+
+/* Główne kontenery */
+.mp-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.mp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid #eef2f7;
+  background: linear-gradient(135deg, #161616 0%, #181818 100%);
+  color: white;
+}
+
+.mp-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.mp-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mp-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.mp-avatar__icon {
+  font-size: 1.25rem;
+  color: white;
+}
+
+.mp-user-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Layout */
+.mp-layout {
+  display: flex;
+  min-height: 600px;
+}
+
+.mp-sidebar {
+  width: 280px;
+  background: #f8fafc;
+  border-right: 1px solid #eef2f7;
+}
+
+.mp-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Nawigacja */
+.mp-nav {
+  padding: 1rem 0;
+}
+
+.mp-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: none;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.mp-nav__item:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.mp-nav__item--active {
+  background: #181818;
+  color: white;
+  border-right: 3px solid #1a1a1a;
+}
+
+.mp-nav__icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Alerty */
+.mp-alert {
+  display: flex;
+  align-items: center;
+  justify-content: between;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.mp-alert--success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.mp-alert--error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.mp-alert__close {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-left: auto;
+  opacity: 0.7;
+}
+
+.mp-alert__close:hover {
+  opacity: 1;
+}
+
+/* Zawartość zakładek */
+.mp-tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mp-tab-title {
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Statystyki */
+.mp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mp-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.mp-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.mp-stat-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.mp-stat-card__icon--primary {
+  background: #dbeafe;
+  color: #1d1d1d;
+}
+
+.mp-stat-card__icon--success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.mp-stat-card__icon--info {
+  background: #e0f2fe;
+  color: #1b1b1b;
+}
+
+.mp-stat-card__content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.mp-stat-card__content p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Formularze */
+.mp-form-section {
+  max-width: 600px;
+}
+
+.mp-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.mp-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.mp-form__group {
+  margin-bottom: 1.5rem;
+}
+
+.mp-form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.mp-form__input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.mp-form__input:focus {
+  outline: none;
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.mp-form__actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Przyciski */
+.mp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.mp-btn--primary {
+  background: #111111;
+  color: white;
+}
+
+.mp-btn--primary:hover {
+  background: #2b2b2b;
+  transform: translateY(-1px);
+}
+
+.mp-btn--primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mp-btn__icon {
+  font-size: 0.9rem;
+}
+
+/* Wiadomości */
+.mp-messages-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #64748b;
+}
+
+.mp-messages-empty__icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.mp-messages-empty h3 {
+  margin: 0 0 0.5rem 0;
+  color: #374151;
+}
+
+/* Ustawienia */
+.mp-settings-group {
+  margin-bottom: 2.5rem;
+}
+
+.mp-settings-group__title {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e293b;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.mp-settings-item {
+  margin-bottom: 1rem;
+}
+
+.mp-settings-item__label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #374151;
+}
+
+.mp-settings-item__checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Loading i Error */
+.mp-loading {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.mp-loading__spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e5e7eb;
+  border-left: 4px solid #161616;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mp-error {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #dc2626;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .mp-layout {
+    flex-direction: column;
+  }
+  
+  .mp-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #eef2f7;
+  }
+  
+  .mp-nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .mp-nav__item {
+    flex-shrink: 0;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+  }
+  
+  .mp-nav__item--active {
+    border-right: none;
+    border-bottom: 3px solid #1b1b1b;
+  }
+  
+  .mp-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .mp-form__row {
+    grid-template-columns: 1fr;
+  }
+  
+  .mp-content {
+    padding: 1.5rem;
+  }
+  
+  .mp-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .mp-header {
+    padding: 1.5rem;
+  }
+  
+  .mp-title {
+    font-size: 1.5rem;
+  }
+  
+  .mp-form {
+    padding: 1.5rem;
+  }
+  
+  .mp-stat-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* Dodaj te style na końcu pliku MojProfil.css */
+
+/* Nagłówek sekcji nieruchomości */
+.mp-properties-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Siatka nieruchomości */
+.mp-properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Karta nieruchomości */
+.mp-property-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.mp-property-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Obrazek nieruchomości */
+.mp-property-card__image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.mp-property-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.mp-property-card:hover .mp-property-card__img {
+  transform: scale(1.05);
+}
+
+.mp-property-card__no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.mp-property-card__no-image-icon {
+  font-size: 48px;
+  opacity: 0.7;
+}
+
+/* Status nieruchomości */
+.mp-property-card__status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mp-property-card__status--aktywne {
+  background: #28a745;
+  color: white;
+}
+
+.mp-property-card__status--nieaktywne {
+  background: #6c757d;
+  color: white;
+}
+
+.mp-property-card__status--oczekujace {
+  background: #ffc107;
+  color: #000;
+}
+
+/* Zawartość karty */
+.mp-property-card__content {
+  padding: 20px;
+}
+
+.mp-property-card__title {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Detale nieruchomości */
+.mp-property-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.mp-property-card__detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.mp-property-card__detail-icon {
+  color: #007bff;
+  font-size: 12px;
+  min-width: 16px;
+}
+
+/* Typ nieruchomości */
+.mp-property-card__type {
+  margin-bottom: 15px;
+}
+
+.mp-property-card__type-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #e9ecef;
+  color: #495057;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Akcje nieruchomości */
+.mp-property-card__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mp-property-card__btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.mp-property-card__btn-icon {
+  font-size: 10px;
+}
+
+.mp-property-card__btn--success {
+  background: #28a745;
+  color: white;
+}
+
+.mp-property-card__btn--success:hover {
+  background: #218838;
+}
+
+.mp-property-card__btn--warning {
+  background: #ffc107;
+  color: #000;
+}
+
+.mp-property-card__btn--warning:hover {
+  background: #e0a800;
+}
+
+.mp-property-card__btn--secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.mp-property-card__btn--secondary:hover {
+  background: #545b62;
+}
+
+.mp-property-card__btn--danger {
+  background: #dc3545;
+  color: white;
+}
+
+.mp-property-card__btn--danger:hover {
+  background: #c82333;
+}
+
+/* Stan pusty dla nieruchomości */
+.mp-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  border: 2px dashed #e9ecef;
+}
+
+.mp-empty-state__icon {
+  font-size: 64px;
+  color: #6c757d;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.mp-empty-state h3 {
+  margin: 0 0 10px 0;
+  color: #495057;
+  font-size: 24px;
+}
+
+.mp-empty-state p {
+  margin: 0 0 25px 0;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .mp-properties-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .mp-properties-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mp-property-card__actions {
+    flex-direction: column;
+  }
+  
+  .mp-property-card__btn {
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mp-property-card__content {
+    padding: 15px;
+  }
+  
+  .mp-property-card__title {
+    font-size: 16px;
+  }
+  
+  .mp-property-card__detail {
+    font-size: 13px;
+  }
+}

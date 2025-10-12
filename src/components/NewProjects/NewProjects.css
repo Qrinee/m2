@@ -43,7 +43,7 @@
 }
 
 .project-content h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   color: #333;
   font-weight: 700;
@@ -51,6 +51,7 @@
 
 .project-content p {
   color: #666;
+  font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }

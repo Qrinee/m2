@@ -1,83 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 import Header from './../components/Header/Header';
-import { FaHouse, FaLocationPin, FaMessage, FaSquareBehance } from "react-icons/fa6";
-import { FaArrowCircleDown, FaArrowCircleLeft, FaArrowCircleRight, FaBed, FaCheck, FaEnvelope,FaChevronLeft, FaChevronRight, FaExpand, FaCompress, FaTimes,  FaHeart, FaPhone, FaRuler, FaShower, FaSquare, FaSquarespace, FaWhatsapp } from "react-icons/fa";
-
-
-const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
+import { FaLocationPin } from "react-icons/fa6";
+import InfoBar from './../components/Property/InfoBar';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import Gallery from '../components/Property/Gallery';
+import ContactCard from '../components/Property/ContactCard';
+import MortgageWidget from '../components/Property/MortgageWidget';
+import { useProperty } from "../hooks/useProperty";
+import Feature from "../components/Property/Feature";
+import {
+  parsePrice, 
+  formatPLN, 
+  getStatusText, 
+  getCategoryText, 
+  getGarageText,
+  getMarketText,
+  getHeatingText,
+  getKitchenTypeText,
+  getBuildingConditionText,
+  getOwnershipTypeText
+} from "../utils/propertyUtils";
+import SummaryCard from "../components/Property/SummaryCard";
 
 export default function WidokOgloszenia() {
   const { id } = useParams();
-  const [property, setProperty] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { property, loading, error } = useProperty(id);
   const [galleryIndex, setGalleryIndex] = useState(0);
-
   const [down, setDown] = useState(0);
   const [years, setYears] = useState(30);
 
-  useEffect(() => {
-    const fetchProperty = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`${API_BASE_URL}/properties/${id}`);
-        
-        if (!response.ok) {
-          throw new Error('Nie znaleziono nieruchomości');
-        }
-        
-        const responseData = await response.json();
-        
-        // Poprawka: używamy responseData.property zamiast responseData
-        if (responseData.success && responseData.property) {
-          setProperty(responseData.property);
-          
-          // Ustaw początkową wpłatę własną na 10% ceny
-          if (responseData.property.cena) {
-            const priceNumber = parseFloat(responseData.property.cena.replace(/[^\d,]/g, '').replace(',', '.'));
-            setDown(priceNumber * 0.1);
-          }
-        } else {
-          throw new Error('Nieprawidłowa struktura danych z serwera');
-        }
-        
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (id) {
-      fetchProperty();
-    }
-  }, [id]);
-
-  // Funkcje pomocnicze do konwersji danych
-  const parsePrice = (priceString) => {
-    if (!priceString) return 0;
-    return parseFloat(priceString.replace(/[^\d,]/g, '').replace(',', '.'));
-  };
-
-  const formatPLN = (value) => {
-    if (typeof value === 'string') {
-      // Jeśli już jest sformatowana cena, zwróć ją
-      if (value.includes('zł') || value.includes('PLN')) {
-        return value;
-      }
-      value = parsePrice(value);
-    }
-    return value.toLocaleString("pl-PL", {
-      style: "currency",
-      currency: "PLN",
-      maximumFractionDigits: 0,
-    });
-  };
-
-  // Obliczenia kredytu
-  const price = property ? parsePrice(property.cena) : 0;
+  // Obliczenia kredytu - używamy nowej struktury ceny
+  const price = property ? parsePrice(property.cena?.calkowita) : 0;
   const loanAmount = Math.max(0, price - Number(down || 0));
   const monthlyRate = 0.05 / 12;
   const n = years * 12;
@@ -85,76 +40,69 @@ export default function WidokOgloszenia() {
     (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n));
 
   if (loading) {
-    return (
-      <>
-        <Header black />
-        <div className="separate"></div>
-        <div className="prop-page-wrap">
-          <div className="prop-container">
-            <div className="loading-state">Ładowanie nieruchomości...</div>
-          </div>
-        </div>
-      </>
-    );
+    return <LoadingState />;
   }
 
   if (error) {
-    return (
-      <>
-        <Header black />
-        <div className="separate"></div>
-        <div className="prop-page-wrap">
-          <div className="prop-container">
-            <div className="error-state">Błąd: {error}</div>
-          </div>
-        </div>
-      </>
-    );
+    return <ErrorState error={error} />;
   }
 
   if (!property) {
-    return (
-      <>
-        <Header black />
-        <div className="separate"></div>
-        <div className="prop-page-wrap">
-          <div className="prop-container">
-            <div className="error-state">Nie znaleziono nieruchomości</div>
-          </div>
-        </div>
-      </>
-    );
+    return <NotFoundState />;
   }
 
-  // Przygotowanie danych do wyświetlenia
-  const images = property.files && property.files.length > 0 
-    ? property.files.map(file => {
-        // Poprawne tworzenie URL do zdjęć
+  // Przygotowanie danych do wyświetlenia - nowa struktura multimediów
+  const images = property.multimedia?.zdjecia && property.multimedia.zdjecia.length > 0 
+    ? property.multimedia.zdjecia.map(file => {
         if (file.path.startsWith('http')) {
           return file.path;
         } else if (file.path.startsWith('uploads/')) {
-          return `${API_BASE_URL}/${file.path}`;
+          return `${import.meta.env.VITE_BACKEND}/${file.path}`;
         } else {
-          return `${API_BASE_URL}/uploads/${file.filename}`;
+          return `${import.meta.env.VITE_BACKEND}/uploads/${file.filename}`;
         }
       })
     : ["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=80&auto=format&fit=crop"];
 
-  const title = property.nazwa || "Brak tytułu";
+  const title = property.tytul || "Brak tytułu";
+  
+  // Nowa struktura lokalizacji
   const location = property.lokalizacja 
-    ? `${property.lokalizacja.miasto || ""}, ${property.lokalizacja.wojewodztwo || ""}`.trim()
+    ? `${property.lokalizacja.ulica ? property.lokalizacja.ulica + ', ' : ''}${property.lokalizacja.miasto || ""}, ${property.lokalizacja.wojewodztwo || ""}`.trim()
     : "Brak lokalizacji";
 
+  // Mapowanie nowej struktury na starą dla kompatybilności z istniejącymi komponentami
   const propertyDetails = {
-    area: property.szczegoly?.rozmiar_m2 || "0",
-    rooms: property.szczegoly?.pokoje || "0",
-    bedrooms: property.szczegoly?.sypialnie || "0",
-    bathrooms: "1", // Zakładamy domyślnie 1 łazienkę jeśli nie ma danych
-    updated: property.updatedAt ? new Date(property.updatedAt).toLocaleDateString('pl-PL', {
+    area: property.powierzchnia?.calkowita || "0",
+    rooms: property.pomieszczenia?.pokoje || "0",
+    bedrooms: property.pomieszczenia?.pokoje || "0", // Używamy pokoi jako sypialni
+    bathrooms: property.pomieszczenia?.lazienki || "0",
+    updated: property.daty?.dataAktualizacji ? new Date(property.daty.dataAktualizacji).toLocaleDateString('pl-PL', {
       day: 'numeric',
       month: 'long',
       year: 'numeric'
     }) : "Nieznana data"
+  };
+
+  // Funkcja do wyświetlania dodatkowych powierzchni
+  const renderAdditionalAreas = () => {
+    const areas = [];
+    if (property.powierzchnia?.dodatkowe?.balkon) {
+      areas.push(`Balkon: ${property.powierzchnia.dodatkowe.balkon} m²`);
+    }
+    if (property.powierzchnia?.dodatkowe?.taras) {
+      areas.push(`Taras: ${property.powierzchnia.dodatkowe.taras} m²`);
+    }
+    if (property.powierzchnia?.dodatkowe?.piwnica) {
+      areas.push(`Piwnica: ${property.powierzchnia.dodatkowe.piwnica} m²`);
+    }
+    if (property.powierzchnia?.dodatkowe?.ogrod) {
+      areas.push(`Ogród: ${property.powierzchnia.dodatkowe.ogrod} m²`);
+    }
+    if (property.powierzchnia?.dodatkowe?.garaz) {
+      areas.push(`Garaż: ${property.powierzchnia.dodatkowe.garaz} m²`);
+    }
+    return areas.length > 0 ? areas.join(', ') : null;
   };
 
   return (
@@ -164,16 +112,12 @@ export default function WidokOgloszenia() {
       <div className="prop-page-wrap">
         <div className="prop-container">
           
-          {/* Breadcrumbs at the top */}
-          <Breadcrumbs property={property} />
+          <Breadcrumbs items={['']} />
           
-          {/* Main Property Grid */}
           <div className="prop-main-grid">
             
-            {/* Left Column - Main Content */}
             <div className="prop-left-col">
               
-              {/* Gallery Section */}
               <div className="prop-gallery-section">
                 <Gallery
                   images={images}
@@ -182,76 +126,230 @@ export default function WidokOgloszenia() {
                 />
               </div>
 
-              {/* Title and Basic Info */}
               <div className="prop-title-section">
                 <div className="prop-labels">
                   <span className="prop-label">{getStatusText(property.status)}</span>
-                  <span className="prop-label">{getCategoryText(property.kategoria)}</span>
+                  <span className="prop-label">{getCategoryText(property.typNieruchomosci)}</span>
+                  <span className="prop-label">{getMarketText(property.rodzajOferty?.rynek)}</span>
                 </div>
 
                 <h1 className="prop-title">{title}</h1>
                 <div className="prop-subline"><FaLocationPin/> {location}</div>
 
                 <div className="prop-price-block">
-                  <div className="prop-price">{formatPLN(property.cena)}</div>
-                  {property.przedCena && (
-                    <div className="prop-old-price">{formatPLN(property.przedCena)}</div>
+                  <div className="prop-price">{formatPLN(property.cena?.calkowita)}</div>
+                  {property.cena?.zaM2 && (
+                    <div className="prop-price-per-m2">
+                      {formatPLN(property.cena.zaM2)}/m²
+                    </div>
                   )}
                 </div>
               </div>
 
-              {/* Info Bar */}
               <InfoBar property={propertyDetails} />
 
-              {/* Description */}
               <section className="prop-card">
                 <h3>Opis</h3>
-                  <p
-                    style={{ whiteSpace: 'pre-line' }}
-                    dangerouslySetInnerHTML={{
-                      __html: property.opis || "Brak opisu nieruchomości."
-                    }}
-                  ></p>
+                <p
+                  style={{ whiteSpace: 'pre-line' }}
+                  dangerouslySetInnerHTML={{
+                    __html: property.opis || "Brak opisu nieruchomości."
+                  }}
+                ></p>
 
-                {property.szczegoly?.uwagi && (
-                  <p>{property.szczegoly.uwagi}</p>
+                {property.dodatkoweInformacje && (
+                  <div className="additional-info">
+                    <h4>Dodatkowe informacje</h4>
+                    <p>{property.dodatkoweInformacje}</p>
+                  </div>
+                )}
+
+                {property.warunki && (
+                  <div className="conditions-info">
+                    <h4>Warunki</h4>
+                    <p>{property.warunki}</p>
+                  </div>
                 )}
               </section>
 
-              {/* Features */}
               <section className="prop-card">
-                <h3>Cecha nieruchomości</h3>
+                <h3>Podstawowe informacje</h3>
                 <div className="prop-features-grid">
-                  <Feature title="Powierzchnia" value={`${propertyDetails.area} m²`} />
-                  <Feature title="Sypialnie" value={propertyDetails.bedrooms} />
-                  <Feature title="Łazienki" value={propertyDetails.bathrooms} />
-                  <Feature title="Ilość pokoi" value={propertyDetails.rooms} />
-                  <Feature title="Rok budowy" value={property.szczegoly?.rok_budowy || "Nieznany"} />
-                  <Feature title="Garaż" value={getGarageText(property.szczegoly?.garaz)} />
-                  {property.szczegoly?.wielkosc_dzialki && (
-                    <Feature title="Wielkość działki" value={`${property.szczegoly.wielkosc_dzialki} m²`} />
+                  <Feature title="Powierzchnia całkowita" value={`${property.powierzchnia?.calkowita} m²`} />
+                  {property.powierzchnia?.uzytkowa && (
+                    <Feature title="Powierzchnia użytkowa" value={`${property.powierzchnia.uzytkowa} m²`} />
                   )}
-                  {property.szczegoly?.klasa_energetyczna && (
-                    <Feature title="Klasa energetyczna" value={property.szczegoly.klasa_energetyczna} />
+                  <Feature title="Liczba pokoi" value={property.pomieszczenia?.pokoje} />
+                  <Feature title="Liczba łazienek" value={property.pomieszczenia?.lazienki} />
+                  
+                  {property.pomieszczenia?.kuchnia && (
+                    <Feature title="Typ kuchni" value={getKitchenTypeText(property.pomieszczenia.kuchnia)} />
                   )}
-                  {property.szczegoly?.liczba_pieter && (
-                    <Feature title="Liczba pięter" value={property.szczegoly.liczba_pieter} />
+                  {property.pomieszczenia?.garderoby && property.pomieszczenia.garderoby > 0 && (
+                    <Feature title="Garderoby" value={property.pomieszczenia.garderoby} />
                   )}
-                  {property.szczegoly?.dostepna_od && (
-                    <Feature title="Dostępne od" value={property.szczegoly.dostepna_od} />
+                  {property.pomieszczenia?.gabinety && property.pomieszczenia.gabinety > 0 && (
+                    <Feature title="Gabinety" value={property.pomieszczenia.gabinety} />
                   )}
                 </div>
+
+                {renderAdditionalAreas() && (
+                  <div className="additional-areas">
+                    <h4>Dodatkowe powierzchnie</h4>
+                    <p>{renderAdditionalAreas()}</p>
+                  </div>
+                )}
+              </section>
+
+              <section className="prop-card">
+                <h3>Informacje o budynku</h3>
+                <div className="prop-features-grid">
+                  {property.budynek?.rokBudowy && (
+                    <Feature title="Rok budowy" value={property.budynek.rokBudowy} />
+                  )}
+                  {property.budynek?.stanTechniczny && (
+                    <Feature title="Stan techniczny" value={getBuildingConditionText(property.budynek.stanTechniczny)} />
+                  )}
+                  {property.budynek?.material && (
+                    <Feature title="Materiał budynku" value={property.budynek.material} />
+                  )}
+                  {property.budynek?.stanWykonczenia && (
+                    <Feature title="Stan wykończenia" value={property.budynek.stanWykonczenia} />
+                  )}
+                  {property.pietro?.pietroNieruchomosci !== undefined && (
+                    <Feature title="Piętro" value={property.pietro.pietroNieruchomosci} />
+                  )}
+                  {property.pietro?.liczbaPieter && (
+                    <Feature title="Liczba pięter w budynku" value={property.pietro.liczbaPieter} />
+                  )}
+                  {property.pietro?.winda !== undefined && (
+                    <Feature title="Winda" value={property.pietro.winda ? 'Tak' : 'Nie'} />
+                  )}
+                </div>
+
+                {property.budynek?.remonty && property.budynek.remonty.length > 0 && (
+                  <div className="renovations-info">
+                    <h4>Historia remontów</h4>
+                    {property.budynek.remonty.map((remont, index) => (
+                      <div key={index} className="renovation-item">
+                        <strong>{remont.rok}:</strong> {remont.opis}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </section>
+
+              <section className="prop-card">
+                <h3>Wyposażenie i udogodnienia</h3>
+                <div className="prop-features-grid">
+                  {/* Media */}
+                  {property.media?.ogrzewanie && (
+                    <Feature title="Ogrzewanie" value={getHeatingText(property.media.ogrzewanie)} />
+                  )}
+                  {property.media?.cieplaWoda && (
+                    <Feature title="Ciepła woda" value={property.media.cieplaWoda} />
+                  )}
+                  {property.media?.klimatyzacja == true && (
+                    <Feature title="Klimatyzacja" value={property.media.klimatyzacja ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.media?.wentylacja && (
+                    <Feature title="Wentylacja" value={property.media.wentylacja} />
+                  )}
+
+                  {/* Wyposażenie */}
+                  {property.wyposazenie?.meble == true && (
+                    <Feature title="Meble" value={property.wyposazenie.meble ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.wyposazenie?.okna && (
+                    <Feature title="Okna" value={property.wyposazenie.okna} />
+                  )}
+                  {property.wyposazenie?.podlogi && (
+                    <Feature title="Podłogi" value={property.wyposazenie.podlogi} />
+                  )}
+                  {property.wyposazenie?.rolety && (
+                    <Feature title="Rolety" value={property.wyposazenie.rolety ? 'Tak' : 'Nie'} />
+                  )}
+
+                  {/* Udogodnienia */}
+                  {property.udogodnienia?.balkon && (
+                    <Feature title="Balkon" value={property.udogodnienia.balkon ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.udogodnienia?.taras  && (
+                    <Feature title="Taras" value={property.udogodnienia.taras ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.udogodnienia?.ogrod  && (
+                    <Feature title="Ogród" value={property.udogodnienia.ogrod ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.udogodnienia?.garaz  && (
+                    <Feature title="Garaż" value={property.udogodnienia.garaz ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.udogodnienia?.parking && (
+                    <Feature title="Parking" value={property.udogodnienia.parking ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.udogodnienia?.basen && (
+                    <Feature title="Basen" value={property.udogodnienia.basen ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.udogodnienia?.silownia && (
+                    <Feature title="Siłownia" value={property.udogodnienia.silownia ? 'Tak' : 'Nie'} />
+                  )}
+                </div>
+
+                {/* AGD */}
+                {property.wyposazenie?.agd && property.wyposazenie.agd.length > 0 && (
+                  <div className="appliances-info">
+                    <h4>Wyposażenie AGD</h4>
+                    <p>{property.wyposazenie.agd.join(', ')}</p>
+                  </div>
+                )}
+              </section>
+
+              <section className="prop-card">
+                <h3>Informacje prawne</h3>
+                <div className="prop-features-grid">
+                  {property.informacjePrawne?.formaWlasnosci && (
+                    <Feature title="Forma własności" value={getOwnershipTypeText(property.informacjePrawne.formaWlasnosci)} />
+                  )}
+                  {property.informacjePrawne?.hipoteka !== undefined && (
+                    <Feature title="Hipoteka" value={property.informacjePrawne.hipoteka ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.informacjePrawne?.pozwolenieNaBudowe !== undefined && (
+                    <Feature title="Pozwolenie na budowę" value={property.informacjePrawne.pozwolenieNaBudowe ? 'Tak' : 'Nie'} />
+                  )}
+                  {property.informacjePrawne?.charakterystykaEnergetyczna?.klasa && (
+                    <Feature title="Klasa energetyczna" value={property.informacjePrawne.charakterystykaEnergetyczna.klasa} />
+                  )}
+                  {property.informacjePrawne?.charakterystykaEnergetyczna?.wskaznik && (
+                    <Feature title="Wskaźnik energetyczny" value={property.informacjePrawne.charakterystykaEnergetyczna.wskaznik} />
+                  )}
+                </div>
+
+                {property.informacjePrawne?.obciazenia && (
+                  <div className="encumbrances-info">
+                    <h4>Obciążenia nieruchomości</h4>
+                    <p>{property.informacjePrawne.obciazenia}</p>
+                  </div>
+                )}
+
+                {property.informacjePrawne?.ksiegWieczysty && (
+                  <div className="land-register-info">
+                    <h4>Księga wieczysta</h4>
+                    <p>{property.informacjePrawne.ksiegWieczysty}</p>
+                  </div>
+                )}
               </section>
 
             </div>
 
-            {/* Right Column - Sidebar */}
             <aside className="prop-right-col">
               
-              {/* Contact Card - Top of sidebar */}
-              <ContactCard property={property} />
+              <ContactCard 
+                property={{
+                  ...property,
+                  // Zachowanie kompatybilności ze starym komponentem ContactCard
+                  kontakt: property.kontakt
+                }} 
+              />
               
-              {/* Mortgage Widget */}
               <MortgageWidget
                 price={price}
                 down={down}
@@ -261,16 +359,12 @@ export default function WidokOgloszenia() {
                 monthlyPayment={monthlyPayment}
               />
 
-              {/* Summary Card */}
               <SummaryCard
                 property={propertyDetails}
-                price={property.cena}
+                price={property.cena?.calkowita}
                 updated={propertyDetails.updated}
               />
 
-{/* 
-
-              <WatchedList /> */}
             </aside>
           </div>
         </div>
@@ -279,739 +373,39 @@ export default function WidokOgloszenia() {
   );
 }
 
-// Funkcje pomocnicze do tłumaczenia wartości
-function getStatusText(status) {
-  switch (status) {
-    case 'na_sprzedaz': return 'Sprzedaż';
-    case 'do_wynajecia': return 'Wynajem';
-    case 'sprzedane': return 'Sprzedane';
-    default: return status || 'Na sprzedaż';
-  }
-}
-
-function getCategoryText(kategoria) {
-  switch (kategoria) {
-    case 'dom': return 'Dom';
-    case 'mieszkanie': return 'Mieszkanie';
-    case 'dzialka': return 'Działka';
-    case 'lokal': return 'Lokal';
-    default: return kategoria || 'Nieruchomość';
-  }
-}
-
-function getGarageText(garaz) {
-  switch (garaz) {
-    case 'tak': return 'Tak';
-    case 'nie': return 'Nie';
-    case 'brak': return 'Brak';
-    default: return garaz || 'Nie';
-  }
-}
-
-/* =========================
-   PODKOMPONENTY
-   ========================= */
-
-function Breadcrumbs({ property }) {
-  return (
-    <nav className="prop-breadcrumbs">
-      <ol>
-        <li>Strona główna</li>
-        <li>{getCategoryText(property?.kategoria) || "Nieruchomości"}</li>
-        <li>{property?.nazwa || "Szczegóły oferty"}</li>
-      </ol>
-    </nav>
-  );
-}
-
-
-function Gallery({ images, index, setIndex }) {
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [direction, setDirection] = useState(0); // -1: left, 1: right, 0: none
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  // Płynna zmiana obrazków
-  const changeImage = (newIndex, newDirection) => {
-    if (isTransitioning || newIndex === index) return;
-    
-    setIsTransitioning(true);
-    setDirection(newDirection);
-    setIndex(newIndex);
-    
-    setTimeout(() => {
-      setIsTransitioning(false);
-      setDirection(0);
-    }, 300); // Czas trwania animacji
-  };
-
-  const nextImage = () => {
-    const newIndex = (index + 1) % images.length;
-    changeImage(newIndex, 1);
-  };
-
-  const prevImage = () => {
-    const newIndex = (index - 1 + images.length) % images.length;
-    changeImage(newIndex, -1);
-  };
-
-  // Obsługa klawiatury w trybie pełnoekranowym
-  useEffect(() => {
-    if (!isFullscreen) return;
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setIsFullscreen(false);
-      } else if (e.key === 'ArrowLeft') {
-        prevImage();
-      } else if (e.key === 'ArrowRight') {
-        nextImage();
-      } else if (e.key === ' ') {
-        // Spacja przełącza pełny ekran
-        setIsFullscreen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isFullscreen, index, images.length]);
-
-  // Blokowanie scrollowania body w trybie pełnoekranowym
-  useEffect(() => {
-    if (isFullscreen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isFullscreen]);
-
-  // Swipe dla urządzeń mobilnych
-  const [touchStart, setTouchStart] = useState(null);
-  
-  const handleTouchStart = (e) => {
-    setTouchStart(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = (e) => {
-    if (!touchStart) return;
-    
-    const touchEnd = e.changedTouches[0].clientX;
-    const diff = touchStart - touchEnd;
-    
-    if (Math.abs(diff) > 50) { // Minimalny dystans swipe
-      if (diff > 0) {
-        nextImage();
-      } else {
-        prevImage();
-      }
-    }
-    
-    setTouchStart(null);
-  };
-
-  return (
-    <>
-      <div className={`prop-gallery ${isFullscreen ? 'fullscreen' : ''}`}>
-        <div 
-          className="prop-main-photo"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className={`image-container ${direction === 1 ? 'slide-left' : direction === -1 ? 'slide-right' : ''}`}>
-            <img 
-              src={images[index]} 
-              alt={`photo-${index}`}
-              onClick={() => setIsFullscreen(true)}
-            />
-          </div>
-          
-          <div className="gallery-counter">{index + 1} / {images.length}</div>
-
-          {/* Strzałki nawigacyjne */}
-          {images.length > 1 && (
-            <>
-              <button 
-              style={{padding: 'inherit'}}
-                className="gallery-arrow gallery-arrow-left" 
-                onClick={prevImage}
-                aria-label="Poprzednie zdjęcie"
-              >
-                <FaChevronLeft size={20} />
-              </button>
-              <button 
-                            style={{padding: 'inherit'}}
-                className="gallery-arrow gallery-arrow-right" 
-                onClick={nextImage}
-                aria-label="Następne zdjęcie"
-              >
-                <FaChevronRight size={20} />
-              </button>
-            </>
-          )}
-
-          {/* Przycisk pełnego ekranu */}
-          <button 
-                        style={{padding: 'inherit'}}
-            className="gallery-fullscreen-btn"
-            onClick={() => setIsFullscreen(!isFullscreen)}
-            aria-label={isFullscreen ? "Zamknij pełny ekran" : "Otwórz pełny ekran"}
-          >
-            {isFullscreen ? (
-              <FaCompress size={16} />
-            ) : (
-              <FaExpand size={16} />
-            )}
-          </button>
-        </div>
-
-        {/* Miniatury - ukrywamy w trybie pełnoekranowym */}
-        {!isFullscreen && images.length > 1 && (
-          <div className="prop-thumbs">
-            {images.map((src, i) => (
-              <button
-                            style={{padding: 'inherit'}}
-                key={i}
-                className={`prop-thumb-btn ${i === index ? "active" : ""}`}
-                onClick={() => changeImage(i, 0)}
-              >
-                <img src={src} alt={`thumb-${i}`} />
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Overlay dla trybu pełnoekranowego */}
-      {isFullscreen && (
-        <div 
-          className="gallery-overlay"
-          onClick={() => setIsFullscreen(false)}
-        >
-          <div 
-            className="gallery-fullscreen-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={`image-container ${direction === 1 ? 'slide-left' : direction === -1 ? 'slide-right' : ''}`}>
-              <img 
-                src={images[index]} 
-                alt={`photo-${index}`}
-              />
-            </div>
-            
-            <div className="gallery-fullscreen-counter">{index + 1} / {images.length}</div>
-
-            {images.length > 1 && (
-              <>
-                <button 
-                              style={{padding: 'inherit'}}
-                  className="gallery-arrow gallery-arrow-left" 
-                  onClick={prevImage}
-                  aria-label="Poprzednie zdjęcie"
-                >
-                  <FaChevronLeft size={24} />
-                </button>
-                <button 
-                              style={{padding: 'inherit'}}
-                  className="gallery-arrow gallery-arrow-right" 
-                  onClick={nextImage}
-                  aria-label="Następne zdjęcie"
-                >
-                  <FaChevronRight size={24} />
-                </button>
-              </>
-            )}
-
-            <button 
-                          style={{padding: 'inherit'}}
-              className="gallery-close-fullscreen"
-              onClick={() => setIsFullscreen(false)}
-              aria-label="Zamknij pełny ekran"
-            >
-              <FaTimes size={20} />
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
-function MortgageWidget({
-  price,
-  down,
-  setDown,
-  years,
-  setYears,
-  monthlyPayment,
-}) {
-  const percent = Math.round(((price - (down || 0)) / price) * 100);
-  const loanPercent = Math.min(100, Math.max(0, percent));
-  const size = 120;
-  const stroke = 12;
-  const radius = (size - stroke) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const dash = (loanPercent / 100) * circumference;
-
-  const formatPLN = (v) =>
-    v.toLocaleString("pl-PL", {
-      style: "currency",
-      currency: "PLN",
-      maximumFractionDigits: 0,
-    });
-
-  return (
-    <div className="prop-card prop-mortgage-widget">
-      <div className="prop-mortgage-top">
-        <div className="prop-donut">
-          <svg width={size} height={size}>
-            <g transform={`translate(${size / 2},${size / 2})`}>
-              <circle r={radius} fill="none" stroke="#eee" strokeWidth={stroke} />
-              <circle
-                r={radius}
-                fill="none"
-                stroke="#1d4ed8"
-                strokeWidth={stroke}
-                strokeLinecap="round"
-                strokeDasharray={`${dash} ${circumference - dash}`}
-                transform="rotate(-90)"
-              />
-              <text
-                x="0"
-                y="6"
-                textAnchor="middle"
-                fontSize="12"
-                fontWeight="700"
-                fill="#111"
-              >
-                {monthlyPayment > 0
-                  ? `${Math.round(monthlyPayment).toLocaleString("pl-PL")} zł`
-                  : "0 zł"}
-              </text>
-            </g>
-          </svg>
-        </div>
-
-        <div className="prop-mortgage-info">
-          <h4>Kalkulator rat</h4>
-          <div className="small">Miesięczna rata (orientacyjnie)</div>
-          <div className="big">
-            {monthlyPayment > 0
-              ? `${Math.round(monthlyPayment).toLocaleString("pl-PL")} PLN`
-              : "0 PLN"}
-          </div>
-        </div>
-      </div>
-
-      <div className="prop-mortgage-controls">
-        <label className="form-label">
-          Cena domu
-          <input 
-            className="form-input" 
-            type="text" 
-            value={formatPLN(price)} 
-            readOnly 
-          />
-        </label>
-
-        <label className="form-label">
-          Wpłata własna: {Number(down || 0).toLocaleString("pl-PL")} PLN
-          <input
-            className="form-range"
-            type="range"
-            min="0"
-            max={price}
-            value={down}
-            onChange={(e) => setDown(Number(e.target.value))}
-          />
-        </label>
-
-        <label className="form-label">
-          Termin spłaty (lata): {years}
-          <input
-            className="form-range"
-            type="range"
-            min="1"
-            max="40"
-            value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
-          />
-        </label>
+// Komponenty stanów (pozostają bez zmian)
+const LoadingState = () => (
+  <>
+    <Header black />
+    <div className="separate"></div>
+    <div className="prop-page-wrap">
+      <div className="prop-container">
+        <div className="loading-state">Ładowanie nieruchomości...</div>
       </div>
     </div>
-  );
-}
+  </>
+);
 
-function ContactCard({ property }) {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    msg: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState({ text: "", type: "" }); // type: 'success' | 'error' | ''
-
-  // Czyszczenie komunikatu po 5 sekundach
-  useEffect(() => {
-    if (message.text) {
-      const timer = setTimeout(() => {
-        setMessage({ text: "", type: "" });
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [message]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    const formData = {
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      msg: form.msg,
-      propertyId: property?._id,
-    };
-
-    // Walidacja podstawowych pól
-    if (!formData.name || !formData.email) {
-      setMessage({ 
-        text: 'Proszę wypełnić wymagane pola: imię i email', 
-        type: 'error' 
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-    setMessage({ text: "", type: "" });
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/inquiry`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await response.json();
-      
-      if (result.success) {
-        setMessage({ 
-          text: 'Wiadomość została wysłana pomyślnie! Sprawdź swoją skrzynkę email.', 
-          type: 'success' 
-        });
-        setForm({ name: "", email: "", phone: "", msg: "" });
-      } else {
-        setMessage({ 
-          text: 'Wystąpił błąd podczas wysyłania wiadomości: ' + result.error, 
-          type: 'error' 
-        });
-      }
-    } catch (error) {
-      console.error('Błąd podczas wysyłania wiadomości:', error);
-      setMessage({ 
-        text: 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.', 
-        type: 'error' 
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // Pobierz dane właściciela nieruchomości
-  const owner = property?.user;
-  
-  // Jeśli nie ma właściciela, użyj domyślnych danych
-  const agentName = owner?.name || "Administrator";
-  const agentSurname = owner?.surname || "Systemu";
-  const agentRole = owner?.position || 'Użytkownik';
-  const agentAvatar = owner?.profilePicture 
-    ? `${import.meta.env.VITE_BACKEND}${owner.profilePicture}`
-    : "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop";
-  
-  const agentPhone = owner?.phone || '+48 123 456 789';
-  const agentEmail = owner?.contactEmail || owner?.email || 'kontakt@biuronieruchomosci.pl';
-
-  return (
-    <div className="prop-card prop-contact-card">
-      <div className="prop-agent">
-        <img
-          className="prop-agent-avatar"
-          src={agentAvatar}
-          alt={`${agentName} ${agentSurname}`}
-        />
-        <div className="prop-agent-info">
-          <div className="prop-agent-name">{agentName} {agentSurname}</div>
-          <div className="prop-agent-role">{agentRole}</div>
-        </div>
-      </div>
-
-      {/* Komunikat o statusie */}
-      {message.text && (
-        <div className={`form-message ${message.type}`}>
-          <div className="message-content">
-            {message.type === 'success' && (
-              <div className="message-icon success">✓</div>
-            )}
-            {message.type === 'error' && (
-              <div className="message-icon error">!</div>
-            )}
-            <span>{message.text}</span>
-          </div>
-          <button 
-            className="message-close"
-            onClick={() => setMessage({ text: "", type: "" })}
-          >
-            ×
-          </button>
-        </div>
-      )}
-
-      <form className="prop-contact-form" onSubmit={handleSubmit}>
-        <label className="form-label">
-          <span className="label-text">Twoje imię *</span>
-          <input
-            className="form-input"
-            placeholder="Wpisz swoje imię"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            required
-            disabled={isSubmitting}
-          />
-        </label>
-
-        <label className="form-label">
-          <span className="label-text">Twój Adres e-mail *</span>
-          <input
-            className="form-input"
-            type="email"
-            placeholder="email@przykład.pl"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            required
-            disabled={isSubmitting}
-          />
-        </label>
-
-        <label className="form-label">
-          <span className="label-text">Twój Telefon</span>
-          <input
-            className="form-input"
-            placeholder="+48 123 456 789"
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            disabled={isSubmitting}
-          />
-        </label>
-
-        <label className="form-label">
-          <span className="label-text">Wiadomość</span>
-          <textarea
-            className="form-textarea"
-            placeholder="Napisz swoją wiadomość..."
-            value={form.msg}
-            onChange={(e) => setForm({ ...form, msg: e.target.value })}
-            rows={4}
-            disabled={isSubmitting}
-          />
-        </label>
-
-        <label className="prop-gdpr">
-          <input 
-            type="checkbox" 
-            required 
-            disabled={isSubmitting}
-          /> 
-          Wyrażam zgodę na Warunki GDPR
-        </label>
-
-        <button 
-          type="submit" 
-          className={`prop-btn primary full-width ${isSubmitting ? 'submitting' : ''}`}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <>
-              <div className="button-spinner"></div>
-              Wysyłanie...
-            </>
-          ) : (
-            'Wyślij E-Mail'
-          )}
-        </button>
-        
-        <div className="prop-contact-actions">
-          <a 
-            href={`tel:${agentPhone}`} 
-            className="prop-btn secondary"
-          >
-            <span className="btn-icon"><FaPhone/></span> Dzwoń
-          </a>
-          <a 
-            href={`https://wa.me/${agentPhone.replace(/[^\d]/g, '')}?text=Witam,%20jestem%20zainteresowany%20nieruchomością:%20${encodeURIComponent(property?.nazwa || '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="prop-btn secondary"
-          >
-            <span className="btn-icon"><FaWhatsapp/></span> WhatsApp
-          </a>
-        </div>
-
-        {/* Dodatkowe informacje kontaktowe */}
-        <div className="prop-contact-details">
-          <div className="contact-detail">
-            <FaPhone className="contact-icon" />
-            <span> {agentPhone}</span>
-          </div>
-          <div className="contact-detail">
-            <FaEnvelope className="contact-icon" />
-            <span> {agentEmail}</span>
-          </div>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function InfoBar({ property }) {
-  return (
-    <div className="prop-info-bar">
-      <div className="prop-info-item">
-        <div className="prop-info-icon"><FaArrowCircleDown/></div>
-        <div className="prop-info-value">{property.updated}</div>
-        <div className="prop-info-label">Ostatnia aktualizacja</div>
-      </div>
-      <div className="prop-info-item">
-        <div className="prop-info-icon"><FaBed/></div>
-        <div className="prop-info-value">{property.bedrooms}</div>
-        <div className="prop-info-label">Sypialnie</div>
-      </div>
-      <div className="prop-info-item">
-        <div className="prop-info-icon"><FaShower/></div>
-        <div className="prop-info-value">{property.bathrooms}</div>
-        <div className="prop-info-label">Łazienki</div>
-      </div>
-      <div className="prop-info-item">
-        <div className="prop-info-icon"><FaSquarespace/></div>
-        <div className="prop-info-value">{property.area} m²</div>
-        <div className="prop-info-label">Powierzchnia</div>
+const ErrorState = ({ error }) => (
+  <>
+    <Header black />
+    <div className="separate"></div>
+    <div className="prop-page-wrap">
+      <div className="prop-container">
+        <div className="error-state">Błąd: {error}</div>
       </div>
     </div>
-  );
-}
+  </>
+);
 
-function Feature({ title, value }) {
-  return (
-    <div className="prop-feature">
-      <div className="prop-feature-icon"><FaCheck color="green"/></div>
-      <div className="prop-feature-content">
-        <div className="prop-feature-title">{title}</div>
-        <div className="prop-feature-value">{value}</div>
+const NotFoundState = () => (
+  <>
+    <Header black />
+    <div className="separate"></div>
+    <div className="prop-page-wrap">
+      <div className="prop-container">
+        <div className="error-state">Nie znaleziono nieruchomości</div>
       </div>
     </div>
-  );
-}
-
-function SimilarCard({ title, price, img }) {
-  const format = (p) =>
-    p.toLocaleString("pl-PL", {
-      style: "currency",
-      currency: "PLN",
-      maximumFractionDigits: 0,
-    });
-  return (
-    <div className="prop-similar-card-item">
-      <div className="similar-image-container">
-        <img src={img} alt={title} />
-      </div>
-      <div className="prop-similar-meta">
-        <div className="prop-sim-title">{title}</div>
-        <div className="prop-sim-price">{format(price)}</div>
-        <div className="prop-sim-details">3 pokoje • 2 sypialnie • 85 m²</div>
-      </div>
-    </div>
-  );
-}
-
-function SummaryCard({ property, price, updated }) {
-  const format = (p) => {
-    if (typeof p === 'string' && (p.includes('zł') || p.includes('PLN'))) {
-      return p;
-    }
-    const num = typeof p === 'string' ? parseFloat(p.replace(/[^\d,]/g, '').replace(',', '.')) : p;
-    return num.toLocaleString("pl-PL", {
-      style: "currency",
-      currency: "PLN",
-      maximumFractionDigits: 0,
-    });
-  };
-
-  return (
-    <div className="prop-card prop-summary-aside">
-      <div className="summary-price">{format(price)}</div>
-      <div className="summary-details">
-        <div className="detail-item">
-          <span className="detail-icon"><FaHouse/></span>
-          <span>{property.rooms} pokoje • {property.bedrooms} sypialnie</span>
-        </div>
-        <div className="detail-item">
-          <span className="detail-icon"><FaShower/></span>
-          <span>{property.bathrooms} łazienki</span>
-        </div>
-        <div className="detail-item">
-          <span className="detail-icon"><FaSquarespace/></span>
-          <span>Powierzchnia: {property.area} m²</span>
-        </div>
-        <div className="detail-item">
-          <span className="detail-icon"><FaArrowCircleDown/></span>
-          <span>Aktualizacja: {updated}</span>
-        </div>
-      </div>
-
-      <div className="summary-actions">
-        <button className="prop-btn primary full-width">
-          Poproś o informację
-        </button>
-        <button className="prop-btn secondary full-width">
-          Zaplanuj wycieczkę
-        </button>
-      </div>
-    </div>
-  );
-}
-
-
-function WatchedList() {
-  return (
-    <div className="prop-card">
-      <h4>Ostatnio oglądane</h4>
-      
-      <div className="prop-watched-item">
-        <img
-          src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=200&q=60&auto=format&fit=crop"
-          alt="property"
-        />
-        <div className="watched-info">
-          <div className="prop-watched-title">SZEREGOWIEC 83 M2</div>
-          <div className="prop-watched-price">900,000 PLN</div>
-          <div className="prop-watched-details">3 pokoje • 85 m²</div>
-        </div>
-      </div>
-
-      <div className="prop-watched-item">
-        <img
-          src="https://images.unsplash.com/photo-1572120360610-d971b9b3df4a?w=200&q=60&auto=format&fit=crop"
-          alt="property"
-        />
-        <div className="watched-info">
-          <div className="prop-watched-title">Nowoczesny dom</div>
-          <div className="prop-watched-price">860,000 PLN</div>
-          <div className="prop-watched-details">4 pokoje • 120 m²</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+  </>
+);

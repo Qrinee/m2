@@ -30,6 +30,7 @@ import ProjektyDomow from './views/ProjektyDomow.jsx'
 import HouseConfigurator from './views/HouseConfigurator.jsx'
 import Prace from './views/Prace.jsx'
 import Nieruchomosci from './views/Nieruchomosci.jsx'
+import Reels from './views/Reels/Reels.jsx'
 // Zmień tę wartość na false, aby wyłączyć tryb prac
 const MAINTENANCE_MODE = true;
 
@@ -67,9 +68,9 @@ createRoot(document.getElementById('root')).render(
             <Route index element={<Dashboard />} />
             <Route path="users" element={<Users />} />
             <Route path="forms" element={<Forms />} />
-            <Route path="news" element={<News />} />
+            <Route path="reels" element={<Reels />} />
             <Route path="properties" element={<Properties />} />
-            <Route path="faq" element={<FAQ />} />
+            <Route path="news" element={<News />} />
           </Route>
         </Routes>
       )}

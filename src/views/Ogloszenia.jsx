@@ -109,7 +109,7 @@ export default function Ogloszenia() {
       // Transformuj dane z backendu na format komponentu ListingCard
       const transformedListings = data.properties.map(property => {
         // Znajdź zdjęcie cover lub pierwsze dostępne zdjęcie
-        const coverFile = property.files?.find(f => f.isCover) || property.files?.[0];
+        const coverFile = property.files?.find(f => f.isCover) || property.multimedia.zdjecia?.[0];
         let imageUrl = rybnik; // fallback
         
         if (coverFile && coverFile.path) {
@@ -130,14 +130,14 @@ export default function Ogloszenia() {
             },
           ],
           location: `${property.lokalizacja?.miasto || 'Brak miasta'}, ${property.lokalizacja?.wojewodztwo || 'Brak województwa'}`,
-          title: property.nazwa || 'Brak nazwy',
-          price: `${formatPrice(property.cena)} PLN`,
+          title: property.tytul || 'Brak nazwy',
+          price: `${formatPrice(property.cena.calkowita)} PLN`,
           description: property.opis ? 
             (property.opis.length > 100 ? property.opis.substring(0, 100) + '...' : property.opis) 
             : "Brak opisu",
-          baths: calculateBaths(property.szczegoly),
-          beds: property.szczegoly?.pokoje || 0,
-          area: property.szczegoly?.rozmiar_m2 || 0,
+          baths: property.pomieszczenia?.lazienki || 0,
+          beds: property.pomieszczenia?.pokoje || 0,
+          area: property.powierzchnia?.calkowita || 0,
           agentImage: property.user?.profilePicture || " ",
           agentName: property.user ? `${property.user.name} ${property.user.surname}` : "Zespół M2 Notarialnie",
         };
@@ -156,14 +156,15 @@ export default function Ogloszenia() {
   };
 
   // Funkcje pomocnicze do transformacji danych
-  const getStatusText = (status) => {
-    switch (status) {
-      case 'na_sprzedaz': return 'Sprzedaż';
-      case 'do_wynajecia': return 'Wynajem';
-      case 'sprzedane': return 'Sprzedane';
-      default: return 'Na sprzedaż';
-    }
-  };
+const getStatusText = (status) => {
+  switch (status) {
+    case 'aktywne': return 'Aktywne';
+    case 'na_sprzedaz': return 'Sprzedaż';
+    case 'do_wynajecia': return 'Wynajem';
+    case 'sprzedane': return 'Sprzedane';
+    default: return status || 'Aktywne';
+  }
+};
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -187,10 +188,7 @@ export default function Ogloszenia() {
     return isNaN(priceNum) ? '0' : priceNum.toLocaleString('pl-PL');
   };
 
-  const calculateBaths = (szczegoly) => {
-    const pokoje = szczegoly?.pokoje || 0;
-    return Math.max(1, Math.floor(pokoje / 2));
-  };
+
 
   // PROSTE ROZWIĄZANIE DLA OBRAZKÓW
   const transformImageUrl = (originalUrl) => {
