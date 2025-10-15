@@ -31,6 +31,7 @@ import HouseConfigurator from './views/HouseConfigurator.jsx'
 import Prace from './views/Prace.jsx'
 import Nieruchomosci from './views/Nieruchomosci.jsx'
 import Reels from './views/Reels/Reels.jsx'
+import ReelsPage from './views/ReelsPage.jsx'
 // Zmień tę wartość na false, aby wyłączyć tryb prac
 const MAINTENANCE_MODE = true;
 
@@ -54,6 +55,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/kontakt' element={<Kontakt />} />
           <Route path='/nasz-zespol' element={<NaszZespol />} />
           <Route path='/ulubione' element={<Ulubione />} />
+          <Route path='/reels' element={<ReelsPage />} />
           <Route path='/ogloszenie/:id' element={<WidokOgloszenia />} />
           <Route path='/aktualnosci' element={<Aktualnosci />} />
           <Route path="/zglos-nieruchomosc" element={<ZglosNieruchomosc />} />

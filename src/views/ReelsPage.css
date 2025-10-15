@@ -1,0 +1,489 @@
+/* src/pages/ReelsPage/ReelsPage.css */
+.reels-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: #000;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+/* Progress bar */
+.reels-progress-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 4px;
+  padding: 12px;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%);
+}
+
+.reel-progress-track {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.reel-progress-fill {
+  height: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.reel-progress-fill.active {
+  background: linear-gradient(90deg, #fff, #f0f0f0);
+}
+
+.reel-progress-fill.completed {
+  background: #fff;
+}
+
+/* Kontener wideo */
+.reel-video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Overlay z informacjami */
+.reel-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  color: white;
+  z-index: 2;
+  animation: slideUpIn 0.5s ease-out;
+}
+
+.reel-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff6b6b, #ffa726);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.reel-content {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.reel-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.reel-description {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Kontrolki */
+.reel-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+}
+
+.reel-controls.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reel-controls.visible {
+  opacity: 1;
+}
+
+.controls-left,
+.controls-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.controls-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.nav-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+.play-pause-btn {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 22px;
+}
+
+.mute-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+/* Wskazówki interakcji */
+.reel-interaction-hint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.5s ease;
+}
+
+.hint-content {
+  text-align: center;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+.hint-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.hint-arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.hint-arrows span:first-child {
+  font-size: 24px;
+  opacity: 0.8;
+}
+
+.hint-arrows span:last-child {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Licznik reelów */
+.reels-counter {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 12px;
+  border-radius: 20px;
+  z-index: 2;
+  animation: fadeIn 0.5s ease;
+}
+
+.current-reel {
+  font-weight: 600;
+}
+
+.reels-divider {
+  margin: 0 4px;
+  opacity: 0.7;
+}
+
+.total-reels {
+  opacity: 0.7;
+}
+
+/* Loading state */
+.reels-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000;
+  color: white;
+  gap: 16px;
+}
+
+.loading-spinner {
+  font-size: 40px;
+  animation: spin 1s linear infinite;
+  color: white;
+}
+
+/* Empty state */
+.reels-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  gap: 16px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.reels-empty h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.reels-empty p {
+  opacity: 0.7;
+  font-size: 16px;
+}
+
+/* Animacje */
+@keyframes slideUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .reel-info-overlay {
+    padding: 16px;
+  }
+  
+  .reel-title {
+    font-size: 16px;
+  }
+  
+  .reel-description {
+    font-size: 13px;
+  }
+  
+  .control-btn {
+    transform: scale(0.9);
+  }
+  
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .play-pause-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+  
+  .mute-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .reels-counter {
+    right: 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reel-controls {
+    padding: 16px;
+  }
+  
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .play-pause-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 18px;
+  }
+  
+  .mute-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .reels-counter {
+    right: 12px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Obsługa orientacji poziomej */
+@media (max-height: 500px) and (orientation: landscape) {
+  .reel-info-overlay {
+    padding: 12px;
+  }
+  
+  .reel-author {
+    margin-bottom: 8px;
+  }
+  
+  .author-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .author-name {
+    font-size: 14px;
+  }
+  
+  .reel-title {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  
+  .reel-description {
+    font-size: 12px;
+  }
+  
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+  
+  .play-pause-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .mute-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+}
