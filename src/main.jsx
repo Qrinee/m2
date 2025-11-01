@@ -32,8 +32,10 @@ import Prace from './views/Prace.jsx'
 import Nieruchomosci from './views/Nieruchomosci.jsx'
 import Reels from './views/Reels/Reels.jsx'
 import ReelsPage from './views/ReelsPage.jsx'
+import ReelsGridPage from './views/ReelsGridPage.jsx'
+import Realizacja from './views/Realizacja.jsx'
 // Zmień tę wartość na false, aby wyłączyć tryb prac
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -53,9 +55,11 @@ createRoot(document.getElementById('root')).render(
           <Route path='/nieruchomosci' element={<Nieruchomosci/>}></Route>
           <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />
           <Route path='/kontakt' element={<Kontakt />} />
+          <Route path='/realizacja/:id' element={<Realizacja />} />
           <Route path='/nasz-zespol' element={<NaszZespol />} />
           <Route path='/ulubione' element={<Ulubione />} />
-          <Route path='/reels' element={<ReelsPage />} />
+          <Route path='/reels' element={<ReelsGridPage />} />
+          <Route path='/reel/:id' element={<ReelsPage />} />
           <Route path='/ogloszenie/:id' element={<WidokOgloszenia />} />
           <Route path='/aktualnosci' element={<Aktualnosci />} />
           <Route path="/zglos-nieruchomosc" element={<ZglosNieruchomosc />} />

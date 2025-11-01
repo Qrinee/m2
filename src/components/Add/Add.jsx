@@ -130,6 +130,7 @@ export default function Add() {
 // WYSYŁANIE DO BACKENDU
 // POPRAWIONE WYSYŁANIE DO BACKENDU
 // UPROSZCZONE WYSYŁANIE - ponieważ już mamy liczby w stanie
+// WYSYŁANIE DO BACKENDU Z PŁATNOŚCIAMI
 const submitAll = async () => {
   if (!validateTab("szczegoly")) return;
 
@@ -154,6 +155,13 @@ const submitAll = async () => {
     formDataToSend.append('informacjePrawne', JSON.stringify(formData.informacjePrawne));
     formDataToSend.append('dodatkoweInformacje', formData.dodatkoweInformacje);
 
+    // Dodaj typ ogłoszenia (możesz dodać wybór w formularzu)
+    formDataToSend.append('promocje', JSON.stringify({
+      standard: true, // domyślnie standardowe
+      // premium: false,
+      // vip: false
+    }));
+
     // Dodaj pliki
     files.forEach(file => {
       formDataToSend.append('files', file.file);
@@ -171,6 +179,14 @@ const submitAll = async () => {
       throw new Error(result.error || `Błąd HTTP: ${response.status}`);
     }
 
+    // Sprawdź czy otrzymaliśmy URL do płatności
+    if (result.paymentUrl) {
+      // Przekieruj do płatności Stripe
+      window.location.href = result.paymentUrl;
+      return; // Nie resetuj stanu - użytkownik jest przekierowywany
+    }
+
+    // Jeśli nie ma płatności, pokaż standardowy sukces
     setSubmittedProperty({
       tytul: formData.tytul,
       lokalizacja: `${formData.lokalizacja.miasto}, ${formData.lokalizacja.wojewodztwo}`,

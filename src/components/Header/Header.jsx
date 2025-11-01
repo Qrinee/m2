@@ -174,6 +174,7 @@ const Header = ({ black, red = true }) => {
       children: [
         { label: "Poznaj nasz zespół", href: "/nasz-zespol" },
         { label: "Aktualności", href: "/aktualnosci" },
+        {label: "Reels", href: "/reels" },
       ],
     },
     { label: "Kontakt", href: "/kontakt" },

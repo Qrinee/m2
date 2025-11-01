@@ -3,7 +3,7 @@ import Header from '../components/Header/Header'
 import Breadcrumbs from './../components/Breadcrumbs/Breadcrumbs';
 import FilterBar from '../components/FilterBar/FilterBar';
 import ListingCard from './../components/ListingCard/ListingCard';
-import rybnik from '../assets/rybnik.jpg';
+import rybnik from '../assets/nophoto.jpg';
 import Footer from '../components/Footer/Footer';
 import AdvancedSearch from './../components/AdvancedSearch/AdvancedSearch';
 import RecentlyViewed from '../components/RecentlyViewed/RecentlyViewed';
@@ -138,6 +138,8 @@ export default function Ogloszenia() {
           baths: property.pomieszczenia?.lazienki || 0,
           beds: property.pomieszczenia?.pokoje || 0,
           area: property.powierzchnia?.calkowita || 0,
+          role: property.user?.role || "user",
+          companyName: property.user?.companyName || "",
           agentImage: property.user?.profilePicture || " ",
           agentName: property.user ? `${property.user.name} ${property.user.surname}` : "Zespół M2 Notarialnie",
         };

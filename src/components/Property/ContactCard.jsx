@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import userImage from '../../assets/user.jpg'
+import { Link } from 'react-router-dom';
 const ContactCard = ({ property }) => {
     const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
   const [form, setForm] = useState({
@@ -79,16 +81,17 @@ const ContactCard = ({ property }) => {
   const owner = property?.user;
   const agentName = owner?.name || "Administrator";
   const agentSurname = owner?.surname || "Systemu";
-  const agentRole = owner?.position || 'Użytkownik';
+  const agentRole = owner?.position || owner?.role == "agent" ? 'Deweloper' : 'Osoba prywatna';
   const agentAvatar = owner?.profilePicture 
     ? `${import.meta.env.VITE_BACKEND}${owner.profilePicture}`
-    : "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop";
+    : userImage;
   
-  const agentPhone = owner?.phone || '+48 123 456 789';
-  const agentEmail = owner?.contactEmail || owner?.email || 'kontakt@biuronieruchomosci.pl';
+  const agentPhone = owner?.phone || '';
+  const agentEmail = owner?.contactEmail || owner?.email || '';
 
   return (
     <div className="prop-card prop-contact-card">
+      <Link to={owner?.role != 'user' ? `/estate_agent/${owner._id}` : ''} style={{color: 'inherit'}}>
       <div className="prop-agent">
         <img
           className="prop-agent-avatar"
@@ -96,11 +99,11 @@ const ContactCard = ({ property }) => {
           alt={`${agentName} ${agentSurname}`}
         />
         <div className="prop-agent-info">
-          <div className="prop-agent-name">{agentName} {agentSurname}</div>
+          <div className="prop-agent-name">{owner?.companyName ? owner?.companyName : agentName + " " + agentSurname}</div>
           <div className="prop-agent-role">{agentRole}</div>
         </div>
       </div>
-
+    </Link>
       {message.text && (
         <div className={`form-message ${message.type}`}>
           <div className="message-content">
@@ -194,6 +197,9 @@ const ContactCard = ({ property }) => {
           )}
         </button>
         
+
+        {
+          agentPhone ? (
         <div className="prop-contact-actions">
           <a 
             href={`tel:${agentPhone}`} 
@@ -210,17 +216,10 @@ const ContactCard = ({ property }) => {
             <span className="btn-icon"><FaWhatsapp/></span> WhatsApp
           </a>
         </div>
+          ) : <></>
+        }
 
-        <div className="prop-contact-details">
-          <div className="contact-detail">
-            <FaPhone className="contact-icon" />
-            <span> {agentPhone}</span>
-          </div>
-          <div className="contact-detail">
-            <FaEnvelope className="contact-icon" />
-            <span> {agentEmail}</span>
-          </div>
-        </div>
+
       </form>
     </div>
   );

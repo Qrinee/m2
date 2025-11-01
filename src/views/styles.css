@@ -1619,8 +1619,7 @@ select:focus-visible {
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.9);
   border: none;
-  width: 48px;
-  height: 48px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1658,8 +1657,6 @@ select:focus-visible {
   right: 16px;
   background: rgba(0, 0, 0, 0.7);
   border: none;
-  width: 44px;
-  height: 44px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -1743,8 +1740,7 @@ select:focus-visible {
   right: 30px;
   background: rgba(0, 0, 0, 0.7);
   border: none;
-  width: 52px;
-  height: 52px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1863,8 +1859,7 @@ select:focus-visible {
   }
   
   .gallery-arrow {
-    width: 40px;
-    height: 40px;
+
   }
   
   .gallery-arrow-left {
@@ -1955,4 +1950,62 @@ select:focus-visible {
   .gallery-dots {
     display: flex;
   }
+}
+
+
+
+.blog-post__image {
+width: 100%;
+height: auto;
+border-radius: 8px;
+object-fit: cover;
+display: block;
+}
+
+
+.blog-post__title {
+font-size: 28px;
+margin: 16px 0 6px;
+color: #0f172a;
+line-height: 1.15;
+}
+
+
+.blog-post__date {
+color: #6b7280;
+font-size: 14px;
+margin-bottom: 12px;
+}
+
+
+.blog-post__content {
+margin: 14px 0 18px;
+line-height: 1.6;
+color: #334155;
+}
+
+
+/* List with icons */
+.blog-post__list {
+padding-left: 0; /* we use custom marker layout */
+margin: 0;
+}
+
+
+.blog-post__list li {
+list-style: none;
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 10px 0;
+border-bottom: 1px solid #eef2f6;
+}
+
+
+.blog-post__icon {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 36px;
+min-height: 36px;
 }

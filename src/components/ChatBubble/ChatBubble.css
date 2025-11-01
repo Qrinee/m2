@@ -1,0 +1,161 @@
+.cb-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Przycisk główny */
+.cb-trigger {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: #bb9c35;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cb-trigger:hover {
+  background: #bb9c35;
+  transform: scale(1.05);
+}
+
+.cb-trigger.active {
+  transform: rotate(90deg);
+}
+
+/* Formularz */
+.cb-popup {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 320px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  animation: cb-slideUp 0.3s ease-out;
+  overflow: hidden;
+}
+
+.cb-header {
+  background: #f8f9fa;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cb-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.cb-close {
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+  transition: color 0.2s;
+}
+
+.cb-close:hover {
+  color: #333;
+}
+
+/* Zawartość formularza */
+.cb-content {
+  padding: 20px;
+}
+
+.cb-field {
+  margin-bottom: 15px;
+}
+
+.cb-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.cb-input,
+.cb-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.cb-input:focus,
+.cb-textarea:focus {
+  outline: none;
+  border-color: #bb9c35;
+}
+
+.cb-textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.cb-submit {
+  width: 100%;
+  padding: 12px;
+  background: #bb9c35;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.cb-submit:hover {
+  background: #0056b3;
+}
+
+/* Animacje */
+@keyframes cb-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsywność */
+@media (max-width: 480px) {
+  .cb-popup {
+    width: 280px;
+    right: -10px;
+  }
+  
+  .cb-wrapper {
+    right: 10px;
+    bottom: 10px;
+  }
+}

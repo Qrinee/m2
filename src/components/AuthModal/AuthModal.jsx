@@ -1,6 +1,7 @@
 // AuthModal.jsx - zaktualizowany
 import React, { useState } from "react";
 import "./AuthModal.css";
+import { FaEye, FaUserSecret } from "react-icons/fa";
 
 export default function AuthModal({ onClose, onAuthSuccess }) {
   const [screen, setScreen] = useState("login");
@@ -8,14 +9,16 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const [registerData, setRegisterData] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    phone: ""
-  });
+const [registerData, setRegisterData] = useState({
+  name: "",
+  surname: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  phone: "",
+  companyName: "",
+  role: "user"
+});
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -78,7 +81,7 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
       setTimeout(() => {
         setScreen("login");
         setRegisterData({
-          name: "", surname: "", email: "", password: "", confirmPassword: "", phone: ""
+          name: "", surname: "", email: "", password: "", confirmPassword: "", phone: "", companyName: ""
         });
         setSuccess("");
       }, 2000);
@@ -191,20 +194,22 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
               <form onSubmit={handleLogin}>
                 <h3>Zaloguj się na swoje konto</h3>
                 <input 
+                className="inp"
                   type="email" name="email" placeholder="Email" 
                   value={loginData.email} onChange={handleLoginChange} required disabled={loading}
                 />
+
                 <div className="password-field">
                   <input 
                     type={showPassword ? "text" : "password"} name="password" placeholder="Hasło" 
                     value={loginData.password} onChange={handleLoginChange} required disabled={loading}
                   />
                   <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? "🙈" : "👁️"}
+                    {showPassword ? <FaUserSecret  style={{opacity: '50%'}}/> :  <FaEye  style={{opacity: '50%'}}/>}
                   </span>
                 </div>
-                <button type="submit" className="btn-primary" disabled={loading}>
-                  {loading ? "Logowanie..." : "Wejście"}
+                <button style={{marginTop: '10px'}} type="submit" className="btn-primary" disabled={loading}>
+                  {loading ? "Logowanie..." : "Zaloguj się"}
                 </button>
                 <div className="links">
                   <span onClick={() => handleScreenChange("register")}>Zarejestruj się tutaj!</span>
@@ -213,34 +218,78 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
               </form>
             )}
 
-            {screen === "register" && (
-              <form onSubmit={handleRegister}>
-                <h3>Rejestracja</h3>
-                <input type="text" name="name" placeholder="Imię" value={registerData.name} onChange={handleRegisterChange} required disabled={loading} />
-                <input type="text" name="surname" placeholder="Nazwisko" value={registerData.surname} onChange={handleRegisterChange} required disabled={loading} />
-                <input type="email" name="email" placeholder="Email" value={registerData.email} onChange={handleRegisterChange} required disabled={loading} />
-                <input type="text" name="phone" placeholder="Numer telefonu (opcjonalnie)" value={registerData.phone} onChange={handleRegisterChange} disabled={loading} />
-                <div className="password-field">
-                  <input 
-                    type={showPassword ? "text" : "password"} name="password" placeholder="Hasło" 
-                    value={registerData.password} onChange={handleRegisterChange} required disabled={loading}
-                  />
-                  <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? "🙈" : "👁️"}
-                  </span>
-                </div>
-                <input 
-                  type={showPassword ? "text" : "password"} name="confirmPassword" placeholder="Powtórz hasło" 
-                  value={registerData.confirmPassword} onChange={handleRegisterChange} required disabled={loading}
-                />
-                <button type="submit" className="btn-primary" disabled={loading}>
-                  {loading ? "Rejestracja..." : "Zarejestruj"}
-                </button>
-                <div className="links">
-                  <span onClick={() => handleScreenChange("login")}>Masz konto? Zaloguj się</span>
-                </div>
-              </form>
-            )}
+{screen === "register" && (
+  <form onSubmit={handleRegister}>
+    <h3>Rejestracja</h3>
+    <input type="text" className="inp" name="name" placeholder="Imię" value={registerData.name} onChange={handleRegisterChange} required disabled={loading} />
+    <input type="text" className="inp" name="surname" placeholder="Nazwisko" value={registerData.surname} onChange={handleRegisterChange} required disabled={loading} />
+    <input type="email" className="inp" name="email" placeholder="Email" value={registerData.email} onChange={handleRegisterChange} required disabled={loading} />
+    <input type="text" className="inp" name="phone" placeholder="Numer telefonu (opcjonalnie)" value={registerData.phone} onChange={handleRegisterChange} disabled={loading} />
+    
+    {/* Zmienione radio buttons */}
+    <div className="role-selection">
+      <label>
+        <input 
+          type="radio" 
+          name="role" 
+          value="user" 
+          checked={registerData.role === "user"} 
+          onChange={handleRegisterChange}
+          disabled={loading}
+        /> Osoba prywatna
+      </label>
+      <label>
+        <input 
+          type="radio" 
+          name="role" 
+          value="agent" 
+          checked={registerData.role === "agent"} 
+          onChange={handleRegisterChange}
+          disabled={loading}
+        /> Deweloper
+      </label>
+    </div>
+    <div>
+      {registerData.role === "agent" && (
+        <input type="text"  className="inp" disabled={loading} name="companyName" placeholder="Nazwa Firmy" value={registerData.companyName} onChange={handleRegisterChange}  />
+      )}
+    </div>
+    <div className="password-field">
+      <input 
+        type={showPassword ? "text" : "password"} 
+        name="password" 
+         className="inp"
+        placeholder="Hasło" 
+        value={registerData.password} 
+        onChange={handleRegisterChange} 
+        required 
+        disabled={loading}
+      />
+      <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
+        {showPassword ? <FaUserSecret style={{opacity: '50%'}}/> : <FaEye style={{opacity: '50%'}}/>}
+      </span>
+    </div>
+    <input 
+      type={showPassword ? "text" : "password"} 
+      name="confirmPassword" 
+       className="inp"
+      placeholder="Powtórz hasło" 
+      value={registerData.confirmPassword} 
+      onChange={handleRegisterChange} 
+      required 
+      disabled={loading}
+    />
+    <div>
+      
+    <button type="submit" className="btn-primary" disabled={loading}>
+      {loading ? "Rejestracja..." : "Zarejestruj"}
+    </button>
+    </div>
+    <div className="links">
+      <span onClick={() => handleScreenChange("login")}>Masz konto? Zaloguj się</span>
+    </div>
+  </form>
+)}
 
             {screen === "reset" && (
               <form onSubmit={handleResetPassword}>

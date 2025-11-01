@@ -258,7 +258,7 @@ const Users = () => {
                 <td>{user.phone || 'Brak'}</td>
                 <td>
                   <span className={`role-badge role-${user.role}`}>
-                    {user.role === 'admin' ? 'Administrator' : 'Użytkownik'}
+                    {user.role === 'admin' ? 'Administrator' : user.role === "agent" ? 'Deweloper' : "Użytkownik"}
                   </span>
                 </td>
                 <td>
@@ -415,6 +415,7 @@ const Users = () => {
                   className="form-select"
                 >
                   <option value="user">Użytkownik</option>
+                  <option value="agent">Deweloper</option>
                   <option value="admin">Administrator</option>
                 </select>
               </div>

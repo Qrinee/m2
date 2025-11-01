@@ -13,6 +13,7 @@ import second from './assets/644729945574533_0.jpg'
 import TwoPartText from "./layouts/TwoPartText";
 import SplitLayout from "./layouts/SplitLayout";
 import Reels from "./views/Reels/Reels";
+import ChatBubble from "./components/ChatBubble/ChatBubble";
 
 
 
@@ -20,8 +21,9 @@ export default function App() {
   return (
     <>
       <Header red/>
+      <ChatBubble/>
       <Hero
-        leftBg={"2-5.jpg"}
+        leftBg={"house-1477041_1280.jpg"}
         rightBg={"tlo-scaled.jpg"}
         rightContent={        
           <>

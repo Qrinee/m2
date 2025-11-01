@@ -1,6 +1,7 @@
 import React from "react";
 import "./NewProjects.css";
 import { FaEye, FaGlassCheers, FaWindowMaximize } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewProjects = ({projects}) => {;
 
@@ -11,6 +12,7 @@ const NewProjects = ({projects}) => {;
         
         <div className="projects-grid">
           {projects.map((project) => (
+            <Link to={'/realizacja/dfsanifaw34'} style={{textDecoration: 'none', color: 'inherit'}}>
             <div key={project.id} className="project-card">
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
@@ -21,6 +23,7 @@ const NewProjects = ({projects}) => {;
                 <button className="project-btn"><FaEye style={{marginRight: 10, paddingTop: 3}}/> Zobacz realizację</button>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -9,6 +9,8 @@ const ListingCard = ({
   views,
   title,
   price,
+  role,
+  companyName,
   description,
   baths,
   beds,
@@ -54,8 +56,13 @@ const ListingCard = ({
 
       {/* Footer */}
       <div className="listing-footer">
-        <img src={import.meta.env.VITE_BACKEND + agentImage} alt={agentName} className="agent-avatar" />
-        <span className="agent-name">{agentName}</span>
+        {
+          role != 'user' ? (
+            <img src={import.meta.env.VITE_BACKEND + agentImage} alt={agentName} className="agent-avatar" />
+          ) : <></>
+        }
+
+        <span className="agent-name">{role === 'agent' ? companyName : role === 'admin' ? agentName : 'Osoba prywatna'}</span>
       </div>
     </div>
   );

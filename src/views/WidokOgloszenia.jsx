@@ -176,20 +176,11 @@ export default function WidokOgloszenia() {
                 <h3>Podstawowe informacje</h3>
                 <div className="prop-features-grid">
                   <Feature title="Powierzchnia całkowita" value={`${property.powierzchnia?.calkowita} m²`} />
-                  {property.powierzchnia?.uzytkowa && (
-                    <Feature title="Powierzchnia użytkowa" value={`${property.powierzchnia.uzytkowa} m²`} />
-                  )}
                   <Feature title="Liczba pokoi" value={property.pomieszczenia?.pokoje} />
                   <Feature title="Liczba łazienek" value={property.pomieszczenia?.lazienki} />
                   
                   {property.pomieszczenia?.kuchnia && (
                     <Feature title="Typ kuchni" value={getKitchenTypeText(property.pomieszczenia.kuchnia)} />
-                  )}
-                  {property.pomieszczenia?.garderoby && property.pomieszczenia.garderoby > 0 && (
-                    <Feature title="Garderoby" value={property.pomieszczenia.garderoby} />
-                  )}
-                  {property.pomieszczenia?.gabinety && property.pomieszczenia.gabinety > 0 && (
-                    <Feature title="Gabinety" value={property.pomieszczenia.gabinety} />
                   )}
                 </div>
 
@@ -204,23 +195,15 @@ export default function WidokOgloszenia() {
               <section className="prop-card">
                 <h3>Informacje o budynku</h3>
                 <div className="prop-features-grid">
-                  {property.budynek?.rokBudowy && (
-                    <Feature title="Rok budowy" value={property.budynek.rokBudowy} />
-                  )}
                   {property.budynek?.stanTechniczny && (
                     <Feature title="Stan techniczny" value={getBuildingConditionText(property.budynek.stanTechniczny)} />
                   )}
                   {property.budynek?.material && (
                     <Feature title="Materiał budynku" value={property.budynek.material} />
                   )}
-                  {property.budynek?.stanWykonczenia && (
-                    <Feature title="Stan wykończenia" value={property.budynek.stanWykonczenia} />
-                  )}
+      
                   {property.pietro?.pietroNieruchomosci !== undefined && (
                     <Feature title="Piętro" value={property.pietro.pietroNieruchomosci} />
-                  )}
-                  {property.pietro?.liczbaPieter && (
-                    <Feature title="Liczba pięter w budynku" value={property.pietro.liczbaPieter} />
                   )}
                   {property.pietro?.winda !== undefined && (
                     <Feature title="Winda" value={property.pietro.winda ? 'Tak' : 'Nie'} />
@@ -345,7 +328,6 @@ export default function WidokOgloszenia() {
               <ContactCard 
                 property={{
                   ...property,
-                  // Zachowanie kompatybilności ze starym komponentem ContactCard
                   kontakt: property.kontakt
                 }} 
               />

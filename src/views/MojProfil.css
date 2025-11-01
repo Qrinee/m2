@@ -727,3 +727,256 @@
     font-size: 13px;
   }
 }
+
+
+/* Dodatkowe style dla komponentu */
+.mp-form__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+
+.mp-avatar-preview {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.mp-avatar-preview__image {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e9ecef;
+}
+
+.mp-form__help-text {
+  display: block;
+  margin-top: 5px;
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Dodatkowe style dla komponentu */
+.mp-form__textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* File Upload Styles */
+.mp-file-upload {
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+  position: relative;
+}
+
+.mp-file-upload:hover {
+  border-color: #080808;
+  background: #f0f7ff;
+}
+
+.mp-file-upload--dragover {
+  border-color: #161616;
+  background: #e0f2fe;
+  transform: scale(1.02);
+}
+
+.mp-file-upload--has-preview {
+  padding: 1.5rem;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+.mp-file-upload__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mp-file-upload__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mp-file-upload__icon {
+  font-size: 2.5rem;
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+.mp-file-upload:hover .mp-file-upload__icon {
+  color: #b6b6b6;
+}
+
+.mp-file-upload__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mp-file-upload__title {
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.mp-file-upload__subtitle {
+  color: #6b7280;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.mp-file-upload__info {
+  color: #9ca3af;
+  margin: 0;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* Avatar Preview Styles */
+.mp-avatar-preview-wrapper {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mp-avatar-preview {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/* Avatar Preview Styles */
+.mp-avatar-preview-wrapper {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mp-avatar-preview {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.mp-avatar-preview__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mp-avatar-remove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 0; /* Ważne - usuwa domyślne paddingi */
+}
+
+.mp-avatar-remove__icon {
+  font-size: 14px; /* Kontrolujemy rozmiar ikony bezpośrednio */
+  width: 14px;
+  height: 14px;
+}
+
+.mp-avatar-remove:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.mp-avatar-remove:hover .mp-avatar-remove__icon {
+  transform: scale(1.1);
+}
+
+.mp-avatar-preview__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mp-avatar-remove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: #ef4444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mp-avatar-remove:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.mp-avatar-change-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mp-file-upload {
+    padding: 1.5rem;
+  }
+  
+  .mp-file-upload__content {
+    gap: 0.5rem;
+  }
+  
+  .mp-file-upload__icon {
+    font-size: 2rem;
+  }
+  
+  .mp-avatar-preview__image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Loading state */
+.mp-file-upload:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mp-file-upload:disabled:hover {
+  border-color: #d1d5db;
+  background: #fafafa;
+}

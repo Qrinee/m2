@@ -117,7 +117,7 @@
   padding: 1.2rem 2rem;
   font-size: 1.2rem;
   font-weight: 700;
-  background: #a81b16;
+  background: #222222;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -127,7 +127,7 @@
 }
 
 .control-btn:hover {
-  background: #8b0000;
+  background: #181818;
   transform: translateY(-2px);
 }
 
@@ -493,7 +493,7 @@
   transform: translateY(-50%);
   width: 60px;
   height: 60px;
-  background: rgba(168, 27, 22, 0.9);
+  background: rgba(27, 27, 27, 0.9);
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -507,13 +507,13 @@
 }
 
 .control-btn:hover:not(:disabled) {
-  background: #8b0000;
+  background: #141414;
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .control-btn:disabled {
-  background: rgba(168, 27, 22, 0.5);
+  background: rgba(14, 14, 14, 0.5);
   cursor: not-allowed;
 }
 

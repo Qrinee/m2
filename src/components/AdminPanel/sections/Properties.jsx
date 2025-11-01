@@ -52,7 +52,7 @@ const Properties = () => {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: JSON.stringify({ isActive: status === 'aktywne' })
+        body: JSON.stringify({ status: status })
       });
 
       if (response.ok) {
