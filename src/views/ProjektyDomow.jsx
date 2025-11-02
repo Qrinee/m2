@@ -72,7 +72,7 @@ export default function ProjektyDomow() {
   ];
 
   const handleProjectClick = (projectId) => {
-    window.location.href = `/konfigurator/${projectId}`;
+    window.location.href = `/konfigurator`;
   };
 
   const handleFilterClick = (filter) => {
