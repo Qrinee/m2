@@ -1,6 +1,6 @@
 .split-layout {
   display: flex;
-  height: 70vh;
+  min-height: 70vh;
   width: 100%;
 }
 
@@ -20,7 +20,7 @@
   }
 
   .split {
-    height: 50vh; /* Each takes half vertically */
+    min-height: 50vh; /* Each takes half vertically */
     width: 100%;
   }
 }
