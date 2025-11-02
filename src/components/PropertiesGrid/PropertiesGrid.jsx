@@ -1,5 +1,8 @@
 // src/components/PropertiesGrid/PropertiesGrid.js
 import React from 'react';
+import './PropertiesGrid.css'
+import { FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 const PropertiesGrid = ({ properties, onUpdateStatus, onDeleteProperty }) => {
   const getSurfaceArea = (property) => {
     // Jeśli property ma nową strukturę z obiektem powierzchnia
@@ -34,7 +37,7 @@ const PropertiesGrid = ({ properties, onUpdateStatus, onDeleteProperty }) => {
         <thead>
           <tr>
             <th>Zdjęcie</th>
-            <th>Tytuł</th>
+            <th className='property-title'>Tytuł</th>
             <th>Lokalizacja</th>
             <th>Powierzchnia</th>
             <th>Cena</th>
@@ -54,12 +57,12 @@ const PropertiesGrid = ({ properties, onUpdateStatus, onDeleteProperty }) => {
                   />
                 )}
               </td>
-              <td>{property.nazwa || property.tytul}</td>
+              <td className='property-title'><Link to={`/ogloszenie/${property._id}`}>{property.nazwa || property.tytul}</Link></td>
               <td>{getLocation(property)}</td>
               <td>{getSurfaceArea(property)} m²</td>
               <td>{getPrice(property)} zł</td>
               <td>
-                <span className={`status-badge ${property.status === 'aktywne' ? 'active' : 'inactive'}`}>
+                <span className={`status-badge ${property.status === 'aktywne' ? 'actvr' : 'inactive'}`}>
                   {property.status}
                 </span>
               </td>
@@ -67,15 +70,15 @@ const PropertiesGrid = ({ properties, onUpdateStatus, onDeleteProperty }) => {
                 <div className="action-buttons">
                   <button
                     onClick={() => onUpdateStatus(property._id, property.status === 'aktywne' ? 'weryfikacja' : 'aktywne')}
-                    className={`btn-toggle ${property.status === 'aktywne' ? 'btn-inactive' : 'btn-active'}`}
+                    className={`btn-toggle ${property.status === 'aktywne' ? 'btn-inactive' : 'btn-active'} btn-tgl-active`}
                   >
                     {property.status === 'aktywne' ? 'Deaktywuj' : 'Aktywuj'}
                   </button>
                   <button
                     onClick={() => onDeleteProperty(property._id)}
-                    className="btn-delete"
+                    className="btn-delete btn-tgl-active"
                   >
-                    Usuń
+                    <FaTrash style={{marginRight: 5, marginBottom: "-2px"}}/> Usuń
                   </button>
                 </div>
               </td>

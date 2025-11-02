@@ -3,7 +3,7 @@ import React from 'react';
 const TabSzczegoly = ({ value, updateField, onNext, onBack }) => {
   return (
     <div className="tab-content">
-      <h3 className="section-title">Szczegóły nieruchomości</h3>
+      <h3 className="section-title" style={{fontSize: '35px', marginBottom: '40px'}}>Szczegóły nieruchomości</h3>
 
       <h4 className="sub-title">Powierzchnie</h4>
       <div className="grid-2">

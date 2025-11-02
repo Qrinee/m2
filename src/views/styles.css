@@ -1159,14 +1159,7 @@ img {
   height: auto;
 }
 
-/* Focus styles for accessibility */
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid #CBB26A;
-  outline-offset: 2px;
-}
+
 
 /* Print styles */
 @media print {

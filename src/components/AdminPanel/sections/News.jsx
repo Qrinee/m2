@@ -1,6 +1,8 @@
 // src/components/AdminPanel/sections/News.js
 import React, { useState, useEffect } from 'react';
 import './News.css';
+import { FaEye, FaTrash } from 'react-icons/fa';
+import { FaPencil } from 'react-icons/fa6';
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -215,7 +217,7 @@ const handleSubmit = async (e) => {
                 </div>
 
               <div className="news-content">
-                <h3>{item.title}</h3>
+                <h3 className='newsa-content-title'>{item.title}</h3>
                 <p className="news-excerpt">{item.excerpt}</p>
                 <div className="news-meta">
                   <span className="news-date">
@@ -225,23 +227,24 @@ const handleSubmit = async (e) => {
 
                 <div className="news-actions">
                   <button 
-                    className="btn-secondary"
+                    className="btn-primary-news-actions"
+                    onClick={() => window.open(`/wpis/${item._id}`, '_blank')}
+                  >
+                    <FaEye style={{marginRight: '5px'}}/> Podgląd
+                  </button>
+                  <button 
+                    className="btn-secondary-news-actions"
                     onClick={() => editNews(item)}
                   >
-                    Edytuj
+                    <FaPencil  style={{marginRight: '5px'}}/> Edytuj
                   </button>
                   <button 
                     className="btn-danger"
                     onClick={() => deleteNews(item._id)}
                   >
-                    Usuń
+                    <FaTrash  style={{marginRight: '5px'}}/> Usuń
                   </button>
-                  <button 
-                    className="btn-primary"
-                    onClick={() => window.open(`/wpis/${item._id}`, '_blank')}
-                  >
-                    Podgląd
-                  </button>
+
                 </div>
               </div>
             </div>

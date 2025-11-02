@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaTrash } from 'react-icons/fa';
+import { FaX } from 'react-icons/fa6';
 
 const TabZdjecia = ({
   files,
@@ -14,7 +16,7 @@ const TabZdjecia = ({
 }) => {
   return (
     <div className="tab-content">
-      <h3 className="section-title">Zdjęcia i multimedia</h3>
+      <h3 className="section-title"  style={{fontSize: '35px', marginBottom: '40px'}}>Dodaj zdjęcia</h3>
 
       <div
         ref={dropRef}
@@ -55,6 +57,11 @@ const TabZdjecia = ({
               key={f.id}
               className={`thumb ${f.isCover ? "cover" : ""}`}
             >
+            <div className="thumb-actions">
+                  <button onClick={() => removeFile(f.id)} className="dgr-sm">
+                   <FaX style={{marginBottom: '-2px'}}/>
+                  </button>
+                </div>
               <div
                 className="thumb-inner"
                 onDoubleClick={() => toggleCover(f.id)}
@@ -65,18 +72,14 @@ const TabZdjecia = ({
 
               <div className="thumb-meta">
                 <div className="name">{f.file.name}</div>
-                <div className="thumb-actions">
-                  <button onClick={() => removeFile(f.id)} className="small-btn">
-                    Usuń
-                  </button>
-                </div>
+
               </div>
             </div>
           ))
         )}
       </div>
 
-      <div className="media-links grid-2">
+      <div className="media-links grid-2 links">
         <label className="field">
           <div className="field-label">Link do wideo (Vimeo/YouTube)</div>
           <input className="input" placeholder="Wklej link do wideo" />

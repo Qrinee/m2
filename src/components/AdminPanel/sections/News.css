@@ -1,10 +1,42 @@
-.news-carda .news-image{
-    width: 200px; /* Stała szerokość na desktopie */
-    height: 200px; /* Stała wysokość na desktopie */
-    flex-shrink: 0;
+.news-image img{
+    width: 200px;
+    margin: 20px;
+    height: 200px;
 }
 
 .news-carda{
     display: flex;
     background-color: white;
+}
+
+.news-grid{
+    margin-top: 20px;
+}
+
+.newsa-content-title{
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.news-actions{
+    display: flex;
+    margin-top: 30px;
+    gap: 5px;
+}
+
+.btn-secondary-news-actions{
+    background-color: rgb(78, 136, 224);
+}
+
+.btn-secondary-news-actions:hover{
+    background-color: rgb(111, 160, 233);
+}
+
+
+.btn-primary-news-actions{
+    background-color: rgb(39, 39, 39);
+}
+
+.btn-primary-news-actions:hover{
+   background-color: rgb(58, 58, 58);
 }
