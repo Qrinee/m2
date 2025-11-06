@@ -1,17 +1,6 @@
-/* Geist Font Family */
-
-@font-face {
-  font-family: 'Geist';
-  src: url('/ttf/Geist-Thin.ttf') format('truetype');
-  font-weight: 100;
-  font-style: normal;
-}
-
-/* ... rest of your font-face declarations ... */
-
 body{
   margin: 0;
-  font-family: 'Geist';
+  font-family: Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
   background-color: rgba(243, 243, 243, 0.568);
 }
