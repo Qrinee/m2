@@ -1,6 +1,138 @@
+
+/* Geist Font Family */
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./ttf/Geist-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+
+
 body{
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Geist';
   font-optical-sizing: auto;
   background-color: rgba(243, 243, 243, 0.568);
 }
@@ -13,7 +145,7 @@ body{
 
 .btn-primary{
   letter-spacing: 1px;
-  font-weight: 600 !important;
+  font-weight: 600!important;
 }
 
 .polityka p{
@@ -21,25 +153,24 @@ body{
 }
 
 .lay{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+
 }
 
 .main-sec{
-  max-width: 1100px;
-  width: 100%;
+    max-width: 1100px;
+    width: 100%;
 }
 
 .separate{
   padding: 50px;
 }
-
 .sm-separate{
   padding: 10px;
 }
-
 .input, .textarea, .select {
   font-family: inherit;
   border: 1px solid #525252c2;
@@ -47,7 +178,7 @@ body{
   font-weight: 500;
   font-size: 15px;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 10px;;
 }
 
 @media screen and (max-width: 1350px) {
@@ -56,19 +187,21 @@ body{
   }
 
   .listing-card{
-    width: calc(40vw - 30px) !important;
+    width: calc(40vw - 30px)!important;
   }
 
   .list-grid{
     padding: 10px;
   }
 }
-
 @media screen and (max-width: 900px) {
-  .listing-card{
-    width: 100% !important;
+
+ .listing-card{
+    width: 100%!important;
   }
 }
+
+
 
 .a{
   text-decoration: none;
@@ -97,6 +230,7 @@ body{
 }
 
 .section{
+
   margin: auto;
 }
 
@@ -111,14 +245,14 @@ body{
 }
 
 .h2{
-  font-size: 30px;
-  color: rgb(36, 36, 36);
-  font-weight: 800;
+    font-size: 30px;
+        color: rgb(36, 36, 36);
+    font-weight:800;
 }
 
 .p{
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6em;
-  color: #7A7A7A;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6em;
+    color: #7A7A7A;
 }
