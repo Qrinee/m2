@@ -1,39 +1,36 @@
 .listing-card {
-  width: 350px;
-  background: #fff;
-  height: 440px;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 20px;
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
   flex-direction: column;
-}
-
-/* IMAGE */
-.listing-image {
-  position: relative;
-  overflow: hidden; /* Dodane dla lepszego zarządzania zawartością */
-}
-
-/* Efekt hover na całej karcie */
-.listing-card {
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .listing-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-color: #e8e8e8;
 }
 
-/* Efekt hover na obrazku */
+/* IMAGE SECTION */
+.listing-image {
+  position: relative;
+  overflow: hidden;
+  height: 260px;
+}
+
 .listing-image img {
-  transition: transform 0.4s ease;
   width: 100%;
-  height: auto;
-  display: block;
-  border-bottom: 1px solid #eee;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
 .listing-card:hover .listing-image img {
@@ -42,113 +39,226 @@
 
 .badge-container {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 16px;
+  left: 16px;
   display: flex;
-  gap: 5px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .badge {
-  font-size: 12px;
-  padding: 5px 12px;
-  border-radius: 8px;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 6px;
   font-weight: 600;
   color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 .badge.green {
-  background: #cbb26a; /* Sprzedaż */
+  background: #000000;
 }
 
 .badge.yellow {
-  background: #cbb26a; /* Dostępne */
+  background: #666666;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 16px 16px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .location {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
   font-size: 13px;
   color: #fff;
-  background: rgba(0,0,0,0.5);
-  padding: 3px 8px;
-  border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  font-weight: 500;
 }
 
 .views {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 13px;
-  color: #fff;
-  background: rgba(0,0,0,0.5);
-  padding: 3px 8px;
-  border-radius: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
-/* CONTENT */
+/* CONTENT SECTION */
 .listing-content {
-  padding: 15px;
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .title {
-  font-size: 17px;
-  margin: 5px 0;
-  color: rgb(43, 43, 43);
-  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+  color: #1a1a1a;
+  font-weight: 600;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .price {
-  font-size: 18px;
-  color: #cbb26a;
-  font-weight: 600;
-  margin: 10px 0;
+  font-size: 22px;
+  color: #000;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .description {
-  font-size: 13px;
-  color: #555;
-  margin: 6px 0 30px 0;
-}
-
-.icons {
-  display: flex;
-  gap: 15px;
   font-size: 14px;
-  color: #333;
-  margin-top: 8px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.icons div {
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+  padding: 16px 0 0;
+  border-top: 1px solid #f5f5f5;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.feature-icon {
+  width: 32px;
+  height: 32px;
+  background: #f8f8f8;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
 }
 
-/* FOOTER - ZMIANY DLA AVATARA */
+.feature-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.feature-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* FOOTER SECTION */
 .listing-footer {
   display: flex;
   align-items: center;
-  padding: 12px 15px;
-  border-top: 1px solid #eee;
+  padding: 20px 24px;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+  gap: 12px;
 }
 
 .agent-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover; /* Kluczowa właściwość - zapobiega zniekształceniom */
-  flex-shrink: 0; /* Zapobiega zmianom rozmiaru */
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #f0f0f0;
+}
+
+.agent-info {
+  flex-grow: 1;
 }
 
 .agent-name {
-  margin-left: 10px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 2px 0;
+}
+
+.agent-type {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .listing-card {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+  
+  .listing-image {
+    height: 220px;
+  }
+  
+  .listing-content {
+    padding: 20px;
+    gap: 10px;
+  }
+  
+  .title {
+    font-size: 17px;
+  }
+  
+  .price {
+    font-size: 20px;
+  }
+  
+  .features-grid {
+    gap: 12px;
+  }
+  
+  .listing-footer {
+    padding: 16px 20px;
+  }
+}
+
+/* Loading state for images */
+.listing-image img {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }

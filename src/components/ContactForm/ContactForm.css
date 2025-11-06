@@ -92,14 +92,9 @@ textarea {
 button {
   padding: 0.7rem 1.5rem;
   background: #c9a85f;
-  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-button:hover {
-  background: #b48b4f;
 }
 
 @media (max-width: 768px) {

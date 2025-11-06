@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { FaPhoneAlt, FaUserCircle, FaHeart, FaBars, FaTimes, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
 import AuthModal from "../AuthModal/AuthModal";
 import { FaHouse, FaShield } from "react-icons/fa6";
 
-const Header = ({ black, red = true }) => {
+const Header = ({ black }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,9 +18,7 @@ const Header = ({ black, red = true }) => {
 
   const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
-  // Wykrywanie urządzenia mobilnego
   useEffect(() => {
-
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -31,7 +29,6 @@ const Header = ({ black, red = true }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Sprawdź czy użytkownik jest zalogowany przy ładowaniu komponentu
   useEffect(() => {
     checkAuthStatus();
     
@@ -44,13 +41,11 @@ const Header = ({ black, red = true }) => {
     };
   }, []);
 
-  // 🔹 nasłuchiwanie scrolla
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -107,7 +102,6 @@ const Header = ({ black, red = true }) => {
     } finally {
       setUser(null);
       setOpenDropdown(null);
-      
       window.dispatchEvent(new CustomEvent('userLoggedOut'));
       navigate("/");
     }
@@ -124,7 +118,6 @@ const Header = ({ black, red = true }) => {
     }
   };
 
-  // Close mobile menu when a link is clicked
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
@@ -136,7 +129,6 @@ const Header = ({ black, red = true }) => {
     window.dispatchEvent(new CustomEvent('userLoggedIn', { detail: { user: userData } }));
   };
 
-  // Zamknij dropdown po kliknięciu poza
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest('.header__dropdown') && !event.target.closest('.user-dropdown')) {
@@ -167,14 +159,14 @@ const Header = ({ black, red = true }) => {
         { label: "Dlaczego warto?", href: "/dlaczego-warto" },
       ],
     },
-    { label: "Zostań partnerem/pracownikiem", href: "/zostan-partnerem-pracownikiem" },
     { 
       label: "O nas", 
       key: "onas",
       children: [
         { label: "Poznaj nasz zespół", href: "/nasz-zespol" },
+        { label: "Partnerzy", href: "/zostan-partnerem-pracownikiem" },
         { label: "Aktualności", href: "/aktualnosci" },
-        {label: "Reels", href: "/reels" },
+        { label: "Reels", href: "/reels" },
       ],
     },
     { label: "Kontakt", href: "/kontakt" },
@@ -189,11 +181,6 @@ const Header = ({ black, red = true }) => {
               <img src={logo} alt="M2Notarialnie" />
             </div>
           </Link>
-          {/* <div className="header__actions">
-            <span className="header__phone">
-              <FaPhoneAlt /> +48 728 866 825
-            </span>
-          </div> */}
         </div>
       </header>
     );
@@ -202,14 +189,12 @@ const Header = ({ black, red = true }) => {
   return (
     <header className={`header ${scrolled || black ? "scrolled" : ""}`}>
       <div className="header__container">
-        {/* Logo */}
         <Link to="/" onClick={handleLinkClick}>
           <div className="header__logo">
             <img src={logo} alt="M2Notarialnie" />
           </div>
         </Link>
         
-        {/* Hamburger Button (Mobile Only) */}
         <button 
           className="header__hamburger" 
           onClick={toggleMobileMenu}
@@ -218,7 +203,6 @@ const Header = ({ black, red = true }) => {
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        {/* Menu */}
         <nav className={`header__nav ${isMobileMenuOpen ? "mobile-open" : ""}`}>
           {menuItems.map((item) =>
             item.children ? (
@@ -259,12 +243,7 @@ const Header = ({ black, red = true }) => {
             )
           )}
 
-          {/* Mobile Actions Inside Menu */}
           <div className="mobile-actions">
-            <span className="header__phone mobile-phone">
-              <FaPhoneAlt /> +48 728 866 825
-            </span>
-            
             <div className="header__user-menu mobile-user-menu">
               {user ? (
                 <div className="user-dropdown">
@@ -316,14 +295,14 @@ const Header = ({ black, red = true }) => {
             </div>
             
             <Link to={"/konfigurator"} onClick={handleLinkClick}>
-              <button className="header__btn mobile-add-btn" style={{backgroundColor: red && '#a81616', color: red && 'white'}}>
-                Skonfiguruj swój dom
+              <button className="header__btn mobile-add-btn">
+                <FaHouse className="btn-icon" />
+                Skonfiguruj dom
               </button>
             </Link>
           </div>
         </nav>
 
-        {/* Desktop Actions */}
         {showAuthModal && (
           <AuthModal 
             onClose={() => setShowAuthModal(false)} 
@@ -332,95 +311,83 @@ const Header = ({ black, red = true }) => {
         )}
         
         <div className="header__actions desktop-actions">
-          {/* <span className="header__phone">
-            <FaPhoneAlt /> +48 728 866 825
-          </span> */}
-          
-          {/* Menu użytkownika */}
-{/* Menu użytkownika - POPRAWIONA WERSJA */}
-<div className="header__user-menu">
-  {user ? (
-    <div 
-      className="user-dropdown"
-      onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
-      onMouseLeave={!isMobile ? (e) => {
-        // Sprawdź czy kursor opuszcza cały kontener dropdownu
-        const relatedTarget = e.relatedTarget;
-        if (!e.currentTarget.contains(relatedTarget)) {
-          setOpenDropdown(null);
-        }
-      } : undefined}
-    >
-      <button 
-        className="user-btn"
-        onClick={() => setOpenDropdown(openDropdown === 'user' ? null : 'user')}
-      >
-        {user.role === 'admin' ? (
-          <img src={import.meta.env.VITE_BACKEND + user.profilePicture} alt="Admin" className="header__avatar" />
-        ) : <FaUserCircle className="header__icon" />}
-        <span className="user-name">{user.name}</span>
-        <FaChevronDown className={`dropdown-arrow ${openDropdown === 'user' ? "active" : ""}`} />
-      </button>
-      
-      {/* DODAJ: Kontener z eventami dla menu */}
-      <div 
-        className="user-dropdown-container"
-        onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
-        onMouseLeave={!isMobile ? () => setOpenDropdown(null) : undefined}
-      >
-        {openDropdown === 'user' && (
-          <div 
-            className="user-dropdown-menu"
-            onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
-            onMouseLeave={!isMobile ? () => setOpenDropdown(null) : undefined}
-          >
-            {user.role === 'admin' ? (
-              <Link 
-                to="/admin" 
-                className="dropdown-item"
-                onClick={() => setOpenDropdown(null)}
+          <div className="header__user-menu">
+            {user ? (
+              <div 
+                className="user-dropdown"
+                onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
+                onMouseLeave={!isMobile ? (e) => {
+                  const relatedTarget = e.relatedTarget;
+                  if (!e.currentTarget.contains(relatedTarget)) {
+                    setOpenDropdown(null);
+                  }
+                } : undefined}
               >
-                <FaShield /> Admin Panel
-              </Link>
+                <button 
+                  className="user-btn"
+                  onClick={() => setOpenDropdown(openDropdown === 'user' ? null : 'user')}
+                >
+                  {user.role === 'admin' ? (
+                    <img src={import.meta.env.VITE_BACKEND + user.profilePicture} alt="Admin" className="header__avatar" />
+                  ) : <FaUserCircle className="header__icon" />}
+                  <span className="user-name">{user.name}</span>
+                  <FaChevronDown className={`dropdown-arrow ${openDropdown === 'user' ? "active" : ""}`} />
+                </button>
+                
+                <div 
+                  className="user-dropdown-container"
+                  onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
+                  onMouseLeave={!isMobile ? () => setOpenDropdown(null) : undefined}
+                >
+                  {openDropdown === 'user' && (
+                    <div className="user-dropdown-menu">
+                      {user.role === 'admin' ? (
+                        <Link 
+                          to="/admin" 
+                          className="dropdown-item"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          <FaShield /> Admin Panel
+                        </Link>
+                      ) : (
+                        <Link 
+                          to="/my-profile" 
+                          className="dropdown-item"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          <FaUserCircle /> Mój profil
+                        </Link>
+                      )}
+                      <button 
+                        className="dropdown-item logout-btn"
+                        onClick={logout}
+                      >
+                        <FaSignOutAlt /> Wyloguj się
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
             ) : (
-              <Link 
-                to="/my-profile" 
-                className="dropdown-item"
-                onClick={() => setOpenDropdown(null)}
+              <button 
+                onClick={handleUserIconClick}
+                className="login-btn"
               >
-                <FaUserCircle /> Mój profil
-              </Link>
+                <FaUserCircle className="header__icon" />
+                <span className="login-text">Zaloguj się</span>
+              </button>
             )}
-            <button 
-              className="dropdown-item logout-btn"
-              onClick={logout}
-            >
-              <FaSignOutAlt /> Wyloguj się
-            </button>
           </div>
-        )}
-      </div>
-    </div>
-  ) : (
-    <button 
-      onClick={handleUserIconClick}
-      className="login-btn"
-    >
-      <FaUserCircle className="header__icon" />
-      <span className="login-text">Zaloguj się</span>
-    </button>
-  )}
-</div>
           
           <Link to={"/konfigurator"}>
-            <button className="header__btn" style={{color: 'white'}}>
-              <FaHouse style={{marginRight: 8, paddingTop: 3}}/> Skonfiguruj swój dom
+            <button className="header__btn">
+              <FaHouse className="btn-icon" />
+              Skonfiguruj dom
             </button>
           </Link>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 
           className="mobile-menu-overlay" 

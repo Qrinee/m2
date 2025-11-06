@@ -16,7 +16,7 @@ export default function Nieruchomosci() {
   return (
     <div>
 
-        <Header black />
+        <Header />
       <HeroNieruchomosci
       img={"tlo-scaled.jpg"}
       content={

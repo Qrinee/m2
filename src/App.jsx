@@ -20,7 +20,7 @@ import ChatBubble from "./components/ChatBubble/ChatBubble";
 export default function App() {
   return (
     <>
-      <Header red/>
+      <Header/>
       <ChatBubble/>
       <Hero
         leftBg={"house-1477041_1280.jpg"}

@@ -18,51 +18,102 @@ const ListingCard = ({
   agentImage,
   agentName,
 }) => {
+  const getAgentType = () => {
+    switch (role) {
+      case 'agent':
+        return companyName || 'Agent nieruchomości';
+      case 'admin':
+        return agentName || 'Administrator';
+      default:
+        return 'Osoba prywatna';
+    }
+  };
+
+  const getDisplayName = () => {
+    switch (role) {
+      case 'agent':
+        return companyName || 'Firma';
+      case 'admin':
+        return agentName || 'Admin';
+      default:
+        return 'Osoba prywatna';
+    }
+  };
+
+  const formatPrice = (price) => {
+    return price.replace('€', '€ ');
+  };
+
   return (
     <div className="listing-card">
       {/* Image Section */}
       <div className="listing-image">
         <img src={image} alt={title} />
         <div className="badge-container">
-          {badges.map((badge, index) => (
-            <span key={index} className={`badge ${badge.color}`}>
-              {badge.text}
-            </span>
-          ))}
+
         </div>
-        <span className="location">
-          <FaMapMarkerAlt /> {location}
-        </span>
+        <div className="image-overlay">
+          <span className="location">
+            <FaMapMarkerAlt size={12} /> {location}
+          </span>
+          {views && (
+            <span className="views">
+              <FaEye size={11} /> {views}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Content Section */}
       <div className="listing-content">
         <h3 className="title">{title}</h3>
-        <p className="price">{price}</p>
+        <p className="price">{formatPrice(price)}</p>
         <p className="description">{description}</p>
 
-        <div className="icons">
-          <div>
-            <FaBath /> {baths}
+        <div className="features-grid">
+          <div className="feature">
+            <div className="feature-icon">
+              <FaBed size={14} />
+            </div>
+            <div className="feature-value">{beds}</div>
+            <div className="feature-label">Sypialnie</div>
           </div>
-          <div>
-            <FaBed /> {beds}
+          <div className="feature">
+            <div className="feature-icon">
+              <FaBath size={14} />
+            </div>
+            <div className="feature-value">{baths}</div>
+            <div className="feature-label">Łazienki</div>
           </div>
-          <div>
-            <FaRulerCombined /> {area} m²
+          <div className="feature">
+            <div className="feature-icon">
+              <FaRulerCombined size={14} />
+            </div>
+            <div className="feature-value">{area}</div>
+            <div className="feature-label">m²</div>
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <div className="listing-footer">
-        {
-          role != 'user' ? (
-            <img src={import.meta.env.VITE_BACKEND + agentImage} alt={agentName} className="agent-avatar" />
-          ) : <></>
-        }
-
-        <span className="agent-name">{role === 'agent' ? companyName : role === 'admin' ? agentName : 'Osoba prywatna'}</span>
+        {role !== 'user' && agentImage && (
+          <img 
+            src={`${import.meta.env.VITE_BACKEND}${agentImage}`} 
+            alt={getDisplayName()} 
+            className="agent-avatar" 
+          />
+        )}
+        {(!agentImage || role === 'user') && (
+          <div className="agent-avatar" style={{ background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#999' }}>
+            {getDisplayName().charAt(0)}
+          </div>
+        )}
+        <div className="agent-info">
+          <div className="agent-name">{getDisplayName()}</div>
+          <div className="agent-type">{getAgentType()}</div>
+        </div>
+        <div className="status-dot" />
       </div>
     </div>
   );

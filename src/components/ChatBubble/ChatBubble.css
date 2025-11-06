@@ -12,7 +12,7 @@
   right: 0;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background: #bb9c35;
+  background: #bb3535;
   color: white;
   cursor: pointer;
   display: flex;
@@ -24,7 +24,7 @@
 }
 
 .cb-trigger:hover {
-  background: #bb9c35;
+  background: #bb3535;
   transform: scale(1.05);
 }
 
@@ -105,7 +105,7 @@
 .cb-input:focus,
 .cb-textarea:focus {
   outline: none;
-  border-color: #bb9c35;
+  border-color: #bb3535;
 }
 
 .cb-textarea {
@@ -117,7 +117,7 @@
 .cb-submit {
   width: 100%;
   padding: 12px;
-  background: #bb9c35;
+  background: #bb3535;
   color: white;
   border: none;
   border-radius: 4px;
