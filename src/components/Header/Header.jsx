@@ -204,85 +204,113 @@ const Header = ({ black }) => {
         </button>
 
         <nav className={`header__nav ${isMobileMenuOpen ? "mobile-open" : ""}`}>
-          {menuItems.map((item) =>
-            item.children ? (
-              <div
-                key={item.key}
-                className={`header__dropdown ${openDropdown === item.key ? "active" : ""}`}
-                onMouseEnter={!isMobile ? () => setOpenDropdown(item.key) : undefined}
-                onMouseLeave={!isMobile ? () => setOpenDropdown(null) : undefined}
-              >
-                <button
-                  className={`dropdown-toggle ${openDropdown === item.key ? "active" : ""}`}
-                  onClick={() => toggleDropdown(item.key)}
-                >
-                  {item.label}
-                  <FaChevronDown className={`dropdown-arrow ${openDropdown === item.key ? "active" : ""}`} />
-                </button>
-                <div className="dropdown__menu">
-                  {item.children.map((child, i) => (
-                    <Link 
-                      key={i} 
-                      to={child.href} 
-                      onClick={handleLinkClick}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <Link 
-                key={item.label} 
-                to={item.href} 
-                className="header__link"
-                onClick={handleLinkClick}
-              >
-                {item.label}
-              </Link>
-            )
-          )}
+{menuItems.map((item) =>
+  item.children ? (
+    <div
+      key={item.key}
+      className={`header__dropdown ${openDropdown === item.key ? "active" : ""}`}
+      onMouseEnter={!isMobile ? () => setOpenDropdown(item.key) : undefined}
+      onMouseLeave={!isMobile ? (e) => {
+        // Sprawdzamy czy kursor opuszcza cały dropdown
+        const { relatedTarget, currentTarget } = e;
+        if (!currentTarget.contains(relatedTarget)) {
+          setOpenDropdown(null);
+        }
+      } : undefined}
+    >
+      <button
+        className={`dropdown-toggle ${openDropdown === item.key ? "active" : ""}`}
+        onClick={() => toggleDropdown(item.key)}
+        onMouseEnter={!isMobile ? () => setOpenDropdown(item.key) : undefined}
+      >
+        {item.label}
+        <FaChevronDown className={`dropdown-arrow ${openDropdown === item.key ? "active" : ""}`} />
+      </button>
+      <div 
+        className="dropdown__menu"
+        onMouseEnter={!isMobile ? () => setOpenDropdown(item.key) : undefined}
+        onMouseLeave={!isMobile ? () => setOpenDropdown(null) : undefined}
+      >
+        {item.children.map((child, i) => (
+          <Link 
+            key={i} 
+            to={child.href} 
+            onClick={handleLinkClick}
+          >
+            {child.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <Link 
+      key={item.label} 
+      to={item.href} 
+      className="header__link"
+      onClick={handleLinkClick}
+    >
+      {item.label}
+    </Link>
+  )
+)}
 
           <div className="mobile-actions">
             <div className="header__user-menu mobile-user-menu">
               {user ? (
-                <div className="user-dropdown">
-                  <button 
-                    className="user-btn mobile-user-btn"
-                    onClick={handleUserIconClick}
-                  >
-                    {user.role === 'admin' ? (
-                      <img src={import.meta.env.VITE_BACKEND + user.profilePicture} alt="Admin" className="header__avatar" />
-                    ) : <FaUserCircle className="header__icon" />}
-                    <span className="user-name">{user.name}</span>
-                  </button>
-                  
-                  <div className="user-dropdown-menu mobile-dropdown">
-                    {user.role === 'admin' ? (
-                      <Link 
-                        to="/admin" 
-                        className="dropdown-item"
-                        onClick={handleLinkClick}
-                      >
-                        <FaShield /> Admin Panel
-                      </Link>
-                    ) : (
-                      <Link 
-                        to="/my-profile" 
-                        className="dropdown-item"
-                        onClick={handleLinkClick}
-                      >
-                        <FaUserCircle /> Mój profil
-                      </Link>
-                    )}
-                    <button 
-                      className="dropdown-item logout-btn"
-                      onClick={logout}
-                    >
-                      <FaSignOutAlt /> Wyloguj się
-                    </button>
-                  </div>
-                </div>
+<div 
+  className="user-dropdown"
+  onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
+  onMouseLeave={!isMobile ? (e) => {
+    const { relatedTarget, currentTarget } = e;
+    if (!currentTarget.contains(relatedTarget)) {
+      setOpenDropdown(null);
+    }
+  } : undefined}
+>
+  <button 
+    className="user-btn"
+    onClick={() => setOpenDropdown(openDropdown === 'user' ? null : 'user')}
+    onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
+  >
+    {user.role === 'admin' ? (
+      <img src={import.meta.env.VITE_BACKEND + user.profilePicture} alt="Admin" className="header__avatar" />
+    ) : <FaUserCircle className="header__icon" />}
+    <span className="user-name">{user.name}</span>
+    <FaChevronDown className={`dropdown-arrow ${openDropdown === 'user' ? "active" : ""}`} />
+  </button>
+  
+  {openDropdown === 'user' && (
+    <div 
+      className="user-dropdown-menu"
+      onMouseEnter={!isMobile ? () => setOpenDropdown('user') : undefined}
+      onMouseLeave={!isMobile ? () => setOpenDropdown(null) : undefined}
+    >
+      {user.role === 'admin' ? (
+        <Link 
+          to="/admin" 
+          className="dropdown-item"
+          onClick={() => setOpenDropdown(null)}
+        >
+          <FaShield /> Admin Panel
+        </Link>
+      ) : (
+        <Link 
+          to="/my-profile" 
+          className="dropdown-item"
+          onClick={() => setOpenDropdown(null)}
+        >
+          <FaUserCircle /> Mój profil
+        </Link>
+      )}
+      <button 
+        className="dropdown-item logout-btn"
+        onClick={logout}
+      >
+        <FaSignOutAlt /> Wyloguj się
+      </button>
+    </div>
+  )}
+</div>
               ) : (
                 <button 
                   onClick={() => setShowAuthModal(true)}
