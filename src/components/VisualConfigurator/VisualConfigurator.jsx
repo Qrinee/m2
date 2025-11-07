@@ -38,11 +38,21 @@ import ciemnelamelethumb from '../../assets/konfigurator/thumbnails/Bez nazwy-2.
 import antracytthumb from '../../assets/konfigurator/thumbnails/antracyt.jpg'
 import bialythumb from '../../assets/konfigurator/thumbnails/bialy.jpg'
 
+import antracytoknothumb from '../../assets/konfigurator/thumbnails/drutex_iglo_antracyt_thumb.jpg'
+import bialyoknothumb from '../../assets/konfigurator/thumbnails/drutex_iglo_bialy_thumb.jpg'
+import daboknothumb from '../../assets/konfigurator/thumbnails/drutex_iglo_dab_thumb.jpg'
+import orzechoknothumb from '../../assets/konfigurator/thumbnails/drutex_iglo_orzech_thumb.jpg'
+import szaryoknothumb from '../../assets/konfigurator/thumbnails/drutex_iglo_szary_thumb.jpg'
 // Import rolety thumbnails
 import roletySzara from '../../assets/konfigurator/thumbnails/drutex_rolety_szare_62_t.jpg'
 import roletyBiala from '../../assets/konfigurator/thumbnails/drutex_rolety_bialy_2_t.jpg'
 import roletyCzarna from '../../assets/konfigurator/thumbnails/drutex_rolety_antracyt_23_t.jpg'
 import roletyBrazowa from '../../assets/konfigurator/thumbnails/drutex_rolety_orzech_28_t.jpg'
+
+import drzwi11S3thumb from '../../assets/konfigurator/thumbnails/kmt_11s3.jpeg'
+import drzwiP9thumb from '../../assets/konfigurator/thumbnails/kmt_perfekt_9.jpeg'
+import drzwi14Athumb from '../../assets/konfigurator/thumbnails/kmt_14a.jpeg'
+import wlasnethumb from '../../assets/konfigurator/thumbnails/ah_drzwi_techniczne (1).jpg'
 
 // Configuration data - łatwe do rozszerzania
 const CONFIG_OPTIONS = {
@@ -75,18 +85,18 @@ const CONFIG_OPTIONS = {
   ],
 
   okna: [
-    { id: 1, name: 'Antracyt', image: oknoAntracyt },
-    { id: 2, name: 'Szary', image: oknoSzary },
-    { id: 3, name: 'Dąb', image: oknoDab },
-    { id: 4, name: 'Orzech', image: oknoOrzech },
-    { id: 5, name: 'Biały', image: oknoBiale }
+    { id: 1, name: 'Antracyt', thumb: antracytoknothumb, image: oknoAntracyt },
+    { id: 2, name: 'Szary', thumb: szaryoknothumb, image: oknoSzary },
+    { id: 3, name: 'Dąb', thumb: daboknothumb, image: oknoDab },
+    { id: 4, name: 'Orzech', thumb: orzechoknothumb, image: oknoOrzech },
+    { id: 5, name: 'Biały', thumb: bialyoknothumb, image: oknoBiale }
   ],
 
   drzwi: [
-    { id: 1, name: 'Model 11S3', image: drzwi11S3 },
-    { id: 2, name: 'Model P9', image: drzwiP9 },
-    { id: 3, name: 'Model 14A', image: drzwi14A },
-    { id: 4, name: 'Własne', image: wlasne }
+    { id: 1, name: 'Model 11S3', image: drzwi11S3, thumb:  drzwi11S3thumb },
+    { id: 2, name: 'Model P9', image: drzwiP9, thumb: drzwiP9thumb },
+    { id: 3, name: 'Model 14A', image: drzwi14A, thumb: drzwi14Athumb },
+    { id: 4, name: 'Własne', image: wlasne, thumb: wlasnethumb }
   ]
 }
 
@@ -278,7 +288,13 @@ export default function VisualConfigurator() {
                         options={CONFIG_OPTIONS.okna}
                         activeId={okna}
                         onSelect={setOkna}
-                        renderThumbnail={() => <div className="tile-preview" />}
+                          renderThumbnail={(option) => 
+                                option.thumb ? (
+                                    <img className="tile-preview" src={option.thumb} alt={option.name} />
+                                ) : (
+                                    <div className="tile-preview" />
+                                )
+                            }
                     />
 
                     {/* Sekcja Drzwi */}
@@ -287,7 +303,13 @@ export default function VisualConfigurator() {
                         options={CONFIG_OPTIONS.drzwi}
                         activeId={drzwi}
                         onSelect={setDrzwi}
-                        renderThumbnail={() => <div className="tile-preview" />}
+                          renderThumbnail={(option) => 
+                                option.thumb ? (
+                                    <img className="tile-preview" src={option.thumb} alt={option.name} />
+                                ) : (
+                                    <div className="tile-preview" />
+                                )
+                            }
                     />
 
                     <div className="config-end">
