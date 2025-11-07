@@ -9,7 +9,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #f8f9fa;
+    background: #faf8f8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +72,7 @@
     height: 100%;
     padding: 20px;
     pointer-events: all;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.76);
     backdrop-filter: blur(10px);
     box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -104,6 +104,8 @@
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     padding: 12px;
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: center;
@@ -111,20 +113,20 @@
 }
 
 .option-tile:hover {
-    border-color: #007bff;
+    border-color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .option-tile.active {
-    border-color: #007bff;
-    background-color: #f0f8ff;
+    border-color: var(--primary-color);
+    background-color: #fff0f0;
 }
 
 .tile-preview {
     width: 100%;
     height: 60px;
-    background-color: #f8f9fa;
+    background-color: #faf8f8;
     border-radius: 4px;
     margin-bottom: 8px;
     display: flex;
