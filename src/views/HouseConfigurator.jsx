@@ -14,6 +14,7 @@ import p5 from '../assets/ex/6-5.jpg';
 import p6 from '../assets/ex/7-5.jpg';
 import p7 from '../assets/ex/8-5.jpg';
 import Footer from '../components/Footer/Footer';
+import VisualConfigurator from '../components/VisualConfigurator/VisualConfigurator';
 
 const HouseConfigurator = () => {
   const houseImages = [p1, p2, p3, p4, p5, p6, p7];
@@ -28,10 +29,8 @@ const HouseConfigurator = () => {
     message: ''
   });
 
-  // Cena bazowa
   const basePrice = 299000;
 
-  // Funkcja do wybierania pakietu (radio button behavior)
   const selectPackage = (packageId, category) => {
     setSelectedPackages(prev => ({
       ...prev,
@@ -42,7 +41,6 @@ const HouseConfigurator = () => {
   const calculateTotal = () => {
     let total = basePrice;
     
-    // Definiujemy rzeczywiste ceny pakietów
     const packagePrices = {
       'formal-1': 4420,
       'formal-2': 15640,
@@ -78,9 +76,8 @@ const HouseConfigurator = () => {
   };
 
   const totalPrice = calculateTotal();
-  const priceWithVAT = totalPrice * 1.23; // Dodajemy 23% VAT
+  const priceWithVAT = totalPrice * 1.23; 
 
-  // Funkcja pomocnicza do znajdowania nazwy pakietu po ID
   const getPackageName = (packageId) => {
     const allPackages = {
       'formal-1': 'Zgłoszenie Budynku Rekreacji Indywidualnej',
@@ -120,11 +117,12 @@ const HouseConfigurator = () => {
       
       <div className="configurator">
         <ProjectHeader basePrice={basePrice} />
-        <Visualization 
+        <VisualConfigurator />
+        {/* <Visualization 
           houseImages={houseImages} 
           activeImage={activeImage} 
           setActiveImage={setActiveImage} 
-        />
+        /> */}
         <Configurator
           selectedPackages={selectedPackages}
           selectPackage={selectPackage}
