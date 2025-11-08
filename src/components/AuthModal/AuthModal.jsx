@@ -1,4 +1,4 @@
-// AuthModal.jsx - zaktualizowany
+
 import React, { useState } from "react";
 import "./AuthModal.css";
 import { FaEye, FaUserSecret } from "react-icons/fa";
@@ -30,7 +30,7 @@ const [registerData, setRegisterData] = useState({
 
   const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
-  // Obsługa formularzy
+  
   const handleRegisterChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
@@ -43,7 +43,7 @@ const [registerData, setRegisterData] = useState({
     setResetData({ ...resetData, [e.target.name]: e.target.value });
   };
 
-  // Rejestracja
+  
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -93,7 +93,7 @@ const [registerData, setRegisterData] = useState({
     }
   };
 
-  // Logowanie
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -133,7 +133,7 @@ const [registerData, setRegisterData] = useState({
     }
   };
 
-  // Resetowanie hasła
+  
   const handleResetPassword = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -226,7 +226,6 @@ const [registerData, setRegisterData] = useState({
     <input type="email" className="inp" name="email" placeholder="Email" value={registerData.email} onChange={handleRegisterChange} required disabled={loading} />
     <input type="text" className="inp" name="phone" placeholder="Numer telefonu (opcjonalnie)" value={registerData.phone} onChange={handleRegisterChange} disabled={loading} />
     
-    {/* Zmienione radio buttons */}
     <div className="role-selection">
       <label>
         <input 

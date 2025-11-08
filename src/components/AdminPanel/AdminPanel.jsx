@@ -1,4 +1,3 @@
-// src/components/AdminPanel/AdminPanel.js
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import './AdminPanel.css';
@@ -79,7 +78,6 @@ const AdminPanel = () => {
 
   return (
     <div className="admin-panel">
-      {/* Sidebar */}
       <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="sidebar-header">
           <Link to={'/'} style={{color: 'inherit', textDecoration: 'none'}}><h2> M2Notarialnie</h2></Link>
@@ -142,7 +140,6 @@ const AdminPanel = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="admin-content">
         <div className="content-header">
           <h1>Panel Administratora</h1>

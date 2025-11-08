@@ -26,19 +26,19 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Walidacja GDPR
+    
     if (!formData.gdpr) {
       setMessage("Musisz zaakceptować warunki GDPR");
       return;
     }
 
-    // Walidacja wymaganych pól
+    
     if (!formData.name || !formData.email || !formData.message) {
       setMessage("Proszę wypełnić wszystkie wymagane pola");
       return;
     }
 
-    // Walidacja emaila
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setMessage("Proszę podać poprawny adres email");
@@ -68,7 +68,7 @@ const ContactForm = () => {
       if (data.success) {
         setMessage("Wiadomość została wysłana pomyślnie! Skontaktujemy się z Tobą wkrótce.");
         
-        // Reset formularza
+        
         setFormData({
           name: "",
           email: "",

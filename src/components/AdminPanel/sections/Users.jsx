@@ -1,4 +1,4 @@
-// src/components/AdminPanel/sections/Forms.js
+
 import React, { useState, useEffect } from 'react';
 import './Forms.css';
 

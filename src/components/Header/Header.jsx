@@ -211,7 +211,7 @@ const Header = ({ black }) => {
       className={`header__dropdown ${openDropdown === item.key ? "active" : ""}`}
       onMouseEnter={!isMobile ? () => setOpenDropdown(item.key) : undefined}
       onMouseLeave={!isMobile ? (e) => {
-        // Sprawdzamy czy kursor opuszcza cały dropdown
+        
         const { relatedTarget, currentTarget } = e;
         if (!currentTarget.contains(relatedTarget)) {
           setOpenDropdown(null);

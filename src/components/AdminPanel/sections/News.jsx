@@ -1,4 +1,4 @@
-// src/components/AdminPanel/sections/News.js
+
 import React, { useState, useEffect } from 'react';
 import './News.css';
 import { FaEye, FaTrash } from 'react-icons/fa';
@@ -29,7 +29,7 @@ const fetchNews = async () => {
     if (response.ok) {
       const result = await response.json();
       if (result.success) {
-        setNews(result.data); // używaj result.data zamiast result.data
+        setNews(result.data); 
       }
     }
   } catch (error) {
@@ -44,8 +44,8 @@ const handleSubmit = async (e) => {
   
   const submitData = new FormData();
   submitData.append('title', formData.title);
-  submitData.append('content', formData.content); // backend mapuje to na 'text'
-  submitData.append('excerpt', formData.excerpt); // backend mapuje to na 'shortText'
+  submitData.append('content', formData.content); 
+  submitData.append('excerpt', formData.excerpt); 
   
   if (formData.image) {
     submitData.append('image', formData.image);
@@ -208,7 +208,7 @@ const handleSubmit = async (e) => {
                 <div className="news-image">
                   {item.image ? (
                     <img 
-                      src={`${import.meta.env.VITE_BACKEND}${item.image}`} // używaj item.image zamiast item.imageSrc
+                      src={`${import.meta.env.VITE_BACKEND}${item.image}`} 
                       alt={item.title}
                     />
                   ) : (

@@ -33,7 +33,7 @@
   height: 70vh;
 }
 
-/* LEFT SIDE */
+
 .modal-left {
   flex: 1;
   background: url("../login-modal.jpeg") center/cover no-repeat;
@@ -49,7 +49,7 @@
   font-weight: bold;
 }
 
-/* RIGHT SIDE */
+
 .modal-right {
   flex: 1;
   padding: 40px 30px;
@@ -89,7 +89,7 @@
   font-size: 14px;
 }
 
-/* BUTTON */
+
 .btn-primary {
   background: #c6a65b;
   border: none;
@@ -105,7 +105,7 @@
   background: #b08e4c;
 }
 
-/* LINKS */
+
 .links {
   margin-top: 10px;
   display: flex;
@@ -123,9 +123,9 @@
   text-decoration: underline;
 }
 
-/* ✅ RESPONSIVE DESIGN */
 
-/* Medium screens (tablets) */
+
+
 @media (max-width: 900px) {
   .modal {
     width: 90%;
@@ -154,7 +154,7 @@
   }
 }
 
-/* Small screens (phones) */
+
 @media (max-width: 600px) {
   .modal {
     width: 100%;
@@ -213,7 +213,7 @@
 }
 
 
-/* AuthModal.css - dodaj te style */
+
 .role-selection {
   display: flex;
   gap: 20px;

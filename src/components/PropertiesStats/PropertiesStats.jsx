@@ -1,4 +1,4 @@
-// src/components/AdminPanel/sections/PropertiesStats.js
+
 import React from 'react';
 
 const PropertiesStats = ({ properties }) => {

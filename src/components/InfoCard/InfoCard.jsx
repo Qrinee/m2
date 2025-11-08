@@ -3,12 +3,12 @@ import "./InfoCard.css";
 import { FaCheck } from "react-icons/fa";
 
 export default function InfoCard({
-  icon,             // np. ścieżka do SVG lub JSX ikony
-  title,            // nagłówek karty
-  description,      // krótki opis
-  features = [],    // lista punktów
-  buttonText,       // tekst przycisku
-  onButtonClick     // callback po kliknięciu
+  icon,             
+  title,            
+  description,      
+  features = [],    
+  buttonText,       
+  onButtonClick     
 }) {
   return (
     <div className="info-card">

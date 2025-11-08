@@ -7,7 +7,7 @@
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
-  height: 100%; /* Dodajemy aby wszystkie karty miały taką samą wysokość */
+  height: 100%;
 }
 
 .news-card:hover {
@@ -16,22 +16,22 @@
 
 .news-card__image-wrapper {
   width: 100%;
-  height: 200px; /* Stała wysokość */
+  height: 200px;
   overflow: hidden;
   position: relative;
-  background-color: #f5f5f5; /* Tło jeśli brak obrazu */
+  background-color: #f5f5f5;
 }
 
 .news-card__image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Kluczowa właściwość - obraz wypełnia kontener bez rozciągania */
-  object-position: center; /* Wyśrodkowanie obrazu */
+  object-fit: cover;
+  object-position: center;
   transition: transform 0.3s ease;
 }
 
 .news-card:hover .news-card__image {
-  transform: scale(1.05); /* Lekki zoom przy hover */
+  transform: scale(1.05);
 }
 
 .news-card__placeholder {
@@ -49,7 +49,7 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  flex: 1; /* Zajmuje pozostałą przestrzeń */
+  flex: 1;
 }
 
 .news-card__title {
@@ -57,7 +57,7 @@
   margin: 0 0 8px;
   line-height: 1.2;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Ogranicza tytuł do 2 linii */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -69,12 +69,12 @@
 }
 
 .news-card__excerpt {
-  flex: 1; /* Zajmuje dostępną przestrzeń */
+  flex: 1;
   font-size: 1rem;
   color: #333;
   margin: 0 0 16px;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Ogranicza opis do 3 linii */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -86,33 +86,33 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: auto; /* Przycisk zawsze na dole */
+  margin-top: auto;
 }
 
 
-/* --- Responsywność --- */
+
 
 @media (min-width: 600px) {
   .news-card {
     flex-direction: row;
-    height: 200px; /* Stała wysokość również na desktopie */
+    height: 200px;
   }
   
   .news-card__image-wrapper {
-    width: 200px; /* Stała szerokość na desktopie */
-    height: 200px; /* Stała wysokość na desktopie */
-    flex-shrink: 0; /* Zapobiega zmniejszaniu się */
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
   }
   
   .news-card__content {
-    width: calc(100% - 200px); /* Pozostała przestrzeń po odjęciu obrazka */
+    width: calc(100% - 200px);
     padding: 20px;
   }
 }
 
 @media (min-width: 768px) {
   .news-card__image-wrapper {
-    width: 250px; /* Nieco szerszy obrazek na większych ekranach */
+    width: 250px;
     height: 200px;
   }
   
@@ -121,10 +121,10 @@
   }
 }
 
-/* Dla bardzo małych ekranów */
+
 @media (max-width: 359px) {
   .news-card__image-wrapper {
-    height: 180px; /* Nieco mniejsza wysokość na małych ekranach */
+    height: 180px;
   }
   
   .news-card__title {

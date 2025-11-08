@@ -1,4 +1,4 @@
-/* Footer.css */
+
 .footer {
   background-color: #0a0a0a;
   color: #e0e0e0;
@@ -47,7 +47,7 @@
   font-weight: 400;
 }
 
-/* Social Icons */
+
 .social-icons {
   display: flex;
   gap: 12px;
@@ -75,7 +75,7 @@
   transform: translateY(-2px);
 }
 
-/* Partners Grid */
+
 .partners-grid {
   display: flex;
   flex-direction: column;
@@ -110,7 +110,7 @@
   filter: brightness(0) invert(1);
 }
 
-/* Contact Info */
+
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -163,7 +163,7 @@
   filter: brightness(0) invert(1);
 }
 
-/* Footer Bottom */
+
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: 60px;
@@ -197,7 +197,7 @@
   color: #CBB26A;
 }
 
-/* Responsive Design */
+
 @media (max-width: 968px) {
   .footer-container {
     grid-template-columns: 1fr 1fr;

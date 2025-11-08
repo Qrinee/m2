@@ -8,11 +8,11 @@
   flex-direction: column;
   justify-content: space-between;
   background: #5f1616;
-  isolation: isolate; /* ważne dla blendowania */
+  isolation: isolate;
   margin-bottom: 24px;
 }
 
-/* Obrazek w tle */
+
 .package-image {
   position: absolute;
   inset: 0;
@@ -27,7 +27,7 @@
   transition: opacity 0.6s ease;
 }
 
-/* Gradient, który daje płynne przejście */
+
 .package-gradient-overlay {
   position: absolute;
   inset: 0;
@@ -41,7 +41,7 @@
   z-index: -1;
 }
 
-/* Treść */
+
 .package-content {
   position: relative;
   z-index: 1;
@@ -125,12 +125,12 @@
   color: #ffffff;
 }
 
-/* Efekt po najechaniu – delikatne rozjaśnienie tła */
+
 .package-card:hover .package-image img {
   opacity: 0.65;
 }
 
-/* Responsywność */
+
 @media (max-width: 768px) {
   .package-options {
     flex-direction: column;

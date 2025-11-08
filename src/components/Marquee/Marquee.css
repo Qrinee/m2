@@ -1,6 +1,6 @@
 .marquee {
-  --duration: 20s;     /* czas pełnego przesunięcia */
-  --gap: 48px;         /* odstęp między kopiami */
+  --duration: 20s;    
+  --gap: 48px;        
   position: relative;
   width: 100%;
   color: white;
@@ -9,13 +9,13 @@
   padding: 10px 0;
   overflow: hidden;
   background-color: #CBB26A;
-  /* Wymuszamy jednoliniowość, żeby „szło” przez cały ekran */
+ 
   white-space: nowrap;
 }
 
 .marquee__track {
   display: flex;
-  width: max-content;          /* szerokość równa sumie dzieci */
+  width: max-content;         
   gap: var(--gap);
   animation: marquee var(--duration) linear infinite;
   will-change: transform;
@@ -25,20 +25,20 @@
   display: inline-flex;
   align-items: center;
   gap: var(--gap);
-  padding-inline-end: var(--gap); /* drobna rezerwa za grupą */
+  padding-inline-end: var(--gap);
 }
 
 .marquee__item {
   display: inline-block;
 }
 
-/* Płynna pętla: przesuwamy dwie identyczne grupy o połowę ich łącznej szerokości */
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-/* Szacunek dla preferencji: wyłącz animację przy reduced motion */
+
 @media (prefers-reduced-motion: reduce) {
   .marquee__track { animation: none; }
 }

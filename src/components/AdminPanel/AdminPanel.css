@@ -1,4 +1,4 @@
-/* src/components/AdminPanel/AdminPanel.css */
+
 .admin-panel {
   display: flex;
   min-height: 100vh;
@@ -144,7 +144,7 @@
   overflow-y: auto;
 }
 
-/* Loading states */
+
 .admin-loading {
   display: flex;
   flex-direction: column;
@@ -168,7 +168,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Common section styles */
+
 .section-header {
   margin-bottom: 30px;
 }
@@ -185,14 +185,14 @@
 
 
 
-/* Empty state */
+
 .empty-state {
   text-align: center;
   padding: 60px 20px;
   color: #7f8c8d;
 }
 
-/* Status badges */
+
 .status-badge {
   display: inline-block;
   padding: 4px 8px;

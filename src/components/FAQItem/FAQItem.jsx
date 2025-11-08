@@ -15,9 +15,9 @@ const FAQItem = ({ question, answer }) => {
   }, [open]);
 
   const toggleOpen = () => {
-    // 👉 Przy każdym kliknięciu ustawiamy maxHeight dynamicznie
+    
     if (open) {
-      contentRef.current.style.maxHeight = contentRef.current.scrollHeight + "px"; // reset dla płynności
+      contentRef.current.style.maxHeight = contentRef.current.scrollHeight + "px"; 
       requestAnimationFrame(() => {
         contentRef.current.style.maxHeight = "0px";
       });

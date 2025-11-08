@@ -11,20 +11,20 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
   };
 
   const handleFilterUpdate = (key, value) => {
-    console.log(`Zmiana filtra: ${key} = ${value}`); // Debug
+    console.log(`Zmiana filtra: ${key} = ${value}`); 
     const newFilters = { ...filters, [key]: value };
     onFilterChange(newFilters);
   };
 
   const handleReset = () => {
-    console.log('Resetowanie filtrów'); // Debug
+    console.log('Resetowanie filtrów'); 
     onResetFilters();
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
   };
 
-  // Upewnij się że mamy dane
+  
   const safeFilterOptions = {
     kategorie: filterOptions?.kategorie || [],
     wojewodztwa: filterOptions?.wojewodztwa || [],
@@ -42,7 +42,7 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
     "Powierzchnia malejąco"
   ];
 
-  // Funkcja do mapowania wartości sortowania
+  
   const getSortValue = (sort) => {
     switch (sort) {
       case 'data-desc': return 'Najnowsze';
@@ -57,9 +57,7 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
 
   return (
     <div className={`filter-bar ${loading ? 'filter-loading' : ''}`}>
-      {/* Desktop/Tablet View */}
       <div className="filter-selects">
-        {/* Typ ogłoszenia */}
         <CustomSelect
           options={typOptions}
           selected={filters.typ ? (filters.typ === 'sprzedaz' ? 'Sprzedaż' : 'Wynajem') : "Typ"}
@@ -70,28 +68,24 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
           }}
         />
 
-        {/* Kategoria */}
         <CustomSelect
           options={["Kategoria", ...safeFilterOptions.kategorie]}
           selected={filters.kategoria || "Kategoria"}
           onSelect={(value) => handleFilterUpdate('kategoria', value === "Wszystkie kategorie" ? '' : value)}
         />
 
-        {/* Województwo */}
         <CustomSelect
           options={["Województwo", ...safeFilterOptions.wojewodztwa]}
           selected={filters.wojewodztwo || "Województwo"}
           onSelect={(value) => handleFilterUpdate('wojewodztwo', value === "Wszystkie województwa" ? '' : value)}
         />
 
-        {/* Miasto */}
         <CustomSelect
           options={["Miasto", ...safeFilterOptions.miasta]}
           selected={filters.miasto || "Miasto"}
           onSelect={(value) => handleFilterUpdate('miasto', value === "Wszystkie miasta" ? '' : value)}
         />
 
-        {/* Pokoje */}
         <CustomSelect
           options={pokojeOptions}
           selected={filters.pokoje ? `${filters.pokoje} pokoi` : "Dowolna liczba"}
@@ -101,7 +95,6 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
           }}
         />
 
-        {/* Sortowanie */}
         <CustomSelect
           options={sortOptions}
           selected={getSortValue(filters.sort)}
@@ -119,13 +112,11 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
         />
       </div>
 
-      {/* Mobile Menu Toggle */}
       <button className="mobile-filter-toggle" onClick={toggleMobileMenu}>
         {isMobileMenuOpen ? <FaTimes /> : <FaFilter />}
         <span>Filtry</span>
       </button>
 
-      {/* Mobile Filter Menu */}
       <div className={`mobile-filter-menu ${isMobileMenuOpen ? "active" : ""}`}>
         <div className="mobile-filter-header">
           <h3>Filtry</h3>
@@ -135,7 +126,6 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
         </div>
         
         <div className="mobile-filter-selects">
-          {/* Typ - Mobile */}
           <div className="filter-group">
             <label>Typ ogłoszenia</label>
             <select 
@@ -149,7 +139,6 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
             </select>
           </div>
 
-          {/* Kategoria - Mobile */}
           <div className="filter-group">
             <label>Kategoria</label>
             <select 
@@ -164,7 +153,6 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
             </select>
           </div>
 
-          {/* Województwo - Mobile */}
           <div className="filter-group">
             <label>Województwo</label>
             <select 
@@ -179,7 +167,6 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
             </select>
           </div>
 
-          {/* Miasto - Mobile */}
           <div className="filter-group">
             <label>Miasto</label>
             <select 
@@ -194,7 +181,6 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
             </select>
           </div>
 
-          {/* Pokoje - Mobile */}
           <div className="filter-group">
             <label>Liczba pokoi</label>
             <select 
@@ -210,7 +196,6 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
             </select>
           </div>
 
-          {/* Sortowanie - Mobile */}
           <div className="filter-group">
             <label>Sortowanie</label>
             <select 

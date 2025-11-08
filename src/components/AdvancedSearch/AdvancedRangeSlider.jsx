@@ -4,16 +4,16 @@ import "./AdvancedSearch.css";
 const AdvancedRangeSlider = ({ min = 0, max = 1500000, step = 10000, onChange }) => {
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
-  const priceGap = 50000; // Minimum gap between min and max
+  const priceGap = 50000; 
 
-  // Update parent component when values change
+  
   useEffect(() => {
     if (onChange) {
       onChange([minValue, maxValue]);
     }
   }, [minValue, maxValue, onChange]);
 
-  // Handle min input change
+  
   const handleMinInput = (e) => {
     let value = parseInt(e.target.value) || min;
     
@@ -28,7 +28,7 @@ const AdvancedRangeSlider = ({ min = 0, max = 1500000, step = 10000, onChange })
     setMinValue(value);
   };
 
-  // Handle max input change
+  
   const handleMaxInput = (e) => {
     let value = parseInt(e.target.value) || max;
     
@@ -43,7 +43,7 @@ const AdvancedRangeSlider = ({ min = 0, max = 1500000, step = 10000, onChange })
     setMaxValue(value);
   };
 
-  // Handle min range slider change
+  
   const handleMinRange = (e) => {
     let value = parseInt(e.target.value);
     
@@ -54,7 +54,7 @@ const AdvancedRangeSlider = ({ min = 0, max = 1500000, step = 10000, onChange })
     setMinValue(value);
   };
 
-  // Handle max range slider change
+  
   const handleMaxRange = (e) => {
     let value = parseInt(e.target.value);
     
@@ -65,7 +65,7 @@ const AdvancedRangeSlider = ({ min = 0, max = 1500000, step = 10000, onChange })
     setMaxValue(value);
   };
 
-  // Calculate slider track position
+  
   const getTrackStyle = () => {
     const left = ((minValue - min) / (max - min)) * 100;
     const right = 100 - ((maxValue - min) / (max - min)) * 100;

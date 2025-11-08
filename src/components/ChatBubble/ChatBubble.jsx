@@ -22,12 +22,7 @@ const ChatBubble = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Tutaj logika wysyłania formularza
-    console.log('Formularz wysłany:', formData);
-    // Resetowanie pól
     setFormData({ email: '', message: '' });
-    // Opcjonalnie zamknięcie formularza po wysłaniu
-    // setIsOpen(false);
   };
 
   return (

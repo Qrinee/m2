@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px; /* odstęp między przyciskami */
+  gap: 4px;
   margin-top: 16px;
 }
 
@@ -26,6 +26,6 @@
 }
 
 .pagination-button.active {
-  background-color: #d4af37; /* żółty */
+  background-color: #d4af37;
   color: white;
 }

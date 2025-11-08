@@ -75,7 +75,6 @@ const ModularForBusiness = ({ cards = defaultCards }) => {
   );
 };
 
-// Domyślne karty na wypadek gdyby nie przekazano props
 const defaultCards = [
   {
     id: 1,

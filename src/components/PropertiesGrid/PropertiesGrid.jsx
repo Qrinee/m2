@@ -1,33 +1,33 @@
-// src/components/PropertiesGrid/PropertiesGrid.js
+
 import React from 'react';
 import './PropertiesGrid.css'
 import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const PropertiesGrid = ({ properties, onUpdateStatus, onDeleteProperty }) => {
   const getSurfaceArea = (property) => {
-    // Jeśli property ma nową strukturę z obiektem powierzchnia
+    
     if (property.powierzchnia && typeof property.powierzchnia === 'object') {
       return property.powierzchnia.calkowita || '0';
     }
-    // Jeśli property ma starą strukturę
+    
     return property.szczegoly?.rozmiar_m2 || '0';
   };
 
   const getPrice = (property) => {
-    // Jeśli property ma nową strukturę z obiektem cena
+    
     if (property.cena && typeof property.cena === 'object') {
       return property.cena.calkowita || property.cenaNum || '0';
     }
-    // Jeśli property ma starą strukturę
+    
     return property.cenaNum || '0';
   };
 
   const getLocation = (property) => {
-    // Jeśli property ma nową strukturę z obiektem lokalizacja
+    
     if (property.lokalizacja && typeof property.lokalizacja === 'object') {
       return property.lokalizacja.miasto || property.lokalizacja.wojewodztwo || 'Brak danych';
     }
-    // Jeśli property ma starą strukturę - możesz dodać logikę dla starej struktury
+    
     return property.szczegoly?.lokalizacja || 'Brak danych';
   };
 

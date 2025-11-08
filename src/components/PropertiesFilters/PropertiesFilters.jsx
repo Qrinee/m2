@@ -1,4 +1,4 @@
-// src/components/AdminPanel/sections/PropertiesFilters.js
+
 import React from 'react';
 
 const PropertiesFilters = ({ filter, onFilterChange, properties }) => {

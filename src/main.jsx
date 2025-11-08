@@ -67,6 +67,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/zostan-partnerem-pracownikiem" element={<ZostanPartneremLubPracownikiem />} />
           <Route path="/o-nas" element={<ONas />} />
           <Route path='/konfigurator' element={<HouseConfigurator />} />
+          <Route path='/konfigurator/:id' element={<HouseConfigurator />} />
           <Route path='/projekty-domow' element={<ProjektyDomow />} />
           <Route path="/estate_agent/:id" element={<Profil />} />
           <Route path='/my-profile' element={<MojProfil />} />

@@ -8,14 +8,14 @@
   cursor: pointer;
 }
 .faq-question:hover {
-  color: #b8860b; /* ciemniejszy złoty */
+  color: #b8860b;
 }
 .faq-question {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
-  color: #1d1d1d; /* złoty */
+  color: #1d1d1d;
   font-size: 18px;
 }
 

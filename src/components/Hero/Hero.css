@@ -1,4 +1,4 @@
-/* ModernHero.css */
+
 .modern-hero-section {
   width: 100%;
   min-height: 100vh;
@@ -9,7 +9,7 @@
   background: #0a0a0a;
 }
 
-/* Background styles */
+
 .modern-hero-bg {
   position: absolute;
   top: 0;
@@ -43,7 +43,7 @@
   z-index: 2;
 }
 
-/* Main container */
+
 .modern-hero-container {
   position: relative;
   z-index: 3;
@@ -53,7 +53,7 @@
   padding: 0 2rem;
 }
 
-/* Content layout */
+
 .modern-hero-content {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -69,7 +69,7 @@
   transform: translateY(0);
 }
 
-/* Text content */
+
 .modern-hero-text {
   max-width: 680px;
 }
@@ -113,7 +113,7 @@
   max-width: 90%;
 }
 
-/* Features */
+
 .modern-hero-features {
   display: flex;
   flex-wrap: wrap;
@@ -134,7 +134,7 @@
   font-size: 1.1rem;
 }
 
-/* CTA Buttons */
+
 .modern-hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -183,7 +183,7 @@
   transform: translateY(-2px);
 }
 
-/* Property card */
+
 .modern-property-card {
   opacity: 0;
   transform: translateX(30px);
@@ -282,7 +282,7 @@
   color: #a81b16;
 }
 
-/* Scroll indicator */
+
 .modern-scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -322,7 +322,7 @@
   }
 }
 
-/* Responsive design */
+
 @media (max-width: 1024px) {
   .modern-hero-content {
     grid-template-columns: 1fr;
@@ -399,7 +399,7 @@
   }
 }
 
-/* Reduced motion for accessibility */
+
 @media (prefers-reduced-motion: reduce) {
   .modern-hero-bg,
   .modern-hero-content,

@@ -3,11 +3,11 @@
   display: inline-block;
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  /* Dodaj izolację dla stacking context */
+ 
   isolation: isolate;
-  z-index: 1000; /* Ustaw wysoki z-index dla kontenera */
+  z-index: 1000;
 }
-/* Trigger button */
+
 .custom-select-trigger {
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@
   box-shadow: 0 4px 12px rgba(201, 163, 61, 0.2);
 }
 
-/* Animated arrow icon */
+
 .arrow-icon {
   transition: transform 0.3s ease;
   font-size: 12px;
@@ -55,7 +55,7 @@
   left: 0;
   margin-top: 8px;
   width: 100%;
-  z-index: 9999; /* BARDZO WYSOKI z-index */
+  z-index: 9999;
   opacity: 0;
   transform: translateY(-10px);
   visibility: hidden;
@@ -73,13 +73,13 @@
   background: #fff;
   border: 2px solid #e1e5e9;
   border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15); /* Większy shadow dla lepszego wyróżnienia */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   list-style: none;
   padding: 4px 0;
   margin: 0;
   overflow: hidden;
   position: relative;
-  z-index: 10000; /* Najwyższy */
+  z-index: 10000;
 }
 .custom-option {
   padding: 10px 16px;
@@ -103,7 +103,7 @@
   border-left-color: #c9a33d;
 }
 
-/* Smooth entry animation for individual options */
+
 .custom-options-container.open .custom-option {
   animation: slideIn 0.3s ease forwards;
 }
@@ -125,7 +125,7 @@
   }
 }
 
-/* Focus states for accessibility */
+
 .custom-select-trigger:focus {
   outline: none;
   border-color: #c9a33d;

@@ -13,14 +13,14 @@ const NotarialCalculator = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  // Stałe oprocentowanie - 10% do 5 lat, 15% powyżej 5 lat
+  
   const annualInterestRateFirst5 = 0.10;
   const annualInterestRateAfter5 = 0.15;
   
   const loanAmount = propertyPrice * (1 - ownContribution / 100);
   const ownContributionAmount = propertyPrice * ownContribution / 100;
   
-  // Funkcja do obliczania raty
+  
   const calculateMonthlyRate = () => {
     if (loanAmount <= 0) {
       return { monthlyRate: 0, interestRate: annualInterestRateFirst5 };
@@ -41,18 +41,18 @@ const NotarialCalculator = () => {
 
   const monthlyRateData = calculateMonthlyRate();
 
-  // Format currency with proper spacing
+  
   const formatCurrency = (value) => {
     if (isNaN(value) || value === Infinity) return '0 zł';
     return Math.round(value).toLocaleString('pl-PL', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' zł';
   };
 
-  // Format percentage
+  
   const formatPercentage = (value) => {
     return Math.round(value * 100) + '%';
   };
 
-  // Format months to years and months
+  
   const formatMonths = (months) => {
     const years = Math.floor(months / 12);
     const remainingMonths = months % 12;
@@ -76,7 +76,7 @@ const NotarialCalculator = () => {
     return result;
   };
 
-  // Handle form input changes
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -85,7 +85,7 @@ const NotarialCalculator = () => {
     }));
   };
 
-  // Handle form submission
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -100,7 +100,7 @@ const submissionData = {
   ownContribution: ownContributionAmount,
   loanTerm: repaymentMonths,
   monthlyPayment: monthlyRateData.monthlyRate,
-  interestRate: formatPercentage(monthlyRateData.interestRate) // Dodaj tę linię
+  interestRate: formatPercentage(monthlyRateData.interestRate) 
 };
 
       const response = await fetch(import.meta.env.VITE_BACKEND + '/api/emails/loan-inquiry', {
@@ -135,7 +135,7 @@ const submissionData = {
     }
   };
 
-  // Close status message
+  
   const closeStatusMessage = () => {
     setSubmitStatus(null);
   };

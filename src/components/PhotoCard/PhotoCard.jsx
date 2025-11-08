@@ -3,7 +3,7 @@ import { FaMailBulk, FaPhone } from 'react-icons/fa'
 import './PhotoCard.css';
 
 export default function PhotoCard({ image, name, status, description }) {
-  // Skróć opis do 100 znaków
+  
   const shortDescription = description.length > 100 
     ? description.slice(0, 100) + '...'
     : description;

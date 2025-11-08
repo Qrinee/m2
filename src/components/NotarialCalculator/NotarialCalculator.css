@@ -1,4 +1,4 @@
-/* NotarialCalculator.css - Uproszczona wersja */
+
 
 .calculator-container {
   max-width: 600px;
@@ -174,7 +174,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Status Message Styles */
+
 .submit-status {
   padding: 16px;
   border-radius: 8px;
@@ -254,7 +254,7 @@
   opacity: 1;
 }
 
-/* Button Loading State */
+
 .submit-button.loading {
   position: relative;
   pointer-events: none;
@@ -297,7 +297,7 @@
   cursor: not-allowed;
 }
 
-/* Form Styles */
+
 .contact-form {
   margin-top: 20px;
 }
@@ -335,7 +335,7 @@
   margin: 25px 0;
 }
 
-/* Animations */
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -352,7 +352,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 650px) {
   .calculator-container {
     margin: 20px;

@@ -53,7 +53,6 @@ const ModularCollection = () => {
     }
   };
 
-  // Autoplay
   useEffect(() => {
     if (isAutoPlaying) {
       resetProgress();
@@ -128,7 +127,6 @@ const ModularCollection = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
           <button className="carousel-btn carousel-btn-prev" onClick={prevSlide}>
             ‹
           </button>
@@ -136,7 +134,6 @@ const ModularCollection = () => {
             ›
           </button>
 
-          {/* Indicators */}
           <div className="carousel-indicators">
             {galleryItems.map((_, index) => (
               <button

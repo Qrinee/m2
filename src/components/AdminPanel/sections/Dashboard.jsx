@@ -1,4 +1,3 @@
-// src/components/AdminPanel/sections/Dashboard.js
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 import { FaHouse, FaTimeline } from 'react-icons/fa6';

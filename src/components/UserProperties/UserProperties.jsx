@@ -1,4 +1,4 @@
-// src/components/MojProfil/components/UserProperties.js
+
 import React from 'react';
 import { FaHome } from 'react-icons/fa';
 

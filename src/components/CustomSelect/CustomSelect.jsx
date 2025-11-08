@@ -7,17 +7,17 @@ const CustomSelect = ({ options, selected, onSelect }) => {
   const containerRef = useRef(null);
 
   const toggleOpen = () => {
-    console.log('Toggle select, isOpen:', !isOpen); // Debug
+    console.log('Toggle select, isOpen:', !isOpen); 
     setIsOpen(!isOpen);
   };
 
   const handleSelect = (option) => {
-    console.log('Wybrano opcję:', option); // Debug
+    console.log('Wybrano opcję:', option); 
     onSelect(option);
     setIsOpen(false);
   };
 
-  // Close dropdown when clicking outside
+  
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {

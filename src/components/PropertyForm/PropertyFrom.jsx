@@ -45,7 +45,7 @@ export default function PropertyForm() {
 
       if (data.success) {
         setMessage('Dziękujemy! Twoja nieruchomość została zgłoszona. Skontaktujemy się z Tobą w ciągu 24 godzin.');
-        // Reset form
+        
         setFormData({
           firstName: '',
           lastName: '',

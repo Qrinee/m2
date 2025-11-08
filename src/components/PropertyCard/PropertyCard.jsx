@@ -1,9 +1,9 @@
-// src/components/AdminPanel/sections/PropertyCard.js
+
 import React from 'react';
 
 const PropertyCard = ({ property, onUpdateStatus, onDeleteProperty }) => {
   const getStatusBadge = (property) => {
-    // Mapowanie statusów z backendu na nasze komponenty
+    
     const statusMap = {
       'na_sprzedaz': { label: 'Na sprzedaż', class: 'adm-prop-status--active' },
       'aktywne': { label: 'Aktywna', class: 'adm-prop-status--active' },
@@ -14,7 +14,7 @@ const PropertyCard = ({ property, onUpdateStatus, onDeleteProperty }) => {
       'wynajete': { label: 'Wynajęta', class: 'adm-prop-status--rented' }
     };
     
-    // Używamy isActive z backendu lub status
+    
     if (property.isActive === false) {
       return { label: 'Nieaktywna', class: 'adm-prop-status--inactive' };
     }
@@ -45,11 +45,11 @@ const PropertyCard = ({ property, onUpdateStatus, onDeleteProperty }) => {
       'sprzedaz': 'Sprzedaż',
       'wynajem': 'Wynajem'
     };
-    return types[status] || 'Sprzedaż'; // Domyślnie sprzedaż
+    return types[status] || 'Sprzedaż'; 
   };
 
   const formatPrice = (cena) => {
-    // Obsługa różnych formatów cen z backendu
+    
     let priceValue;
     
     if (typeof cena === 'object' && cena !== null) {
@@ -59,7 +59,7 @@ const PropertyCard = ({ property, onUpdateStatus, onDeleteProperty }) => {
     } else if (typeof cena === 'number') {
       priceValue = cena;
     } else {
-      priceValue = property.cenaNum; // Fallback na cenaNum z backendu
+      priceValue = property.cenaNum; 
     }
     
     if (!priceValue || priceValue === 0) return 'Brak ceny';
@@ -72,7 +72,7 @@ const PropertyCard = ({ property, onUpdateStatus, onDeleteProperty }) => {
 
   const status = getStatusBadge(property);
   
-  // Znajdź zdjęcie cover lub pierwsze zdjęcie - BEZPOŚREDNIO z property.files
+  
   const coverImage = property.files?.find(f => f.isCover) || property.files?.[0];
 
   return (

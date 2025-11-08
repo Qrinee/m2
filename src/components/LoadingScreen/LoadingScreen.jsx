@@ -1,4 +1,4 @@
-// src/components/MojProfil/components/LoadingScreen.js
+
 import React from 'react';
 import Header from '../Header/Header';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';

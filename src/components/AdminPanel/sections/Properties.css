@@ -1,4 +1,4 @@
-/* src/components/AdminPanel/sections/Properties.css */
+
 .adm-prop-container {
   padding: 20px;
 }
@@ -9,7 +9,7 @@
   color: #666;
 }
 
-/* Header */
+
 .adm-prop-header {
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@
   background: #1b1b1b;
 }
 
-/* Stats */
+
 .adm-prop-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -71,7 +71,7 @@
   font-size: 14px;
 }
 
-/* Filters */
+
 .adm-prop-filters {
   display: flex;
   gap: 10px;
@@ -109,7 +109,7 @@
   border-color: #242424;
 }
 
-/* Grid */
+
 .adm-prop-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -122,7 +122,7 @@
   color: #666;
 }
 
-/* Property Card */
+
 .adm-prop-card {
   background: white;
   border-radius: 10px;
@@ -279,7 +279,7 @@
 .adm-prop-card__btn--secondary:hover { background: #5a6268; }
 .adm-prop-card__btn--danger:hover { background: #c82333; }
 
-/* Modal */
+
 .adm-prop-modal {
   position: fixed;
   top: 0;
@@ -335,7 +335,7 @@
   color: #333;
 }
 
-/* Form */
+
 .adm-prop-form {
   padding: 20px;
 }
@@ -417,7 +417,7 @@
   background: #5a6268;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .adm-prop-grid {
     grid-template-columns: 1fr;
@@ -447,7 +447,7 @@
 }
 
 
-/* Dodaj te style do swojego pliku CSS */
+
 
 .adm-prop-form__sections {
   max-height: 70vh;
@@ -481,7 +481,7 @@
   grid-column: 1 / -1;
 }
 
-/* Drag & Drop Zone */
+
 .adm-prop-form__dropzone {
   border: 2px dashed #ccc;
   border-radius: 8px;
@@ -505,7 +505,7 @@
   color: #666;
 }
 
-/* Image Preview */
+
 .adm-prop-form__preview {
   margin-top: 1rem;
 }
@@ -566,7 +566,7 @@
   color: white;
 }
 
-/* Checkbox groups */
+
 .checkbox-group {
   display: flex;
   flex-direction: column;
@@ -584,7 +584,7 @@
   margin: 0;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .adm-prop-form__grid {
     grid-template-columns: 1fr;

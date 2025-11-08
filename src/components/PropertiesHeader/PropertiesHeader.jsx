@@ -1,4 +1,4 @@
-// src/components/AdminPanel/sections/PropertiesHeader.js
+
 import React from 'react';
 
 const PropertiesHeader = ({ onAddProperty }) => {

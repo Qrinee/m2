@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Header from '../components/Header/Header';
-import et from '../assets/ex/2-5.jpg';
+import et from '../assets/konfigurator/thumbnails/1.png';
 import et2 from '../assets/ex/3-5.jpg';
 import et3 from '../assets/ex/4-5.jpg';
 import './ProjektyDomow.css';
@@ -35,11 +35,11 @@ export default function ProjektyDomow() {
   const houseProjects = [
     {
       id: 1,
-      name: "Modułowy DOM 84",
+      name: "Model D-126",
       area: "84 m²",
       thumbnail: et,
-      shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
-      initialPrice: "299 000 zł",
+      shortDesc: "Dom całoroczny dla rodziny 2+3",
+      initialPrice: "od 309 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
       features: ["Taras", "Garaż", "Ogród"],
       bedrooms: 3,
@@ -47,11 +47,11 @@ export default function ProjektyDomow() {
     },
     {
       id: 1,
-      name: "Modułowy DOM 84",
+      name: "Model D-115",
       area: "84 m²",
       thumbnail: et2,
       shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
-      initialPrice: "299 000 zł",
+      initialPrice: "od 289 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
       features: ["Taras", "Garaż", "Ogród"],
       bedrooms: 3,
@@ -59,11 +59,11 @@ export default function ProjektyDomow() {
     },
         {
       id: 1,
-      name: "Modułowy DOM 84",
+      name: "Model D-70",
       area: "84 m²",
       thumbnail: et3,
       shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
-      initialPrice: "299 000 zł",
+      initialPrice: "od 209 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
       features: ["Taras", "Garaż", "Ogród"],
       bedrooms: 3,
@@ -84,29 +84,7 @@ export default function ProjektyDomow() {
       <Header black red />
       <div className='separate'></div>
       <div className={`projekty-domow-container ${isVisible ? 'page-loaded' : ''}`}>
-        <header className="projekty-header">
-          <div className="header-content">
-            <h1 className="title-animate">Skonfiguruj dom szyty na miarę</h1>
-            <p className="subtitle-animate">Wybierz jeden z naszych gotowych projektów i dostosuj go do swoich potrzeb</p>
-            <div className="header-stats">
-              <div className="stat stat-animate" style={{animationDelay: '0.1s'}}>
-                <GiModernCity className="stat-icon" />
-                <span className="stat-number">24</span>
-                <span className="stat-label">Gotowe projekty</span>
-              </div>
-              <div className="stat stat-animate" style={{animationDelay: '0.2s'}}>
-                <GiFamilyHouse className="stat-icon" />
-                <span className="stat-number">100+</span>
-                <span className="stat-label">Zrealizowanych inwestycji</span>
-              </div>
-              <div className="stat stat-animate" style={{animationDelay: '0.3s'}}>
-                <FaHome className="stat-icon" />
-                <span className="stat-number">15</span>
-                <span className="stat-label">Lat doświadczenia</span>
-              </div>
-            </div>
-          </div>
-        </header>
+
 
         <div className="projects-filter filter-animate">
           <button 
@@ -189,15 +167,7 @@ export default function ProjektyDomow() {
                   </div>
                   
                   <p className="project-desc fade-in-text">{project.shortDesc}</p>
-                  
-                  <div className="project-features">
-                    {project.features.map((feature, index) => (
-                      <span key={index} className="feature-tag feature-animate">
-                        <FaCheck className="feature-icon" />
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
+
                 </div>
                 
                 <div className="project-actions">
@@ -209,20 +179,7 @@ export default function ProjektyDomow() {
                     Spersonalizuj ten projekt
                     <FaArrowRight className="btn-arrow" />
                   </button>
-                  <div className="action-buttons">
-                    <button className="btn-secondary bounce-on-hover">
-                      <FaFilePdf className="btn-icon" />
-                      PDF
-                    </button>
-                    <button className="btn-secondary bounce-on-hover">
-                      <FaHeart className="btn-icon" />
-                      Zapisz
-                    </button>
-                    <button className="btn-secondary bounce-on-hover">
-                      <FaExchangeAlt className="btn-icon" />
-                      Porównaj
-                    </button>
-                  </div>
+
                 </div>
               </div>
             </div>

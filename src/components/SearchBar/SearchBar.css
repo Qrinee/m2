@@ -108,7 +108,7 @@
   font-size: 14px;
 }
 
-/* Tablet Styles */
+
 @media (max-width: 1024px) {
   .searchbar__fields {
     grid-template-columns: repeat(2, 1fr);
@@ -160,7 +160,7 @@
   }
 }
 
-/* Mobile Styles */
+
 @media (max-width: 480px) {
   .searchbar {
     top: -20px;

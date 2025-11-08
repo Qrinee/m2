@@ -5,7 +5,7 @@
   z-index: 1000;
 }
 
-/* Przycisk główny */
+
 .cb-trigger {
   position: absolute;
   bottom: 0;
@@ -32,7 +32,7 @@
   transform: rotate(90deg);
 }
 
-/* Formularz */
+
 .cb-popup {
   position: absolute;
   bottom: 70px;
@@ -74,7 +74,7 @@
   color: #333;
 }
 
-/* Zawartość formularza */
+
 .cb-content {
   padding: 20px;
 }
@@ -135,7 +135,7 @@
   background: #0056b3;
 }
 
-/* Animacje */
+
 @keyframes cb-slideUp {
   from {
     opacity: 0;
@@ -147,7 +147,7 @@
   }
 }
 
-/* Responsywność */
+
 @media (max-width: 480px) {
   .cb-popup {
     width: 280px;

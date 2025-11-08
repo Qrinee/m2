@@ -46,7 +46,7 @@ const ListingCard = ({
 
   return (
     <div className="listing-card">
-      {/* Image Section */}
+
       <div className="listing-image">
         <img src={image} alt={title} />
         <div className="badge-container">
@@ -64,7 +64,6 @@ const ListingCard = ({
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="listing-content">
         <h3 className="title">{title}</h3>
         <p className="price">{formatPrice(price)}</p>
@@ -95,7 +94,6 @@ const ListingCard = ({
         </div>
       </div>
 
-      {/* Footer */}
       <div className="listing-footer">
         {role !== 'user' && agentImage && (
           <img 

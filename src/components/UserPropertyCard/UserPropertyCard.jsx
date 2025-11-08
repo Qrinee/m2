@@ -1,4 +1,4 @@
-// src/components/MojProfil/components/PropertyCard.js
+
 import React from 'react';
 import { 
   FaHome, 

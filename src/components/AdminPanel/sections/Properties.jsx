@@ -1,4 +1,4 @@
-// src/components/AdminPanel/sections/Properties.js
+
 import React, { useState, useEffect } from 'react';
 import './Properties.css';
 import PropertiesHeader from '../../PropertiesHeader/PropertiesHeader';

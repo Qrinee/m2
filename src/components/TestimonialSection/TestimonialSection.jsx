@@ -6,9 +6,7 @@ import Anna from '../../assets/Anna.jpg'
 import Marek from '../../assets/MarekT.jpg'
 import Background from '../../assets/bread-scaled-1-scaled.jpg'
 import Piotr from '../../assets/slide1.jpeg'
-/*
-  Przykładowe dane - podmieniaj obrazy / teksty wg potrzeb.
-*/
+
 const testimonials = [
   {
     id: 1,
@@ -46,7 +44,7 @@ export default function TestimonialSection() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    // automatyczne przewijanie (opcjonalne)
+    
     const t = setInterval(() => {
       setIndex((i) => (i + 1) % testimonials.length);
     }, 5000);

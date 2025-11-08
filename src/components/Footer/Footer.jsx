@@ -13,7 +13,6 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* O nas */}
         <div className="footer-section">
           <h3 className="footer-title">O nas</h3>
           <p className="footer-description">
@@ -34,7 +33,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Partnerzy */}
         <div className="footer-section">
           <h3 className="footer-title">Nasi partnerzy</h3>
           <div className="partners-grid">
@@ -50,7 +48,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Kontakt */}
         <div className="footer-section">
           <h3 className="footer-title">Kontakt</h3>
           <div className="contact-info">

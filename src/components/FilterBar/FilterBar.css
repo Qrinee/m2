@@ -1,4 +1,4 @@
-/* FilterBar.css */
+
 .filter-bar {
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
 
 .filter-select:focus {
   outline: none;
-  border-color: #c9a33d; /* złoty akcent */
+  border-color: #c9a33d;
 }
 
 .filter-icons {
@@ -54,7 +54,7 @@
   background: #f5f5f5;
 }
 
-/* Mobile Filter Toggle Button */
+
 .mobile-filter-toggle {
   display: none;
   align-items: center;
@@ -73,7 +73,7 @@
   background: #a6802d;
 }
 
-/* Mobile Filter Menu */
+
 .mobile-filter-menu {
   display: none;
   position: absolute;
@@ -160,7 +160,7 @@
   background: #e0e0e0;
 }
 
-/* Responsive Design */
+
 @media (max-width: 1200px) {
   .filter-selects {
     flex-wrap: wrap;

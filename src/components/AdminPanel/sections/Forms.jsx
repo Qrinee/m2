@@ -1,4 +1,4 @@
-// src/components/AdminPanel/sections/Forms.js
+
 import React, { useState, useEffect } from 'react';
 import './Forms.css';
 
@@ -466,7 +466,6 @@ const Forms = () => {
             <div className="details-content">
               {renderFormDetails(selectedForm)}
 
-              {/* Notatki wewnętrzne */}
               <div className="detail-section">
                 <h4>Notatki wewnętrzne</h4>
                 <textarea
@@ -474,7 +473,7 @@ const Forms = () => {
                   placeholder="Dodaj notatkę..."
                   value={selectedForm.internalNotes || ''}
                   onChange={(e) => {
-                    // Możesz dodać funkcję do aktualizacji notatek w czasie rzeczywistym
+                    
                   }}
                   onBlur={(e) => updateFormStatus(selectedForm._id, selectedForm.status, e.target.value)}
                 />
