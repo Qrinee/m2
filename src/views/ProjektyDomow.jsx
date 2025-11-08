@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import Header from '../components/Header/Header';
 import et from '../assets/konfigurator/thumbnails/1.png';
-import et2 from '../assets/ex/3-5.jpg';
-import et3 from '../assets/ex/4-5.jpg';
+import et2 from '../assets/konfigurator/thumbnails/2.png';
+import et3 from '../assets/konfigurator/thumbnails/3.png';
 import './ProjektyDomow.css';
 import { 
   FaRulerCombined, 
@@ -16,12 +16,14 @@ import {
   FaEye,
   FaHome,
   FaCheck,
-  FaArrowRight
+  FaArrowRight,
+  FaPen
 } from 'react-icons/fa';
 import { 
   GiFamilyHouse, 
   GiModernCity 
 } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 
 
 export default function ProjektyDomow() {
@@ -34,45 +36,42 @@ export default function ProjektyDomow() {
 
   const houseProjects = [
     {
-      id: 1,
+      id: 'd126',
       name: "Model D-126",
-      area: "84 m²",
+      area: "126 m²",
       thumbnail: et,
       shortDesc: "Dom całoroczny dla rodziny 2+3",
       initialPrice: "od 309 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
-      features: ["Taras", "Garaż", "Ogród"],
-      bedrooms: 3,
-      bathrooms: 1
+      bedrooms: 4,
+      bathrooms: 3
     },
     {
-      id: 1,
+      id: 'd115',
       name: "Model D-115",
       area: "84 m²",
       thumbnail: et2,
       shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
       initialPrice: "od 289 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
-      features: ["Taras", "Garaż", "Ogród"],
       bedrooms: 3,
       bathrooms: 1
     },
         {
-      id: 1,
+      id: 'd70',
       name: "Model D-70",
-      area: "84 m²",
+      area: "70 m²",
       thumbnail: et3,
-      shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
+      shortDesc: "Dom całoroczny dla rodziny 2+1",
       initialPrice: "od 209 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
-      features: ["Taras", "Garaż", "Ogród"],
-      bedrooms: 3,
+      bedrooms: 2,
       bathrooms: 1
     },
   ];
 
   const handleProjectClick = (projectId) => {
-    window.location.href = `/konfigurator`;
+    window.location.href = `/konfigurator/${projectId}`;
   };
 
   const handleFilterClick = (filter) => {
@@ -138,8 +137,8 @@ export default function ProjektyDomow() {
                 </div>
                 <div className="image-overlay">
                   <button className="quick-view-btn slide-in-btn">
-                    <FaEye className="btn-icon" />
-                    Szybki podgląd
+                    <FaPen className="btn-icon" />
+                    KONFIGURATOR
                   </button>
                 </div>
               </div>
@@ -152,15 +151,15 @@ export default function ProjektyDomow() {
                 
                 <div className="project-specs">
                   <div className="spec-grid">
-                    <div className="spec-item bounce-on-hover">
+                    <div className="spec-item">
                       <FaRulerCombined className="spec-icon" />
                       <span className="spec-value">{project.area}</span>
                     </div>
-                    <div className="spec-item bounce-on-hover">
+                    <div className="spec-item">
                       <FaBed className="spec-icon" />
                       <span className="spec-value">{project.bedrooms} sypialnie</span>
                     </div>
-                    <div className="spec-item bounce-on-hover">
+                    <div className="spec-item">
                       <FaBath className="spec-icon" />
                       <span className="spec-value">{project.bathrooms} łazienka{project.bathrooms > 1 ? 'i' : ''}</span>
                     </div>
@@ -171,15 +170,15 @@ export default function ProjektyDomow() {
                 </div>
                 
                 <div className="project-actions">
+                  <Link to={`/konfigurator/${project.id}`}>
                   <button 
                     className="btn-primaryd glow-on-hover"
-                    onClick={() => handleProjectClick(project.id)}
                   >
                     <FaBolt className="btn-icon" />
                     Spersonalizuj ten projekt
                     <FaArrowRight className="btn-arrow" />
                   </button>
-
+                  </Link>
                 </div>
               </div>
             </div>

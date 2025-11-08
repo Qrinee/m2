@@ -20,10 +20,13 @@ const HouseVisualization = ({ houseConfig, selections }) => {
         : null
     }
 
+
+
     if (!option?.image) return null
 
     return (
       <div className={`element-pickable ${type}`}>
+    
         <img src={option.image} alt={option.name} />
       </div>
     )
@@ -38,7 +41,7 @@ const HouseVisualization = ({ houseConfig, selections }) => {
         <img src={houseConfig.overlayImages.dach} alt="Dach" />
       </div>
       
-      {selections.rolety && selections.rolety !== 0 && renderElement('rolety', selections.rolety)}
+      {selections.roletyEnabled ? selections.rolety && selections.rolety !== 0 && renderElement('rolety', selections.rolety) : null}
       {selections.okna && selections.okna !== 0 && renderElement('okna', selections.okna)}
       {selections.drzwi && selections.drzwi !== 0 && renderElement('drzwi', selections.drzwi)}
       {selections.tynk && selections.tynk !== 0 && renderElement('tynk', selections.tynk)}

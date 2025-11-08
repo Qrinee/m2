@@ -4,6 +4,22 @@
   min-height: 500vh;
 }
 
+.rolety{
+    z-index: 25;
+}
+
+.dach{
+  z-index: 10;
+}
+
+.okna{
+  z-index: 15;
+}
+
+.drzwi{
+  z-index: 20;
+}
+
 .sticky-visualization {
   position: sticky;
   top: 0;
