@@ -1,4 +1,3 @@
-
 .modern-hero-section {
   width: 100%;
   min-height: 100vh;
@@ -8,7 +7,6 @@
   align-items: center;
   background: #0a0a0a;
 }
-
 
 .modern-hero-bg {
   position: absolute;
@@ -43,7 +41,6 @@
   z-index: 2;
 }
 
-
 .modern-hero-container {
   position: relative;
   z-index: 3;
@@ -53,10 +50,9 @@
   padding: 0 2rem;
 }
 
-
 .modern-hero-content {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
   opacity: 0;
@@ -69,9 +65,14 @@
   transform: translateY(0);
 }
 
+.modern-hero-column {
+  display: flex;
+  flex-direction: column;
+}
 
+/* Left side - Modular Homes Styles */
 .modern-hero-text {
-  max-width: 680px;
+  max-width: 100%;
 }
 
 .modern-hero-badge {
@@ -89,7 +90,7 @@
 }
 
 .modern-hero-title {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 1.5rem;
@@ -110,9 +111,7 @@
   margin-bottom: 2.5rem;
   line-height: 1.6;
   font-weight: 400;
-  max-width: 90%;
 }
-
 
 .modern-hero-features {
   display: flex;
@@ -134,7 +133,6 @@
   font-size: 1.1rem;
 }
 
-
 .modern-hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -154,138 +152,123 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 10px 30px rgba(168, 27, 22, 0.3);
+  box-shadow: 0 10px 30px rgba(var(--primary-color), 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modern-cta-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(168, 27, 22, 0.4);
+  box-shadow: 0 20px 40px rgba(22, 110, 168, 0.4);
   gap: 1.2rem;
 }
 
-.modern-cta-secondary {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  color: white;
-  padding: 1.2rem 2rem;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.modern-cta-secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-
-.modern-property-card {
+/* Right side - Investment Section Styles */
+.modern-investment-section {
   opacity: 0;
   transform: translateX(30px);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
-  min-width: 320px;
-}
-
-.modern-property-card.modern-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.modern-card-visual {
-  position: relative;
-  height: 80px;
-  background: var(--secondary-color);
-  border-radius: 16px 16px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.modern-card-badge {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.modern-card-content {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.89);
   backdrop-filter: blur(20px);
-  border-radius: 0 0 16px 16px;
-  padding: 2rem;
+  border-radius: 20px;
+  padding: 3rem;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.modern-card-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.8rem;
+.modern-investment-section.modern-visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.modern-card-description {
-  color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.modern-card-stats {
-  display: flex;
-  gap: 1.5rem;
+.modern-investment-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color));
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.modern-stat {
+.modern-investment-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.modern-investment-accent {
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modern-investment-description {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: #666;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.modern-investment-features {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
 }
 
-.modern-stat-number {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--secondary-color);
-  line-height: 1;
+.modern-investment-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #444;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
-.modern-stat-label {
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: 0.3rem;
+.modern-investment-icon {
+  font-size: 1.1rem;
 }
 
-.modern-card-button {
+.modern-investment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.modern-investment-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #1a1a1a;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-.modern-card-button:hover {
   gap: 0.8rem;
-  color: var(--primary-color-hover);
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color));
+  color: white;
+  padding: 1.2rem 2.5rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.modern-investment-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(76, 175, 80, 0.4);
+  gap: 1.2rem;
+}
 
+/* Scroll indicator */
 .modern-scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: -5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -322,7 +305,7 @@
   }
 }
 
-
+/* Responsive Design */
 @media (max-width: 1024px) {
   .modern-hero-content {
     grid-template-columns: 1fr;
@@ -330,7 +313,8 @@
     text-align: center;
   }
   
-  .modern-hero-description {
+  .modern-hero-description,
+  .modern-investment-description {
     max-width: 100%;
   }
   
@@ -338,8 +322,9 @@
     justify-content: center;
   }
   
-  .modern-property-card {
-    justify-self: center;
+  .modern-investment-section {
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 
@@ -348,22 +333,19 @@
     padding: 0 1.5rem;
   }
   
-  .modern-hero-actions {
+  .modern-hero-actions,
+  .modern-investment-actions {
     justify-content: center;
   }
   
   .modern-cta-primary,
-  .modern-cta-secondary {
+  .modern-investment-cta {
     padding: 1rem 2rem;
     font-size: 1rem;
   }
   
-  .modern-card-stats {
-    justify-content: center;
-  }
-  
-  .modern-property-card {
-    min-width: 280px;
+  .modern-investment-section {
+    padding: 2rem;
   }
 }
 
@@ -372,7 +354,8 @@
     padding: 0 1rem;
   }
   
-  .modern-hero-title {
+  .modern-hero-title,
+  .modern-investment-title {
     font-size: 2.2rem;
   }
   
@@ -382,30 +365,30 @@
     gap: 1rem;
   }
   
-  .modern-hero-actions {
+  .modern-hero-actions,
+  .modern-investment-actions {
     flex-direction: column;
     width: 100%;
   }
   
   .modern-cta-primary,
-  .modern-cta-secondary {
+  .modern-investment-cta {
     width: 100%;
     justify-content: center;
     text-align: center;
   }
   
-  .modern-card-content {
+  .modern-investment-section {
     padding: 1.5rem;
   }
 }
 
-
 @media (prefers-reduced-motion: reduce) {
   .modern-hero-bg,
   .modern-hero-content,
-  .modern-property-card,
+  .modern-investment-section,
   .modern-cta-primary,
-  .modern-cta-secondary {
+  .modern-investment-cta {
     transition: none;
     animation: none;
   }
