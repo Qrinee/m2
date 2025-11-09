@@ -14,6 +14,7 @@ export default function TeamSection() {
        <div className='card-section'>
         <Link to={'/estate_agent/68e66f7258e3141c145e3d5d'} style={{textDecoration: 'none', color: 'inherit'}}>
         <PhotoCard 
+        short
         image={dawid}
         name={'Dawid Frey'}
         phoneNumber={'+48 728 866 825'}
@@ -25,6 +26,7 @@ export default function TeamSection() {
 
          <Link to={'/estate_agent/68e66abc58e3141c145e3d19'} style={{textDecoration: 'none', color: 'inherit'}}>
         <PhotoCard
+        short
         phoneNumber={'+48 696 266 381'}
         email={"kontakt@m2notarialnie.pl"}
         image={wiktoria}

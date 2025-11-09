@@ -18,7 +18,7 @@ export default function Nieruchomosci() {
 
         <Header />
       <HeroNieruchomosci
-      img={"tlo-scaled.jpg"}
+      img={"house-1477041_1280.jpg"}
       content={
         <>
          <h1>Nieruchomości z gwarancją prawną.</h1>

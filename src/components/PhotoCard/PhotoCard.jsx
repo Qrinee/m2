@@ -10,6 +10,7 @@ export default function PhotoCard({
   phoneNumber, 
   email,
   location,
+  short
   
 }) {
   
@@ -19,16 +20,30 @@ export default function PhotoCard({
 
   return (
     <div className="photo-card">
-      <img 
-        src={image} 
-        alt={`Portrait of ${name}`} 
-        className="photo-card__image" 
-        loading="lazy"
-      />
+      {
+          !short ? (
+                <>
+                      <img 
+                          src={image} 
+                          alt={`Portrait of ${name}`} 
+                          className="photo-card__image" 
+                          loading="lazy"
+                      />
+                </>
+          ) : null
+      }
+
       <div className="photo-card__content">
         <h3 className="photo-card__name">{name}</h3>
-        <p className="photo-card__status">{status}</p>
-        <p className="photo-card__description">{shortDescription}</p>
+        {
+          !short ? (
+            <>
+                <p className="photo-card__status">{status}</p>
+                <p className="photo-card__description">{shortDescription}</p>
+            </>
+          ) : null
+        }
+
         <div className="photo-card__contacts">
           {
             phoneNumber ? (

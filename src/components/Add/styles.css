@@ -316,6 +316,7 @@ textarea{resize:vertical}
   }
   
   .option-tile {
+    width: 100%!important;
     padding: 16px;
     min-height: 80px;
   }

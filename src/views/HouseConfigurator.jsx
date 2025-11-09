@@ -15,6 +15,7 @@ import p6 from '../assets/ex/7-5.jpg';
 import p7 from '../assets/ex/8-5.jpg';
 import Footer from '../components/Footer/Footer';
 import VisualConfigurator from '../components/VisualConfigurator/VisualConfigurator';
+import HousePlan from '../components/HousePlan/HousePlan';
 
 const HouseConfigurator = () => {
   const houseImages = [p1, p2, p3, p4, p5, p6, p7];
@@ -118,11 +119,8 @@ const HouseConfigurator = () => {
       <div className="configurator">
         {/* <ProjectHeader basePrice={basePrice} /> */}
         <VisualConfigurator />
-        {/* <Visualization 
-          houseImages={houseImages} 
-          activeImage={activeImage} 
-          setActiveImage={setActiveImage} 
-        /> */}
+        <HousePlan/>
+
         <Configurator
           selectedPackages={selectedPackages}
           selectPackage={selectPackage}

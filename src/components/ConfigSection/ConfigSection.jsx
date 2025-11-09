@@ -7,7 +7,7 @@ const ConfigSection = ({ title, options, activeId, onSelect }) => (
       {options.map((option) => (
         <div 
           key={option.id}
-          className={`option-tile ${activeId === option.id ? 'active' : ''}`}
+          className={`option-tiler ${activeId === option.id ? 'active' : ''}`}
           onClick={() => onSelect(option.id)}
         >
           {option.thumb ? (
