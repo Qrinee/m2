@@ -34,6 +34,7 @@ import Reels from './views/Reels/Reels.jsx'
 import ReelsPage from './views/ReelsPage.jsx'
 import ReelsGridPage from './views/ReelsGridPage.jsx'
 import Realizacja from './views/Realizacja.jsx'
+import PlytyFundamentowe from './views/PlytyFundamentowe.jsx'
 // Zmień tę wartość na false, aby wyłączyć tryb prac
 const MAINTENANCE_MODE = false;
 
@@ -51,6 +52,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/czym-sa-raty-notarialne" element={<CzymSaRatyNotarialne />} />
           <Route path="/raty-notarialne" element={<Ogloszenia />} />
           {/* <Route path='/oblicz-rate' element={<ObliczRate />} /> */}
+          <Route path='/plyty-fundamentowe' element={<PlytyFundamentowe />} />
           <Route path='/wpis/:id' element={<Wpis />} />
           <Route path='/nieruchomosci' element={<Nieruchomosci/>}></Route>
           <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />

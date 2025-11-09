@@ -148,6 +148,7 @@ const Header = ({ black }) => {
       children: [
         { label: "Czym są raty notarialne?", href: "/czym-sa-raty-notarialne" },
         { label: "Dodaj ogłoszenie", href: "/zglos-nieruchomosc" },
+        { label: "Płyty fundamentowe", href: "/plyty-fundamentowe" },
       ],
     },
     { 

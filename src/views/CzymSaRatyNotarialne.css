@@ -1,269 +1,257 @@
-.raty-notarialne-page {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+.notarial-installments-page {
   line-height: 1.6;
   color: #333;
+  background: #f8fafc;
 }
 
-.container {
-  max-width: 1200px;
+.notarial-container {
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.separate {
+.section-spacer-md {
   height: 40px;
 }
 
-/* Sekcja wprowadzająca */
-.intro-section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+.section-spacer-lg {
+  height: 60px;
 }
 
-.intro-grid {
+/* Sekcja główna z kartami */
+.notarial-hero-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.intro-content h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #1a202c;
-}
-
-.intro-content > p {
-  font-size: 1.2rem;
-  color: #4a5568;
-  margin-bottom: 40px;
-  line-height: 1.8;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: 1fr;
   gap: 30px;
+  margin-bottom: 40px;
 }
 
-.feature-card {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #4299e1;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.feature-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #2d3748;
-}
-
-.feature-card p {
-  color: #718096;
-  line-height: 1.6;
-}
-
-.intro-visual {
-  display: flex;
-  justify-content: center;
-}
-
-.visual-card {
+.notarial-feature-card {
   background: white;
   padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid var(--secondary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.visual-card h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
+.notarial-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.notarial-feature-card--accent {
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color));
+  color: white;
+  border-left: 5px solid var(--secondary-color);
+}
+
+.notarial-feature-card--accent .notarial-card-title,
+.notarial-feature-card--accent .notarial-card-text {
+  color: white;
+}
+
+.notarial-card-icon {
+  font-size: 3rem;
   margin-bottom: 20px;
-  color: #2d3748;
+  color: var(--secondary-color);
 }
 
-.visual-card p {
-  color: #718096;
-  margin-bottom: 30px;
+.notarial-feature-card--accent .notarial-card-icon {
+  color: white;
+}
+
+.notarial-card-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #1a202c;
+  font-weight: 700;
+}
+
+.notarial-card-text {
+  color: #4a5568;
+  margin-bottom: 15px;
   line-height: 1.7;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.stat {
+/* Nagłówki sekcji */
+.notarial-section-header {
   text-align: center;
+  margin-bottom: 60px;
 }
 
-.number {
-  display: block;
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  margin-bottom: 5px;
-}
-
-.label {
-  font-size: 0.9rem;
-  color: #718096;
-}
-
-/* Sekcja procesu */
-.process-section {
-  padding: 100px 0;
-  background: white;
-}
-
-.process-section h2 {
-  text-align: center;
+.notarial-section-title {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 20px;
   color: #1a202c;
 }
 
-.section-subtitle {
-  text-align: center;
+.notarial-section-subtitle {
   font-size: 1.2rem;
   color: #718096;
-  margin-bottom: 60px;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
-.process-timeline {
+/* Sekcja procesu */
+.notarial-process-flow {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  position: relative;
+  gap: 30px;
 }
 
-.process-timeline::before {
-  content: '';
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-color));
-  z-index: 1;
-}
-
-.process-step {
-  position: relative;
-  z-index: 2;
+.notarial-process-step {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   text-align: center;
-  padding: 0 20px;
+  transition: transform 0.3s ease;
+  position: relative;
+  border-top: 4px solid var(--secondary-color);
 }
 
-.step-number {
-  width: 60px;
-  height: 60px;
-  background: var(--primary-color);
+.notarial-process-step:hover {
+  transform: translateY(-10px);
+}
+
+.notarial-step-badge {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--secondary-color);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 auto 25px;
-  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.step-content h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
+.notarial-step-icon {
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.notarial-step-title {
+  font-size: 1.3rem;
   margin-bottom: 15px;
   color: #2d3748;
+  font-weight: 600;
 }
 
-.step-content p {
+.notarial-step-description {
   color: #718096;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 /* Sekcja dla kogo */
-.for-whom-section {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #edf2f7 0%, #f7fafc 100%);
+.notarial-audience-section {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-color-hover) 100%);
+  color: white;
+  padding: 80px 0;
 }
 
-.for-whom-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #1a202c;
+.notarial-audience-section .notarial-section-title,
+.notarial-audience-section .notarial-section-subtitle {
+  color: white;
 }
 
-.audience-grid {
+.notarial-audience-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
 
-.audience-card {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 16px;
+.notarial-audience-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-top: 4px solid var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
 }
 
-.audience-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+.notarial-audience-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.card-icon {
-  font-size: 3rem;
+.notarial-audience-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.notarial-audience-title {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: 600;
+}
+
+.notarial-audience-description {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* Sekcja korzyści */
+.notarial-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.notarial-benefit-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-bottom: 4px solid transparent;
+}
+
+.notarial-benefit-card:hover {
+  border-bottom-color: var(--secondary-color-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.notarial-benefit-icon {
+  font-size: 2.5rem;
+  color: var(--secondary-color);
   margin-bottom: 20px;
 }
 
-.audience-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
+.notarial-benefit-title {
+  font-size: 1.2rem;
   margin-bottom: 15px;
   color: #2d3748;
+  font-weight: 600;
 }
 
-.audience-card p {
+.notarial-benefit-description {
   color: #718096;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 /* Sekcja FAQ */
-.faq-section {
-  padding: 100px 0;
+.notarial-faq-section {
   background: white;
+  padding: 80px 0;
 }
 
-.faq-section h2 {
+.notarial-faq-title {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
@@ -271,59 +259,68 @@
   color: #1a202c;
 }
 
-.faq-container {
+.notarial-faq-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #718096;
+  margin-bottom: 40px;
+}
+
+.notarial-faq-container {
   max-width: 800px;
-  margin: 60px auto 0;
+  margin: 40px auto 0;
 }
 
 /* Responsywność */
 @media (max-width: 768px) {
-  .intro-grid {
+  .notarial-hero-cards {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 20px;
   }
   
-  .process-timeline::before {
-    display: none;
+  .notarial-feature-card {
+    padding: 30px 25px;
   }
   
-  .process-timeline {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-  
-  .audience-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .intro-content h2,
-  .process-section h2,
-  .for-whom-section h2,
-  .faq-section h2 {
+  .notarial-section-title {
     font-size: 2rem;
   }
   
-  .stats {
+  .notarial-process-flow,
+  .notarial-audience-grid,
+  .notarial-benefits-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+  }
+  
+  .notarial-process-step {
+    padding: 25px 20px;
+  }
+  
+  .notarial-audience-section {
+    padding: 60px 0;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
+  .notarial-container {
     padding: 0 15px;
   }
   
-  .feature-card,
-  .visual-card,
-  .audience-card {
+  .notarial-feature-card {
     padding: 25px 20px;
   }
   
-  .intro-section,
-  .process-section,
-  .for-whom-section,
-  .faq-section {
-    padding: 60px 0;
+  .notarial-section-title {
+    font-size: 1.8rem;
+  }
+  
+  .notarial-card-icon,
+  .notarial-step-icon,
+  .notarial-benefit-icon {
+    font-size: 2rem;
+  }
+  
+  .notarial-faq-title {
+    font-size: 2rem;
   }
 }
