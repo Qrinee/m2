@@ -125,7 +125,7 @@ const ContactCard = ({ property }) => {
       )}
 
       <form className="prop-contact-form" onSubmit={handleSubmit}>
-        <label className="form-label">
+        <label className="form-labeld">
           <span className="label-text">Twoje imię *</span>
           <input
             className="form-input"
@@ -137,7 +137,7 @@ const ContactCard = ({ property }) => {
           />
         </label>
 
-        <label className="form-label">
+        <label className="form-labeld">
           <span className="label-text">Twój Adres e-mail *</span>
           <input
             className="form-input"
@@ -150,7 +150,7 @@ const ContactCard = ({ property }) => {
           />
         </label>
 
-        <label className="form-label">
+        <label className="form-labeld">
           <span className="label-text">Twój Telefon</span>
           <input
             className="form-input"
@@ -161,7 +161,7 @@ const ContactCard = ({ property }) => {
           />
         </label>
 
-        <label className="form-label">
+        <label className="form-labeld">
           <span className="label-text">Wiadomość</span>
           <textarea
             className="form-textarea"
