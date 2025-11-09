@@ -19,7 +19,7 @@
     font-size: 20px;
     margin-right: 30px;
     display: flex;
-    color: rgb(212, 172, 61);
+    color: var(--primary-color);
     justify-content: center;
     align-items: center;
 }

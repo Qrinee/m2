@@ -30,7 +30,7 @@
 }
 
 .adm-prop-btn--primary {
-  background: #c59d2f;
+  background: var(--secondary-color);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -214,7 +214,7 @@
 .adm-prop-card__price {
   font-size: 1.3em;
   font-weight: bold;
-  color: #9e692c;
+  color: var(--secondary-color);
   margin: 0 0 10px 0;
 }
 

@@ -199,7 +199,7 @@
 .modern-card-visual {
   position: relative;
   height: 80px;
-  background: rgb(201, 166, 92);
+  background: var(--secondary-color);
   border-radius: 16px 16px 0 0;
   display: flex;
   align-items: center;
@@ -256,7 +256,7 @@
 .modern-stat-number {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #c9a054;
+  color: var(--secondary-color);
   line-height: 1;
 }
 
@@ -279,7 +279,7 @@
 
 .modern-card-button:hover {
   gap: 0.8rem;
-  color: #a81b16;
+  color: var(--primary-color-hover);
 }
 
 

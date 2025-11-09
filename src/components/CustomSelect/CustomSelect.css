@@ -28,12 +28,12 @@
 }
 
 .custom-select-trigger:hover {
-  border-color: #c9a33d;
+  border-color: var(--secondary-color-hover);
   box-shadow: 0 4px 8px rgba(201, 163, 61, 0.1);
 }
 
 .custom-select-trigger.open {
-  border-color: #c9a33d;
+  border-color: var(--secondary-color);
   box-shadow: 0 4px 12px rgba(201, 163, 61, 0.2);
 }
 
@@ -46,7 +46,7 @@
 
 .custom-select-trigger.open .arrow-icon {
   transform: rotate(180deg);
-  color: #c9a33d;
+  color: var(--secondary-color);
 }
 
 .custom-options-container {
@@ -92,7 +92,7 @@
 
 .custom-option:hover {
   background: #f8f9fa;
-  border-left-color: #c9a33d;
+  border-left-color: var(--secondary-color-hover);
   padding-left: 20px;
 }
 
@@ -100,7 +100,7 @@
   background: #fef6e0;
   color: #8b6e2c;
   font-weight: 500;
-  border-left-color: #c9a33d;
+  border-left-color: var(--secondary-color);
 }
 
 
@@ -128,7 +128,7 @@
 
 .custom-select-trigger:focus {
   outline: none;
-  border-color: #c9a33d;
+  border-color: var(--secondary-color);
   box-shadow: 0 0 0 3px rgba(201, 163, 61, 0.1);
 }
 

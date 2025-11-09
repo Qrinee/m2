@@ -397,13 +397,13 @@
   padding: 20px;
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   border-radius: 12px;
-  border-left: 4px solid var(--secondary-color);
+  border-left: 4px solid var(--primary-color);
 }
 
 .prop-price {
   font-size: 32px;
   font-weight: 800;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .prop-action-row {
@@ -865,13 +865,13 @@
 /* Summary Card */
 .prop-summary-aside {
   background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-  border-left: 4px solid var(--primary-color);
+  border-left: 4px solid var(--secondary-color);
 }
 
 .summary-price {
   font-size: 28px;
   font-weight: 800;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   margin-bottom: 20px;
   text-align: center;
 }

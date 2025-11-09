@@ -29,14 +29,22 @@ export default function PhotoCard({
         <p className="photo-card__status">{status}</p>
         <p className="photo-card__description">{shortDescription}</p>
         <div className="photo-card__contacts">
+          {
+            phoneNumber ? (
           <div className="photo-card__contact-item">
             <FaPhone className="photo-card__contact-icon" />
             <span className="photo-card__contact-text">{phoneNumber}</span>
           </div>
+            ) : null
+          }
+          {
+            email ? (
           <div className="photo-card__contact-item">
             <FaEnvelope className="photo-card__contact-icon" />
             <span className="photo-card__contact-text">{email}</span>
-          </div>
+          </div>) : null
+          }
+
           {location && (
             <div className="photo-card__contact-item">
               <FaMapMarkerAlt className="photo-card__contact-icon" />

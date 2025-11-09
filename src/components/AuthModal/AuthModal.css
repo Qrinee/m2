@@ -91,7 +91,7 @@
 
 
 .btn-primary {
-  background: #c6a65b;
+  background: var(--secondary-color);
   border: none;
   padding: 12px;
   border-radius: 6px;
@@ -102,7 +102,7 @@
 }
 
 .btn-primary:hover {
-  background: #b08e4c;
+  background: var(--secondary-color-hover);
 }
 
 

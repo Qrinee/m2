@@ -2,7 +2,7 @@
   --bg:#f6f7f9;
   --card:#fffffff1;
   --muted:#7b7f87;
-  --accent:#d4af37;
+  --accent:var(--secondary-color);
   --border:#e6e9ee;
   --shadow: 0 6px 18px rgba(33,33,33,0.06);
 }
@@ -141,7 +141,7 @@ textarea{resize:vertical}
   border:1px solid var(--border);
   padding:6px 8px;
   border-radius:6px;
-  background-color: rgb(146, 41, 41);
+  background-color: var(--primary-color);
   font-size:12px;
   cursor:pointer;
 }
@@ -542,7 +542,7 @@ textarea{resize:vertical}
 }
 
 .btn.primary:hover:not(:disabled) {
-  background: #c19b2c;
+  background: var(--secondary-color);
   transform: translateY(-1px);
 }
 

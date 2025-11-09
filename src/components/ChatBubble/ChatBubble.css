@@ -12,7 +12,7 @@
   right: 0;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background: #bb3535;
+  background: var(--primary-color);
   color: white;
   cursor: pointer;
   display: flex;
@@ -24,7 +24,7 @@
 }
 
 .cb-trigger:hover {
-  background: #bb3535;
+  background: var(--primary-color-hover);
   transform: scale(1.05);
 }
 
@@ -105,7 +105,7 @@
 .cb-input:focus,
 .cb-textarea:focus {
   outline: none;
-  border-color: #bb3535;
+  border-color: var(--primary-color-hover);
 }
 
 .cb-textarea {
@@ -117,7 +117,7 @@
 .cb-submit {
   width: 100%;
   padding: 12px;
-  background: #bb3535;
+  background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
