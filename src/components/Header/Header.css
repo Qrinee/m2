@@ -131,10 +131,14 @@
   width: 100%;
 }
 
+.scrolled .dropdown-arrow{
+  color: black;
+}
 .dropdown-arrow {
   font-size: 11px;
   transition: transform 0.3s ease;
   opacity: 0.7;
+  color: white;
 }
 
 .dropdown-arrow.active {
@@ -242,7 +246,7 @@
 
 .user-dropdown-menu {
   position: absolute;
-  top: calc(100% + 5px); /* Dodajemy mały odstęp */
+  top: calc(100% - 10px); /* Dodajemy mały odstęp */
   right: 0;
   background: white;
   border-radius: 8px;
@@ -292,6 +296,9 @@
   width: 100%;
 }
 
+.apanel-link{
+  color: black!important;
+}
 
 .dropdown-item {
   display: flex;
@@ -483,7 +490,8 @@
   }
   
   .header__link,
-  .dropdown-toggle {
+  .dropdown-toggle, .user-name {
+    color: black!important;
     width: 100%;
     padding: 1rem 0;
     font-size: 16px;

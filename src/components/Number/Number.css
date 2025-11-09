@@ -7,11 +7,11 @@
 }
 .number-section{
     padding: 20px;
-    width: 100%;
 }
 
 .num-wrapper{
     flex-wrap: wrap;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

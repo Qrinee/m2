@@ -286,6 +286,7 @@ const Header = ({ black }) => {
       {user.role === 'admin' ? (
         <Link 
           to="/admin" 
+          style={{color: 'black'}}
           className="dropdown-item"
           onClick={() => setOpenDropdown(null)}
         >

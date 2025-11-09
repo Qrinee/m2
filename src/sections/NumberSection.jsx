@@ -5,7 +5,7 @@ export default function NumberSection() {
   return (
     <div>
         <div className='separate'></div>
-        <div className='card-section__header'>
+        <div className='card-section__header number-section'>
             <h2 className='h2'>Nasze liczby mówią same za siebie</h2>
             <div className='num-wrapper'>
                 <Number num={'98%'} desc={'klientów poleca nas dalej'} />
