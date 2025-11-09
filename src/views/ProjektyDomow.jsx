@@ -4,6 +4,13 @@ import Header from '../components/Header/Header';
 import et from '../assets/konfigurator/thumbnails/1.png';
 import et2 from '../assets/konfigurator/thumbnails/2.png';
 import et3 from '../assets/konfigurator/thumbnails/3.png';
+
+
+import projekt1 from '../assets/pawilony/2/cztery.png'
+import projekt2 from '../assets/pawilony/3/1.png'
+import projekt3 from '../assets/pawilony/4/dsad.png'
+import projekt4 from '../assets/pawilony/5/2.png'
+import projekt5 from '../assets/pawilony/6/4.png'
 import './ProjektyDomow.css';
 import { 
   FaRulerCombined, 
@@ -24,6 +31,7 @@ import {
   GiModernCity 
 } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import HeroSlider from './../components/HeroSlider/HeroSlider';
 
 
 export default function ProjektyDomow() {
@@ -70,17 +78,11 @@ export default function ProjektyDomow() {
     },
   ];
 
-  const handleProjectClick = (projectId) => {
-    window.location.href = `/konfigurator/${projectId}`;
-  };
-
-  const handleFilterClick = (filter) => {
-    setActiveFilter(filter);
-  };
 
   return (
     <>
-      <Header black red />
+      <Header red />
+      <HeroSlider images={[projekt1,projekt2,projekt3,projekt4,projekt5]}/>
       <div className='separate'></div>
       <div className={`projekty-domow-container ${isVisible ? 'page-loaded' : ''}`}>
 
