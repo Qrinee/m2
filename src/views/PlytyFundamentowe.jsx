@@ -3,6 +3,7 @@ import Hero from '../components/Hero/Hero'
 import Header from '../components/Header/Header'
 import Marquee from '../components/Marquee/Marquee'
 import TeamSection from '../sections/TeamSection'
+import video from '../assets/videos/vid.mp4'
 import NumberSection from '../sections/NumberSection'
 import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci'
 import { 
@@ -68,7 +69,7 @@ export default function PlytyFundamentowe() {
       <Header/>
       
       <HeroNieruchomosci
-        img={'plyty-fundamentowe-scaled.jpg'}
+        video={video}
         content={
           <div style={{maxWidth: '800px'}}>
             <h1>Energooszczędna i ciepła <span style={{color: 'var(--secondary-color)'}}>PŁYTA FUNDAMENTOWA</span></h1>
