@@ -14,7 +14,9 @@ import third from './assets/pawilony/2/Bez nazwy-2.png'
 import TwoPartText from "./layouts/TwoPartText";
 import SplitLayout from "./layouts/SplitLayout";
 import Reels from "./views/Reels/Reels";
+import para from './assets/para.png'
 import ChatBubble from "./components/ChatBubble/ChatBubble";
+import PromoBanner from "./components/PromoBanner/PromoBanner";
 
 
 
@@ -22,6 +24,7 @@ export default function App() {
   return (
     <>
       <Header/>
+
       <ChatBubble/>
       <Hero
         leftBg={"house-1477041_1280.jpg"}
@@ -42,6 +45,8 @@ export default function App() {
           </>
         }
       />
+            <PromoBanner imageSrc={para}/>
+
       
     <div className="m-container" style={{ marginBottom: 80}}>
       {/* <SplitLayout

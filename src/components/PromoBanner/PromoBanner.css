@@ -1,0 +1,197 @@
+.promo-banner {
+  position: fixed;        /* było: sticky */
+  bottom: 0;              /* trzyma się dolnej krawędzi ekranu */
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 16px 20px;
+  background: linear-gradient(90deg, var(--secondary-color) 0%, var(--secondary-color-hover) 100%);
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.18);
+  z-index: 9999;
+  overflow: visible;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== Left - Image ===== */
+.promo-left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.promo-image {
+  width: 160px;
+  height: auto;
+  position: relative;
+  margin-top: -80px;
+  margin-bottom: -20px;
+  z-index: 100;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+  transition: transform 0.3s ease;
+}
+
+.promo-image:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Center - Text ===== */
+.promo-center {
+  flex: 1 1 auto;
+  min-width: 200px;
+  text-align: left;
+}
+
+.promo-main {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.promo-sub {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.promo-phone {
+  color: #fff;
+  text-decoration: none;
+}
+
+.promo-phone:hover {
+  text-decoration: underline;
+}
+
+/* ===== Right - Button ===== */
+.promo-actions {
+  flex: 0 0 auto;
+  margin-left: 12px;
+}
+
+.promo-button {
+  appearance: none;
+  border: none;
+  background-color: #ffffff;
+  color: var(--secondary-color);
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  white-space: nowrap;
+}
+
+.promo-button:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.promo-button:active {
+  transform: translateY(1px);
+}
+
+/* ===== Close Button ===== */
+.promo-close {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.95);
+  border: none;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.12s ease;
+}
+
+.promo-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ======== RESPONSIVE DESIGN ======== */
+
+/* Tablets and smaller laptops */
+@media (max-width: 900px) {
+  .promo-banner {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .promo-image {
+    width: 140px;
+    margin-top: -30px;
+  }
+
+  .promo-main {
+    font-size: 18px;
+  }
+
+  .promo-sub {
+    font-size: 14px;
+  }
+
+  .promo-button {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .promo-banner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  .promo-left {
+    order: -1;
+  }
+
+  .promo-image {
+    width: 120px;
+    margin-top: -20px;
+  }
+
+  .promo-center {
+    text-align: center;
+  }
+
+  .promo-main {
+    font-size: 17px;
+  }
+
+  .promo-sub {
+    font-size: 13px;
+  }
+
+  .promo-actions {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .promo-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .promo-close {
+    font-size: 28px;
+    top: 4px;
+    right: 6px;
+  }
+}

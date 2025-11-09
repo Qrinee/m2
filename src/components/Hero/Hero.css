@@ -5,6 +5,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  z-index: 15;
   background: #0a0a0a;
 }
 
@@ -146,6 +147,7 @@
 .modern-hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
+  margin-top: 0;
   color: #ffffff;
   margin-bottom: 1.5rem;
   line-height: 1.1;
@@ -307,6 +309,7 @@
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
   color: #ffffff;
+  margin-top: 0;
   margin-bottom: 1.5rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
