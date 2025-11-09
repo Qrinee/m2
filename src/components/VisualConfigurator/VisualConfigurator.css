@@ -129,7 +129,7 @@
 
 .option-tile.active {
   border-color: var(--primary-color);
-  background-color: #fff0f0;
+  background-color: #f0f7ff;
 }
 
 .tile-preview {

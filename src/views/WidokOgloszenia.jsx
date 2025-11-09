@@ -172,154 +172,106 @@ export default function WidokOgloszenia() {
                 )}
               </section>
 
-              <section className="prop-card">
-                <h3>Podstawowe informacje</h3>
-                <div className="prop-features-grid">
-                  <Feature title="Powierzchnia całkowita" value={`${property.powierzchnia?.calkowita} m²`} />
-                  <Feature title="Liczba pokoi" value={property.pomieszczenia?.pokoje} />
-                  <Feature title="Liczba łazienek" value={property.pomieszczenia?.lazienki} />
-                  
-                  {property.pomieszczenia?.kuchnia && (
-                    <Feature title="Typ kuchni" value={getKitchenTypeText(property.pomieszczenia.kuchnia)} />
-                  )}
-                </div>
+{/* Sekcja: Podstawowe informacje */}
+<section className="prop-features-section">
+  <h3>Podstawowe informacje</h3>
+  <div className="prop-features-grid">
+    <Feature title="Powierzchnia całkowita" value={property.powierzchnia?.calkowita ? `${property.powierzchnia.calkowita} m²` : null} />
+    <Feature title="Liczba pokoi" value={property.pomieszczenia?.pokoje || null} />
+    <Feature title="Liczba łazienek" value={property.pomieszczenia?.lazienki || null} />
+    <Feature title="Typ kuchni" value={property.pomieszczenia?.kuchnia ? getKitchenTypeText(property.pomieszczenia.kuchnia) : null} />
+  </div>
 
-                {renderAdditionalAreas() && (
-                  <div className="additional-areas">
-                    <h4>Dodatkowe powierzchnie</h4>
-                    <p>{renderAdditionalAreas()}</p>
-                  </div>
-                )}
-              </section>
+  {renderAdditionalAreas() && (
+    <div className="additional-areas">
+      <h4>Dodatkowe powierzchnie</h4>
+      <p>{renderAdditionalAreas()}</p>
+    </div>
+  )}
+</section>
 
-              <section className="prop-card">
-                <h3>Informacje o budynku</h3>
-                <div className="prop-features-grid">
-                  {property.budynek?.stanTechniczny && (
-                    <Feature title="Stan techniczny" value={getBuildingConditionText(property.budynek.stanTechniczny)} />
-                  )}
-                  {property.budynek?.material && (
-                    <Feature title="Materiał budynku" value={property.budynek.material} />
-                  )}
-      
-                  {property.pietro?.pietroNieruchomosci !== undefined && (
-                    <Feature title="Piętro" value={property.pietro.pietroNieruchomosci} />
-                  )}
-                  {property.pietro?.winda !== undefined && (
-                    <Feature title="Winda" value={property.pietro.winda ? 'Tak' : 'Nie'} />
-                  )}
-                </div>
+{/* Sekcja: Informacje o budynku */}
+<section className="prop-features-section">
+  <h3>Informacje o budynku</h3>
+  <div className="prop-features-grid">
+    <Feature title="Stan techniczny" value={property.budynek?.stanTechniczny ? getBuildingConditionText(property.budynek.stanTechniczny) : null} />
+    <Feature title="Materiał budynku" value={property.budynek?.material || null} />
+    <Feature title="Piętro" value={property.pietro?.pietroNieruchomosci !== undefined ? property.pietro.pietroNieruchomosci : null} />
+    <Feature title="Winda" value={property.pietro?.winda !== undefined ? (property.pietro.winda ? 'Tak' : 'Nie') : null} />
+  </div>
 
-                {property.budynek?.remonty && property.budynek.remonty.length > 0 && (
-                  <div className="renovations-info">
-                    <h4>Historia remontów</h4>
-                    {property.budynek.remonty.map((remont, index) => (
-                      <div key={index} className="renovation-item">
-                        <strong>{remont.rok}:</strong> {remont.opis}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </section>
+  {property.budynek?.remonty && property.budynek.remonty.length > 0 && (
+    <div className="renovations-info">
+      <h4>Historia remontów</h4>
+      {property.budynek.remonty.map((remont, index) => (
+        <div key={index} className="renovation-item">
+          <strong>{remont.rok}:</strong> {remont.opis}
+        </div>
+      ))}
+    </div>
+  )}
+</section>
 
-              <section className="prop-card">
-                <h3>Wyposażenie i udogodnienia</h3>
-                <div className="prop-features-grid">
-                  {/* Media */}
-                  {property.media?.ogrzewanie && (
-                    <Feature title="Ogrzewanie" value={getHeatingText(property.media.ogrzewanie)} />
-                  )}
-                  {property.media?.cieplaWoda && (
-                    <Feature title="Ciepła woda" value={property.media.cieplaWoda} />
-                  )}
-                  {property.media?.klimatyzacja == true && (
-                    <Feature title="Klimatyzacja" value={property.media.klimatyzacja ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.media?.wentylacja && (
-                    <Feature title="Wentylacja" value={property.media.wentylacja} />
-                  )}
+{/* Sekcja: Wyposażenie i udogodnienia */}
+<section className="prop-features-section">
+  <h3>Wyposażenie i udogodnienia</h3>
+  <div className="prop-features-grid">
+    {/* Media */}
+    <Feature title="Ogrzewanie" value={property.media?.ogrzewanie ? getHeatingText(property.media.ogrzewanie) : null} />
+    <Feature title="Ciepła woda" value={property.media?.cieplaWoda || null} />
+    <Feature title="Klimatyzacja" value={property.media?.klimatyzacja !== undefined ? (property.media.klimatyzacja ? 'Tak' : 'Nie') : null} />
+    <Feature title="Wentylacja" value={property.media?.wentylacja || null} />
 
-                  {/* Wyposażenie */}
-                  {property.wyposazenie?.meble == true && (
-                    <Feature title="Meble" value={property.wyposazenie.meble ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.wyposazenie?.okna && (
-                    <Feature title="Okna" value={property.wyposazenie.okna} />
-                  )}
-                  {property.wyposazenie?.podlogi && (
-                    <Feature title="Podłogi" value={property.wyposazenie.podlogi} />
-                  )}
-                  {property.wyposazenie?.rolety && (
-                    <Feature title="Rolety" value={property.wyposazenie.rolety ? 'Tak' : 'Nie'} />
-                  )}
+    {/* Wyposażenie */}
+    <Feature title="Meble" value={property.wyposazenie?.meble !== undefined ? (property.wyposazenie.meble ? 'Tak' : 'Nie') : null} />
+    <Feature title="Okna" value={property.wyposazenie?.okna || null} />
+    <Feature title="Podłogi" value={property.wyposazenie?.podlogi || null} />
+    <Feature title="Rolety" value={property.wyposazenie?.rolety !== undefined ? (property.wyposazenie.rolety ? 'Tak' : 'Nie') : null} />
 
-                  {/* Udogodnienia */}
-                  {property.udogodnienia?.balkon && (
-                    <Feature title="Balkon" value={property.udogodnienia.balkon ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.udogodnienia?.taras  && (
-                    <Feature title="Taras" value={property.udogodnienia.taras ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.udogodnienia?.ogrod  && (
-                    <Feature title="Ogród" value={property.udogodnienia.ogrod ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.udogodnienia?.garaz  && (
-                    <Feature title="Garaż" value={property.udogodnienia.garaz ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.udogodnienia?.parking && (
-                    <Feature title="Parking" value={property.udogodnienia.parking ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.udogodnienia?.basen && (
-                    <Feature title="Basen" value={property.udogodnienia.basen ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.udogodnienia?.silownia && (
-                    <Feature title="Siłownia" value={property.udogodnienia.silownia ? 'Tak' : 'Nie'} />
-                  )}
-                </div>
+    {/* Udogodnienia */}
+    <Feature title="Balkon" value={property.udogodnienia?.balkon !== undefined ? (property.udogodnienia.balkon ? 'Tak' : 'Nie') : null} />
+    <Feature title="Taras" value={property.udogodnienia?.taras !== undefined ? (property.udogodnienia.taras ? 'Tak' : 'Nie') : null} />
+    <Feature title="Ogród" value={property.udogodnienia?.ogrod !== undefined ? (property.udogodnienia.ogrod ? 'Tak' : 'Nie') : null} />
+    <Feature title="Garaż" value={property.udogodnienia?.garaz !== undefined ? (property.udogodnienia.garaz ? 'Tak' : 'Nie') : null} />
+    <Feature title="Parking" value={property.udogodnienia?.parking !== undefined ? (property.udogodnienia.parking ? 'Tak' : 'Nie') : null} />
+    <Feature title="Basen" value={property.udogodnienia?.basen !== undefined ? (property.udogodnienia.basen ? 'Tak' : 'Nie') : null} />
+    <Feature title="Siłownia" value={property.udogodnienia?.silownia !== undefined ? (property.udogodnienia.silownia ? 'Tak' : 'Nie') : null} />
+  </div>
 
-                {/* AGD */}
-                {property.wyposazenie?.agd && property.wyposazenie.agd.length > 0 && (
-                  <div className="appliances-info">
-                    <h4>Wyposażenie AGD</h4>
-                    <p>{property.wyposazenie.agd.join(', ')}</p>
-                  </div>
-                )}
-              </section>
+  {/* AGD */}
+  {property.wyposazenie?.agd && property.wyposazenie.agd.length > 0 && (
+    <div className="appliances-info">
+      <h4>Wyposażenie AGD</h4>
+      <p>{property.wyposazenie.agd.join(', ')}</p>
+    </div>
+  )}
+</section>
 
-              <section className="prop-card">
-                <h3>Informacje prawne</h3>
-                <div className="prop-features-grid">
-                  {property.informacjePrawne?.formaWlasnosci && (
-                    <Feature title="Forma własności" value={getOwnershipTypeText(property.informacjePrawne.formaWlasnosci)} />
-                  )}
-                  {property.informacjePrawne?.hipoteka !== undefined && (
-                    <Feature title="Hipoteka" value={property.informacjePrawne.hipoteka ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.informacjePrawne?.pozwolenieNaBudowe !== undefined && (
-                    <Feature title="Pozwolenie na budowę" value={property.informacjePrawne.pozwolenieNaBudowe ? 'Tak' : 'Nie'} />
-                  )}
-                  {property.informacjePrawne?.charakterystykaEnergetyczna?.klasa && (
-                    <Feature title="Klasa energetyczna" value={property.informacjePrawne.charakterystykaEnergetyczna.klasa} />
-                  )}
-                  {property.informacjePrawne?.charakterystykaEnergetyczna?.wskaznik && (
-                    <Feature title="Wskaźnik energetyczny" value={property.informacjePrawne.charakterystykaEnergetyczna.wskaznik} />
-                  )}
-                </div>
+{/* Sekcja: Informacje prawne */}
+<section className="prop-features-section">
+  <h3>Informacje prawne</h3>
+  <div className="prop-features-grid">
+    <Feature title="Forma własności" value={property.informacjePrawne?.formaWlasnosci ? getOwnershipTypeText(property.informacjePrawne.formaWlasnosci) : null} />
+    <Feature title="Hipoteka" value={property.informacjePrawne?.hipoteka !== undefined ? (property.informacjePrawne.hipoteka ? 'Tak' : 'Nie') : null} />
+    <Feature title="Pozwolenie na budowę" value={property.informacjePrawne?.pozwolenieNaBudowe !== undefined ? (property.informacjePrawne.pozwolenieNaBudowe ? 'Tak' : 'Nie') : null} />
+    <Feature title="Klasa energetyczna" value={property.informacjePrawne?.charakterystykaEnergetyczna?.klasa || null} />
+    <Feature title="Wskaźnik energetyczny" value={property.informacjePrawne?.charakterystykaEnergetyczna?.wskaznik || null} />
+  </div>
 
-                {property.informacjePrawne?.obciazenia && (
-                  <div className="encumbrances-info">
-                    <h4>Obciążenia nieruchomości</h4>
-                    <p>{property.informacjePrawne.obciazenia}</p>
-                  </div>
-                )}
+  {property.informacjePrawne?.obciazenia && (
+    <div className="encumbrances-info">
+      <h4>Obciążenia nieruchomości</h4>
+      <p>{property.informacjePrawne.obciazenia}</p>
+    </div>
+  )}
 
-                {property.informacjePrawne?.ksiegWieczysty && (
-                  <div className="land-register-info">
-                    <h4>Księga wieczysta</h4>
-                    <p>{property.informacjePrawne.ksiegWieczysty}</p>
-                  </div>
-                )}
-              </section>
+  {property.informacjePrawne?.ksiegWieczysty && (
+    <div className="land-register-info">
+      <h4>Księga wieczysta</h4>
+      <p>{property.informacjePrawne.ksiegWieczysty}</p>
+    </div>
+  )}
+</section>
 
             </div>
 

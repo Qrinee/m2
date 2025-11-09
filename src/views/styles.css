@@ -2002,3 +2002,144 @@ justify-content: center;
 min-width: 36px;
 min-height: 36px;
 }
+
+
+/* Nowe style dla sekcji cech - styl Otodom */
+.prop-features-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+}
+
+.prop-features-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 12px;
+}
+
+.prop-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.prop-feature {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.prop-feature:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+.prop-feature:nth-child(even) {
+  background-color: #fff;
+}
+
+.prop-feature:last-child,
+.prop-feature:nth-last-child(2):nth-child(odd) {
+  border-bottom: none;
+}
+
+.prop-feature-title {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 12px;
+}
+
+.prop-feature-value {
+  color: #111827;
+  font-weight: 600;
+  font-size: 14px;
+  padding-right: 12px;
+  text-align: right;
+}
+
+/* Sekcje dodatkowych informacji */
+.additional-areas,
+.renovations-info,
+.appliances-info,
+.encumbrances-info,
+.land-register-info,
+.conditions-info {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #CBB26A;
+}
+
+.additional-areas h4,
+.renovations-info h4,
+.appliances-info h4,
+.encumbrances-info h4,
+.land-register-info h4,
+.conditions-info h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.additional-areas p,
+.renovations-info p,
+.appliances-info p,
+.encumbrances-info p,
+.land-register-info p,
+.conditions-info p {
+  margin: 0;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.renovation-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.renovation-item:last-child {
+  border-bottom: none;
+}
+
+.renovation-item strong {
+  color: #111827;
+  min-width: 60px;
+  display: inline-block;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .prop-features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .prop-feature:nth-child(odd),
+  .prop-feature:nth-child(even) {
+    background-color: #fff;
+  }
+  
+  .prop-feature {
+    border-bottom: 1px solid #f3f4f6;
+  }
+  
+  .prop-feature:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Ukrywanie pustych sekcji */
+.prop-features-section:empty {
+  display: none;
+}

@@ -43,7 +43,7 @@ export default function App() {
       />
       
     <div className="m-container" style={{ marginBottom: 80}}>
-      <SplitLayout
+      {/* <SplitLayout
       
       leftContent={
         <div style={{padding: '20px'}}>
@@ -63,7 +63,7 @@ Na początku roku 2022 weszła w życie najlepsza obecnie dostępna na rynku, al
         <p>To doskonała alternatywa dla tradycyjnych metod budowlanych, które są dużo bardziej kosztowne – zarówno finansowo, jak i czasowo. Mając na uwadze precyzję wykonania składających się na kontenery elementów oraz czas realizacji i zwrotu inwestycji, nieustannie poszukujemy nowych rozwiązań, które spełnią oczekiwania naszych kontrahentów. Dzięki temu możemy zaoferować im indywidualne projekty o konkurencyjnym czasie realizacji, które wpisują się w charakter prowadzonej przez nich działalności. Oferta  M&W Construction to szeroki zakres tworzonych konstrukcji, w skład których wchodzą między innymi </p>
         </div>
       }
-      />
+      /> */}
       </div>
       <NewProjects projects={
         [
