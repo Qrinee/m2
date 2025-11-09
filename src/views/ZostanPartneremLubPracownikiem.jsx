@@ -24,6 +24,8 @@ import {
 } from 'react-icons/fa'
 import './CareerPage.css'
 import Footer from '../components/Footer/Footer'
+import vid1 from '../assets/videos/vid.mp4'
+import HeroVideo from '../components/HeroVideo/HeroVideo'
 
 export default function ZostanPartneremLubPracownikiem() {
   const backend = import.meta.env.VITE_BACKEND + "/api/inquiry"
@@ -175,9 +177,10 @@ export default function ZostanPartneremLubPracownikiem() {
     <div className="career-page">
       <Header/>
       
-      <HeroNieruchomosci
-        img={'partner-scaled.jpg'}
-        content={
+
+      <HeroVideo
+      video={vid1}
+              content={
           <div style={{maxWidth: '800px'}}>
             <h1>Zostań partnerem lub pracownikiem <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span></h1>
             <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}>
