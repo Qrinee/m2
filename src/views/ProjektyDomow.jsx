@@ -85,39 +85,6 @@ export default function ProjektyDomow() {
       <div className={`projekty-domow-container ${isVisible ? 'page-loaded' : ''}`}>
 
 
-        <div className="projects-filter filter-animate">
-          <button 
-            className={`filter-btn ${activeFilter === "Wszystkie" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Wszystkie")}
-          >
-            Wszystkie
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Parterowe" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Parterowe")}
-          >
-            Parterowe
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Piętrowe" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Piętrowe")}
-          >
-            Piętrowe
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Energooszczędne" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Energooszczędne")}
-          >
-            Energooszczędne
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === "Nowoczesne" ? 'active' : ''} pulse-on-hover`}
-            onClick={() => handleFilterClick("Nowoczesne")}
-          >
-            Nowoczesne
-          </button>
-        </div>
-
         <div className="projects-grid">
           {houseProjects.map((project, index) => (
             <div 
@@ -127,19 +94,14 @@ export default function ProjektyDomow() {
             >
               <div className="project-image">
                 <img src={project.thumbnail} alt={project.name} />
-                <div className="project-badge floating-badge">Popularny</div>
-                <div className="project-tags">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="tag tag-animate">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <div className="project-badge floating-badge">Wybierz</div>
                 <div className="image-overlay">
-                  <button className="quick-view-btn slide-in-btn">
+                  <Link to={`/konfigurator/${project.id}`} >
+                  <button className="quick-view-btn slide-in-btn" >
                     <FaPen className="btn-icon" />
                     KONFIGURATOR
                   </button>
+                  </Link>
                 </div>
               </div>
               

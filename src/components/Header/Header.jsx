@@ -319,7 +319,7 @@ const Header = ({ black }) => {
               )}
             </div>
             
-            <Link to={"/konfigurator"} onClick={handleLinkClick}>
+            <Link to={"/projekty-domow"} onClick={handleLinkClick}>
               <button className="header__btn mobile-add-btn">
                 <FaHouse className="btn-icon" />
                 Skonfiguruj dom
@@ -404,7 +404,7 @@ const Header = ({ black }) => {
             )}
           </div>
           
-          <Link to={"/konfigurator"}>
+          <Link to={"/projekty-domow"}>
             <button className="header__btn">
               <FaHouse className="btn-icon" />
               Skonfiguruj dom
