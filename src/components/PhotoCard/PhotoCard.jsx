@@ -9,7 +9,8 @@ export default function PhotoCard({
   description, 
   phoneNumber, 
   email,
-  location 
+  location,
+  
 }) {
   
   const shortDescription = description.length > 120 

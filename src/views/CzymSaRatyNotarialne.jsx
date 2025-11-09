@@ -5,6 +5,7 @@ import Header from '../components/Header/Header'
 import Marquee from '../components/Marquee/Marquee'
 import FAQItem from '../components/FAQItem/FAQItem'
 import Footer from '../components/Footer/Footer'
+import './CzymSaRatyNotarialne.css'
 import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci'
 import { 
   FaHandshake, 

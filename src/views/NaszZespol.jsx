@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs'
 import PhotoCard from '../components/PhotoCard/PhotoCard'
 import './NaszZespol.css'
 import { Link } from 'react-router-dom'
+import Footer from '../components/Footer/Footer'
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
@@ -21,7 +22,6 @@ export default function NaszZespol() {
       setLoading(true);
       setError(null);
       
-      // Użyj nowego publicznego endpointu
       const response = await fetch(`${API_BASE_URL}/users/team/admins`);
 
       if (!response.ok) {
@@ -30,7 +30,6 @@ export default function NaszZespol() {
 
       const result = await response.json();
       
-      // Filtruj członków zespołu - usuń użytkownika z emailem kajman5021@gmail.com
       const filteredMembers = result.data.users.filter(
         member => member.contactEmail !== "kajman5021@gmail.com"
       );
@@ -124,7 +123,7 @@ export default function NaszZespol() {
                                   name={`${member.name} ${member.surname}`}
                                   position={member.position}
                                   description={member.bio}
-                                  phone={member.phone}
+                                  phoneNumber={member.phone}
                                   email={member.contactEmail}
                                 />
                           </Link>
@@ -134,6 +133,7 @@ export default function NaszZespol() {
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
   )
 }
