@@ -1,11 +1,11 @@
 import React from 'react';
-import p1 from '../../assets/ex/2-5.jpg';
-import p2 from '../../assets/ex/3-5.jpg';
-import p3 from '../../assets/ex/4-5.jpg';
-import p4 from '../../assets/ex/5-5.jpg';
-import p5 from '../../assets/ex/6-5.jpg';
-import p6 from '../../assets/ex/7-5.jpg';
-import p7 from '../../assets/ex/8-5.jpg';
+import p1 from '../../assets/pexels-pixabay-48148.jpg';
+import p2 from '../../assets/fundamenty_gotowe.jpg';
+import p3 from '../../assets/image.webp';
+import p4 from '../../assets/maxresdefault.jpg';
+import p5 from '../../assets/pexels-asphotography-101808.jpg';
+import p6 from '../../assets/Tarasola_Essential_high_res-29.webp';
+import p7 from '../../assets/gf-ZQ3b-fUVu-vFmq_szambo-1920x1080-nocrop.jpg';
 import PackageCard from '../PackageCard/PackageCard';
 
 const PackageList = ({ selectedPackages, selectPackage }) => {
