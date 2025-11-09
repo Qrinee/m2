@@ -23,6 +23,7 @@ import {
 } from 'react-icons/fa'
 import './PlytyFundamentowePage.css'
 import Footer from '../components/Footer/Footer'
+import HeroVideo from './../components/HeroVideo/HeroVideo';
 
 export default function PlytyFundamentowe() {
   const [formData, setFormData] = useState({
@@ -67,10 +68,11 @@ export default function PlytyFundamentowe() {
   return (
     <div className="plyty-fundamentowe-page">
       <Header/>
-      
-      <HeroNieruchomosci
+
+
+      <HeroVideo 
         video={video}
-        content={
+                content={
           <div style={{maxWidth: '800px'}}>
             <h1>Energooszczędna i ciepła <span style={{color: 'var(--secondary-color)'}}>PŁYTA FUNDAMENTOWA</span></h1>
             <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}>
