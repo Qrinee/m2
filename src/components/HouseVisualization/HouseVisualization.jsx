@@ -1,50 +1,75 @@
 import React, { useState, useEffect } from 'react';
 
-const HouseVisualization = ({ houseConfig, selections }) => {
+const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
   const [loadedImages, setLoadedImages] = useState({});
+  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
 
   const preloadImage = (src) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.src = src;
-      img.onload = resolve;
+      img.onload = () => resolve(src);
       img.onerror = reject;
     });
   };
 
   useEffect(() => {
-    // Preload tylko aktualnie wybranych obrazów
-    const imagesToLoad = [];
-    
-    // Base image
-    if (houseConfig.baseImage) {
-      imagesToLoad.push(preloadImage(houseConfig.baseImage));
-    }
-    
-    // Overlay images
-    if (houseConfig.overlayImages.light) {
-      imagesToLoad.push(preloadImage(houseConfig.overlayImages.light));
-    }
-    if (houseConfig.overlayImages.dach) {
-      imagesToLoad.push(preloadImage(houseConfig.overlayImages.dach));
-    }
-    
-    // Aktualnie wybrane elementy
-    Object.entries(selections).forEach(([section, id]) => {
-      if (id && id !== 0) {
-        const option = getOptionImage(section, id);
-        if (option?.image) {
-          imagesToLoad.push(preloadImage(option.image));
+    let isMounted = true;
+
+    const loadAllImages = async () => {
+      try {
+        const imagesToLoad = [];
+        
+        // Base image
+        if (houseConfig.baseImage) {
+          imagesToLoad.push(preloadImage(houseConfig.baseImage));
+        }
+        
+        // Overlay images
+        if (houseConfig.overlayImages?.light) {
+          imagesToLoad.push(preloadImage(houseConfig.overlayImages.light));
+        }
+        if (houseConfig.overlayImages?.dach) {
+          imagesToLoad.push(preloadImage(houseConfig.overlayImages.dach));
+        }
+        
+        // Aktualnie wybrane elementy
+        Object.entries(selections).forEach(([section, id]) => {
+          if (id && id !== 0) {
+            const option = getOptionImage(section, id);
+            if (option?.image) {
+              imagesToLoad.push(preloadImage(option.image));
+            }
+          }
+        });
+
+        await Promise.all(imagesToLoad);
+        
+        if (isMounted) {
+          setAllImagesLoaded(true);
+          // Wywołaj callback jeśli został przekazany
+          if (onImagesLoad) {
+            onImagesLoad();
+          }
+        }
+      } catch (error) {
+        console.error('Błąd ładowania obrazów:', error);
+        if (isMounted) {
+          setAllImagesLoaded(true);
+          if (onImagesLoad) {
+            onImagesLoad();
+          }
         }
       }
-    });
+    };
 
-    Promise.all(imagesToLoad)
-      .then(() => {
-        setLoadedImages(prev => ({ ...prev, all: true }));
-      })
-      .catch(console.error);
-  }, [houseConfig, selections]);
+    setAllImagesLoaded(false);
+    loadAllImages();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [houseConfig, selections, onImagesLoad]);
 
   const getOptionImage = (type, id) => {
     const section = houseConfig.options[type];
@@ -76,7 +101,7 @@ const HouseVisualization = ({ houseConfig, selections }) => {
           src={option.image} 
           alt={option.name}
           style={{ 
-            opacity: loadedImages.all ? 1 : 0,
+            opacity: allImagesLoaded ? 1 : 0,
             transition: 'opacity 0.3s ease-in-out'
           }}
         />
@@ -86,24 +111,24 @@ const HouseVisualization = ({ houseConfig, selections }) => {
 
   return (
     <div className="vis-overlay">
-      {/* Base image z opacity 0 gdy ładujemy */}
-      <div className='element-pickable base' style={{ opacity: loadedImages.all ? 1 : 0 }}>
+      {/* Base image */}
+      <div className='element-pickable base' style={{ opacity: allImagesLoaded ? 1 : 0 }}>
         <img src={houseConfig.baseImage} alt="Base" />
       </div>
       
       <div className='element-pickable light'>
         <img 
-          src={houseConfig.overlayImages.light} 
+          src={houseConfig.overlayImages?.light} 
           alt="Light" 
-          style={{ opacity: loadedImages.all ? 1 : 0 }}
+          style={{ opacity: allImagesLoaded ? 1 : 0 }}
         />
       </div>
       
       <div className='element-pickable dach'>
         <img 
-          src={houseConfig.overlayImages.dach} 
+          src={houseConfig.overlayImages?.dach} 
           alt="Dach" 
-          style={{ opacity: loadedImages.all ? 1 : 0 }}
+          style={{ opacity: allImagesLoaded ? 1 : 0 }}
         />
       </div>
       
