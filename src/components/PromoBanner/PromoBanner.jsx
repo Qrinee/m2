@@ -23,7 +23,7 @@ const PromoBanner = ({ imageSrc, closable = true }) => {
         <p className="promo-main">
           <strong>Skontaktuj się z nami!</strong>
         </p>
-        <p className="promo-sub">Zadzwoń: <a href="tel:+48123456789" className="promo-phone">+48 123 456 789</a></p>
+        <p className="promo-sub">Zadzwoń: <a href="tel:+48728866825" className="promo-phone">+48 728 866 825</a></p>
       </div>
 
       <div className="promo-actions">
