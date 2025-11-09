@@ -67,7 +67,7 @@ const MortgageWidget = ({
       </div>
 
       <div className="prop-mortgage-controls">
-        <label className="form-label">
+        <label className="form-labeld">
           Cena domu
           <input 
             className="form-input" 
@@ -77,7 +77,7 @@ const MortgageWidget = ({
           />
         </label>
 
-        <label className="form-label">
+        <label className="form-labeld">
           Wpłata własna: {Number(down || 0).toLocaleString("pl-PL")} PLN
           <input
             className="form-range"
@@ -89,7 +89,7 @@ const MortgageWidget = ({
           />
         </label>
 
-        <label className="form-label">
+        <label className="form-labeld">
           Termin spłaty (lata): {years}
           <input
             className="form-range"

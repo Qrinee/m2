@@ -750,7 +750,7 @@
   font-family: inherit;
 }
 
-.form-label {
+.form-labeld {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1444,11 +1444,11 @@ img {
 }
 
 /* Dodatkowe style dla lepszego UX */
-.form-label {
+.form-labeld {
   transition: transform 0.2s ease;
 }
 
-.form-label:focus-within {
+.form-labeld:focus-within {
   transform: translateX(4px);
 }
 
