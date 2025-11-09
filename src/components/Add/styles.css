@@ -13,7 +13,7 @@ body{margin:0;background:var(--bg);color:#111}
 .page{
 
   min-height:100vh;
-  background-image: url('./background.jpg');
+  background-image: url('../background.jpg');
   background-repeat: no-repeat;
   background-size: cover;       
   background-position: center;  
