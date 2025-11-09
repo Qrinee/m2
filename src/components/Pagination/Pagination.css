@@ -26,6 +26,6 @@
 }
 
 .pagination-button.active {
-  background-color: #d4af37;
+  background-color: var(--secondary-color);
   color: white;
 }

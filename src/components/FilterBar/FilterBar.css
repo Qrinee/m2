@@ -30,7 +30,7 @@
 
 .filter-select:focus {
   outline: none;
-  border-color: #c9a33d;
+  border-color: var(--secondary-color);
 }
 
 .filter-icons {
@@ -43,14 +43,14 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: #c9a33d;
+  color: var(--secondary-color);
   transition: color 0.2s ease;
   padding: 6px;
   border-radius: 4px;
 }
 
 .filter-icons button:hover {
-  color: #a6802d;
+  color: var(--secondary-color);
   background: #f5f5f5;
 }
 
@@ -59,7 +59,7 @@
   display: none;
   align-items: center;
   gap: 6px;
-  background: #c9a33d;
+  background: var(--secondary-color);
   color: white;
   border: none;
   padding: 8px 12px;
@@ -70,7 +70,7 @@
 }
 
 .mobile-filter-toggle:hover {
-  background: #a6802d;
+  background: var(--secondary-color);
 }
 
 
@@ -143,12 +143,12 @@
 }
 
 .apply-filters {
-  background: #c9a33d;
+  background: var(--secondary-color);
   color: white;
 }
 
 .apply-filters:hover {
-  background: #a6802d;
+  background: var(--secondary-color);
 }
 
 .reset-filters {

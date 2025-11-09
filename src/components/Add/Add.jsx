@@ -25,7 +25,7 @@ export default function Add() {
   const tabClickAllowed = false;
   const dropRef = useRef();
 
-  // Funkcje walidacji
+  
   const isPositiveNumber = (v) => {
     if (v === null || v === undefined || v === "") return false;
     const n = Number(String(v).replace(",", "."));
@@ -105,7 +105,7 @@ export default function Add() {
     if (idx > 0) setActive(TABS[idx - 1].id);
   };
 
-  // Funkcje do zarządzania zdjęciami
+  
   const onDropFiles = (e) => {
     e.preventDefault();
     if (e.dataTransfer?.files) addFiles(e.dataTransfer.files);
@@ -126,11 +126,11 @@ export default function Add() {
     e.target.value = null;
   };
 
-  // WYSYŁANIE DO BACKENDU
-// WYSYŁANIE DO BACKENDU
-// POPRAWIONE WYSYŁANIE DO BACKENDU
-// UPROSZCZONE WYSYŁANIE - ponieważ już mamy liczby w stanie
-// WYSYŁANIE DO BACKENDU Z PŁATNOŚCIAMI
+  
+
+
+
+
 const submitAll = async () => {
   if (!validateTab("szczegoly")) return;
 
@@ -140,7 +140,7 @@ const submitAll = async () => {
   try {
     const formDataToSend = new FormData();
     
-    // Dodaj wszystkie pola - już są w odpowiednim formacie
+    
     formDataToSend.append('tytul', formData.tytul);
     formDataToSend.append('opis', formData.opis);
     formDataToSend.append('cena', JSON.stringify(formData.cena));
@@ -155,14 +155,14 @@ const submitAll = async () => {
     formDataToSend.append('informacjePrawne', JSON.stringify(formData.informacjePrawne));
     formDataToSend.append('dodatkoweInformacje', formData.dodatkoweInformacje);
 
-    // Dodaj typ ogłoszenia (możesz dodać wybór w formularzu)
+    
     formDataToSend.append('promocje', JSON.stringify({
-      standard: true, // domyślnie standardowe
-      // premium: false,
-      // vip: false
+      standard: true, 
+      
+      
     }));
 
-    // Dodaj pliki
+    
     files.forEach(file => {
       formDataToSend.append('files', file.file);
     });
@@ -179,14 +179,14 @@ const submitAll = async () => {
       throw new Error(result.error || `Błąd HTTP: ${response.status}`);
     }
 
-    // Sprawdź czy otrzymaliśmy URL do płatności
+    
     if (result.paymentUrl) {
-      // Przekieruj do płatności Stripe
+      
       window.location.href = result.paymentUrl;
-      return; // Nie resetuj stanu - użytkownik jest przekierowywany
+      return; 
     }
 
-    // Jeśli nie ma płatności, pokaż standardowy sukces
+    
     setSubmittedProperty({
       tytul: formData.tytul,
       lokalizacja: `${formData.lokalizacja.miasto}, ${formData.lokalizacja.wojewodztwo}`,
@@ -216,7 +216,7 @@ const submitAll = async () => {
     handleResetForm();
   };
 
-  // Jeśli formularz został pomyślnie wysłany, pokazujemy ekran sukcesu
+  
   if (submitSuccess) {
     return (
       <div className="page">
@@ -234,7 +234,9 @@ const submitAll = async () => {
 
   return (
     <div className="page">
+
       <div className="card">
+
         <div className="tabs">
           {TABS.map((t) => (
             <button

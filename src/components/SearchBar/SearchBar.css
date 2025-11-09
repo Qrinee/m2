@@ -34,8 +34,8 @@
 }
 
 .searchbar__tab--active {
-  color: #c99b37;
-  border-bottom-color: #cc9747;
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
   background: #fff;
 }
 
@@ -63,7 +63,7 @@
 
 .searchbar__input:focus,
 .searchbar__select:focus {
-  border-color: #e6a749;
+  border-color: var(--secondary-color);
 }
 
 .searchbar__range {
@@ -87,7 +87,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #c79230;
+  background: var(--secondary-color);
   color: white;
   font-weight: 600;
   border: none;
@@ -101,7 +101,7 @@
 }
 
 .searchbar__button:hover {
-  background: #8d6818;
+  background: var(--secondary-color);
 }
 
 .searchbar__icon {

@@ -34,7 +34,7 @@
 }
 
 .hero__content button {
-  background: #d4af37;
+  background: var(--secondary-color);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -43,5 +43,5 @@
 }
 
 .hero__content button:hover {
-  background: #b8912e;
+  background: var(--secondary-color);
 }

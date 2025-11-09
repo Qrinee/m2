@@ -170,10 +170,24 @@
 /* Responsywność */
 @media (max-width: 768px) {
   .config-container {
-    width: 300px;
+    width: 100%;
+    position: relative;
   }
-  
+
+  .containerd{
+      padding: 0;
+  }
+  .sticky-visualization{
+    min-height: 30vh!important;
+    position: relative;
+    transform: translateX(20vw) scale(1.5);
+  }
+
+  .option-tile{
+    width: 100px;
+
+  }
   .option-grid {
-    grid-template-columns: 1fr;
+    display: flex;
   }
 }

@@ -42,28 +42,6 @@ export default function App() {
         }
       />
       
-      <ModularForBusiness  visibleCards={3} cards={[
-    {
-      id: 1,
-      title: "Restauracje",
-      image: restauracje,
-      videoId: "abc123"
-    },
-    {
-      id: 2,
-      title: "Hotele",
-      image: handel,
-      videoId: "def456"
-    },
-    {
-      id: 3,
-      title: "Biura",
-      image: medyczne,
-      videoId: "ghi789"
-    }
-      ]}/>
-      <div className="separate"></div>
-      <h2 className="section-titled" >Budownictwo modułowe w zupełnie nowej formie</h2>
     <div className="m-container" style={{ marginBottom: 80}}>
       <SplitLayout
       

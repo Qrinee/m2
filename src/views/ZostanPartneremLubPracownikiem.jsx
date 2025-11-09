@@ -10,7 +10,7 @@ import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci
 export default function ZostanPartneremLubPracownikiem() {
   const backend = import.meta.env.VITE_BACKEND + "/api/inquiry"
 
-  // Stan dla formularza partnerskiego
+  
   const [partnerFormData, setPartnerFormData] = useState({
     companyName: '',
     email: '',
@@ -20,7 +20,7 @@ export default function ZostanPartneremLubPracownikiem() {
   const [partnerLoading, setPartnerLoading] = useState(false)
   const [partnerMessage, setPartnerMessage] = useState('')
 
-  // Stan dla formularza rekrutacyjnego
+  
   const [employeeFormData, setEmployeeFormData] = useState({
     fullName: '',
     email: '',
@@ -31,7 +31,7 @@ export default function ZostanPartneremLubPracownikiem() {
   const [employeeLoading, setEmployeeLoading] = useState(false)
   const [employeeMessage, setEmployeeMessage] = useState('')
 
-  // Obsługa formularza partnerskiego
+  
   const handlePartnerChange = (e) => {
     const { name, value } = e.target
     setPartnerFormData(prev => ({
@@ -81,7 +81,7 @@ export default function ZostanPartneremLubPracownikiem() {
     }
   }
 
-  // Obsługa formularza rekrutacyjnego
+  
   const handleEmployeeChange = (e) => {
     const { name, value } = e.target
     setEmployeeFormData(prev => ({
@@ -93,13 +93,13 @@ export default function ZostanPartneremLubPracownikiem() {
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     if (file) {
-      // Walidacja rozmiaru pliku (5MB)
+      
       if (file.size > 5 * 1024 * 1024) {
         setEmployeeMessage('Plik jest za duży. Maksymalny rozmiar to 5MB.')
         return
       }
       
-      // Walidacja typu pliku
+      
       const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
       if (!allowedTypes.includes(file.type)) {
         setEmployeeMessage('Nieprawidłowy format pliku. Akceptowane formaty: PDF, DOC, DOCX.')
@@ -147,7 +147,7 @@ export default function ZostanPartneremLubPracownikiem() {
           message: ''
         })
         setCvFile(null)
-        // Reset input file
+        
         document.getElementById('cv-upload').value = ''
       } else {
         setEmployeeMessage(`Błąd: ${data.error || 'Wystąpił problem podczas wysyłania aplikacji'}`)

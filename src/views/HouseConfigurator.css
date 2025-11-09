@@ -9,7 +9,7 @@
 .project-header {
   background: #fff;
   padding: 3rem 0 2rem;
-  border-bottom: 3px solid #a81b16;
+  border-bottom: 3px solid var(--primary-color);
   text-align: center;
 }
 
@@ -41,7 +41,7 @@
 
 .price-value {
   font-size: 2.5rem;
-  color: #a81b16;
+  color: var(--primary-color);
   font-weight: 900;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .highlight-icon {
-  color: #a81b16;
+  color: var(--primary-color);
   font-size: 2rem;
   min-width: 40px;
 }
@@ -191,7 +191,7 @@
 }
 
 .feature-icon {
-  color: #a81b16;
+  color: var(--primary-color);
   font-size: 1.2rem;
 }
 
@@ -263,7 +263,7 @@
   font-size: 4.8rem;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 1000;
-  color: #a81b16;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -298,7 +298,7 @@
 }
 
 .total-section {
-  border-top: 3px solid #a81b16;
+  border-top: 3px solid var(--primary-color);
   padding-top: 1.5rem;
 }
 
@@ -343,13 +343,13 @@
 
 .sidebar-contact-form .form-input:focus {
   outline: none;
-  border-color: #a81b16;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(168, 22, 22, 0.1);
 }
 
 .sidebar-contact-form .submit-btn {
   width: 100%;
-  background: #a81b16;
+  background: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -367,7 +367,7 @@
 }
 
 .sidebar-contact-form .submit-btn:hover {
-  background: #8b0000;
+  background: var(--primary-color);
   transform: translateY(-2px);
 }
 
@@ -588,7 +588,7 @@
 }
 
 .feature-icon {
-  color: #a81b16;
+  color: var(--primary-color);
   font-size: 1.2rem;
 }
 

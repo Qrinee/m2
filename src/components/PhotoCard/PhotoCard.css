@@ -1,59 +1,120 @@
 .photo-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 2px 8px rgba(0,0,0,0.04),
+    0 4px 16px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.8);
   overflow: hidden;
-  max-width: 300px;
+  max-width: 320px;
   margin: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255,255,255,0.9);
+  position: relative;
 }
 
+.photo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.1), transparent);
+}
 
 .photo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 8px 25px rgba(0,0,0,0.12),
+    0 16px 40px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
 .photo-card__image {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-card__image {
+  transform: scale(1.05);
+}
+
+.photo-card__content {
+  padding: 20px;
 }
 
 .photo-card__name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 12px 16px 4px;
-  color: #111827; /* ciemny */
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  background: linear-gradient(135deg, #111827 0%, #374151 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.3;
 }
 
 .photo-card__status {
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: #6b7280; /* szary */
-  margin: 0 16px 8px;
+  color: var(--primary-color);
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
 }
 
 .photo-card__description {
   font-size: 0.9rem;
-  color: #374151;
-  margin: 0 16px 12px;
-  line-height: 1.4;
+  color: #6b7280;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.photo-card__icons {
+.photo-card__contacts {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  margin: 0 16px 16px;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(229,231,235,0.8);
 }
 
-.photo-card__icon {
-  font-size: 1.2rem;
-  color: #374151;
-  cursor: pointer;
-  transition: color 0.2s;
+.photo-card__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: rgba(249,250,251,0.8);
 }
 
-.photo-card__icon:hover {
-  color: #2563eb; /* niebieski przy hover */
+.photo-card__contact-item:hover {
+  background: rgba(59,130,246,0.05);
+  transform: translateX(4px);
+}
+
+.photo-card__contact-icon {
+  font-size: 1rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.photo-card__contact-item:hover .photo-card__contact-icon {
+  transform: scale(1.1);
+}
+
+.photo-card__contact-text {
+  font-size: 0.875rem;
+  color: #4b5563;
+  word-break: break-all;
+  font-weight: 500;
 }

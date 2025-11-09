@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 .faq-question:hover {
-  color: #b8860b;
+  color: var(--secondary-color);
 }
 .faq-question {
   display: flex;

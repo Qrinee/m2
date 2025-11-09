@@ -49,6 +49,6 @@
 .recent-price {
   font-size: 14px;
   font-weight: 600;
-  color: #c49a3a;
+  color: var(--secondary-color);
   margin: 0;
 }

@@ -16,6 +16,8 @@ export default function TeamSection() {
         <PhotoCard 
         image={dawid}
         name={'Dawid Frey'}
+        phoneNumber={'+48 728 866 825'}
+        email={'kontakt@m2notarialnie.pl'}
         status={'Członek zarządu | CEO'}
         description={'Współtwórca M2Notarialnie i specjalista w zakresie analiz rynku oraz procesu sprzedaży i z ...'}
         />
@@ -23,18 +25,12 @@ export default function TeamSection() {
 
          <Link to={'/estate_agent/68e66abc58e3141c145e3d19'} style={{textDecoration: 'none', color: 'inherit'}}>
         <PhotoCard
+        phoneNumber={'+48 696 266 381'}
+        email={"kontakt@m2notarialnie.pl"}
         image={wiktoria}
         name={'Wiktoria Kisio'}
         status={'Członek zarządu | CEO'}
         description={'Współzałożycielka M2 Notarialnie, z doświadczeniem w branży nieruchomości i pasją do tworz ...'}
-        />
-        </Link>
-         <Link to={'/estate_agent/68e66e6f58e3141c145e3d4c'} style={{textDecoration: 'none', color: 'inherit'}}>
-        <PhotoCard
-        image={renata}
-        name={'Renata Szwałek'}
-        status={'Przedstawiciel'}
-        description={'Renata Szwałek to negocjator rynku nieruchomości z wieloletnim doświadczeniem w branży fin ...'}
         />
         </Link>
         </div>

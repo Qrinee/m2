@@ -36,7 +36,7 @@
   left: 0;
   width: 30px;
   height: 2px;
-  background: #CBB26A;
+  background: var(--secondary-color);
 }
 
 .footer-description {
@@ -69,9 +69,9 @@
 }
 
 .social-icon:hover {
-  background: #CBB26A;
+  background: var(--secondary-color);
   color: #0a0a0a;
-  border-color: #CBB26A;
+  border-color: var(--secondary-color);
   transform: translateY(-2px);
 }
 
@@ -127,7 +127,7 @@
 }
 
 .contact-icon {
-  color: #CBB26A;
+  color: var(--secondary-color);
   margin-top: 2px;
   flex-shrink: 0;
 }
@@ -194,7 +194,7 @@
 }
 
 .privacy-link:hover {
-  color: #CBB26A;
+  color: var(--secondary-color);
 }
 
 

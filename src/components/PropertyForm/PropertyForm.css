@@ -79,7 +79,7 @@
 }
 
 .button {
-  background: linear-gradient(90deg, #d4b15f, #c5a245);
+  background: linear-gradient(90deg, var(--secondary-color), var(--secondary-color));
   color: #fff;
   font-size: 16px;
   padding: 14px;

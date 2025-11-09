@@ -32,7 +32,7 @@
 }
 
 .prop-breadcrumbs li:hover {
-  color: #CBB26A;
+  color: var(--secondary-color);
 }
 
 .prop-breadcrumbs li::after {
@@ -137,7 +137,7 @@
 }
 
 .prop-thumb-btn.active {
-  outline: 3px solid #CBB26A;
+  outline: 3px solid var(--secondary-color);
   outline-offset: 2px;
 }
 
@@ -154,7 +154,7 @@
 }
 
 .prop-label {
-  background: linear-gradient(135deg, #CBB26A, #CBB26A);
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color));
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -397,13 +397,13 @@
   padding: 20px;
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   border-radius: 12px;
-  border-left: 4px solid #CBB26A;
+  border-left: 4px solid var(--secondary-color);
 }
 
 .prop-price {
   font-size: 32px;
   font-weight: 800;
-  color: #CBB26A;
+  color: var(--secondary-color);
 }
 
 .prop-action-row {
@@ -427,7 +427,7 @@
 }
 
 .prop-btn.primary {
-  background: linear-gradient(135deg, #CBB26A, #CBB26A);
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color));
   color: #fff;
   box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
 }
@@ -740,7 +740,7 @@
 
 .form-input:focus, .form-textarea:focus, .form-select:focus {
   outline: none;
-  border-color: #CBB26A;
+  border-color: var(--secondary-color);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
@@ -767,7 +767,7 @@
 
 .percent-badge {
   background: #dbeafe;
-  color: #CBB26A;
+  color: var(--secondary-color);
   padding: 2px 8px;
   border-radius: 12px;
   font-size: 12px;
@@ -790,7 +790,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #CBB26A;
+  background: var(--secondary-color);
   cursor: pointer;
   border: 2px solid #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -800,7 +800,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #CBB26A;
+  background: var(--secondary-color);
   cursor: pointer;
   border: 2px solid #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -853,7 +853,7 @@
 .prop-mortgage-info .big {
   font-size: 24px;
   font-weight: 700;
-  color: #CBB26A;
+  color: var(--secondary-color);
 }
 
 .prop-mortgage-controls {
@@ -865,13 +865,13 @@
 /* Summary Card */
 .prop-summary-aside {
   background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-  border-left: 4px solid #0ea5e9;
+  border-left: 4px solid var(--primary-color);
 }
 
 .summary-price {
   font-size: 28px;
   font-weight: 800;
-  color: #0369a1;
+  color: var(--primary-color);
   margin-bottom: 20px;
   text-align: center;
 }
@@ -961,7 +961,7 @@
 .prop-watched-price {
   font-size: 16px;
   font-weight: 700;
-  color: #CBB26A;
+  color: var(--secondary-color);
   margin-bottom: 2px;
 }
 
@@ -1204,7 +1204,7 @@ img {
   width: 50px;
   height: 50px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 20px;

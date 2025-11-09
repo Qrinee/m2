@@ -148,7 +148,6 @@ const Header = ({ black }) => {
       children: [
         { label: "Czym są raty notarialne?", href: "/czym-sa-raty-notarialne" },
         { label: "Dodaj ogłoszenie", href: "/zglos-nieruchomosc" },
-        { label: "Oblicz ratę", href: "/oblicz-rate" },
       ],
     },
     { 
@@ -156,7 +155,6 @@ const Header = ({ black }) => {
       key: "sprzedajacy",
       children: [
         { label: "Zgłoś nieruchomość", href: "/zglos-nieruchomosc" },
-        { label: "Dlaczego warto?", href: "/dlaczego-warto" },
       ],
     },
     { 
@@ -164,7 +162,7 @@ const Header = ({ black }) => {
       key: "onas",
       children: [
         { label: "Poznaj nasz zespół", href: "/nasz-zespol" },
-        { label: "Partnerzy", href: "/zostan-partnerem-pracownikiem" },
+        { label: "Współpraca", href: "/zostan-partnerem-pracownikiem" },
         { label: "Aktualności", href: "/aktualnosci" },
         { label: "Reels", href: "/reels" },
       ],

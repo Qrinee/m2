@@ -1,6 +1,8 @@
 
 :root{
   --primary-color: #c82333;
+  
+  --secondary-color: #CBB26A;
 }
 
 
@@ -14,7 +16,7 @@ body{
 
 .polityka a{
   text-decoration: none;
-  color: #CBB26A;
+  color: var(--secondary-color);
   font-weight: 600;
 } 
 
@@ -80,7 +82,7 @@ body{
 
 .a{
   text-decoration: none;
-  color: #CBB26A;
+  color: var(--secondary-color);
   font-weight: 600;
 }
 
@@ -110,7 +112,7 @@ body{
 }
 
 .button{
-  background-color: #CBB26A;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   padding: 10px 20px;

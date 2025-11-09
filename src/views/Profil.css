@@ -31,7 +31,7 @@
 .info-section__phone, .info-section__email{
     font-size: 15px;
     font-weight: bold;
-    color: #cbb26a;
+    color: var(--secondary-color);
 }
 .form{
     padding: 12px;

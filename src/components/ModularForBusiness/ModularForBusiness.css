@@ -75,7 +75,7 @@
   z-index: 3;
   width: 35px;
   height: 35px;
-  background: #d43737;
+  background: var(--primary-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
 }
 
 .circular-video-btn:hover .play-icon-center {
-  background: #b82e2e;
+  background: var(--primary-color);
   transform: scale(1.1);
 }
 
@@ -147,7 +147,7 @@
 }
 
 .close-btn:hover {
-  color: #d4af37;
+  color: var(--secondary-color);
   transform: scale(1.1);
 }
 

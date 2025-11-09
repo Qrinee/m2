@@ -57,7 +57,7 @@
 }
 
 .project-btn {
-  background: #d43737;
+  background: var(--primary-color);
   color: white!important;
   font-size: 15px;
   color: #000;
@@ -70,7 +70,7 @@
 }
 
 .project-btn:hover {
-  background: #b82e2e;
+  background: var(--primary-color);
   transform: translateY(-2px);
 }
 

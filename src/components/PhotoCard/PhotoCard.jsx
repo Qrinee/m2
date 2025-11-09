@@ -1,22 +1,49 @@
 import React from 'react'
-import { FaMailBulk, FaPhone } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
 import './PhotoCard.css';
 
-export default function PhotoCard({ image, name, status, description }) {
+export default function PhotoCard({ 
+  image, 
+  name, 
+  status, 
+  description, 
+  phoneNumber, 
+  email,
+  location 
+}) {
   
-  const shortDescription = description.length > 100 
-    ? description.slice(0, 100) + '...'
+  const shortDescription = description.length > 120 
+    ? description.slice(0, 120) + '...'
     : description;
 
   return (
     <div className="photo-card">
-      <img src={image} alt={name} className="photo-card__image" />
-      <h3 className="photo-card__name">{name}</h3>
-      <p className="photo-card__status">{status}</p>
-      <p className="photo-card__description">{shortDescription}</p>
-      <div className="photo-card__icons">
-        <FaPhone className="photo-card__icon" />
-        <FaMailBulk className="photo-card__icon" />
+      <img 
+        src={image} 
+        alt={`Portrait of ${name}`} 
+        className="photo-card__image" 
+        loading="lazy"
+      />
+      <div className="photo-card__content">
+        <h3 className="photo-card__name">{name}</h3>
+        <p className="photo-card__status">{status}</p>
+        <p className="photo-card__description">{shortDescription}</p>
+        <div className="photo-card__contacts">
+          <div className="photo-card__contact-item">
+            <FaPhone className="photo-card__contact-icon" />
+            <span className="photo-card__contact-text">{phoneNumber}</span>
+          </div>
+          <div className="photo-card__contact-item">
+            <FaEnvelope className="photo-card__contact-icon" />
+            <span className="photo-card__contact-text">{email}</span>
+          </div>
+          {location && (
+            <div className="photo-card__contact-item">
+              <FaMapMarkerAlt className="photo-card__contact-icon" />
+              <span className="photo-card__contact-text">{location}</span>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

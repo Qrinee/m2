@@ -1,6 +1,6 @@
-/* src/components/MojProfil/MojProfil.css */
 
-/* Główne kontenery */
+
+
 .mp-container {
   background: #fff;
   border-radius: 12px;
@@ -51,7 +51,7 @@
   font-size: 1.1rem;
 }
 
-/* Layout */
+
 .mp-layout {
   display: flex;
   min-height: 600px;
@@ -68,7 +68,7 @@
   padding: 2rem;
 }
 
-/* Nawigacja */
+
 .mp-nav {
   padding: 1rem 0;
 }
@@ -104,7 +104,7 @@
   opacity: 0.8;
 }
 
-/* Alerty */
+
 .mp-alert {
   display: flex;
   align-items: center;
@@ -140,7 +140,7 @@
   opacity: 1;
 }
 
-/* Zawartość zakładek */
+
 .mp-tab-content {
   animation: fadeIn 0.3s ease;
 }
@@ -157,7 +157,7 @@
   color: #1e293b;
 }
 
-/* Statystyki */
+
 .mp-stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -219,7 +219,7 @@
   font-size: 0.9rem;
 }
 
-/* Formularze */
+
 .mp-form-section {
   max-width: 600px;
 }
@@ -271,7 +271,7 @@
   border-top: 1px solid #e5e7eb;
 }
 
-/* Przyciski */
+
 .mp-btn {
   display: inline-flex;
   align-items: center;
@@ -306,7 +306,7 @@
   font-size: 0.9rem;
 }
 
-/* Wiadomości */
+
 .mp-messages-empty {
   text-align: center;
   padding: 4rem 2rem;
@@ -324,7 +324,7 @@
   color: #374151;
 }
 
-/* Ustawienia */
+
 .mp-settings-group {
   margin-bottom: 2.5rem;
 }
@@ -357,7 +357,7 @@
   cursor: pointer;
 }
 
-/* Loading i Error */
+
 .mp-loading {
   text-align: center;
   padding: 4rem 2rem;
@@ -384,7 +384,7 @@
   color: #dc2626;
 }
 
-/* Responsywność */
+
 @media (max-width: 768px) {
   .mp-layout {
     flex-direction: column;
@@ -453,9 +453,9 @@
 }
 
 
-/* Dodaj te style na końcu pliku MojProfil.css */
 
-/* Nagłówek sekcji nieruchomości */
+
+
 .mp-properties-header {
   display: flex;
   justify-content: space-between;
@@ -465,7 +465,7 @@
   gap: 15px;
 }
 
-/* Siatka nieruchomości */
+
 .mp-properties-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -473,7 +473,7 @@
   margin-bottom: 30px;
 }
 
-/* Karta nieruchomości */
+
 .mp-property-card {
   background: white;
   border-radius: 12px;
@@ -488,7 +488,7 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Obrazek nieruchomości */
+
 .mp-property-card__image {
   position: relative;
   height: 200px;
@@ -521,7 +521,7 @@
   opacity: 0.7;
 }
 
-/* Status nieruchomości */
+
 .mp-property-card__status {
   position: absolute;
   top: 10px;
@@ -549,7 +549,7 @@
   color: #000;
 }
 
-/* Zawartość karty */
+
 .mp-property-card__content {
   padding: 20px;
 }
@@ -566,7 +566,7 @@
   overflow: hidden;
 }
 
-/* Detale nieruchomości */
+
 .mp-property-card__details {
   display: flex;
   flex-direction: column;
@@ -588,7 +588,7 @@
   min-width: 16px;
 }
 
-/* Typ nieruchomości */
+
 .mp-property-card__type {
   margin-bottom: 15px;
 }
@@ -603,7 +603,7 @@
   font-weight: 500;
 }
 
-/* Akcje nieruchomości */
+
 .mp-property-card__actions {
   display: flex;
   gap: 8px;
@@ -666,7 +666,7 @@
   background: #c82333;
 }
 
-/* Stan pusty dla nieruchomości */
+
 .mp-empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -694,7 +694,7 @@
   font-size: 16px;
 }
 
-/* Responsywność */
+
 @media (max-width: 768px) {
   .mp-properties-header {
     flex-direction: column;
@@ -729,7 +729,7 @@
 }
 
 
-/* Dodatkowe style dla komponentu */
+
 .mp-form__textarea {
   min-height: 100px;
   resize: vertical;
@@ -757,14 +757,14 @@
   font-size: 0.875rem;
 }
 
-/* Dodatkowe style dla komponentu */
+
 .mp-form__textarea {
   min-height: 100px;
   resize: vertical;
   font-family: inherit;
 }
 
-/* File Upload Styles */
+
 .mp-file-upload {
   border: 2px dashed #d1d5db;
   border-radius: 12px;
@@ -844,7 +844,7 @@
   font-style: italic;
 }
 
-/* Avatar Preview Styles */
+
 .mp-avatar-preview-wrapper {
   text-align: center;
   margin-bottom: 1rem;
@@ -856,7 +856,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* Avatar Preview Styles */
+
 .mp-avatar-preview-wrapper {
   text-align: center;
   margin-bottom: 1rem;
@@ -893,11 +893,11 @@
   justify-content: center;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 0; /* Ważne - usuwa domyślne paddingi */
+  padding: 0;
 }
 
 .mp-avatar-remove__icon {
-  font-size: 14px; /* Kontrolujemy rozmiar ikony bezpośrednio */
+  font-size: 14px;
   width: 14px;
   height: 14px;
 }
@@ -950,7 +950,7 @@
   font-style: italic;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .mp-file-upload {
     padding: 1.5rem;
@@ -970,7 +970,7 @@
   }
 }
 
-/* Loading state */
+
 .mp-file-upload:disabled {
   opacity: 0.6;
   cursor: not-allowed;

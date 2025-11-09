@@ -14,7 +14,7 @@ box-shadow: 0px 0px 24px -14px rgba(66, 68, 90, 1);
 
 .info-card__icon {
   font-size: 40px;
-  color: #CBB26A;
+  color: var(--secondary-color);
   margin-bottom: 16px;
 }
 
@@ -50,13 +50,13 @@ box-shadow: 0px 0px 24px -14px rgba(66, 68, 90, 1);
 }
 
 .info-card__check {
-  color: #c9a64d;
+  color: var(--secondary-color);
   margin-right: 8px;
   font-size: 14px;
 }
 
 .info-card__button {
-  background: #CBB26A;
+  background: var(--secondary-color);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -68,5 +68,5 @@ box-shadow: 0px 0px 24px -14px rgba(66, 68, 90, 1);
 }
 
 .info-card__button:hover {
-  background: #b4933f;
+  background: var(--secondary-color);
 }

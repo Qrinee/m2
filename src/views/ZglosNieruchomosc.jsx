@@ -7,7 +7,7 @@ export default function ZglosNieruchomosc() {
   return (
     <div>
         <Header black/>
-        <div className='separate'></div>
+        <div style={{marginTop: '50px'}}></div>
         <Add/>
         <Footer/>
     </div>

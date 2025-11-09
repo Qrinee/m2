@@ -50,7 +50,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/ogloszenia" element={<Ogloszenia />} />
           <Route path="/czym-sa-raty-notarialne" element={<CzymSaRatyNotarialne />} />
           <Route path="/raty-notarialne" element={<Ogloszenia />} />
-          <Route path='/oblicz-rate' element={<ObliczRate />} />
+          {/* <Route path='/oblicz-rate' element={<ObliczRate />} /> */}
           <Route path='/wpis/:id' element={<Wpis />} />
           <Route path='/nieruchomosci' element={<Nieruchomosci/>}></Route>
           <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />
