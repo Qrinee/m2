@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import ModularForBusiness from "./components/ModularForBusiness/ModularForBusiness";
 import NewProjects from "./components/NewProjects/NewProjects";
 import ConstructionProcess from "./components/ConstructionProcess/ConstructionProcess";
-import first from './assets/logistics.jpg'
+import first from './assets/konfigurator/thumbnails/1.png'
 import second from './assets/644729945574533_0.jpg'
 import TwoPartText from "./layouts/TwoPartText";
 import SplitLayout from "./layouts/SplitLayout";
@@ -84,12 +84,6 @@ Na początku roku 2022 weszła w życie najlepsza obecnie dostępna na rynku, al
       image: second,
       title: "Biuro kontenerowe",
       description: "Funkcjonalne biuro kontenerowe dla 10 osób. Gotowe do użytku w 2 tygodnie."
-    },
-    {
-      id: 4,
-      image: first,
-      title: "Dom letniskowy",
-      description: "Przytulny dom letniskowy nad jeziorem. Doskonały dla agroturystyki."
     },
   ]
       } />

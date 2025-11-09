@@ -116,7 +116,7 @@ const HouseConfigurator = () => {
       <div className="separate"></div>
       
       <div className="configurator">
-        <ProjectHeader basePrice={basePrice} />
+        {/* <ProjectHeader basePrice={basePrice} /> */}
         <VisualConfigurator />
         {/* <Visualization 
           houseImages={houseImages} 

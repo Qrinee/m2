@@ -164,7 +164,6 @@ const Header = ({ black }) => {
         { label: "Poznaj nasz zespół", href: "/nasz-zespol" },
         { label: "Współpraca", href: "/zostan-partnerem-pracownikiem" },
         { label: "Aktualności", href: "/aktualnosci" },
-        { label: "Reels", href: "/reels" },
       ],
     },
     { label: "Kontakt", href: "/kontakt" },

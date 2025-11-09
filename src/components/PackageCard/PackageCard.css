@@ -33,10 +33,10 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgb(95, 22, 22) 0%,
-    rgba(95, 22, 22, 0.95) 30%,
-    rgba(95, 22, 22, 0.7) 60%,
-    rgba(95, 22, 22, 0.4) 100%
+    var(--primary-color) 0%,
+    rgba(--primary-color, 0.95) 30%,
+    rgba(--primary-color, 0.7) 60%,
+    rgba(--primary-color, 0.4) 100%
   );
   z-index: -1;
 }

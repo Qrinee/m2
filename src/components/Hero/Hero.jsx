@@ -78,16 +78,6 @@ const Hero = () => {
               <p className="modern-card-description">
                 Kompleksowe rozwiązania nieruchomościowe dopasowane do Twoich potrzeb
               </p>
-              <div className="modern-card-stats">
-                <div className="modern-stat">
-                  <span className="modern-stat-number">30+</span>
-                  <span className="modern-stat-label">Nieruchomości</span>
-                </div>
-                <div className="modern-stat">
-                  <span className="modern-stat-number">3+</span>
-                  <span className="modern-stat-label">Lat doświadczenia</span>
-                </div>
-              </div>
               <Link to="/nieruchomosci" className="modern-card-button">
                 <span>Przeglądaj oferty</span>
                 <div className="modern-button-arrow">→</div>
