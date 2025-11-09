@@ -4,15 +4,17 @@ import {
   FaBolt, 
   FaLeaf, 
   FaTools, 
-  FaMapMarkerAlt, 
-  FaChartLine, 
-  FaBalanceScale,
+  FaStore,
+  FaBuilding,
+  FaHome,
+  FaSearch,
   FaArrowRight
 } from "react-icons/fa";
 import "./Hero.css";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("domy");
 
   useEffect(() => {
     setIsVisible(true);
@@ -20,97 +22,158 @@ const Hero = () => {
 
   return (
     <section className="modern-hero-section">
-      {/* Background with gradient overlay */}
-      <div 
-        className="modern-hero-bg"
-        style={{ backgroundImage: `url(dom.jpg)` }}
-      >
-        <div className="modern-hero-overlay"></div>
+      {/* Diagonal Background Container */}
+      <div className="modern-hero-diagonal-bg">
+        {/* Left background - Domy */}
+        <div 
+          className="modern-hero-bg left-bg"
+          style={{ backgroundImage: `url(dom.jpg)` }}
+        >
+          <div className="modern-hero-overlay left-overlay"></div>
+        </div>
+        
+        {/* Right background - Marketplace */}
+        <div 
+          className="modern-hero-bg right-bg"
+          style={{ backgroundImage: `url(nieruchomosci.jpg)` }}
+        >
+          <div className="modern-hero-overlay right-overlay"></div>
+        </div>
       </div>
 
       {/* Main content container */}
       <div className="modern-hero-container">
         <div className={`modern-hero-content ${isVisible ? 'modern-visible' : ''}`}>
           
-          {/* Left side - Modular Homes */}
-          <div className="modern-hero-column">
+          {/* Left side - Domy i Pawilony */}
+          <div className="modern-hero-column left-column">
             <div className="modern-hero-text">
               <div className="modern-hero-badge">
-                <span>DOMY SZKIELETOWE</span>
+                <span>BUDOWNICTWO MODUŁOWE</span>
               </div>
               
               <h1 className="modern-hero-title">
-                Modułowe <span className="modern-hero-accent">Rozwiązania</span>
+                Nowoczesne <span className="modern-hero-accent">Rozwiązania</span>
               </h1>
               
-              <p className="modern-hero-description">
-                Innowacyjne budownictwo modułowe dla Twojego biznesu. 
-                Szybkie w realizacji, energooszczędne i w pełni dostosowane 
-                do Twoich potrzeb.
-              </p>
-
-              {/* Feature highlights */}
-              <div className="modern-hero-features">
-                <div className="modern-feature-item">
-                  <span className="modern-feature-icon"><FaBolt /></span>
-                  <span>Szybka realizacja</span>
-                </div>
-                <div className="modern-feature-item">
-                  <span className="modern-feature-icon"><FaLeaf /></span>
-                  <span>Ekologiczne</span>
-                </div>
-                <div className="modern-feature-item">
-                  <span className="modern-feature-icon"><FaTools /></span>
-                  <span>Nowoczesne technologie</span>
-                </div>
+              {/* Tab navigation */}
+              <div className="modern-tab-navigation">
+                <button 
+                  className={`modern-tab-button ${activeTab === "domy" ? "modern-tab-active" : ""}`}
+                  onClick={() => setActiveTab("domy")}
+                >
+                  <FaHome className="modern-tab-icon" />
+                  <span>Domy Mieszkalne</span>
+                </button>
+                <button 
+                  className={`modern-tab-button ${activeTab === "biznes" ? "modern-tab-active" : ""}`}
+                  onClick={() => setActiveTab("biznes")}
+                >
+                  <FaStore className="modern-tab-icon" />
+                  <span>Rozwiązania Biznesowe</span>
+                </button>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="modern-hero-actions">
-                <Link to="/projekty-domow" className="modern-cta-primary">
-                  <span>Poznaj ofertę</span>
-                  <div className="modern-cta-arrow"><FaArrowRight /></div>
-                </Link>
+              {/* Tab content */}
+              <div className="modern-tab-content">
+                {activeTab === "domy" ? (
+                  <>
+                    <div className="modern-hero-features">
+                      <div className="modern-feature-item">
+                        <span className="modern-feature-icon"><FaBolt /></span>
+                        <span>Szybka realizacja (6-8 tygodni)</span>
+                      </div>
+                      <div className="modern-feature-item">
+                        <span className="modern-feature-icon"><FaLeaf /></span>
+                        <span>Energooszczędne rozwiązania</span>
+                      </div>
+                      <div className="modern-feature-item">
+                        <span className="modern-feature-icon"><FaTools /></span>
+                        <span>Nowoczesne technologie</span>
+                      </div>
+                    </div>
+
+                    <div className="modern-hero-actions">
+                      <Link to="/projekty-domow" className="modern-cta-primary">
+                        <span>Zobacz projekty domów</span>
+                        <div className="modern-cta-arrow"><FaArrowRight /></div>
+                      </Link>
+                      <Link to="/konfigurator" className="modern-cta-secondary">
+                        <span>Skorzystaj z konfiguratora</span>
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <>
+
+                    <div className="modern-hero-features">
+                      <div className="modern-feature-item">
+                        <span className="modern-feature-icon"><FaStore /></span>
+                        <span>Pawilony handlowe</span>
+                      </div>
+                      <div className="modern-feature-item">
+                        <span className="modern-feature-icon"><FaBuilding /></span>
+                        <span>Biura modułowe</span>
+                      </div>
+                      <div className="modern-feature-item">
+                        <span className="modern-feature-icon"><FaTools /></span>
+                        <span>Obiekty usługowe</span>
+                      </div>
+                    </div>
+
+                    <div className="modern-hero-actions">
+                      <Link to="/rozwiazania-biznesowe" className="modern-cta-primary">
+                        <span>Poznaj ofertę biznesową</span>
+                        <div className="modern-cta-arrow"><FaArrowRight /></div>
+                      </Link>
+                      <Link to="/kontakt" className="modern-cta-secondary">
+                        <span>Zamów konsultację</span>
+                      </Link>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
 
-          {/* Right side - Real Estate for Developers */}
-          <div className="modern-hero-column">
-            <div className={`modern-investment-section ${isVisible ? 'modern-visible' : ''}`}>
-              <div className="modern-investment-badge">
-                <span>INWESTYCJE I DEVELOPMENT</span>
+          {/* Right side - Marketplace */}
+          <div className="modern-hero-column right-column">
+            <div className="modern-marketplace-text">
+              <div className="modern-marketplace-badge">
+                <span>RYNEK NIERUCHOMOŚCI</span>
               </div>
               
-              <h2 className="modern-investment-title">
-                Nieruchomości dla <span className="modern-investment-accent">Inwestorów</span>
+              <h2 className="modern-marketplace-title">
+                Wystaw lub Znajdź <span className="modern-marketplace-accent">Idealną Ofertę</span>
               </h2>
               
-              <p className="modern-investment-description">
-                Atrakcyjne lokalizacje inwestycyjne i kompleksowe wsparcie 
-                dla deweloperów. Znajdź idealne tereny pod swoją kolejną inwestycję.
-              </p>
 
-              {/* Investment features */}
-              <div className="modern-investment-features">
-                <div className="modern-investment-item">
-                  <span className="modern-investment-icon"><FaMapMarkerAlt /></span>
-                  <span>Strategiczne lokalizacje</span>
+              {/* Marketplace features */}
+              <div className="modern-marketplace-features">
+                <div className="modern-marketplace-item">
+                  <span className="modern-marketplace-icon"><FaSearch /></span>
+                  <div className="modern-marketplace-text-content">
+                    <h4>Znajdź dla siebie</h4>
+                    <p>Skorzystaj z wyszukiwarki nieruchomości dla siebie</p>
+                  </div>
                 </div>
-                <div className="modern-investment-item">
-                  <span className="modern-investment-icon"><FaChartLine /></span>
-                  <span>Wysoki potencjał wzrostu</span>
-                </div>
-                <div className="modern-investment-item">
-                  <span className="modern-investment-icon"><FaBalanceScale /></span>
-                  <span>Pełne wsparcie prawne</span>
+                <div className="modern-marketplace-item">
+                  <span className="modern-marketplace-icon"><FaStore /></span>
+                  <div className="modern-marketplace-text-content">
+                    <h4>Wystaw ofertę</h4>
+                    <p>Skutecznie zaprezentuj swoją nieruchomość potencjalnym klientom</p>
+                  </div>
                 </div>
               </div>
 
-              {/* CTA Button */}
-              <div className="modern-investment-actions">
-                <Link to="/nieruchomosci" className="modern-investment-cta">
-                  <span>Zobacz oferty inwestycyjne</span>
+              {/* CTA Buttons */}
+              <div className="modern-marketplace-actions">
+                <Link to="/znajdz-oferte" className="modern-marketplace-cta primary">
+                  <span>Znajdź ofertę</span>
+                  <div className="modern-cta-arrow"><FaArrowRight /></div>
+                </Link>
+                <Link to="/wystaw-oferte" className="modern-marketplace-cta secondary">
+                  <span>Wystaw ofertę</span>
                   <div className="modern-cta-arrow"><FaArrowRight /></div>
                 </Link>
               </div>

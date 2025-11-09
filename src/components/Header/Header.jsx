@@ -372,9 +372,10 @@ const Header = ({ black }) => {
                         <Link 
                           to="/admin" 
                           className="dropdown-item"
+                          style={{color: 'black'}}
                           onClick={() => setOpenDropdown(null)}
                         >
-                          <FaShield /> Admin Panel
+                          <FaShield style={{color: 'var(--secondary-color)'}} /> Admin Panel
                         </Link>
                       ) : (
                         <Link 

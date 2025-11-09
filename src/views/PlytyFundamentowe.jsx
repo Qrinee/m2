@@ -175,7 +175,7 @@ export default function PlytyFundamentowe() {
             </p>
           </div>
 
-          <div className="career-benefits-grid">
+          <div className="career-benefits-gride">
             <div className="career-benefit-card">
               <div className="career-benefit-icon">
                 <FaMapMarkerAlt />

@@ -10,6 +10,7 @@ export default function VisualConfigurator() {
   const [houseConfig, setHouseConfig] = useState(null)
   const [selections, setSelections] = useState({})
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,25 +67,38 @@ export default function VisualConfigurator() {
       </div>
     )
   }
+  
+    const handleImagesLoad = () => {
+    setImagesLoaded(true);
+  };
 
-  // Wersja mobile - nowy layout
+  if (!houseConfig) {
+    return <div className="loading">Ładowanie konfiguratora...</div>
+  }
+
   return (
     <div className="visual-configurator-page">
-      {/* Wizualizacja na górze */}
-      <div style={{width: '100%', overflowX: 'hidden'}}>
-      <div className="sticky-visualization">
-        <img 
-          src={houseConfig.baseImage} 
-          alt="Visual Configurator" 
-          className="base-image" 
-        />
-        <HouseVisualization 
-          houseConfig={houseConfig}
-          selections={selections}
-        />
+      {!imagesLoaded && (
+        <div className="loading-overlay">
+          <div className="loading-spinner">Ładowanie konfiguratora...</div>
+        </div>
+      )}
+      
+      <div style={{ 
+        width: '100%', 
+        overflowX: 'hidden',
+        opacity: imagesLoaded ? 1 : 0,
+        transition: 'opacity 0.3s ease-in-out'
+      }}>
+        <div className="sticky-visualization">
+          <HouseVisualization 
+            houseConfig={houseConfig}
+            selections={selections}
+            onImagesLoad={handleImagesLoad}
+          />
+        </div>
       </div>
-      </div>
-      {/* Konfigurator na dole */}
+      
       <ConfigPanel
         houseConfig={houseConfig}
         selections={selections}

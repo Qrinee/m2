@@ -1,13 +1,13 @@
 // baza domów
-import houseD115Base from '../assets/dom2/base.png'
-import houseD126Base from '../assets/konfigurator/stock.png'
-import houseD70Base from '../assets/dom3/base.png'
+import houseD115Base from '../assets/dom2/base.webp'
+import houseD126Base from '../assets/konfigurator/stock.webp'
+import houseD70Base from '../assets/dom3/base.webp'
 
 // wspólne nakładki
 import houseCommonLight from '../assets/light.png'
-import houseD115Roof from '../assets/dom2/dach.png'
-import houseD126Roof from '../assets/konfigurator/dach.png'
-import houseD70Roof from '../assets/dom3/dach.png'
+import houseD115Roof from '../assets/dom2/dach.webp'
+import houseD126Roof from '../assets/konfigurator/dach.webp'
+import houseD70Roof from '../assets/dom3/dach.webp'
 
 // ===== MINIATURKI =====
 
@@ -68,83 +68,83 @@ import finishD70BlackSlatsThumb from '../assets/dom3/thumbnails/lameleantracyt.p
 
 
 // Części D-70
-import finishD70MetalSheet from '../assets/dom3/tynk/blachanarabek.png'
-import finishD70PlasterMetal from '../assets/dom3/tynk/tynkiblacha.png'
-import finishD70MineralPlaster from '../assets/dom3/tynk/tynkmineralny.png'
-import finishD70Anthracite from '../assets/dom3/tynk/tynkantracyt.png'
-import finishD70Slats from '../assets/dom3/tynk/lamele.png'
-import finishD70DarkSlats from '../assets/dom3/tynk/lameleciemne.png'
-import finishD70AnthraciteSlats from '../assets/dom3/tynk/lameleantracyt.png'
-import finishD70WhiteSlats from '../assets/dom3/tynk/lamelebiale.png'
+import finishD70MetalSheet from '../assets/dom3/tynk/blachanarabek.webp'
+import finishD70PlasterMetal from '../assets/dom3/tynk/tynkiblacha.webp'
+import finishD70Anthracite from '../assets/dom3/tynk/tynkantracyt.webp'
+import finishD70Slats from '../assets/dom3/tynk/lamele.webp'
+import finishD70DarkSlats from '../assets/dom3/tynk/lameleciemne.webp'
+import finishD70MineralPlaster  from '../assets/dom3/tynk/tynkmineralny.webp'
+import finishD70AnthraciteSlats from '../assets/dom3/tynk/lameleantracyt.webp'
+import finishD70WhiteSlats from '../assets/dom3/tynk/lamelebiale.webp'
 
-import houseD70windowGray from '../assets/dom3/okna/szary.png'
-import houseD70windowOak from '../assets/dom3/okna/dab.png'
-import houseD70windowWalnut from '../assets/dom3/okna/orzech.png'
-import houseD70windowWhite from '../assets/dom3/okna/biale.png'
+import houseD70windowGray from '../assets/dom3/okna/szary.webp'
+import houseD70windowOak from '../assets/dom3/okna/dab.webp'
+import houseD70windowWalnut from '../assets/dom3/okna/orzech.webp'
+import houseD70windowWhite from '../assets/dom3/okna/biale.webp'
 
 
-import houseD70blindGray from '../assets/dom3/rolety/szary.png'
-import houseD70blindBlack from '../assets/dom3/rolety/antracyt.png'
-import houseD70blindBrown from '../assets/dom3/rolety/orzech.png'
-import houseD70blindOak from '../assets/dom3/rolety/dab.png'
+import houseD70blindGray from '../assets/dom3/rolety/szary.webp'
+import houseD70blindBlack from '../assets/dom3/rolety/antracyt.webp'
+import houseD70blindBrown from '../assets/dom3/rolety/orzech.webp'
+import houseD70blindOak from '../assets/dom3/rolety/dab.webp'
 
-import houseD70doorCustom from '../assets/dom3/drzwi/wlasne.png'
-import houseD70door11S3 from '../assets/dom3/drzwi/kmt11s3.png'
-import houseD70doorP9 from '../assets/dom3/drzwi/kmtperfect9.png'
-import houseD70door14A from '../assets/dom3/drzwi/kmt14a.png'
+import houseD70doorCustom from '../assets/dom3/drzwi/wlasne.webp'
+import houseD70door11S3 from '../assets/dom3/drzwi/kmt11s3.webp'
+import houseD70doorP9 from '../assets/dom3/drzwi/kmtperfect9.webp'
+import houseD70door14A from '../assets/dom3/drzwi/kmt14a.webp'
 
 // Części D-115
-import finishD115MineralPlaster from '../assets/dom2/tynk/elewacjabiala.png'
-import finishD115MetalSheet from '../assets/dom2/tynk/blachanarabek.png'
-import finishD115Anthracite from '../assets/dom2/tynk/elewacjaantracyt.png'
+import finishD115MineralPlaster from '../assets/dom2/tynk/elewacjabiala.webp'
+import finishD115MetalSheet from '../assets/dom2/tynk/blachanarabek.webp'
+import finishD115Anthracite from '../assets/dom2/tynk/elewacjaantracyt.webp'
 
-import finishD115WhiteSlats from '../assets/dom2/tynk/lamelebiale.png'
-import finishD115DarkSlats from '../assets/dom2/tynk/lameleciemne.png'
-import finishD115Slats from '../assets/dom2/tynk/lamele.png'
-import finishD115AnthraciteSlats from '../assets/dom2/tynk/lameleantracyt.png'
+import finishD115WhiteSlats from '../assets/dom2/tynk/lamelebiale.webp'
+import finishD115DarkSlats from '../assets/dom2/tynk/lameleciemne.webp'
+import finishD115Slats from '../assets/dom2/tynk/lamele.webp'
+import finishD115AnthraciteSlats from '../assets/dom2/tynk/lameleantracyt.webp'
 
-import houseD115windowAnthracite from '../assets/dom2/okna/antracyt.png'
-import houseD115windowGray from '../assets/dom2/okna/szary.png'
-import houseD115windowOak from '../assets/dom2/okna/dab.png'
-import houseD115windowWalnut from '../assets/dom2/okna/orzech.png'
-import houseD115windowWhite from '../assets/dom2/okna/biale.png'
+import houseD115windowAnthracite from '../assets/dom2/okna/antracyt.webp'
+import houseD115windowGray from '../assets/dom2/okna/szary.webp'
+import houseD115windowOak from '../assets/dom2/okna/dab.webp'
+import houseD115windowWalnut from '../assets/dom2/okna/orzech.webp'
+import houseD115windowWhite from '../assets/dom2/okna/biale.webp'
 
-import houseD115blindGray from '../assets/dom2/rolety/szary.png'
-import houseD115blindWhite from '../assets/dom2/rolety/biale.png'
-import houseD115blindBlack from '../assets/dom2/rolety/antracyt.png'
-import houseD115blindBrown from '../assets/dom2/rolety/orzech.png'
-import houseD115blindOak from '../assets/dom2/rolety/dab.png'
+import houseD115blindGray from '../assets/dom2/rolety/szary.webp'
+import houseD115blindWhite from '../assets/dom2/rolety/biale.webp'
+import houseD115blindBlack from '../assets/dom2/rolety/antracyt.webp'
+import houseD115blindBrown from '../assets/dom2/rolety/orzech.webp'
+import houseD115blindOak from '../assets/dom2/rolety/dab.webp'
 
 
 
 
 // Części D-126
-import finishD126MetalSheet from '../assets/konfigurator/tynk/blachanarabek.png'
-import finishD126PlasterMetal from '../assets/konfigurator/tynk/tynkiblacha.png'
-import finishD126MineralPlaster from '../assets/konfigurator/tynk/tynkmineralny.png'
+import finishD126MetalSheet from '../assets/konfigurator/tynk/blachanarabek.webp'
+import finishD126PlasterMetal from '../assets/konfigurator/tynk/tynkiblacha.webp'
+import finishD126MineralPlaster from '../assets/konfigurator/tynk/tynkmineralny.webp'
 
-import finishD126Slats from '../assets/konfigurator/tynk/lamele.png'
-import finishD126Anthracite from '../assets/konfigurator/tynk/antracytelewacja.png'
-import finishD126DarkSlats from '../assets/konfigurator/tynk/lamele-ciemne.png'
-import finishD126AnthraciteSlats from '../assets/konfigurator/tynk/antracytlamele.png'
-import finishD126WhiteSlats from '../assets/konfigurator/tynk/bialelamele.png'
+import finishD126Slats from '../assets/konfigurator/tynk/lamele.webp'
+import finishD126Anthracite from '../assets/konfigurator/tynk/antracytelewacja.webp'
+import finishD126DarkSlats from '../assets/konfigurator/tynk/lamele-ciemne.webp'
+import finishD126AnthraciteSlats from '../assets/konfigurator/tynk/antracytlamele.webp'
+import finishD126WhiteSlats from '../assets/konfigurator/tynk/bialelamele.webp'
 
-import houseD126windowAnthracite from '../assets/konfigurator/okna/antracyt.png'
-import houseD126windowGray from '../assets/konfigurator/okna/szary.png'
-import houseD126windowOak from '../assets/konfigurator/okna/dab.png'
-import houseD126windowWalnut from '../assets/konfigurator/okna/orzech.png'
-import houseD126windowWhite from '../assets/konfigurator/okna/biale.png'
+import houseD126windowAnthracite from '../assets/konfigurator/okna/antracyt.webp'
+import houseD126windowGray from '../assets/konfigurator/okna/szary.webp'
+import houseD126windowOak from '../assets/konfigurator/okna/dab.webp'
+import houseD126windowWalnut from '../assets/konfigurator/okna/orzech.webp'
+import houseD126windowWhite from '../assets/konfigurator/okna/biale.webp'
 
-import houseD126blindGray from '../assets/konfigurator/rolety/d126_r1_szary.png'
-import houseD126blindWhite from '../assets/konfigurator/rolety/d126_r1_bialy.png'
-import houseD126blindBlack from '../assets/konfigurator/rolety/rolety.png'
-import houseD126blindBrown from '../assets/konfigurator/rolety/d126_r1_orzech.png'
-import houseD126blindOak from '../assets/konfigurator/rolety/d126_r1_dab.png'
+import houseD126blindGray from '../assets/konfigurator/rolety/d126_r1_szary.webp'
+import houseD126blindWhite from '../assets/konfigurator/rolety/d126_r1_bialy.webp'
+import houseD126blindBlack from '../assets/konfigurator/rolety/rolety.webp'
+import houseD126blindBrown from '../assets/konfigurator/rolety/d126_r1_orzech.webp'
+import houseD126blindOak from '../assets/konfigurator/rolety/d126_r1_dab.webp'
 
-import houseD126doorCustom from '../assets/konfigurator/drzwi/dzrwi0.png'
-import houseD126door11S3 from '../assets/konfigurator/drzwi/dzrwi11s3.png'
-import houseD126doorP9 from '../assets/konfigurator/drzwi/dzrwip9.png'
-import houseD126door14A from '../assets/konfigurator/drzwi/dzrwi14a.png'
+import houseD126doorCustom from '../assets/konfigurator/drzwi/dzrwi0.webp'
+import houseD126door11S3 from '../assets/konfigurator/drzwi/dzrwi11s3.webp'
+import houseD126doorP9 from '../assets/konfigurator/drzwi/dzrwip9.webp'
+import houseD126door14A from '../assets/konfigurator/drzwi/dzrwi14a.webp'
 
 export const HOUSE_CONFIGS = {
   d70: {
