@@ -12,7 +12,7 @@ const NewProjects = ({projects}) => {;
         
         <div className="projects-grid">
           {projects.map((project) => (
-            <Link to={'/realizacja/dfsanifaw34'} style={{textDecoration: 'none', color: 'inherit'}}>
+            <Link to={`/realizacja/${project.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
             <div key={project.id} className="project-card">
               <div className="project-image">
                 <img src={project.image} alt={project.title} />

@@ -73,9 +73,9 @@
 .right-overlay {
   background: linear-gradient(
     135deg,
-    rgba(76, 175, 80, 0.1) 0%,
-    rgba(76, 175, 80, 0.2) 50%,
-    rgba(76, 175, 80, 0.3) 100%
+    rgba(0, 0, 0, 0.623) 0%,
+    rgba(15, 15, 15, 0.568) 70%,
+    rgba(54, 35, 16, 0.3) 100%
   );
   clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%);
 }

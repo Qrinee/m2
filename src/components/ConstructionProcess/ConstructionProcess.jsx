@@ -12,7 +12,7 @@ const processSteps = [
   {
     step: 1,
     title: "Czas produkcji skrócony do minimum",
-    description: `Co wyróżnia naszą ofertę budownictwa modułowego na tle standardowych, tradycyjnych metod wznoszenia budynków? W M&W Construction group produkcja odbywa się w nowoczesnych, doskonale wyposażonych halach produkcyjnych, a wszystkie jej procesy przebiegają taśmowo.
+    description: `Co wyróżnia naszą ofertę budownictwa modułowego na tle standardowych, tradycyjnych metod wznoszenia budynków? W M2notarialnie produkcja odbywa się w nowoczesnych, doskonale wyposażonych halach produkcyjnych, a wszystkie jej procesy przebiegają taśmowo.
 
 To natomiast pozwala znacznie skrócić czas tworzenia budynku. Podczas gdy na tradycyjne domy lub budynki użyteczności publicznej trzeba czekać co najmniej rok, nasze budynki modułowe powstają już w około 12 do 18 tygodni.
 

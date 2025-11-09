@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 import ModularForBusiness from "./components/ModularForBusiness/ModularForBusiness";
 import NewProjects from "./components/NewProjects/NewProjects";
 import ConstructionProcess from "./components/ConstructionProcess/ConstructionProcess";
-import first from './assets/konfigurator/thumbnails/1.png'
-import second from './assets/644729945574533_0.jpg'
+import first from './assets/pawilony/5/Bez nazwy-2.png'
+import second from './assets/pawilony/3/1.png'
+import third from './assets/pawilony/2/Bez nazwy-2.png'
 import TwoPartText from "./layouts/TwoPartText";
 import SplitLayout from "./layouts/SplitLayout";
 import Reels from "./views/Reels/Reels";
@@ -70,7 +71,7 @@ Na początku roku 2022 weszła w życie najlepsza obecnie dostępna na rynku, al
     {
       id: 1,
       image: first,
-      title: "Dom jednorodzinny Modułowy",
+      title: 'Dom mieszkalny modułowy',
       description: "Nowoczesny dom modułowy o powierzchni 120m2, gotowy w 3 miesiące. Energooszczędny i w pełni wyposażony."
     },
     {
@@ -81,7 +82,7 @@ Na początku roku 2022 weszła w życie najlepsza obecnie dostępna na rynku, al
     },
     {
       id: 3,
-      image: second,
+      image: third,
       title: "Biuro kontenerowe",
       description: "Funkcjonalne biuro kontenerowe dla 10 osób. Gotowe do użytku w 2 tygodnie."
     },

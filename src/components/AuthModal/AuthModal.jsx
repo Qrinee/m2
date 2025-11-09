@@ -1,7 +1,6 @@
-
 import React, { useState } from "react";
 import "./AuthModal.css";
-import { FaEye, FaUserSecret } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUser, FaBuilding } from "react-icons/fa";
 
 export default function AuthModal({ onClose, onAuthSuccess }) {
   const [screen, setScreen] = useState("login");
@@ -9,16 +8,16 @@ export default function AuthModal({ onClose, onAuthSuccess }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-const [registerData, setRegisterData] = useState({
-  name: "",
-  surname: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-  phone: "",
-  companyName: "",
-  role: "user"
-});
+  const [registerData, setRegisterData] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
+    companyName: "",
+    role: "user"
+  });
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -30,7 +29,6 @@ const [registerData, setRegisterData] = useState({
 
   const API_BASE_URL = import.meta.env.VITE_BACKEND + "/api";
 
-  
   const handleRegisterChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
@@ -43,7 +41,6 @@ const [registerData, setRegisterData] = useState({
     setResetData({ ...resetData, [e.target.name]: e.target.value });
   };
 
-  
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -93,7 +90,6 @@ const [registerData, setRegisterData] = useState({
     }
   };
 
-  
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -133,7 +129,6 @@ const [registerData, setRegisterData] = useState({
     }
   };
 
-  
   const handleResetPassword = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -176,133 +171,261 @@ const [registerData, setRegisterData] = useState({
 
   return (
     <div className="modal-overlay">
+             <button className="close-btns" onClick={onClose}>
+          <span>×</span>
+        </button>
       <div className="modal">
-        <button className="close-btn" onClick={onClose}>✖</button>
+ 
+
+        <div className="modal-header">
+          <h2 className="modal-title">
+            {screen === "login" && "Witaj ponownie"}
+            {screen === "register" && "Dołącz do nas"}
+            {screen === "reset" && "Resetowanie hasła"}
+          </h2>
+          <p className="modal-subtitle">
+            {screen === "login" && "Zaloguj się na swoje konto"}
+            {screen === "register" && "Stwórz nowe konto"}
+            {screen === "reset" && "Podaj email do resetu hasła"}
+          </p>
+        </div>
 
         <div className="modal-content">
-          <div className="modal-left">
-            <div className="overlay-text">
-              <h2>Witaj w <br /> M2Notarialnie</h2>
-            </div>
-          </div>
+          {error && <div className="error-message">{error}</div>}
+          {success && <div className="success-message">{success}</div>}
 
-          <div className="modal-right">
-            {error && <div className="error-message">{error}</div>}
-            {success && <div className="success-message">{success}</div>}
-
-            {screen === "login" && (
-              <form onSubmit={handleLogin}>
-                <h3>Zaloguj się na swoje konto</h3>
+          {screen === "login" && (
+            <form onSubmit={handleLogin} className="auth-form">
+              <div className="input-group">
                 <input 
-                className="inp"
-                  type="email" name="email" placeholder="Email" 
-                  value={loginData.email} onChange={handleLoginChange} required disabled={loading}
+                  type="email" 
+                  name="email" 
+                  placeholder=" "
+                  value={loginData.email} 
+                  onChange={handleLoginChange} 
+                  required 
+                  disabled={loading}
+                  className="form-input"
                 />
+                <label className="form-label">Email</label>
+              </div>
 
-                <div className="password-field">
+              <div className="input-group">
+                <input 
+                  type={showPassword ? "text" : "password"} 
+                  name="password" 
+                  placeholder=" "
+                  value={loginData.password} 
+                  onChange={handleLoginChange} 
+                  required 
+                  disabled={loading}
+                  className="form-input"
+                />
+                <label className="form-label">Hasło</label>
+                <button 
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? "Logowanie..." : "Zaloguj się"}
+              </button>
+
+              <div className="form-links">
+                <button type="button" onClick={() => handleScreenChange("register")}>
+                  Nie masz konta? <span>Zarejestruj się</span>
+                </button>
+                <button type="button" onClick={() => handleScreenChange("reset")}>
+                  <span>Nie pamiętasz hasła?</span>
+                </button>
+              </div>
+            </form>
+          )}
+
+          {screen === "register" && (
+            <form onSubmit={handleRegister} className="auth-form">
+              <div className="name-fields">
+                <div className="input-group">
                   <input 
-                    type={showPassword ? "text" : "password"} name="password" placeholder="Hasło" 
-                    value={loginData.password} onChange={handleLoginChange} required disabled={loading}
+                    type="text" 
+                    name="name" 
+                    placeholder=" "
+                    value={registerData.name} 
+                    onChange={handleRegisterChange} 
+                    required 
+                    disabled={loading}
+                    className="form-input"
                   />
-                  <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <FaUserSecret  style={{opacity: '50%'}}/> :  <FaEye  style={{opacity: '50%'}}/>}
-                  </span>
+                  <label className="form-label">Imię</label>
                 </div>
-                <button style={{marginTop: '10px'}} type="submit" className="btn-primary" disabled={loading}>
-                  {loading ? "Logowanie..." : "Zaloguj się"}
-                </button>
-                <div className="links">
-                  <span onClick={() => handleScreenChange("register")}>Zarejestruj się tutaj!</span>
-                  <span onClick={() => handleScreenChange("reset")}>Nie pamiętasz hasła?</span>
+                <div className="input-group">
+                  <input 
+                    type="text" 
+                    name="surname" 
+                    placeholder=" "
+                    value={registerData.surname} 
+                    onChange={handleRegisterChange} 
+                    required 
+                    disabled={loading}
+                    className="form-input"
+                  />
+                  <label className="form-label">Nazwisko</label>
                 </div>
-              </form>
-            )}
+              </div>
 
-{screen === "register" && (
-  <form onSubmit={handleRegister}>
-    <h3>Rejestracja</h3>
-    <input type="text" className="inp" name="name" placeholder="Imię" value={registerData.name} onChange={handleRegisterChange} required disabled={loading} />
-    <input type="text" className="inp" name="surname" placeholder="Nazwisko" value={registerData.surname} onChange={handleRegisterChange} required disabled={loading} />
-    <input type="email" className="inp" name="email" placeholder="Email" value={registerData.email} onChange={handleRegisterChange} required disabled={loading} />
-    <input type="text" className="inp" name="phone" placeholder="Numer telefonu (opcjonalnie)" value={registerData.phone} onChange={handleRegisterChange} disabled={loading} />
-    
-    <div className="role-selection">
-      <label>
-        <input 
-          type="radio" 
-          name="role" 
-          value="user" 
-          checked={registerData.role === "user"} 
-          onChange={handleRegisterChange}
-          disabled={loading}
-        /> Osoba prywatna
-      </label>
-      <label>
-        <input 
-          type="radio" 
-          name="role" 
-          value="agent" 
-          checked={registerData.role === "agent"} 
-          onChange={handleRegisterChange}
-          disabled={loading}
-        /> Deweloper
-      </label>
-    </div>
-    <div>
-      {registerData.role === "agent" && (
-        <input type="text"  className="inp" disabled={loading} name="companyName" placeholder="Nazwa Firmy" value={registerData.companyName} onChange={handleRegisterChange}  />
-      )}
-    </div>
-    <div className="password-field">
-      <input 
-        type={showPassword ? "text" : "password"} 
-        name="password" 
-         className="inp"
-        placeholder="Hasło" 
-        value={registerData.password} 
-        onChange={handleRegisterChange} 
-        required 
-        disabled={loading}
-      />
-      <span className="toggle-eye" onClick={() => setShowPassword(!showPassword)}>
-        {showPassword ? <FaUserSecret style={{opacity: '50%'}}/> : <FaEye style={{opacity: '50%'}}/>}
-      </span>
-    </div>
-    <input 
-      type={showPassword ? "text" : "password"} 
-      name="confirmPassword" 
-       className="inp"
-      placeholder="Powtórz hasło" 
-      value={registerData.confirmPassword} 
-      onChange={handleRegisterChange} 
-      required 
-      disabled={loading}
-    />
-    <div>
-      
-    <button type="submit" className="btn-primary" disabled={loading}>
-      {loading ? "Rejestracja..." : "Zarejestruj"}
-    </button>
-    </div>
-    <div className="links">
-      <span onClick={() => handleScreenChange("login")}>Masz konto? Zaloguj się</span>
-    </div>
-  </form>
-)}
+              <div className="input-group">
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder=" "
+                  value={registerData.email} 
+                  onChange={handleRegisterChange} 
+                  required 
+                  disabled={loading}
+                  className="form-input"
+                />
+                <label className="form-label">Email</label>
+              </div>
 
-            {screen === "reset" && (
-              <form onSubmit={handleResetPassword}>
-                <h3>Reset hasła</h3>
-                <input type="email" name="email" placeholder="Podaj email" value={resetData.email} onChange={handleResetChange} required disabled={loading} />
-                <button type="submit" className="btn-primary" disabled={loading}>
-                  {loading ? "Wysyłanie..." : "Wyślij link resetujący"}
-                </button>
-                <div className="links">
-                  <span onClick={() => handleScreenChange("login")}>Powrót do logowania</span>
+              <div className="input-group">
+                <input 
+                  type="text" 
+                  name="phone" 
+                  placeholder=" "
+                  value={registerData.phone} 
+                  onChange={handleRegisterChange} 
+                  disabled={loading}
+                  className="form-input"
+                />
+                <label className="form-label">Numer telefonu (opcjonalnie)</label>
+              </div>
+
+              <div className="role-selection">
+                <div className="role-option">
+                  <input 
+                    type="radio" 
+                    name="role" 
+                    value="user" 
+                    id="role-user"
+                    checked={registerData.role === "user"} 
+                    onChange={handleRegisterChange}
+                    disabled={loading}
+                  />
+                  <label htmlFor="role-user" className="role-label">
+                    <FaUser className="role-icon" />
+                    <span>Osoba prywatna</span>
+                  </label>
                 </div>
-              </form>
-            )}
-          </div>
+                <div className="role-option">
+                  <input 
+                    type="radio" 
+                    name="role" 
+                    value="agent" 
+                    id="role-agent"
+                    checked={registerData.role === "agent"} 
+                    onChange={handleRegisterChange}
+                    disabled={loading}
+                  />
+                  <label htmlFor="role-agent" className="role-label">
+                    <FaBuilding className="role-icon" />
+                    <span>Deweloper</span>
+                  </label>
+                </div>
+              </div>
+
+              {registerData.role === "agent" && (
+                <div className="input-group">
+                  <input 
+                    type="text" 
+                    name="companyName" 
+                    placeholder=" "
+                    value={registerData.companyName} 
+                    onChange={handleRegisterChange} 
+                    disabled={loading}
+                    className="form-input"
+                  />
+                  <label className="form-label">Nazwa firmy</label>
+                </div>
+              )}
+
+              <div className="input-group">
+                <input 
+                  type={showPassword ? "text" : "password"} 
+                  name="password" 
+                  placeholder=" "
+                  value={registerData.password} 
+                  onChange={handleRegisterChange} 
+                  required 
+                  disabled={loading}
+                  className="form-input"
+                />
+                <label className="form-label">Hasło</label>
+                <button 
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+
+              <div className="input-group">
+                <input 
+                  type={showPassword ? "text" : "password"} 
+                  name="confirmPassword" 
+                  placeholder=" "
+                  value={registerData.confirmPassword} 
+                  onChange={handleRegisterChange} 
+                  required 
+                  disabled={loading}
+                  className="form-input"
+                />
+                <label className="form-label">Powtórz hasło</label>
+              </div>
+
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? "Rejestracja..." : "Zarejestruj się"}
+              </button>
+
+              <div className="form-links">
+                <button type="button" onClick={() => handleScreenChange("login")}>
+                  Masz już konto? <span>Zaloguj się</span>
+                </button>
+              </div>
+            </form>
+          )}
+
+          {screen === "reset" && (
+            <form onSubmit={handleResetPassword} className="auth-form">
+              <div className="input-group">
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder=" "
+                  value={resetData.email} 
+                  onChange={handleResetChange} 
+                  required 
+                  disabled={loading}
+                  className="form-input"
+                />
+                <label className="form-label">Email</label>
+              </div>
+
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? "Wysyłanie..." : "Wyślij link resetujący"}
+              </button>
+
+              <div className="form-links">
+                <button type="button" onClick={() => handleScreenChange("login")}>
+                  <span>Powrót do logowania</span>
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </div>

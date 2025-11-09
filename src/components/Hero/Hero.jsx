@@ -27,7 +27,7 @@ const Hero = () => {
         {/* Left background - Domy */}
         <div 
           className="modern-hero-bg left-bg"
-          style={{ backgroundImage: `url(dom.jpg)` }}
+          style={{ backgroundImage: `url(dom.webp)` }}
         >
           <div className="modern-hero-overlay left-overlay"></div>
         </div>
@@ -35,7 +35,7 @@ const Hero = () => {
         {/* Right background - Marketplace */}
         <div 
           className="modern-hero-bg right-bg"
-          style={{ backgroundImage: `url(nieruchomosci.jpg)` }}
+          style={{ backgroundImage: `url(widok-wnetrza-budynku-biurowego.jpg)` }}
         >
           <div className="modern-hero-overlay right-overlay"></div>
         </div>
@@ -98,7 +98,7 @@ const Hero = () => {
                         <span>Zobacz projekty domów</span>
                         <div className="modern-cta-arrow"><FaArrowRight /></div>
                       </Link>
-                      <Link to="/konfigurator" className="modern-cta-secondary">
+                      <Link to="/projekty-domow" className="modern-cta-secondary">
                         <span>Skorzystaj z konfiguratora</span>
                       </Link>
                     </div>
@@ -168,11 +168,11 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div className="modern-marketplace-actions">
-                <Link to="/znajdz-oferte" className="modern-marketplace-cta primary">
+                <Link to="/nieruchomosci" className="modern-marketplace-cta primary">
                   <span>Znajdź ofertę</span>
                   <div className="modern-cta-arrow"><FaArrowRight /></div>
                 </Link>
-                <Link to="/wystaw-oferte" className="modern-marketplace-cta secondary">
+                <Link to="/zglos-nieruchomosc" className="modern-marketplace-cta secondary">
                   <span>Wystaw ofertę</span>
                   <div className="modern-cta-arrow"><FaArrowRight /></div>
                 </Link>
