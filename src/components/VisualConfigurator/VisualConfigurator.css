@@ -168,6 +168,9 @@
 
 /* Responsywność */
 @media (max-width: 768px) {
+  .visual-configurator-page{
+      min-height: 200vh!important;
+  }
   .config-container {
     width: 100%;
     position: relative;
