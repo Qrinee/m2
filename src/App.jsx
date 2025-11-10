@@ -99,8 +99,8 @@ export default function App() {
     {
       id: 1,
       image: first,
-      title: 'Dom mieszkalny modułowy',
-      description: "Nowoczesny dom modułowy o powierzchni 120m2, gotowy w 3 miesiące. Energooszczędny i w pełni wyposażony."
+      title: 'Dom mieszkalny',
+      description: "Nowoczesny dom modułowy o powierzchni 120m2, gotowy w 3 miesiące."
     },
     {
       id: 2,
