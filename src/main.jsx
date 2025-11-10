@@ -35,6 +35,7 @@ import ReelsPage from './views/ReelsPage.jsx'
 import ReelsGridPage from './views/ReelsGridPage.jsx'
 import Realizacja from './views/Realizacja.jsx'
 import PlytyFundamentowe from './views/PlytyFundamentowe.jsx'
+import Pawilony from './views/Pawilony';
 // Zmień tę wartość na false, aby wyłączyć tryb prac
 const MAINTENANCE_MODE = false;
 
@@ -72,6 +73,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/konfigurator/:id' element={<HouseConfigurator />} />
           <Route path='/projekty-domow' element={<ProjektyDomow />} />
           <Route path="/estate_agent/:id" element={<Profil />} />
+          <Route path='/rozwiazania-biznesowe' element={<Pawilony/>} />
           <Route path='/my-profile' element={<MojProfil />} />
           <Route path="/admin" element={<AdminPanel />}>
             <Route index element={<Dashboard />} />

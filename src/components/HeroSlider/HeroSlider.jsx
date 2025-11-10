@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaArrowRight } from 'react-icons/fa';
 import './HeroSlider.css';
 
-const HeroSlider = ({ images, autoPlayDelay = 5000 }) => {
+const HeroSlider = ({ images, autoPlayDelay = 5000, content }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -49,12 +49,7 @@ const HeroSlider = ({ images, autoPlayDelay = 5000 }) => {
             }`}
             style={{ backgroundImage: `url(${image})` }}
           >
-            <div className="hero-slider__overlay">
-              <div className="hero-slider__content">
-                <h1 className="hero-slider__title">Nowoczesne Projekty Domów</h1>
-                <p className="hero-slider__description">Odkryj naszą kolekcję energooszczędnych domów modułowych</p>
-              </div>
-            </div>
+              {content}
           </div>
         ))}
       </div>

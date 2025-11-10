@@ -82,7 +82,17 @@ export default function ProjektyDomow() {
   return (
     <>
       <Header red />
-      <HeroSlider images={[projekt1, projekt2,projekt3,projekt4,projekt5]}/>
+      <HeroSlider images={[projekt1, projekt2,projekt3,projekt4,projekt5]}
+      
+      content={
+                    <div className="hero-slider__overlay">
+              <div className="hero-slider__content">
+                <h1 className="hero-slider__title">Nowoczesne Projekty Domów</h1>
+                <p className="hero-slider__description">Odkryj naszą kolekcję energooszczędnych domów modułowych</p>
+              </div>
+            </div>
+      }
+      />
       <div className='separate'></div>
       <div className={`projekty-domow-container ${isVisible ? 'page-loaded' : ''}`}>
 

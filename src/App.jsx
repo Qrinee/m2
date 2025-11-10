@@ -64,7 +64,7 @@ export default function App() {
     {
       id: 3,
       title: "Biura",
-      image: kaf2,
+      image: kaf3,
       videoId: "ghi789"
     }
       ]}/>
