@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+// PromoBanner.js
+import React from "react";
 import "./PromoBanner.css";
+import { usePromoBanner } from "../../context/PromoBannerContext";
 
 const PromoBanner = ({ imageSrc, closable = true }) => {
-  const [visible, setVisible] = useState(true);
-  if (!visible) return null;
+  const { isBannerVisible, hideBanner } = usePromoBanner();
+  
+  if (!isBannerVisible) return null;
 
   const handleContactClick = () => {
-    window.location.href = "/kontakt"; // ← przekierowanie do strony kontaktowej
+    window.location.href = "/kontakt";
   };
 
   return (
@@ -23,7 +26,12 @@ const PromoBanner = ({ imageSrc, closable = true }) => {
         <p className="promo-main">
           <strong>Skontaktuj się z nami!</strong>
         </p>
-        <p className="promo-sub">Zadzwoń: <a href="tel:+48728866825" className="promo-phone">+48 728 866 825</a></p>
+        <p className="promo-sub">
+          Zadzwoń:{" "}
+          <a href="tel:+48728866825" className="promo-phone">
+            +48 728 866 825
+          </a>
+        </p>
       </div>
 
       <div className="promo-actions">
@@ -39,7 +47,7 @@ const PromoBanner = ({ imageSrc, closable = true }) => {
       {closable && (
         <button
           className="promo-close"
-          onClick={() => setVisible(false)}
+          onClick={hideBanner}
           aria-label="Zamknij pasek"
           title="Zamknij"
         >

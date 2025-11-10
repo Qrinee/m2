@@ -36,11 +36,13 @@ import ReelsGridPage from './views/ReelsGridPage.jsx'
 import Realizacja from './views/Realizacja.jsx'
 import PlytyFundamentowe from './views/PlytyFundamentowe.jsx'
 import Pawilony from './views/Pawilony';
+import { PromoBannerProvider } from './context/PromoBannerContext.jsx'
 // Zmień tę wartość na false, aby wyłączyć tryb prac
 const MAINTENANCE_MODE = false;
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <PromoBannerProvider>
     <BrowserRouter>
       {MAINTENANCE_MODE ? (
        <>
@@ -86,5 +88,6 @@ createRoot(document.getElementById('root')).render(
         </Routes>
       )}
     </BrowserRouter>
+    </PromoBannerProvider>
   </StrictMode>,
 )
