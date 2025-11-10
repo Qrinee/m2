@@ -58,7 +58,7 @@ Ekologiczny charakter budownictwa modułowego dopełnia także fakt, że w proce
   {
     step: 6,
     title: "Błyskawiczny montaż",
-    description: `W M2notarialnie doskonale wiemy, jak ważny w dzisiejszych czasach jest czas. Liczy się przede wszystkim to, co można wykonać szybko i skutecznie, to co już po krótkim czasie przygotowania nadaje się do długotrwałego użytku.
+    description: `W D&W Development doskonale wiemy, jak ważny w dzisiejszych czasach jest czas. Liczy się przede wszystkim to, co można wykonać szybko i skutecznie, to co już po krótkim czasie przygotowania nadaje się do długotrwałego użytku.
 
 Dokładnie tak prezentują się nasze budynki modułowe. Czas montażu średniej wielkości domku letniskowego lub małego sklepu modułowego to zaledwie jeden dzień, a na swój wymarzony dom modułowy czy nowe biuro modułowe, kontener biurowy lub pawilon handlowy - kontener handlowy wystarczy poczekać kilka dni.
 

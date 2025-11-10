@@ -110,7 +110,7 @@ export default function NaszZespol() {
                     </div>
                     <div className='sm-separate'></div>
                     
-                    {teamMembers.length === 0 ? (
+                            {teamMembers.length === 0 ? (
                       <div className="no-members">
                         <p>Brak członków zespołu do wyświetlenia</p>
                       </div>
@@ -132,7 +132,9 @@ export default function NaszZespol() {
                     )}
                 </div>
             </div>
+
         </div>
+
         <Footer/>
     </div>
   )

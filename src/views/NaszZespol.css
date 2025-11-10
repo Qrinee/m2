@@ -1,4 +1,78 @@
-.team-grid{
+/* NaszZespol.css */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    justify-items: center;
+    padding: 20px 0;
+}
+
+/* Dla ekranów większych niż 768px - 2 kolumny */
+@media (min-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 auto;
+    }
+}
+
+.team-grid a .photo-card{
+    width: 100%;
+    max-width: 90%;
+}
+
+/* Dla bardzo małych ekranów */
+@media (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.loading-container, .error-container, .no-members {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-container p {
+    color: #dc2626;
+    margin-bottom: 16px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.no-members {
+    color: #6b7280;
+    font-style: italic;
 }

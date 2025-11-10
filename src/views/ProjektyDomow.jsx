@@ -6,7 +6,7 @@ import et2 from '../assets/konfigurator/thumbnails/2.png';
 import et3 from '../assets/konfigurator/thumbnails/3.png';
 
 
-import projekt1 from '../assets/pawilony/2/cztery.png'
+import projekt1 from '../assets/pawilony/dwa.png'
 import projekt2 from '../assets/pawilony/3/1.png'
 import projekt3 from '../assets/pawilony/4/dsad.png'
 import projekt4 from '../assets/pawilony/5/2.png'
@@ -82,7 +82,7 @@ export default function ProjektyDomow() {
   return (
     <>
       <Header red />
-      <HeroSlider images={[projekt1,projekt2,projekt3,projekt4,projekt5]}/>
+      <HeroSlider images={[projekt1, projekt2,projekt3,projekt4,projekt5]}/>
       <div className='separate'></div>
       <div className={`projekty-domow-container ${isVisible ? 'page-loaded' : ''}`}>
 

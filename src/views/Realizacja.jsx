@@ -32,13 +32,12 @@ export default function Realizacja() {
             date: "2024-03-15",
             content: "Nowoczesny dom modułowy o powierzchni 120m2, gotowy w 3 miesiące. Energooszczędny i w pełni wyposażony.",
             details: [
-                { icon: <FaHashtag />, label: 'Numer Pawilonu', value: 'PM-001' },
-                { icon: <FaCubes />, label: 'Model', value: 'Premium' },
-                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Handlowy' },
-                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: '12' },
-                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Aluminium' },
-                { icon: <FaUser />, label: 'Klient', value: 'Fashion Store Sp. z o.o.' },
-                { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: 'Warszawa, ul. Centralna 15' },
+                { icon: <FaHashtag />, label: 'Numer wizualizacji', value: '004' },
+                { icon: <FaCubes />, label: 'Model', value: 'Seria ZEZ' },
+                { icon: <FaBuilding />, label: 'Typ realizacji', value: 'Domy modułowe' },
+                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: 'Powyżej 6 modułów' },
+                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Płyty włókno-cementowe' },
+                { icon: <FaMapMarkerAlt />, label: 'Powierzchnia zabudowy', value: 'Powyżej 108 m2' },
             ]
         },
         2: {
@@ -47,13 +46,12 @@ export default function Realizacja() {
             date: "2024-02-10",
             content: "Przestronny pawilon gastronomiczny z tarasem widokowym, idealny na sezon letni. Wykończenie w stylu skandynawskim.",
             details: [
-                { icon: <FaHashtag />, label: 'Numer Pawilonu', value: 'PG-045' },
-                { icon: <FaCubes />, label: 'Model', value: 'Lakeside' },
-                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Gastronomiczny' },
-                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: '8' },
-                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Drewno modrzewiowe' },
-                { icon: <FaUser />, label: 'Klient', value: 'Lake Restaurant' },
-                { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: 'Mikołajki, ul. Nadjeziorna 8' },
+                { icon: <FaHashtag />, label: 'Numer Pawilonu', value: '036' },
+                { icon: <FaCubes />, label: 'Model', value: 'Seria ZEZ PRO' },
+                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Pawilony i kontenery handlowe' },
+                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: 'Powyżej 6 modułów' },
+                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Elewacje drewniane, Płyty włókno-cementowe' },
+                { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: 'Reda' },
             ]
         },
         3: {
@@ -62,20 +60,19 @@ export default function Realizacja() {
             date: "2024-01-20",
             content: "Kompaktowy pawilon usługowy zaprojektowany specjalnie dla centrów handlowych. Maximilizacja przestrzeni użytkowej.",
             details: [
-                { icon: <FaHashtag />, label: 'Numer Pawilonu', value: 'PU-128' },
-                { icon: <FaCubes />, label: 'Model', value: 'Compact' },
-                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Usługowy' },
-                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: '6' },
-                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Szkło + stal' },
-                { icon: <FaUser />, label: 'Klient', value: 'Beauty Salon Premium' },
-                { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: 'Kraków, Galeria Krakowska' },
+                { icon: <FaHashtag />, label: 'Numer Pawilonu', value: '002' },
+                { icon: <FaCubes />, label: 'Model', value: 'Seria Glass' },
+                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Pawilony i kontenery biurowe' },
+                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: 'Poniżej 6 modułów' },
+                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Płyty włókno-cementowe' },
+                { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: 'Poznań MTP' },
             ]
         }
     };
 
     // Pobierz dane dla aktualnego ID lub użyj domyślnych
     const currentData = realizacjeData[id] || {
-        images: [realizacja, realizacja, realizacja],
+        images: [realizacja31, realizacja32, realizacja34],
         title: "Przykładowa realizacja",
         date: new Date().toLocaleDateString(),
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
