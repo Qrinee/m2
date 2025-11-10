@@ -70,28 +70,8 @@ export default function App() {
       ]}/>
       <div className="separate"></div>
       <h2 className="section-titled" >Budownictwo modułowe w zupełnie nowej formie</h2>
-    <div className="m-container" style={{ marginBottom: 80}}>
-      <SplitLayout
-      
-      leftContent={
-        <div style={{padding: '20px'}}>
-        <h1>Budownictwo modułowe bez pozwolenia do 70m2</h1>
-        <p>
-Na początku roku 2022 weszła w życie najlepsza obecnie dostępna na rynku, alternatywa prawna dla inwestorów w branży nieruchomości. Wprowadza poważne zmiany i uproszczenia zagospodarowania przestrzeni bez pozwolenia na budowę do 70m2. W M&W Construction Group szczycimy się w produkcji technologii prefabrykowanej, która jest solidna, energooszczędna, na miarę współczesnego designu a przede wszystkim szybka w realizacji. Czy to branża Turystyczna gdzie chcesz zwiekszyć swoja ofertę domków letniskowych, lub po prostu nadszedł czas na postawienie domu jednorodzinnego? Nasza firma oprócz budowy pomoże w potrzebnej dokumentacji i planowaniu. Zapraszamy do zapoznania się z nasza oferta!
-
-        </p>
-      </div>
-
-      }
-      rightBg="#ffffff"
-      leftBg="#ffffff"
-      rightContent={
-        <div style={{padding: '20px'}} >
-        <h1>Oferta</h1>
-        <p>To doskonała alternatywa dla tradycyjnych metod budowlanych, które są dużo bardziej kosztowne – zarówno finansowo, jak i czasowo. Mając na uwadze precyzję wykonania składających się na kontenery elementów oraz czas realizacji i zwrotu inwestycji, nieustannie poszukujemy nowych rozwiązań, które spełnią oczekiwania naszych kontrahentów. Dzięki temu możemy zaoferować im indywidualne projekty o konkurencyjnym czasie realizacji, które wpisują się w charakter prowadzonej przez nich działalności. Oferta  M&W Construction to szeroki zakres tworzonych konstrukcji, w skład których wchodzą między innymi </p>
-        </div>
-      }
-      />
+      <h2 className="section-titled" style={{border: 0, color: 'var(--primary-color)'}}>Zaprojektuj swoje marzenia</h2>
+      <div className="m-container" style={{ marginBottom: 80}}>
       </div>
       <NewProjects projects={
         [
