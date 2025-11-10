@@ -27,7 +27,7 @@ const RoletySection = ({ options, enabled, color, onToggle, onColorSelect }) => 
             {options.map((option) => (
               <div 
                 key={option.id}
-                className={`option-tile ${color === option.id ? 'active' : ''}`}
+                className={`option-tiler ${color === option.id ? 'active' : ''}`}
                 onClick={() => onColorSelect(option.id)}
               >
                 <img className="tile-preview" src={option.thumb} alt={option.name} />

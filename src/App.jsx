@@ -4,6 +4,9 @@ import Footer from "./components/Footer/Footer";
 import kaf1 from './assets/kafelki/1.png'
 import kaf2 from './assets/kafelki/2.png'
 import kaf3 from './assets/kafelki/3.png'
+import kaf4 from './assets/kafelki/4.png'
+import kaf5 from './assets/kafelki/5.png'
+import kaf6 from './assets/kafelki/6.png'
 
 import { Link } from "react-router-dom";
 import ModularForBusiness from "./components/ModularForBusiness/ModularForBusiness";
@@ -48,7 +51,7 @@ export default function App() {
       />
             <PromoBanner imageSrc={para}/>
 
-        <ModularForBusiness  visibleCards={3} cards={[
+        <ModularForBusiness cards={[
     {
       id: 1,
       title: "Restauracje",
@@ -65,6 +68,24 @@ export default function App() {
       id: 3,
       title: "Biura",
       image: kaf3,
+      videoId: "ghi789"
+    },
+        {
+      id: 3,
+      title: "Biura",
+      image: kaf4,
+      videoId: "ghi789"
+    },
+        {
+      id: 3,
+      title: "Biura",
+      image: kaf5,
+      videoId: "ghi789"
+    },
+            {
+      id: 3,
+      title: "Biura",
+      image: kaf6,
       videoId: "ghi789"
     }
       ]}/>
