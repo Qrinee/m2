@@ -37,7 +37,7 @@ const ModularForBusiness = ({ cards = defaultCards }) => {
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                       />
                     </defs>
-                    <text fontSize="12" fill="#d43737ff" fontWeight="bold">
+                    <text fontSize="12" fill="#141414ff" fontWeight="bold">
                       <textPath href={`#circlePath-${card.id || index}`} startOffset="0%">
                         OBEJRZYJ VIDEO • OBEJRZYJ VIDEO •
                       </textPath>

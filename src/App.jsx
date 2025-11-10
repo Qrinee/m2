@@ -1,9 +1,10 @@
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import Footer from "./components/Footer/Footer";
-import restauracje from './assets/ex/Restauracje.webp'
-import handel from './assets/ex/Handel.webp'
-import medyczne from './assets/ex/Medyczne.webp'
+import kaf1 from './assets/kafelki/1.png'
+import kaf2 from './assets/kafelki/2.png'
+import kaf3 from './assets/kafelki/3.png'
+
 import { Link } from "react-router-dom";
 import ModularForBusiness from "./components/ModularForBusiness/ModularForBusiness";
 import NewProjects from "./components/NewProjects/NewProjects";
@@ -47,9 +48,30 @@ export default function App() {
       />
             <PromoBanner imageSrc={para}/>
 
-      
+        <ModularForBusiness  visibleCards={3} cards={[
+    {
+      id: 1,
+      title: "Restauracje",
+      image: kaf1,
+      videoId: "abc123"
+    },
+    {
+      id: 2,
+      title: "Hotele",
+      image: kaf2,
+      videoId: "def456"
+    },
+    {
+      id: 3,
+      title: "Biura",
+      image: kaf2,
+      videoId: "ghi789"
+    }
+      ]}/>
+      <div className="separate"></div>
+      <h2 className="section-titled" >Budownictwo modułowe w zupełnie nowej formie</h2>
     <div className="m-container" style={{ marginBottom: 80}}>
-      {/* <SplitLayout
+      <SplitLayout
       
       leftContent={
         <div style={{padding: '20px'}}>
@@ -69,7 +91,7 @@ Na początku roku 2022 weszła w życie najlepsza obecnie dostępna na rynku, al
         <p>To doskonała alternatywa dla tradycyjnych metod budowlanych, które są dużo bardziej kosztowne – zarówno finansowo, jak i czasowo. Mając na uwadze precyzję wykonania składających się na kontenery elementów oraz czas realizacji i zwrotu inwestycji, nieustannie poszukujemy nowych rozwiązań, które spełnią oczekiwania naszych kontrahentów. Dzięki temu możemy zaoferować im indywidualne projekty o konkurencyjnym czasie realizacji, które wpisują się w charakter prowadzonej przez nich działalności. Oferta  M&W Construction to szeroki zakres tworzonych konstrukcji, w skład których wchodzą między innymi </p>
         </div>
       }
-      /> */}
+      />
       </div>
       <NewProjects projects={
         [
