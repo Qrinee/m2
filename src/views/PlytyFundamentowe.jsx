@@ -171,7 +171,7 @@ export default function PlytyFundamentowe() {
           <div className="career-section-header">
             <h2 className="career-section-title">Kompleksowe wykonanie płyty fundamentowej</h2>
             <p className="career-section-description">
-              Jako marka Prestige House zapewniamy kompleksową budowę płyt fundamentowych. Oferujemy szeroki zakres usług w tym instalacje i montaż ekologicznych oczyszczalni, eko-szamb, drenażów, zbiorników na deszczówkę a także wykonanie wszelkich prace ziemnych na działce Inwestora.
+              Jako marka zapewniamy kompleksową budowę płyt fundamentowych. Oferujemy szeroki zakres usług w tym instalacje i montaż ekologicznych oczyszczalni, eko-szamb, drenażów, zbiorników na deszczówkę a także wykonanie wszelkich prace ziemnych na działce Inwestora.
             </p>
             <p className="career-section-description">
               Kompleksowość naszych usług i ich szeroki zakres pozwala nam na współpracę zarówno z inwestorami z sektora prywatnego jak i komercyjnego – również deweloperskiego.
