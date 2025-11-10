@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import { Link, useNavigate } from "react-router-dom";
+import { href, Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaUserCircle, FaBars, FaTimes, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
 import AuthModal from "../AuthModal/AuthModal";
 import { FaHouse, FaShield } from "react-icons/fa6";
+import { label } from "three/tsl";
 
 const Header = ({ black }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -150,6 +151,13 @@ const Header = ({ black }) => {
         { label: "Dodaj ogłoszenie", href: "/zglos-nieruchomosc" },
         { label: "Płyty fundamentowe", href: "/plyty-fundamentowe" },
       ],
+    },
+    {
+      label: "Dla biznesu",
+      key: "biznes",
+      children: [
+        {label: "Pawilony", href: "/rozwiazania-biznesowe"}
+      ]
     },
     { 
       label: "Dla sprzedających", 
