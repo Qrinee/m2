@@ -8,7 +8,7 @@ const RoletySection = ({ options, enabled, color, onToggle, onColorSelect }) => 
       
       <div className="option-grid">
         <div 
-          className={`option-tile ${enabled ? 'active' : ''}`}
+          className={`option-tiler ${enabled ? 'active' : ''}`}
           onClick={onToggle}
         >
           <div className="tile-preview rolety-toggle">

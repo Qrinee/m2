@@ -24,7 +24,7 @@ import {
 } from 'react-icons/fa'
 import './CareerPage.css'
 import Footer from '../components/Footer/Footer'
-import vid1 from '../assets/videos/vid.mp4'
+import vid1 from '../assets/videos/vid1.mp4'
 import HeroVideo from '../components/HeroVideo/HeroVideo'
 
 export default function ZostanPartneremLubPracownikiem() {
