@@ -27,10 +27,10 @@ const PromoBanner = ({ imageSrc, closable = true }) => {
           <strong>Skontaktuj się z nami!</strong>
         </p>
         <p className="promo-sub">
-          <a href="tel:+48728866825" className="promo-phone">
+          <a href="tel:+48728866825 " className="promo-phone">
           DAWID FREY +48 728 866 825 
           </a>
-          <a href="tel:+48728866825"  className="promo-phone">
+          <a href="tel:+48696266381"  className="promo-phone">
                 WIKTORIA KISIO +48 696 266 381
           </a>
  
