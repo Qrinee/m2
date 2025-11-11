@@ -5,8 +5,6 @@ import logo from "../../assets/logo.png";
 import { FaUserCircle, FaBars, FaTimes, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
 import AuthModal from "../AuthModal/AuthModal";
 import { FaHouse, FaShield } from "react-icons/fa6";
-import { label } from "three/tsl";
-
 const Header = ({ black }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
