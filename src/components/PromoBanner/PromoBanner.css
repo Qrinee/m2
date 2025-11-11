@@ -15,7 +15,6 @@
   box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.18);
   z-index: 9999;
   overflow: visible;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* ===== Left - Image ===== */
@@ -53,7 +52,7 @@
   margin: 0;
   font-size: 30px;
   font-weight: 700;
-  line-height: 1.25;
+  margin-bottom: 20px;
 }
 
 .promo-sub {
@@ -63,7 +62,12 @@
 }
 
 .promo-phone {
-  color: #fff;
+  color: var(--secondary-color);
+  background-color: #fff;
+
+  border-radius: 5px;
+  margin-left: 20px;
+  padding: 10px;
   text-decoration: none;
 }
 
