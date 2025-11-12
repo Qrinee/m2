@@ -11,7 +11,7 @@ import Footer from './../components/Footer/Footer';
 import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci';
 import Header from '../components/Header/Header';
 import SearchBar from '../components/SearchBar/SearchBar';
-import vid2 from '../assets/videos/vid2.mp4'
+import vid2 from '../assets/videos/3569295-uhd_3840_2160_30fps.mp4'
 import HeroVideo from '../components/HeroVideo/HeroVideo';
 
 export default function Nieruchomosci() {

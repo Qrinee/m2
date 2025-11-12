@@ -5,9 +5,6 @@ const InfoSection = () => {
   return (
     <div className="info-section">
       <h1>FREY&KISIO ESTATE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ</h1>
-      <p className="address">
-        Aleja Prymasa Tysiąclecia 83A / 310, 01-242 Warszawa, Polska
-      </p>
       <div className="social-icons">
         <FaFacebookF />
         <FaTiktok />

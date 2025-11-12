@@ -1,3 +1,4 @@
+// ConfigSection.js - zaktualizowany komponent do wyświetlania cen
 import React from 'react'
 
 const ConfigSection = ({ title, options, activeId, onSelect }) => (
@@ -18,6 +19,12 @@ const ConfigSection = ({ title, options, activeId, onSelect }) => (
             </div>
           )}
           <span>{option.name}</span>
+          {option.price !== undefined && option.price > 0 && (
+            <div className="option-price">+{option.price.toLocaleString('pl-PL')} zł</div>
+          )}
+          {option.price === 0 && (
+            <div className="option-price-included">W cenie</div>
+          )}
         </div>
       ))}
     </div>

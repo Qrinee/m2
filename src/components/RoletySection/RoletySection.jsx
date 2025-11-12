@@ -30,8 +30,24 @@ const RoletySection = ({ options, enabled, color, onToggle, onColorSelect }) => 
                 className={`option-tiler ${color === option.id ? 'active' : ''}`}
                 onClick={() => onColorSelect(option.id)}
               >
-                <img className="tile-preview" src={option.thumb} alt={option.name} />
+                {option.thumb ? (
+                  <img className="tile-preview" src={option.thumb} alt={option.name} />
+                ) : (
+                  <div className="tile-preview no-image">
+                    <span>Brak podglądu</span>
+                  </div>
+                )}
                 <span>{option.name}</span>
+                {/* Wyświetlanie ceny tak jak w ConfigSection */}
+                {option.price !== undefined && option.price > 0 && (
+                  <div className="option-price">+{option.price.toLocaleString('pl-PL')} zł</div>
+                )}
+                {option.price === 0 && (
+                  <div className="option-price-included">W cenie</div>
+                )}
+                {option.price === undefined && (
+                  <div className="option-price-included">W cenie</div>
+                )}
               </div>
             ))}
           </div>

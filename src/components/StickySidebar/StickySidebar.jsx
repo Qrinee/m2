@@ -6,6 +6,8 @@ const StickySidebar = ({
   totalPrice, 
   priceWithVAT, 
   basePrice, 
+  visualOptionsPrice,
+  visualOptionsSummary,
   getPackageName, 
   getPackagePrice,
   formData,
@@ -30,6 +32,20 @@ const StickySidebar = ({
             </div>
           </div>
           
+          {/* Sekcja opcji wizualnych */}
+          {visualOptionsPrice > 0 && (
+            <div className="visual-options-section">
+              <div className="section-label">Opcje wizualne:</div>
+              {visualOptionsSummary.map((option, index) => (
+                <div key={index} className="config-item visual-option">
+                  <span>+ {option.name}</span>
+                  <span>+ {option.price.toLocaleString('pl-PL')} zł</span>
+                </div>
+              ))}
+            </div>
+          )}
+          
+          {/* Sekcja pakietów dodatkowych */}
           {Object.entries(selectedPackages).map(([category, packageId]) => {
             if (packageId) {
               const packageName = getPackageName(packageId);

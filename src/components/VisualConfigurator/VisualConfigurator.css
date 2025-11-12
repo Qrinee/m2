@@ -1,7 +1,7 @@
 /* VisualConfigurator.css */
 .visual-configurator-page {
   position: relative;
-  min-height: 500vh;
+  min-height: 570vh;
 }
 
 .rolety{
@@ -194,4 +194,47 @@
     overflow-x: scroll;
   }
 }
+
+
+
+
+/* Dodaj te style do odpowiedniego pliku CSS */
+.option-tiler {
+  position: relative;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.option-tiler.active {
+  border-color: #007bff;
+  background-color: #f8f9fa;
+}
+
+.option-price {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.option-price-included {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+
+
+.tile-preview.no-image {
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+}
+
 

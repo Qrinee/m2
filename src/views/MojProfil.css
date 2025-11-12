@@ -18,6 +18,12 @@
   color: white;
 }
 
+.promo-sub{
+      display: flex;  
+      align-items: center;
+    flex-wrap: wrap;
+}
+
 .mp-title {
   margin: 0;
   font-size: 1.75rem;

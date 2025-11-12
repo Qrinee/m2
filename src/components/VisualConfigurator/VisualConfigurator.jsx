@@ -5,13 +5,13 @@ import { HOUSE_CONFIGS } from '../../utils/houseConfigs'
 import HouseVisualization from '../HouseVisualization/HouseVisualization.jsx'
 import ConfigPanel from '../ConfigPanel/ConfigPanel.jsx'
 
-export default function VisualConfigurator() {
+export default function VisualConfigurator({onVisualPriceChange }) {
   const { id } = useParams()
   const [houseConfig, setHouseConfig] = useState(null)
   const [selections, setSelections] = useState({})
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
   const [imagesLoaded, setImagesLoaded] = useState(false)
-
+  const [totalVisualPrice, setTotalVisualPrice] = useState(0)
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768)
@@ -31,6 +31,38 @@ export default function VisualConfigurator() {
     })
     setSelections(initialSelections)
   }, [id])
+
+  useEffect(() => {
+    if (!houseConfig) return
+
+    let total = 0
+    Object.entries(selections).forEach(([section, selectedId]) => {
+      const sectionOptions = houseConfig.options[section]
+      if (Array.isArray(sectionOptions)) {
+        const selectedOption = sectionOptions.find(opt => opt.id === selectedId)
+        if (selectedOption && selectedOption.price) {
+          total += selectedOption.price
+        }
+      } else if (typeof sectionOptions === 'object' && section === 'kolor') {
+        // Obsługa kolorów (specjalna struktura)
+        const mainTynk = selections.tynk
+        const colorOptions = sectionOptions[mainTynk]
+        if (colorOptions) {
+          const selectedColor = colorOptions.find(opt => opt.id === selectedId)
+          if (selectedColor && selectedColor.price) {
+            total += selectedColor.price
+          }
+        }
+      }
+    })
+
+    setTotalVisualPrice(total)
+    
+    // Przekaż cenę i wybrane opcje do komponentu nadrzędnego
+    if (onVisualPriceChange) {
+      onVisualPriceChange(total, selections)
+    }
+  }, [selections, houseConfig, onVisualPriceChange])
 
   if (!houseConfig) {
     return <div className="loading">Ładowanie konfiguratora...</div>
@@ -52,11 +84,9 @@ export default function VisualConfigurator() {
             houseConfig={houseConfig}
             selections={selections}
           />
-          <img 
-            src={houseConfig.baseImage} 
-            alt="Visual Configurator" 
+          <div  
             className="base-image" 
-          />
+          ></div>
         </div>
 
         <ConfigPanel

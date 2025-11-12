@@ -8,6 +8,8 @@ const Configurator = ({
   totalPrice, 
   priceWithVAT, 
   basePrice,
+  visualOptionsPrice,
+  visualOptionsSummary,
   getPackageName,
   getPackagePrice,
   formData,
@@ -32,6 +34,8 @@ const Configurator = ({
             totalPrice={totalPrice}
             priceWithVAT={priceWithVAT}
             basePrice={basePrice}
+            visualOptionsPrice={visualOptionsPrice}
+            visualOptionsSummary={visualOptionsSummary}
             getPackageName={getPackageName}
             getPackagePrice={getPackagePrice}
             formData={formData}

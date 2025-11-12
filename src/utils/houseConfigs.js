@@ -1,17 +1,17 @@
-// baza domów
+
 import houseD115Base from '../assets/dom2/base.webp'
 import houseD126Base from '../assets/konfigurator/stock.webp'
 import houseD70Base from '../assets/dom3/base.webp'
 
-// wspólne nakładki
+
 import houseCommonLight from '../assets/light.png'
 import houseD115Roof from '../assets/dom2/dach.webp'
 import houseD126Roof from '../assets/konfigurator/dach.webp'
 import houseD70Roof from '../assets/dom3/dach.webp'
 
-// ===== MINIATURKI =====
 
-// Miniaturki wspólne
+
+
 import colorWhiteThumb from '../assets/konfigurator/thumbnails/bialy.jpg'
 import colorAnthraciteThumb from '../assets/konfigurator/thumbnails/antracyt.jpg'
 
@@ -27,7 +27,17 @@ import blindBlackThumb from '../assets/konfigurator/thumbnails/drutex_rolety_ant
 import blindBrownThumb from '../assets/konfigurator/thumbnails/drutex_rolety_orzech_28_t.jpg'
 import blindOakThumb from '../assets/konfigurator/thumbnails/drutex_rolety_turner_oak_t.jpg'
 
-// Miniaturki D-115
+import roofGrayThumb from '../assets/konfigurator/thumbnails/szary.webp'
+import roofOrangeThumb from '../assets/konfigurator/thumbnails/pomarańczowy.webp'
+import roofAnthraciteThumb from '../assets/konfigurator/thumbnails/antracyt.webp'
+import roofRedThumb from '../assets/konfigurator/thumbnails/czerwony.webp'
+import roofGreenThumb from '../assets/konfigurator/thumbnails/ciemnyzielony.webp'
+
+import blacha from '../assets/konfigurator/thumbnails/blacha.webp'
+import dachowka from '../assets/konfigurator/thumbnails/dachowka.webp'
+
+
+
 import finishD115MetalSheetThumb from '../assets/dom2/thumbnails/blachanarabek.jpg'
 import finishD115MineralPlasterThumb from '../assets/dom2/thumbnails/tynkmineralny.jpg'
 import finishD115Raw from '../assets/dom2/thumbnails/elewacjasurowa.jpg'
@@ -37,7 +47,7 @@ import finishD115WhiteSlatsThumb from '../assets/dom2/thumbnails/bialelamale.png
 import finishD115DarkSlatsThumb from '../assets/dom2/thumbnails/ciemnelamele.png'
 import finishD115SlatsThumb from '../assets/dom2/thumbnails/lamele.png'
 
-// Miniaturki D-126
+
 import finishD126RawThumb from '../assets/konfigurator/thumbnails/stock.jpg'
 import finishD126MetalSheetThumb from '../assets/konfigurator/thumbnails/blachanarabek.jpg'
 import finishD126PlasterMetalThumb from '../assets/konfigurator/thumbnails/tynkiblacha.jpg'
@@ -53,7 +63,6 @@ import doorP9Thumb from '../assets/konfigurator/thumbnails/kmt_perfekt_9.webp'
 import door14AThumb from '../assets/konfigurator/thumbnails/kmt_14a.webp'
 
 
-// Miniaturki D-70
 import finishD70RawThumb from '../assets/dom3/thumbnails/elewacja.jpg'
 import finishD70MetalSheetThumb from '../assets/dom3/thumbnails/blachanarabek.jpg'
 import finishD70PlasterMetalThumb from '../assets/dom3/thumbnails/tynkiblacha.jpg'
@@ -64,10 +73,8 @@ import finishD70WhiteSlatsThumb from '../assets/dom3/thumbnails/lamelebiale.png'
 import finishD70BlackSlatsThumb from '../assets/dom3/thumbnails/lameleantracyt.png'
 
 
-// ===== CZĘŚCI GOTOWE =====
 
 
-// Części D-70
 import finishD70MetalSheet from '../assets/dom3/tynk/blachanarabek.webp'
 import finishD70PlasterMetal from '../assets/dom3/tynk/tynkiblacha.webp'
 import finishD70Anthracite from '../assets/dom3/tynk/tynkantracyt.webp'
@@ -82,7 +89,6 @@ import houseD70windowOak from '../assets/dom3/okna/dab.webp'
 import houseD70windowWalnut from '../assets/dom3/okna/orzech.webp'
 import houseD70windowWhite from '../assets/dom3/okna/biale.webp'
 
-
 import houseD70blindGray from '../assets/dom3/rolety/szary.webp'
 import houseD70blindBlack from '../assets/dom3/rolety/antracyt.webp'
 import houseD70blindBrown from '../assets/dom3/rolety/orzech.webp'
@@ -93,7 +99,7 @@ import houseD70door11S3 from '../assets/dom3/drzwi/kmt11s3.webp'
 import houseD70doorP9 from '../assets/dom3/drzwi/kmtperfect9.webp'
 import houseD70door14A from '../assets/dom3/drzwi/kmt14a.webp'
 
-// Części D-115
+
 import finishD115MineralPlaster from '../assets/dom2/tynk/elewacjabiala.webp'
 import finishD115MetalSheet from '../assets/dom2/tynk/blachanarabek.webp'
 import finishD115Anthracite from '../assets/dom2/tynk/elewacjaantracyt.webp'
@@ -116,9 +122,6 @@ import houseD115blindBrown from '../assets/dom2/rolety/orzech.webp'
 import houseD115blindOak from '../assets/dom2/rolety/dab.webp'
 
 
-
-
-// Części D-126
 import finishD126MetalSheet from '../assets/konfigurator/tynk/blachanarabek.webp'
 import finishD126PlasterMetal from '../assets/konfigurator/tynk/tynkiblacha.webp'
 import finishD126MineralPlaster from '../assets/konfigurator/tynk/tynkmineralny.webp'
@@ -135,11 +138,11 @@ import houseD126windowOak from '../assets/konfigurator/okna/dab.webp'
 import houseD126windowWalnut from '../assets/konfigurator/okna/orzech.webp'
 import houseD126windowWhite from '../assets/konfigurator/okna/biale.webp'
 
-
 import houseD126roofAnthracite from '../assets/konfigurator/dach/antracyt.webp'
 import houseD126roofWhite from '../assets/konfigurator/dach/bialy.webp'
 import houseD126roofGreen from '../assets/konfigurator/dach/zielony.webp'
-import houseD126roofOrange from '../assets/konfigurator/dach/kremowy.webp' 
+import houseD126roofRed from '../assets/konfigurator/dach/czerwony.webp'
+import houseD126roofOrange from '../assets/konfigurator/dach/kremowy.webp'
 
 import houseD126blindGray from '../assets/konfigurator/rolety/d126_r1_szary.webp'
 import houseD126blindWhite from '../assets/konfigurator/rolety/d126_r1_bialy.webp'
@@ -202,8 +205,6 @@ export const HOUSE_CONFIGS = {
         { id: 0, name: 'Własne drzwi',thumb: doorCustomThumb, image: houseD70doorCustom }
       ]
     },
-
-
   },
   d115: {
     id: 'd115',
@@ -263,59 +264,73 @@ export const HOUSE_CONFIGS = {
     },
     options: {
       tynk: [
-        { id: 0, name: 'Elewacja surowa', thumb: finishD126RawThumb, image: null },
-        { id: 1, name: 'Blacha na rąbek', thumb: finishD126MetalSheetThumb, image: finishD126MetalSheet },
-        { id: 2, name: 'Tynk + blacha', thumb: finishD126PlasterMetalThumb, image: finishD126PlasterMetal },
-        { id: 3, name: 'Tynk mineralny', thumb: finishD126MineralPlasterThumb, image: finishD126MineralPlaster, hasColors: true },
-        { id: 4, name: 'Lamele', thumb: finishD126SlatsThumb, image: finishD126Slats, hasColors: true }
+        { id: 0, name: 'Elewacja surowa', thumb: finishD126RawThumb, image: null, price: 0 },
+        { id: 1, name: 'Blacha na rąbek', thumb: finishD126MetalSheetThumb, image: finishD126MetalSheet, price: 54000 },
+        { id: 2, name: 'Tynk + blacha', thumb: finishD126PlasterMetalThumb, image: finishD126PlasterMetal, price: 53500 },
+        { id: 3, name: 'Tynk mineralny', thumb: finishD126MineralPlasterThumb, image: finishD126MineralPlaster, hasColors: true, price: 51200 },
+        { id: 4, name: 'Lamele', thumb: finishD126SlatsThumb, image: finishD126Slats, hasColors: true, price: 54300 }
       ],
-
-
 
       kolor: {
         3: [ 
-          { id: 3, name: 'Biała', thumb: colorWhiteThumb, image: finishD126MineralPlaster },
-          { id: 5, name: 'Antracyt', thumb: colorAnthraciteThumb, image: finishD126Anthracite }
+          { id: 3, name: 'Biała', thumb: colorWhiteThumb, image: finishD126MineralPlaster, price: 0 },
+          { id: 5, name: 'Antracyt', thumb: colorAnthraciteThumb, image: finishD126Anthracite, price: 0 }
         ],
         4: [ 
-          { id: 4, name: 'Jasne', thumb: finishD126SlatsThumb, image: finishD126Slats },
-          { id: 6, name: 'Ciemne', thumb: finishD126DarkSlatsThumb, image: finishD126DarkSlats },
-          { id: 7, name: 'Antracyt', thumb: finishD126BlackSlatsThumb, image: finishD126AnthraciteSlats },
-          { id: 8, name: 'Białe', thumb: finishD126WhiteSlatsThumb, image: finishD126WhiteSlats },
+          { id: 4, name: 'Jasne', thumb: finishD126SlatsThumb, image: finishD126Slats, price: 0 },
+          { id: 6, name: 'Ciemne', thumb: finishD126DarkSlatsThumb, image: finishD126DarkSlats, price: 0 },
+          { id: 7, name: 'Antracyt', thumb: finishD126BlackSlatsThumb, image: finishD126AnthraciteSlats, price: 0 },
+          { id: 8, name: 'Białe', thumb: finishD126WhiteSlatsThumb, image: finishD126WhiteSlats, price: 0 },
         ]
       },
 
       
-      dach: [
-          {id: 1, name: 'Domyślny', image: houseD126Roof},
-          {id: 2, name: 'Antracyt', image: houseD126roofAnthracite},
-          {id: 3, name: 'Pomarańczowy', image: houseD126roofOrange},
-          {id: 4, name: 'Ciemny Zielony', image: houseD126roofGreen}
+      typDachu: [
+        { id: 0, name: 'Brak', image: null, price: 0 },
+        { id: 1, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD126Roof, price: 77000 },
+        { id: 2, name: 'Blacha na rąbek', thumb: blacha, image: houseD126Roof, price: 68000 }
       ],
 
+      
+      kolorDachu: {
+        1: [ 
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGrayThumb, image: houseD126roofGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD126roofRed, price: 0 }
+        ],
+        2: [ 
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGrayThumb, image: houseD126roofGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD126roofRed, price: 0 }
+        ]
+      },
+
       rolety: [
-        { id: 1, name: 'Szare', thumb: blindGrayThumb, image: houseD126blindGray },
-        { id: 2, name: 'Białe', thumb: blindWhiteThumb, image: houseD126blindWhite },
-        { id: 3, name: 'Antracyt', thumb: blindBlackThumb, image: houseD126blindBlack },
-        { id: 4, name: 'Orzech', thumb: blindBrownThumb, image: houseD126blindBrown },
-        { id: 5, name: 'Dąb', thumb: blindOakThumb, image: houseD126blindOak }
+        { id: 1, name: 'Szare', thumb: blindGrayThumb, image: houseD126blindGray, price: 24000 },
+        { id: 2, name: 'Białe', thumb: blindWhiteThumb, image: houseD126blindWhite, price: 24000 },
+        { id: 3, name: 'Antracyt', thumb: blindBlackThumb, image: houseD126blindBlack, price: 24000 },
+        { id: 4, name: 'Orzech', thumb: blindBrownThumb, image: houseD126blindBrown, price: 24000 },
+        { id: 5, name: 'Dąb', thumb: blindOakThumb, image: houseD126blindOak, price: 24000 }
       ],
+      
       okna: [
-        { id: 1, name: 'Antracyt', thumb: windowAnthraciteThumb, image: houseD126windowAnthracite },
-        { id: 2, name: 'Szary', thumb: windowGrayThumb, image: houseD126windowGray },
-        { id: 3, name: 'Dąb', thumb: windowOakThumb, image: houseD126windowOak },
-        { id: 4, name: 'Orzech', thumb: windowWalnutThumb, image: houseD126windowWalnut },
-        { id: 5, name: 'Biały', thumb: windowWhiteThumb, image: houseD126windowWhite }
+        { id: 1, name: 'Antracyt', thumb: windowAnthraciteThumb, image: houseD126windowAnthracite, price: 8900 },
+        { id: 2, name: 'Szary', thumb: windowGrayThumb, image: houseD126windowGray, price: 8900 },
+        { id: 3, name: 'Dąb', thumb: windowOakThumb, image: houseD126windowOak, price: 8900 },
+        { id: 4, name: 'Orzech', thumb: windowWalnutThumb, image: houseD126windowWalnut, price: 8900 },
+        { id: 5, name: 'Biały', thumb: windowWhiteThumb, image: houseD126windowWhite, price: 0 }
       ],
+      
       drzwi: [
-        { id: 1, name: 'Model 11S3', image: houseD126door11S3, thumb: door11S3Thumb },
-        { id: 2, name: 'Model P9', image: houseD126doorP9, thumb: doorP9Thumb },
-        { id: 3, name: 'Model 14A', image: houseD126door14A, thumb: door14AThumb },
-        { id: 0, name: 'Własne drzwi', image: houseD126doorCustom, thumb: doorCustomThumb }
+        { id: 1, name: 'Model 11S3', image: houseD126door11S3, thumb: door11S3Thumb, price: 6500 },
+        { id: 2, name: 'Model P9', image: houseD126doorP9, thumb: doorP9Thumb, price: 6500 },
+        { id: 3, name: 'Model 14A', image: houseD126door14A, thumb: door14AThumb, price: 6500 },
+        { id: 0, name: 'Własne drzwi', image: houseD126doorCustom, thumb: doorCustomThumb, price: 0 }
       ]
     },
-  },
-  default: {
-    
   }
 }

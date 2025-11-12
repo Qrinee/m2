@@ -3,13 +3,17 @@ import Header from '../components/Header/Header'
 import InfoSection from '../components/InfoSection/InfoSection'
 import ContactForm from '../components/ContactForm/ContactForm'
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs'
-
+import HeroVideo from '../components/HeroVideo/HeroVideo'
+import laptop from '../assets/videos/laptop.mp4'
 export default function Kontakt() {
   return (
     <div>
-        <Header black />
-        <div className='separate'></div>
-
+        <Header/>
+      <HeroVideo video={laptop}
+      content={
+        <div>Skontaktuj się z nami</div>
+      }
+      />
         <div className='section'>
             <div className="app">
               <div className="container">
