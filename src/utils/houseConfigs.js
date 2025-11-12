@@ -47,10 +47,10 @@ import finishD126DarkSlatsThumb from '../assets/konfigurator/thumbnails/Bez nazw
 import finishD126WhiteSlatsThumb from '../assets/konfigurator/thumbnails/bialelamele.png'
 import finishD126BlackSlatsThumb from '../assets/konfigurator/thumbnails/czarnelamele.png'
 
-import doorCustomThumb from '../assets/konfigurator/thumbnails/ah_drzwi_techniczne (1).jpg'
-import door11S3Thumb from '../assets/konfigurator/thumbnails/kmt_11s3.jpeg'
-import doorP9Thumb from '../assets/konfigurator/thumbnails/kmt_perfekt_9.jpeg'
-import door14AThumb from '../assets/konfigurator/thumbnails/kmt_14a.jpeg'
+import doorCustomThumb from '../assets/konfigurator/thumbnails/ah_drzwi_techniczne.webp'
+import door11S3Thumb from '../assets/konfigurator/thumbnails/kmt_11s3.webp'
+import doorP9Thumb from '../assets/konfigurator/thumbnails/kmt_perfekt_9.webp'
+import door14AThumb from '../assets/konfigurator/thumbnails/kmt_14a.webp'
 
 
 // Miniaturki D-70
