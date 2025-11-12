@@ -16,6 +16,8 @@ import p7 from '../assets/ex/8-5.jpg';
 import Footer from '../components/Footer/Footer';
 import VisualConfigurator from '../components/VisualConfigurator/VisualConfigurator';
 import HousePlan from '../components/HousePlan/HousePlan';
+import NotarialCalculator from '../components/NotarialCalculator/NotarialCalculator';
+import ModularHouseCalculator from '../components/ModularHouseCalculator/ModularHouseCalculator';
 
 const HouseConfigurator = () => {
   const houseImages = [p1, p2, p3, p4, p5, p6, p7];
@@ -120,7 +122,7 @@ const HouseConfigurator = () => {
         {/* <ProjectHeader basePrice={basePrice} /> */}
         <VisualConfigurator />
         <HousePlan/>
-
+        <ModularHouseCalculator/>
         <Configurator
           selectedPackages={selectedPackages}
           selectPackage={selectPackage}
