@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { href, Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-ClsBGMc7.webp";
 import { FaUserCircle, FaBars, FaTimes, FaSignOutAlt, FaChevronDown } from "react-icons/fa";
 import AuthModal from "../AuthModal/AuthModal";
 import { FaHouse, FaShield } from "react-icons/fa6";
