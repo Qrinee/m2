@@ -271,13 +271,6 @@ export const HOUSE_CONFIGS = {
       ],
 
 
-      dach: [
-          {id: 1, name: 'Domyślny', image: houseD126Roof},
-          {id: 2, name: 'Antracyt', image: houseD126roofAnthracite},
-          {id: 3, name: 'Pomarańczowy', image: houseD126roofOrange},
-          {id: 4, name: 'Ciemny Zielony', image: houseD126roofGreen}
-      ],
-
 
       kolor: {
         3: [ 
@@ -291,6 +284,15 @@ export const HOUSE_CONFIGS = {
           { id: 8, name: 'Białe', thumb: finishD126WhiteSlatsThumb, image: finishD126WhiteSlats },
         ]
       },
+
+      
+      dach: [
+          {id: 1, name: 'Domyślny', image: houseD126Roof},
+          {id: 2, name: 'Antracyt', image: houseD126roofAnthracite},
+          {id: 3, name: 'Pomarańczowy', image: houseD126roofOrange},
+          {id: 4, name: 'Ciemny Zielony', image: houseD126roofGreen}
+      ],
+
       rolety: [
         { id: 1, name: 'Szare', thumb: blindGrayThumb, image: houseD126blindGray },
         { id: 2, name: 'Białe', thumb: blindWhiteThumb, image: houseD126blindWhite },
