@@ -124,14 +124,14 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
         />
       </div>
       
-      <div className='element-pickable dach'>
+      {/* <div className='element-pickable dach'>
         <img 
           src={houseConfig.overlayImages?.dach} 
           alt="Dach" 
           style={{ opacity: allImagesLoaded ? 1 : 0 }}
         />
-      </div>
-      
+      </div> */}
+      {selections.dach && selections.dach !== 0 && renderElement('dach', selections.dach)}
       {selections.roletyEnabled && selections.rolety && selections.rolety !== 0 && renderElement('rolety', selections.rolety)}
       {selections.okna && selections.okna !== 0 && renderElement('okna', selections.okna)}
       {selections.drzwi && selections.drzwi !== 0 && renderElement('drzwi', selections.drzwi)}

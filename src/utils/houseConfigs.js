@@ -135,6 +135,12 @@ import houseD126windowOak from '../assets/konfigurator/okna/dab.webp'
 import houseD126windowWalnut from '../assets/konfigurator/okna/orzech.webp'
 import houseD126windowWhite from '../assets/konfigurator/okna/biale.webp'
 
+
+import houseD126roofAnthracite from '../assets/konfigurator/dach/antracyt.webp'
+import houseD126roofWhite from '../assets/konfigurator/dach/bialy.webp'
+import houseD126roofGreen from '../assets/konfigurator/dach/zielony.webp'
+import houseD126roofOrange from '../assets/konfigurator/dach/kremowy.webp' 
+
 import houseD126blindGray from '../assets/konfigurator/rolety/d126_r1_szary.webp'
 import houseD126blindWhite from '../assets/konfigurator/rolety/d126_r1_bialy.webp'
 import houseD126blindBlack from '../assets/konfigurator/rolety/rolety.webp'
@@ -253,8 +259,7 @@ export const HOUSE_CONFIGS = {
     name: 'Dom Modelowy 1',
     baseImage: houseD126Base,
     overlayImages: {
-      light: houseCommonLight,
-      dach: houseD126Roof
+      light: houseCommonLight
     },
     options: {
       tynk: [
@@ -264,6 +269,16 @@ export const HOUSE_CONFIGS = {
         { id: 3, name: 'Tynk mineralny', thumb: finishD126MineralPlasterThumb, image: finishD126MineralPlaster, hasColors: true },
         { id: 4, name: 'Lamele', thumb: finishD126SlatsThumb, image: finishD126Slats, hasColors: true }
       ],
+
+
+      dach: [
+          {id: 1, name: 'Domyślny', image: houseD126Roof},
+          {id: 2, name: 'Antracyt', image: houseD126roofAnthracite},
+          {id: 3, name: 'Pomarańczowy', image: houseD126roofOrange},
+          {id: 4, name: 'Ciemny Zielony', image: houseD126roofGreen}
+      ],
+
+
       kolor: {
         3: [ 
           { id: 3, name: 'Biała', thumb: colorWhiteThumb, image: finishD126MineralPlaster },
