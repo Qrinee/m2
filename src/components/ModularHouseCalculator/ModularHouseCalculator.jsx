@@ -86,27 +86,6 @@ const ModularHouseCalculator = ({
       </div>
 
       <div className="calculator-body">
-        {/* Suwak ceny domu */}
-        <div className="slider-group">
-          <div className="slider-label">
-            <label htmlFor="propertyPrice">Cena domu modułowego</label>
-            <span className="value-display">{formatCurrency(propertyPrice)}</span>
-          </div>
-          <input
-            id="propertyPrice"
-            type="range"
-            min={minPropertyPrice}
-            max={maxPropertyPrice}
-            step="1000"
-            value={propertyPrice}
-            onChange={(e) => setPropertyPrice(Number(e.target.value))}
-            className="slider-input"
-          />
-          <div className="slider-minmax">
-            <span>{formatCurrency(minPropertyPrice)}</span>
-            <span>{formatCurrency(maxPropertyPrice)}</span>
-          </div>
-        </div>
 
         {/* Suwak wkładu własnego */}
         <div className="slider-group">
