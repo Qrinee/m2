@@ -141,3 +141,36 @@
     min-width: auto;
   }
 }
+
+/* Dodaj te style do istniejącego package-card.css */
+.package-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.option-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.prices.custom {
+  font-size: 1rem !important;
+  font-weight: normal !important;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.prices.included {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #90EE90 !important; /* Jasnozielony dla "W cenie" */
+}
+
+/* Zachowaj oryginalne style dla cen liczbowych */
+.prices:not(.custom):not(.included) {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 1000;
+  margin-top: 4px;
+}

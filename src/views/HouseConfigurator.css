@@ -657,3 +657,44 @@
     font-size: 2rem;
   }
 }
+
+
+/* HouseConfigurator.css - dodaj te style */
+.house-model-selector {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.house-model-selector h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.model-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.model-btn {
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  background: white;
+  color: #007bff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.model-btn:hover {
+  background: #f8f9fa;
+}
+
+.model-btn.active {
+  background: #007bff;
+  color: white;
+}
