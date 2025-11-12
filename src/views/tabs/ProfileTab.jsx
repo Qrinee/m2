@@ -29,9 +29,6 @@ export default function ProfileTab({
     }));
   };
 
-  useEffect(() => {
-    console.log(user)
-  }, [user])
 
   const handleFileSelect = (file) => {
     if (file && file.type.startsWith('image/')) {

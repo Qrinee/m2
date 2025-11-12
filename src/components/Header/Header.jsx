@@ -62,7 +62,6 @@ const Header = ({ black }) => {
         setUser(null);
       }
     } catch (error) {
-      console.error("Błąd sprawdzania autoryzacji:", error);
       setUser(null);
     } finally {
       setLoading(false);
@@ -97,7 +96,6 @@ const Header = ({ black }) => {
         credentials: 'include'
       });
     } catch (error) {
-      console.error("Błąd wylogowania:", error);
     } finally {
       setUser(null);
       setOpenDropdown(null);

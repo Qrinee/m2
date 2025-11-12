@@ -197,7 +197,6 @@ const submitAll = async () => {
     setSubmitSuccess(true);
     
   } catch (error) {
-    console.error("Błąd podczas wysyłania:", error);
     setSubmitError(error.message);
   } finally {
     setIsSubmitting(false);

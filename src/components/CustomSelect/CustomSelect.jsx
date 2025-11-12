@@ -7,12 +7,10 @@ const CustomSelect = ({ options, selected, onSelect }) => {
   const containerRef = useRef(null);
 
   const toggleOpen = () => {
-    console.log('Toggle select, isOpen:', !isOpen); 
     setIsOpen(!isOpen);
   };
 
   const handleSelect = (option) => {
-    console.log('Wybrano opcję:', option); 
     onSelect(option);
     setIsOpen(false);
   };

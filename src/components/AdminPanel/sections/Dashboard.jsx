@@ -29,7 +29,6 @@ const Dashboard = () => {
         setStats(data.data);
       }
     } catch (error) {
-      console.error('Błąd pobierania statystyk:', error);
     }
   };
 

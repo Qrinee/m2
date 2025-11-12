@@ -94,7 +94,6 @@ const ReelsPage = () => {
     };
 
     const handleLoadedData = () => {
-      console.log('Video loaded, auto-playing:', isPlaying && hasInteracted);
       if (isPlaying && hasInteracted) {
         video.play().catch(error => {
           console.error('Auto-play failed:', error);
@@ -114,7 +113,6 @@ const ReelsPage = () => {
     video.addEventListener('error', handleError);
 
     const videoUrl = `${import.meta.env.VITE_BACKEND}/${currentReel.videoUrl}`;
-    console.log('Setting video source:', videoUrl);
     video.src = videoUrl;
     video.muted = isMuted;
     video.loop = false;

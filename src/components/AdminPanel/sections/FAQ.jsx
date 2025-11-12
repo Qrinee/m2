@@ -31,7 +31,6 @@ const FAQ = () => {
         setFaqs(data.data);
       }
     } catch (error) {
-      console.error('Błąd pobierania FAQ:', error);
     } finally {
       setLoading(false);
     }
@@ -62,7 +61,6 @@ const FAQ = () => {
         resetForm();
       }
     } catch (error) {
-      console.error('Błąd zapisywania FAQ:', error);
     }
   };
 
@@ -79,7 +77,6 @@ const FAQ = () => {
       });
       fetchFAQs();
     } catch (error) {
-      console.error('Błąd usuwania FAQ:', error);
     }
   };
 

@@ -11,13 +11,11 @@ const FilterBar = ({ filters, filterOptions, onFilterChange, onResetFilters, loa
   };
 
   const handleFilterUpdate = (key, value) => {
-    console.log(`Zmiana filtra: ${key} = ${value}`); 
     const newFilters = { ...filters, [key]: value };
     onFilterChange(newFilters);
   };
 
   const handleReset = () => {
-    console.log('Resetowanie filtrów'); 
     onResetFilters();
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);

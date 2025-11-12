@@ -219,11 +219,8 @@ const AddPropertyModal = ({ onClose, onPropertyAdded }) => {
           onClose();
           onPropertyAdded();
         }
-      } else {
-        console.error('Błąd dodawania oferty');
-      }
+      } 
     } catch (error) {
-      console.error('Błąd dodawania oferty:', error);
     }
   };
 

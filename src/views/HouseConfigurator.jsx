@@ -74,7 +74,6 @@ const HouseConfigurator = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Formularz wysłany:', formData);
     alert('Dziękujemy za zapytanie! Skontaktujemy się z Tobą wkrótce.');
   };
 
