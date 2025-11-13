@@ -35,7 +35,7 @@ const Hero = () => {
         {/* Right background - Marketplace */}
         <div 
           className="modern-hero-bg right-bg"
-          style={{ backgroundImage: `url(widok-wnetrza-budynku-biurowego.jpg)` }}
+          style={{ backgroundImage: `url(heroback.webp)`, filter: 'grayscale(70%)' }}
         >
           <div className="modern-hero-overlay right-overlay"></div>
         </div>
@@ -81,7 +81,7 @@ const Hero = () => {
                     <div className="modern-hero-features">
                       <div className="modern-feature-item">
                         <span className="modern-feature-icon"><FaBolt /></span>
-                        <span>Szybka realizacja (6-8 tygodni)</span>
+                        <span>Szybka realizacja (12-24 tygodnie)</span>
                       </div>
                       <div className="modern-feature-item">
                         <span className="modern-feature-icon"><FaLeaf /></span>

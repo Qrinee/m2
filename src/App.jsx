@@ -99,20 +99,20 @@ export default function App() {
     {
       id: 1,
       image: first,
-      title: 'Dom mieszkalny',
-      description: "Nowoczesny dom modułowy o powierzchni 120m2, gotowy w 3 miesiące."
+      title: 'Dom modułowy w kilku opcjach o pow. 120 m² – nowoczesny, energooszczędny, gotowy w 3–6 miesięcy.',
+      description: "Poznaj nowy standard budownictwa modułowego.Prezentowane domy to przestronna, funkcjonalna i w pełni wyposażona konstrukcja o powierzchni około 120 m², zaprojektowana z myślą o komforcie, estetyce i wysokiej jakości wykończenia."
     },
     {
       id: 2,
       image: second,
-      title: "Pawilon handlowy",
-      description: "Elegancki pawilon handlowy z możliwością szybkiej rozbudowy. Idealny dla sieci handlowych."
+      title: "Nowoczesny Pawilon Handlowy / Usługowy / Biurowy ",
+      description: "Nowoczesny, przestronny pawilon handlowo-usługowy klasy premium, zaprojektowany z myślą o właścicielach biznesów, którzy stawiają na estetykę, funkcjonalność i reprezentacyjny wygląd"
     },
     {
       id: 3,
       image: third,
-      title: "Biuro kontenerowe",
-      description: "Funkcjonalne biuro kontenerowe dla 10 osób. Gotowe do użytku w 2 tygodnie."
+      title: "Kompaktowy Pawilon Usługowy – Nowoczesna Przestrzeń Biznesowa   ",
+      description: "Kompaktowy pawilon usługowy zaprojektowany jako funkcjonalne, estetyczne i w pełni modułowe miejsce do prowadzenia działalności gospodarczej"
     },
   ]
       } />

@@ -166,7 +166,6 @@ export const HOUSE_CONFIGS = {
     },
     options: {
       tynk: [
-        { id: 0, name: 'Elewacja surowa', thumb: finishD70RawThumb, image: null },
         { id: 1, name: 'Blacha na rąbek', thumb: finishD70MetalSheetThumb, image: finishD70MetalSheet },
         { id: 2, name: 'Tynk + blacha', thumb: finishD70PlasterMetalThumb, image: finishD70PlasterMetal },
         { id: 3, name: 'Tynk mineralny', thumb: finishD70MineralPlasterThumb, image: finishD70MineralPlaster, hasColors: true },
@@ -216,8 +215,7 @@ export const HOUSE_CONFIGS = {
     },
     options: {
       tynk: [
-        { id: 0, name: 'Elewacja surowa', thumb: finishD115Raw, image: houseD115Base },
-        { id: 1, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, hasColors: true },
+         { id: 1, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, hasColors: true },
         { id: 2, name: 'Blacha na rąbek', thumb: finishD115MetalSheetThumb, image: finishD115MetalSheet },
         { id: 3, name: 'Lamele', thumb: finishD115SlatsThumb, image: finishD115Slats, hasColors: true }
       ],
@@ -264,7 +262,6 @@ export const HOUSE_CONFIGS = {
     },
     options: {
       tynk: [
-        { id: 0, name: 'Elewacja surowa', thumb: finishD126RawThumb, image: null, price: 0 },
         { id: 1, name: 'Blacha na rąbek', thumb: finishD126MetalSheetThumb, image: finishD126MetalSheet, price: 54000 },
         { id: 2, name: 'Tynk + blacha', thumb: finishD126PlasterMetalThumb, image: finishD126PlasterMetal, price: 53500 },
         { id: 3, name: 'Tynk mineralny', thumb: finishD126MineralPlasterThumb, image: finishD126MineralPlaster, hasColors: true, price: 51200 },

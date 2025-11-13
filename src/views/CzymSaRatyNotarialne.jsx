@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from '../components/Hero/Hero'
-import Background from '../assets/pexels-pixabay-48148.jpg'
+import Background from '../assets/czymsaraty.jpg'
 import Header from '../components/Header/Header'
 import Marquee from '../components/Marquee/Marquee'
 import FAQItem from '../components/FAQItem/FAQItem'
@@ -35,7 +35,7 @@ export default function CzymSaRatyNotarialne() {
         img={Background}
         content={
           <>
-            <h1>Raty notarialne - <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span></h1>
+            <h1>CZYM SĄ <span style={{color: 'var(--secondary-color)'}}>RATY NOTARIALNE</span>?</h1>
           </>
         }
       />
@@ -51,9 +51,8 @@ export default function CzymSaRatyNotarialne() {
             </div>
             <div className="notarial-card-content">
               <h2 className="notarial-card-title">Czym są raty notarialne?</h2>
-              <p className="notarial-card-text">Raty notarialne to alternatywny sposób finansowania zakupu nieruchomości, w którym płatności rozkładane są na wygodne raty, a cały proces zostaje sformalizowany aktem notarialnym. Dzięki temu zarówno sprzedający, jak i kupujący, zyskują pełne bezpieczeństwo i transparentność transakcji.</p>
-              <p className="notarial-card-text">Kluczowym elementem rat notarialnych jest właśnie akt notarialny, który precyzyjnie określa warunki płatności, terminy oraz ewentualne zabezpieczenia.</p>
-            </div>
+              <p>Raty notarialne to bezpieczna i przejrzysta forma finansowania zakupu nieruchomości, w której płatność zostaje rozłożona na ustalone raty, a cały proces regulowany jest aktem notarialnym. Takie rozwiązanie zapewnia pełną ochronę zarówno sprzedającemu, jak i kupującemu, gwarantując zgodność wszystkich ustaleń z prawem oraz ich formalne potwierdzenie.        Kluczowym elementem rat notarialnych jest akt notarialny, który precyzyjnie określa harmonogram spłat, warunki finansowe oraz zastosowane zabezpieczenia — dzięki czemu transakcja przebiega w sposób maksymalnie bezpieczny, transparentny i przewidywalny.</p>
+ </div>
           </div>
 
           <div className="notarial-feature-card notarial-feature-card--accent">
@@ -62,7 +61,7 @@ export default function CzymSaRatyNotarialne() {
             </div>
             <div className="notarial-card-content">
               <h2 className="notarial-card-title">Unikalna oferta</h2>
-              <p className="notarial-card-text">Nasze biuro nieruchomości jest jedynym w Polsce, które oferuje kompleksową obsługę zakupu nieruchomości na raty notarialne. Dzięki doświadczeniu oraz współpracy z renomowanymi kancelariami notarialnymi gwarantujemy pełne bezpieczeństwo transakcji i indywidualne podejście do każdego klienta.</p>
+              <p className="notarial-card-text">Jest to jedyna w Polsce kompleksowa usługa umożliwiająca zakup nieruchomości w systemie rat notarialnych. Dzięki doświadczeniu zespołu oraz współpracy z renomowanymi kancelariami notarialnymi każda transakcja przebiega w pełni bezpiecznie, transparentnie i z indywidualnym podejściem do potrzeb klienta.</p>
             </div>
           </div>
         </div>
@@ -214,12 +213,60 @@ export default function CzymSaRatyNotarialne() {
         <div className="notarial-container">
           <h2 className="notarial-faq-title">Często zadawane pytania</h2>
           <p className="notarial-faq-subtitle">Szukasz odpowiedzi na swoje pytanie? Sprawdź tutaj!</p>
-          <div className="notarial-faq-container">
-            <FAQItem question={'Kto może kupić nieruchomość na raty notarialne?'} answer={'Każda osoba pełnoletnia z polskim obywatelstwem. Zarówno osoba pracująca na etacie jak i taka, która prowadzi własny biznes. Nie ma żadnych ograniczeń. Nie weryfikujemy zdolności kredytowej ani raportów BIK, BIG, KRD.'} />
-            <FAQItem question={'Czym są raty notarialne / prywatne?'} answer={'Raty notarialne, zwane także prywatnymi, to forma rozłożonej płatności za zakup nieruchomości, która jest regulowana na mocy aktu notarialnego. Kupujący i sprzedający ustalają harmonogram spłat, które są zabezpieczone odpowiednimi zapisami w księdze wieczystej nieruchomości. Taka forma pozwala kupującemu na zakup bez kredytu bankowego, a sprzedającemu zapewnia prawną ochronę transakcji.'} />
-            <FAQItem question={'Czy raty notarialne są tańsze od kredytu hipotecznego?'} answer={'Raty notarialne są tańszą alternatywą dla kredytu bankowego, ponieważ nie wiążą się z dodatkowymi kosztami, takimi jak prowizje, ubezpieczenia czy odsetki narzucone przez bank. Co więcej, warunki spłaty można negocjować bezpośrednio ze sprzedającym, co daje większą elastyczność i brak ukrytych opłat.'} />
-            <FAQItem question={'Kiedy otrzymam klucze od swojej nowej nieruchomości?'} answer={'Klucze do nieruchomości otrzymasz od razu po podpisaniu aktu notarialnego, co oznacza, że możesz natychmiast zacząć korzystać z nowego lokum! To niezwykle wygodne i szybkie rozwiązanie.'} />
-          </div>
+<div className="notarial-faq-container">
+  <FAQItem
+    question={'Kto może kupić nieruchomość na raty notarialne?'}
+    answer={
+      <>
+        <p>Nieruchomość w systemie rat notarialnych może kupić każda osoba pełnoletnia i posiadająca pełną zdolność do czynności prawnych, niezależnie od obywatelstwa czy formy zatrudnienia.</p>
+        <p>Z tej formy finansowania mogą skorzystać osoby pracujące na etacie, przedsiębiorcy, osoby wykonujące umowy cywilnoprawne oraz osoby osiągające dochody z innych źródeł.</p>
+        <p>Nie obowiązują limity dochodowe ani wymogi bankowe — nie sprawdzamy BIK, BIG ani KRD. Kluczowe jest jedynie to, aby kupujący mógł regularnie spłacać ustalone raty wynikające z aktu notarialnego.</p>
+      </>
+    }
+  />
+
+  <FAQItem
+    question={'Czym są raty notarialne / prywatne?'}
+    answer={
+      <>
+        <p>Raty notarialne, nazywane również prywatnymi, to forma zakupu nieruchomości polegająca na rozłożeniu płatności na ustalone raty, bez udziału banku.</p>
+        <p>Cały proces jest formalizowany aktem notarialnym, w którym określa się harmonogram spłat, wysokość rat oraz zabezpieczenia.</p>
+        <p>Płatności są zabezpieczone wpisami w księdze wieczystej, co chroni kupującego i sprzedającego.</p>
+        <p>Taka forma finansowania umożliwia zakup nieruchomości bez kredytu hipotecznego, przy pełnej ochronie prawnej transakcji.</p>
+      </>
+    }
+  />
+
+  <FAQItem
+    question={'Czy raty notarialne są tańsze od kredytu hipotecznego?'}
+    answer={
+      <>
+        <p>Tak — raty notarialne są znacznie tańszą alternatywą dla kredytu hipotecznego.</p>
+        <ul>
+          <li>Brak kosztów bankowych: prowizji, marż, ubezpieczeń, produktów dodatkowych czy odsetek.</li>
+          <li>Warunki spłaty są ustalane bezpośrednio ze sprzedającym.</li>
+          <li>Brak ukrytych opłat.</li>
+          <li>Harmonogram dopasowany do Twoich możliwości.</li>
+          <li>Brak ryzyka wzrostu rat wynikających ze zmian stóp procentowych.</li>
+        </ul>
+        <p>W praktyce całkowity koszt zakupu jest znacznie niższy niż przy finansowaniu bankowym.</p>
+      </>
+    }
+  />
+
+  <FAQItem
+    question={'Kiedy otrzymam klucze od swojej nowej nieruchomości?'}
+    answer={
+      <>
+        <p>Klucze do nieruchomości przekazywane są bezpośrednio po podpisaniu aktu notarialnego.</p>
+        <p>Oznacza to, że tego samego dnia możesz się wprowadzić lub rozpocząć korzystanie z lokalu.</p>
+        <p>To jedna z największych zalet rat notarialnych — pełny dostęp bez oczekiwania na decyzję banku.</p>
+      </>
+    }
+  />
+</div>
+
+
         </div>
       </div>
       

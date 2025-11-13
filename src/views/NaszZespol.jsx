@@ -96,15 +96,14 @@ export default function NaszZespol() {
               <div className="container">
                     <Breadcrumbs items={['Strona główna', "Nasz Zespół"]} />
                     <div className='page-header'>
-                      <h1>Poznaj nasz zespół</h1>
-                      <p className='page-subtitle'><b>Twój zespół ekspertów od bezpiecznych nieruchomości</b></p>
-                      <p className='page-subtitle'>Za każdą udaną transakcją stoją ludzie – doświadczeni, zaangażowani i pełni pasji do tego, co robią. Nasi agenci to nie tylko doradcy ds. nieruchomości, ale również osoby przeszkolone w zakresie prawa, negocjacji i obsługi klienta na najwyższym poziomie.</p>
-                    <p className='page-subtitle'>Każdy z nich działa w oparciu o indywidualne podejście do klienta, analizując potrzeby, cele i możliwości. Pomagają nie tylko znaleźć idealne mieszkanie, dom czy działkę – ale przede wszystkim zadbać o to, by cały proces przebiegał spokojnie, bezpiecznie i bez stresu.</p>
-                     <p className='page-subtitle'>Znają rynek lokalny od podszewki, rozumieją zmieniające się przepisy i potrafią odpowiednio doradzić – niezależnie od sytuacji. Współpraca z nimi to gwarancja, że masz po swojej stronie nie tylko pośrednika, ale prawdziwego partnera w całym procesie.</p>
-                     <hr></hr>
-                      <p className='page-subtitle'><b>Zobacz, kto czeka, by pomóc Ci zrobić kolejny krok w stronę nowej nieruchomości. Poznaj nasz zespół.</b></p>
-                    
-                    
+                      <h1>Specjaliści, którzy poprowadzą Cię przez cały proces</h1>
+                      <p className='page-subtitle'><b>Ludzie, których kompetencje uzupełniają się na każdym etapie Twojej inwestycji.</b></p>
+                      <p>
+
+W naszym zespole każdy odpowiada za inny, kluczowy obszar — dzięki temu współpraca z nami jest kompletna, precyzyjna i maksymalnie skuteczna. Tworzą go osoby z doświadczeniem w analizie nieruchomości, prawie, finansach, negocjacjach, inwestycjach deweloperskich oraz obsłudze klientów indywidualnych i biznesowych, a także specjaliści techniczni odpowiedzialni za część inżynieryjną i projektową.
+
+                      </p>
+            <p>Wspólnie tworzymy zespół, który potrafi kompleksowo poprowadzić każdy projekt — niezależnie od jego skali i stopnia złożoności. Dzięki temu masz pewność, że za każdym obszarem stoi osoba, która naprawdę się w nim specjalizuje.</p>                    
                     
                     
                     </div>
