@@ -2,14 +2,12 @@ import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
 const StickySidebar = ({ 
-  selectedPackages, 
+  selectedPackagesSummary, 
   totalPrice, 
   priceWithVAT, 
   basePrice, 
   visualOptionsPrice,
   visualOptionsSummary,
-  getPackageName, 
-  getPackagePrice,
   formData,
   handleInputChange,
   handleSubmit
@@ -46,20 +44,17 @@ const StickySidebar = ({
           )}
           
           {/* Sekcja pakietów dodatkowych */}
-          {Object.entries(selectedPackages).map(([category, packageId]) => {
-            if (packageId) {
-              const packageName = getPackageName(packageId);
-              const packagePrice = getPackagePrice(packageId);
-              
-              return (
-                <div key={packageId} className="config-item">
-                  <span>+ {packageName}</span>
-                  <span>+ {packagePrice.toLocaleString('pl-PL')} zł</span>
+          {selectedPackagesSummary.length > 0 && (
+            <div className="packages-section">
+              <div className="section-label">Pakiety dodatkowe:</div>
+              {selectedPackagesSummary.map((pkg) => (
+                <div key={pkg.id} className="config-item">
+                  <span>+ {pkg.name}</span>
+                  <span>+ {pkg.price.toLocaleString('pl-PL')} zł</span>
                 </div>
-              );
-            }
-            return null;
-          })}
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="total-section">

@@ -69,7 +69,7 @@
 
 .package-option {
   flex: 1;
-  min-width: 200px;
+  min-width: 250px;
   position: relative;
   cursor: pointer;
   padding: 16px;

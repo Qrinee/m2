@@ -5,13 +5,16 @@ import Configurator from '../components/Configurator/Configurator';
 import './HouseConfigurator.css';
 
 import { HOUSE_CONFIGS } from '../utils/houseConfigs'
+import { PACKAGE_CONFIGS } from '../utils/packageConfigs'
 import Footer from '../components/Footer/Footer';
 import VisualConfigurator from '../components/VisualConfigurator/VisualConfigurator';
 import HousePlan from '../components/HousePlan/HousePlan';
 import ModularHouseCalculator from '../components/ModularHouseCalculator/ModularHouseCalculator';
+import { useParams } from 'react-router-dom';
 
 const HouseConfigurator = () => {
-  const [selectedPackages, setSelectedPackages] = useState({});
+  const { id } = useParams()
+  const [selectedOptions, setSelectedOptions] = useState({});
   const [visualOptionsPrice, setVisualOptionsPrice] = useState(0);
   const [selectedVisualOptions, setSelectedVisualOptions] = useState({});
 
@@ -24,11 +27,47 @@ const HouseConfigurator = () => {
 
   const basePrice = 299000;
 
-  const selectPackage = (packageId, category) => {
-    setSelectedPackages(prev => ({
-      ...prev,
-      [category]: packageId
-    }));
+  // Zmodyfikowana funkcja - pozwala na odznaczanie pojedynczych opcji
+  const selectOption = (optionId, packageIndex) => {
+    setSelectedOptions(prev => {
+      const newState = { ...prev };
+      const optionParts = optionId.split('-');
+      const currentPackageIndex = optionParts[1];
+      
+      // Sprawdź czy pakiet ma tylko jedną opcję
+      const housePackages = PACKAGE_CONFIGS[id] || [];
+      const currentPackage = housePackages[packageIndex];
+      const hasSingleOption = currentPackage.options.length === 1;
+      
+      if (hasSingleOption) {
+        // Dla pakietów z jedną opcją - toggle
+        if (newState[optionId]) {
+          delete newState[optionId];
+        } else {
+          newState[optionId] = true;
+        }
+      } else {
+        // Dla pakietów z wieloma opcjami - zachowanie radio
+        // Usuń wszystkie opcje z tego samego pakietu
+        Object.keys(newState).forEach(key => {
+          const keyParts = key.split('-');
+          if (keyParts.length === 3) {
+            const keyPackageIndex = keyParts[1];
+            if (keyPackageIndex === currentPackageIndex) {
+              delete newState[key];
+            }
+          }
+        });
+        
+        // Jeśli kliknięta opcja nie była wcześniej zaznaczona, dodaj ją
+        if (!prev[optionId]) {
+          newState[optionId] = true;
+        }
+        // Jeśli była zaznaczona, to po usunięciu wszystkich pozostanie odznaczona
+      }
+      
+      return newState;
+    });
   };
 
   // Aktualizacja cen opcji wizualnych
@@ -37,25 +76,21 @@ const HouseConfigurator = () => {
     setSelectedVisualOptions(selections);
   };
 
+  // Obliczanie całkowitej ceny na podstawie PACKAGE_CONFIGS
   const calculateTotal = () => {
     let total = basePrice + visualOptionsPrice;
     
-    const packagePrices = {
-      'formal-1': 4420,
-      'formal-2': 15640,
-      'formal-3': 8113,
-      'foundation': 26792,
-      'utilities': 18990,
-      'roofing': 18990,
-      'turnkey': 39390,
-      'terrace': 19675,
-      'sanitary': 17680
-    };
-
-    Object.values(selectedPackages).forEach(packageId => {
-      if (packageId && packagePrices[packageId]) {
-        total += packagePrices[packageId];
-      }
+    // Pobierz konfigurację dla danego domu
+    const housePackages = PACKAGE_CONFIGS[id] || [];
+    
+    // Przejdź przez wszystkie pakiety i ich opcje
+    housePackages.forEach((packageConfig, packageIndex) => {
+      packageConfig.options.forEach((option, optionIndex) => {
+        const optionId = `${id}-${packageIndex}-${optionIndex}`;
+        if (selectedOptions[optionId]) {
+          total += option.price;
+        }
+      });
     });
     
     return total;
@@ -76,37 +111,48 @@ const HouseConfigurator = () => {
   const totalPrice = calculateTotal();
   const priceWithVAT = totalPrice * 1.08;
 
-  const getPackageName = (packageId) => {
-    const allPackages = {
-      'formal-1': 'Zgłoszenie Budynku Rekreacji Indywidualnej',
-      'formal-2': 'Zgłoszenie budynku Mieszkalnego lub Pozwolenie na budowę',
-      'formal-3': 'Formalność wykonam we własnym zakresie',
-      'foundation': 'Ocieplona, zbrojona płyta fundamentowa',
-      'utilities': 'Pakiet Instalacje Sanitarne i Elektryczne',
-      'roofing': 'Pakiet Obróbki Blacharskie, Ocieplenie Sufitu',
-      'turnkey': 'Kompletne wykończenie pod klucz',
-      'terrace': 'Pakiet Taras i Oświetlenie Zewnętrzne',
-      'sanitary': 'Szambo 10 m³ lub oczyszczalnia'
-    };
+  // Pobieranie nazw i cen pakietów z PACKAGE_CONFIGS
+  const getPackageInfo = (optionId) => {
+    if (!optionId) return { name: '', price: 0 };
     
-    return allPackages[packageId] || 'Dodatkowy pakiet';
+    const parts = optionId.split('-');
+    if (parts.length !== 3) return { name: '', price: 0 };
+    
+    const [houseId, packageIndex, optionIndex] = parts;
+    const housePackages = PACKAGE_CONFIGS[houseId];
+    
+    if (!housePackages || !housePackages[packageIndex] || !housePackages[packageIndex].options[optionIndex]) {
+      return { name: '', price: 0 };
+    }
+    
+    const option = housePackages[packageIndex].options[optionIndex];
+    return {
+      name: option.name,
+      price: option.price
+    };
   };
 
-  const getPackagePrice = (packageId) => {
-    const packagePrices = {
-      'formal-1': 4420,
-      'formal-2': 15640,
-      'formal-3': 8113,
-      'foundation': 26792,
-      'utilities': 18990,
-      'roofing': 18990,
-      'turnkey': 39390,
-      'terrace': 19675,
-      'sanitary': 17680
-    };
+  // Pobieranie podsumowania wybranych pakietów
+  const getSelectedPackagesSummary = () => {
+    const summary = [];
     
-    return packagePrices[packageId] || 0;
+    Object.keys(selectedOptions).forEach(optionId => {
+      if (selectedOptions[optionId]) {
+        const packageInfo = getPackageInfo(optionId);
+        if (packageInfo.name && packageInfo.price > 0) {
+          summary.push({
+            id: optionId,
+            name: packageInfo.name,
+            price: packageInfo.price
+          });
+        }
+      }
+    });
+    
+    return summary;
   };
+
+  const selectedPackagesSummary = getSelectedPackagesSummary();
 
   // Funkcja do uzyskania nazw wybranych opcji wizualnych
   const getVisualOptionsSummary = () => {
@@ -115,7 +161,7 @@ const HouseConfigurator = () => {
     }
 
     const summary = [];
-    const houseConfig = HOUSE_CONFIGS.d126; // Zakładamy, że pracujemy z D-126
+    const houseConfig = HOUSE_CONFIGS.d126;
 
     Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
       const categoryOptions = houseConfig.options[category];
@@ -145,16 +191,16 @@ const HouseConfigurator = () => {
         <HousePlan/>
 
         <Configurator
-          selectedPackages={selectedPackages}
-          selectPackage={selectPackage}
+          selectedOptions={selectedOptions}
+          selectOption={selectOption}
           totalPrice={totalPrice}
           priceWithVAT={priceWithVAT}
           basePrice={basePrice}
           visualOptionsPrice={visualOptionsPrice}
+          selectedPackagesSummary={selectedPackagesSummary}
           visualOptionsSummary={visualOptionsSummary}
-          getPackageName={getPackageName}
-          getPackagePrice={getPackagePrice}
           formData={formData}
+          houseId={id}
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
         />

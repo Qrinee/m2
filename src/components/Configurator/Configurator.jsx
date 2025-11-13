@@ -3,15 +3,15 @@ import PackageList from '../PackageList/PackageList';
 import StickySidebar from '../StickySidebar/StickySidebar';
 
 const Configurator = ({ 
-  selectedPackages, 
-  selectPackage, 
+  selectedOptions, 
+  selectOption, 
   totalPrice, 
   priceWithVAT, 
   basePrice,
   visualOptionsPrice,
+  selectedPackagesSummary,
   visualOptionsSummary,
-  getPackageName,
-  getPackagePrice,
+  houseId,
   formData,
   handleInputChange,
   handleSubmit 
@@ -26,18 +26,17 @@ const Configurator = ({
 
         <div className="configurator-layout">
           <PackageList 
-            selectedPackages={selectedPackages} 
-            selectPackage={selectPackage} 
+            houseId={houseId}
+            selectedOptions={selectedOptions} 
+            selectOption={selectOption} 
           />
           <StickySidebar
-            selectedPackages={selectedPackages}
+            selectedPackagesSummary={selectedPackagesSummary}
             totalPrice={totalPrice}
             priceWithVAT={priceWithVAT}
             basePrice={basePrice}
             visualOptionsPrice={visualOptionsPrice}
             visualOptionsSummary={visualOptionsSummary}
-            getPackageName={getPackageName}
-            getPackagePrice={getPackagePrice}
             formData={formData}
             handleInputChange={handleInputChange}
             handleSubmit={handleSubmit}
