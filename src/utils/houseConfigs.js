@@ -283,21 +283,21 @@ export const HOUSE_CONFIGS = {
 
       
       typDachu: [
-        { id: 0, name: 'Brak', image: null, price: 0 },
-        { id: 1, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD126Roof, price: 77000 },
-        { id: 2, name: 'Blacha na rąbek', thumb: blacha, image: houseD126Roof, price: 68000 }
+        // { id: 0, name: 'Brak', image: null, price: 0 },
+        { id: 0, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD126Roof, price: 77000 },
+        { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD126Roof, price: 68000 }
       ],
 
       
       kolorDachu: {
-        1: [ 
+        0: [ 
           { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
           { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
           { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },
           { id: 4, name: 'Ciemny Zielony', thumb: roofGrayThumb, image: houseD126roofGreen, price: 0 },
           { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD126roofRed, price: 0 }
         ],
-        2: [ 
+        1: [ 
           { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
           { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
           { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },

@@ -17,7 +17,7 @@ import realizacja31 from '../assets/pawilony/2/Bez nazwy-2.png'
 import realizacja32 from '../assets/pawilony/2/dwa.png'
 import realizacja33 from '../assets/pawilony/2/trzy.jpg.png'
 import realizacja34 from '../assets/pawilony/2/cztery.png'
-import { FaHashtag, FaCubes, FaBuilding, FaLayerGroup, FaPaintBrush, FaUser, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaHashtag, FaCubes, FaBuilding, FaLayerGroup, FaPaintBrush, FaUser, FaMapMarkerAlt, FaClock, FaIndustry } from 'react-icons/fa';
 import Gallery from '../components/Property/Gallery';
 import ContactForm from '../components/ContactForm/ContactForm';
 
@@ -25,48 +25,52 @@ export default function Realizacja() {
     const { id } = useParams();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    // Przykładowe dane dla różnych ID
+    // Zaktualizowane dane dla różnych ID
     const realizacjeData = {
         1: {
             images: [realizacja13, realizacja12, realizacja11, realizacja14],
-            title: "Dom mieszkalny modułowy",
+            title: "Dom modułowy w kilku opcjach o pow. 120 m²",
             date: "2024-03-15",
-            content: "Nowoczesny dom modułowy o powierzchni 120m2, gotowy w 3 miesiące. Energooszczędny i w pełni wyposażony.",
+            content: "Poznaj nowy standard budownictwa modułowego. Prezentowane domy to przestronna, funkcjonalna i w pełni wyposażona konstrukcja o powierzchni około 120 m², zaprojektowana z myślą o komforcie, estetyce i wysokiej jakości wykończenia. Realizujemy również projekty na zamówienie indywidualne – dla klientów wymagających, poszukujących rozwiązań klasy premium, tworzonych w pełni pod ich potrzeby, styl życia i oczekiwania. Każdy dom możemy dopasować personalnie: od układu modułów, przez materiały, po szczegółowe wykończenie.",
             details: [
-                { icon: <FaHashtag />, label: 'Numer wizualizacji', value: '004' },
-                { icon: <FaCubes />, label: 'Model', value: 'Seria ZEZ' },
+                { icon: <FaHashtag />, label: 'Numer realizacji', value: '004' },
+                { icon: <FaIndustry />, label: 'Technologia', value: 'Modułowa, premium' },
                 { icon: <FaBuilding />, label: 'Typ realizacji', value: 'Domy modułowe' },
-                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: 'Powyżej 6 modułów' },
-                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Płyty włókno-cementowe' },
-                { icon: <FaMapMarkerAlt />, label: 'Powierzchnia zabudowy', value: 'Powyżej 108 m2' },
+                { icon: <FaLayerGroup />, label: 'Liczba modułów', value: '6+' },
+                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Płyty włókno-cementowe + drewno termiczne' },
+                { icon: <FaMapMarkerAlt />, label: 'Powierzchnia zabudowy', value: 'ok. 110 m²' },
+                { icon: <FaUser />, label: 'Standard', value: 'Energooszczędny, w pełni wyposażony' },
+                { icon: <FaClock />, label: 'Czas realizacji', value: '3–6 miesięcy' },
             ]
         },
         2: {
             images: [realizacja21, realizacja22, realizacja23, realizacja24],
-            title: "Pawilon handlowy",
+            title: "Nowoczesny Pawilon Handlowy / Usługowy / Biurowy",
             date: "2024-02-10",
-            content: "Przestronny pawilon gastronomiczny z tarasem widokowym, idealny na sezon letni. Wykończenie w stylu skandynawskim.",
+            content: "Nowoczesny, przestronny pawilon handlowo-usługowy klasy premium, zaprojektowany z myślą o właścicielach biznesów, którzy stawiają na estetykę, funkcjonalność i reprezentacyjny wygląd. Charakterystyczna, minimalistyczna bryła wykończona płytami włókno-cementowymi oraz duże panoramiczne przeszklenia nadają obiektowi ekskluzywny charakter i tworzą idealne warunki do pracy z klientem. Konstrukcja modułowa pozwala na pełną adaptację wnętrza do dowolnej działalności. Możliwe przeznaczenia: salon beauty, klinika weterynaryjna, gabinety specjalistyczne, showroom lub lokal gastronomiczny.",
             details: [
                 { icon: <FaHashtag />, label: 'Numer Pawilonu', value: '036' },
-                { icon: <FaCubes />, label: 'Model', value: 'Seria ZEZ PRO' },
-                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Pawilony i kontenery handlowe' },
-                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: 'Powyżej 6 modułów' },
-                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Elewacje drewniane, Płyty włókno-cementowe' },
-                { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: 'Reda' },
+                { icon: <FaIndustry />, label: 'Technologia', value: 'Modułowa, stalowa konstrukcja premium' },
+                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Handlowy / usługowy / biurowy / gabinetowy' },
+                { icon: <FaLayerGroup />, label: 'Liczba modułów', value: 'Powyżej 6 modułów' },
+                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Płyty włókno-cementowe + aluminium / stal' },
+                { icon: <FaMapMarkerAlt />, label: 'Powierzchnia zabudowy', value: '45–85 m² (konfigurowalna)' },
+                { icon: <FaClock />, label: 'Czas realizacji', value: 'ok. 3 miesiące' },
             ]
         },
         3: {
             images: [realizacja31, realizacja32, realizacja33, realizacja34],
-            title: "Biuro kontenerowe",
+            title: "Kompaktowy Pawilon Usługowy – Nowoczesna Przestrzeń Biznesowa",
             date: "2024-01-20",
-            content: "Kompaktowy pawilon usługowy zaprojektowany specjalnie dla centrów handlowych. Maximilizacja przestrzeni użytkowej.",
+            content: "Kompaktowy pawilon usługowy zaprojektowany jako funkcjonalne, estetyczne i w pełni modułowe miejsce do prowadzenia działalności gospodarczej. Dzięki nowoczesnej przeszklonej formie i wysokiej jakości materiałom idealnie sprawdza się jako biuro, punkt usługowy, salon beauty, gabinet lub biuro sprzedaży nieruchomości przy inwestycjach deweloperskich. Pawilon zapewnia pełen komfort pracy, maksymalne doświetlenie oraz reprezentacyjny wygląd, który wzbudza zaufanie klientów już od pierwszego kontaktu. To doskonałe rozwiązanie zarówno na tereny inwestycyjne, przydomowe jak i miejskie.",
             details: [
                 { icon: <FaHashtag />, label: 'Numer Pawilonu', value: '002' },
-                { icon: <FaCubes />, label: 'Model', value: 'Seria Glass' },
-                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Pawilony i kontenery biurowe' },
-                { icon: <FaLayerGroup />, label: 'Ilość modułów', value: 'Poniżej 6 modułów' },
-                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Płyty włókno-cementowe' },
-                { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: 'Poznań MTP' },
+                { icon: <FaIndustry />, label: 'Technologia', value: 'Konstrukcja stalowa, moduły prefabrykowane' },
+                { icon: <FaBuilding />, label: 'Typ pawilonu', value: 'Kompaktowy pawilon usługowo-biurowy' },
+                { icon: <FaLayerGroup />, label: 'Liczba modułów', value: '2–4 moduły' },
+                { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: 'Panele kompozytowe / aluminium / płyty włókno-cementowe' },
+                { icon: <FaMapMarkerAlt />, label: 'Powierzchnia zabudowy', value: '18–45 m²' },
+                { icon: <FaClock />, label: 'Czas realizacji', value: '4-12 tygodni' },
             ]
         }
     };
@@ -81,7 +85,7 @@ export default function Realizacja() {
             { icon: <FaHashtag />, label: 'Numer Pawilonu', value: id || '—' },
             { icon: <FaCubes />, label: 'Model', value: '—' },
             { icon: <FaBuilding />, label: 'Typ pawilonu', value: '—' },
-            { icon: <FaLayerGroup />, label: 'Ilość modułów', value: '—' },
+            { icon: <FaLayerGroup />, label: 'Liczba modułów', value: '—' },
             { icon: <FaPaintBrush />, label: 'Materiał elewacyjny', value: '—' },
             { icon: <FaUser />, label: 'Klient', value: '—' },
             { icon: <FaMapMarkerAlt />, label: 'Lokalizacja', value: '—' },
