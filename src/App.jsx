@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import ModularForBusiness from "./components/ModularForBusiness/ModularForBusiness";
 import NewProjects from "./components/NewProjects/NewProjects";
 import ConstructionProcess from "./components/ConstructionProcess/ConstructionProcess";
-import first from './assets/pawilony/5/Bez nazwy-2.png'
+import first from './assets/pawilony/5/1.jpg'
 import second from './assets/pawilony/3/1.png'
 import third from './assets/pawilony/2/Bez nazwy-2.png'
 import TwoPartText from "./layouts/TwoPartText";

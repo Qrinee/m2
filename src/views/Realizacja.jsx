@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import realizacja11 from '../assets/pawilony/5/2.png';
-import realizacja12 from '../assets/pawilony/5/3.png';
-import realizacja13 from '../assets/pawilony/5/Bez nazwy-2.png'
+import realizacja11 from '../assets/pawilony/5/1.jpg';
+import realizacja12 from '../assets/pawilony/5/2.jpg';
+import realizacja13 from '../assets/pawilony/5/3.jpg'
+import realizacja14 from '../assets/pawilony/5/4.jpg'
 
 import realizacja21 from '../assets/pawilony/3/1.png'
 import realizacja22 from '../assets/pawilony/3/2.png'
@@ -27,7 +28,7 @@ export default function Realizacja() {
     // Przykładowe dane dla różnych ID
     const realizacjeData = {
         1: {
-            images: [realizacja13, realizacja12, realizacja11],
+            images: [realizacja13, realizacja12, realizacja11, realizacja14],
             title: "Dom mieszkalny modułowy",
             date: "2024-03-15",
             content: "Nowoczesny dom modułowy o powierzchni 120m2, gotowy w 3 miesiące. Energooszczędny i w pełni wyposażony.",

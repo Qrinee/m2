@@ -4,15 +4,16 @@ import p2 from '../../assets/plytafundamentowa.jpg';
 import p3 from '../../assets/image.webp';
 import p4 from '../../assets/maxresdefault.jpg';
 import p5 from '../../assets/pexels-asphotography-101808.jpg';
-import p6 from '../../assets/Tarasola_Essential_high_res-29.webp';
+import p6 from '../../assets/close-up-shot-hand-trowel.jpg';
 import p7 from '../../assets/gf-ZQ3b-fUVu-vFmq_szambo-1920x1080-nocrop.jpg';
+import p8 from '../../assets/photovoltaic-2814504_1280.jpg'
 import PackageCard from '../PackageCard/PackageCard';
 
 import { PACKAGE_CONFIGS } from '../../utils/packageConfigs';
 
 const PackageList = ({ selectedOptions, selectOption, houseId }) => {
   const housePackages = PACKAGE_CONFIGS[houseId] || [];
-  const packageImages = [p1, p2, p3, p4, p5, p6, p7];
+  const packageImages = [p1, p2, p3, p6, p4, p7, p8, p5];
 
   return (
     <div className="packages-section">
