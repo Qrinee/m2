@@ -206,6 +206,8 @@ const HouseConfigurator = () => {
         />
       </div>
       <ModularHouseCalculator/>
+      <p style={{maxWidth: '700px', margin: '50px auto', color: 'gray', fontSize: '14px'}}>
+Ogłoszenie ma charakter wyłącznie informacyjny i nie stanowi oferty w rozumieniu art. 66 § 1 ani art. 71 Kodeksu cywilnego. Nie jest to również oferta handlowa, porada prawna ani zaproszenie do rokowań. Wszelkie podane kwoty i wyliczenia mają charakter orientacyjny i nie stanowią wiążącej oferty.    </p>
       <Footer/>
     </>
   );

@@ -182,10 +182,9 @@ export default function ZostanPartneremLubPracownikiem() {
       video={vid1}
               content={
           <div style={{maxWidth: '800px'}}>
-            <h1>Zostań partnerem lub pracownikiem <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span></h1>
-            <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}>
-              Jesteśmy zespołem łączącym doświadczenie prawne z praktyczną znajomością rynku nieruchomości, by zapewnić klientom kompleksową i bezpieczną obsługę. Jeśli chcesz rozwijać się razem z nami, zapraszamy do współpracy!
-            </p>
+            <h1>Dołącz do <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span> - jako partner lub członek zespołu</h1>
+  
+            <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}></p>  
           </div>
         }
       />

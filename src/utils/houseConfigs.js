@@ -201,7 +201,6 @@ export const HOUSE_CONFIGS = {
         { id: 1, name: 'Model 11S3',  thumb: door11S3Thumb, image: houseD70door11S3 },
         { id: 2, name: 'Model P9',  thumb: doorP9Thumb, image: houseD70doorP9 },
         { id: 3, name: 'Model 14A', thumb: door14AThumb, image: houseD70door14A },
-        { id: 0, name: 'Własne drzwi',thumb: doorCustomThumb, image: houseD70doorCustom }
       ]
     },
   },
@@ -248,8 +247,7 @@ export const HOUSE_CONFIGS = {
       drzwi: [
         { id: 1, name: 'Model 11S3',  thumb: door11S3Thumb },
         { id: 2, name: 'Model P9',  thumb: doorP9Thumb },
-        { id: 3, name: 'Model 14A', thumb: door14AThumb },
-        { id: 0, name: 'Własne drzwi',thumb: doorCustomThumb }
+        { id: 3, name: 'Model 14A', thumb: door14AThumb }
       ],
     },
   },
@@ -326,8 +324,7 @@ export const HOUSE_CONFIGS = {
         { id: 1, name: 'Model 11S3', image: houseD126door11S3, thumb: door11S3Thumb, price: 6500 },
         { id: 2, name: 'Model P9', image: houseD126doorP9, thumb: doorP9Thumb, price: 6500 },
         { id: 3, name: 'Model 14A', image: houseD126door14A, thumb: door14AThumb, price: 6500 },
-        { id: 0, name: 'Własne drzwi', image: houseD126doorCustom, thumb: doorCustomThumb, price: 0 }
-      ]
+     ]
     },
   }
 }
