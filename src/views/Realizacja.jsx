@@ -7,11 +7,18 @@ import realizacja11 from '../assets/pawilony/5/1.jpg';
 import realizacja12 from '../assets/pawilony/5/2.jpg';
 import realizacja13 from '../assets/pawilony/5/3.jpg'
 import realizacja14 from '../assets/pawilony/5/4.jpg'
+import realizacja15 from '../assets/pawilony/2/w1.jpeg'
+import realizacja16 from '../assets/pawilony/2/w2.jpeg'
+import realizacja17 from '../assets/pawilony/2/w3.jpeg'
 
 import realizacja21 from '../assets/pawilony/3/1.png'
-import realizacja22 from '../assets/pawilony/3/2.png'
-import realizacja23 from '../assets/pawilony/3/3.png'
-import realizacja24 from '../assets/pawilony/3/4.png'
+import realizacja22 from '../assets/pawilony/3/wst.jpeg'
+import realizacja23 from '../assets/pawilony/3/wst1.jpeg'
+import realizacja24 from '../assets/pawilony/3/wst2.jpeg'
+import realizacja25 from '../assets/pawilony/3/wst3.jpeg'
+import realizacja26 from '../assets/pawilony/3/wst4.jpeg'
+import realizacja27 from '../assets/pawilony/3/wst5.jpeg'
+import realizacja28 from '../assets/pawilony/3/ws.jpeg'
 
 import realizacja31 from '../assets/projekt3/1.jpg'
 import realizacja32 from '../assets/projekt3/2.jpg'
@@ -28,7 +35,7 @@ export default function Realizacja() {
     // Zaktualizowane dane dla różnych ID
     const realizacjeData = {
         1: {
-            images: [realizacja13, realizacja12, realizacja11, realizacja14],
+            images: [realizacja28,realizacja13, realizacja12, realizacja11, realizacja14, realizacja15, realizacja16, realizacja17],
             title: "Dom modułowy w kilku opcjach o pow. 120 m²",
             date: "2024-03-15",
             content: "Poznaj nowy standard budownictwa modułowego. Prezentowane domy to przestronna, funkcjonalna i w pełni wyposażona konstrukcja o powierzchni około 120 m², zaprojektowana z myślą o komforcie, estetyce i wysokiej jakości wykończenia. Realizujemy również projekty na zamówienie indywidualne – dla klientów wymagających, poszukujących rozwiązań klasy premium, tworzonych w pełni pod ich potrzeby, styl życia i oczekiwania. Każdy dom możemy dopasować personalnie: od układu modułów, przez materiały, po szczegółowe wykończenie.",
@@ -44,7 +51,7 @@ export default function Realizacja() {
             ]
         },
         2: {
-            images: [realizacja21, realizacja22, realizacja23, realizacja24],
+            images: [realizacja21,realizacja22, realizacja23, realizacja24, realizacja25, realizacja26, realizacja27],
             title: "Nowoczesny Pawilon Handlowy / Usługowy / Biurowy",
             date: "2024-02-10",
             content: "Nowoczesny, przestronny pawilon handlowo-usługowy klasy premium, zaprojektowany z myślą o właścicielach biznesów, którzy stawiają na estetykę, funkcjonalność i reprezentacyjny wygląd. Charakterystyczna, minimalistyczna bryła wykończona płytami włókno-cementowymi oraz duże panoramiczne przeszklenia nadają obiektowi ekskluzywny charakter i tworzą idealne warunki do pracy z klientem. Konstrukcja modułowa pozwala na pełną adaptację wnętrza do dowolnej działalności. Możliwe przeznaczenia: salon beauty, klinika weterynaryjna, gabinety specjalistyczne, showroom lub lokal gastronomiczny.",

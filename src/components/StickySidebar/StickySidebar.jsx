@@ -107,6 +107,11 @@ const StickySidebar = ({
             <span>Wyślij konfigurację</span>
             <FaArrowRight className="btn-icon" />
           </button>
+          
+          
+      <p style={{maxWidth: '700px', margin: '50px auto', color: 'gray', fontSize: '14px'}}>
+"Informacje i kwoty mają charakter orientacyjny i nie stanowią oferty w rozumieniu art. 66 §1 i art. 71 k.c. ani oferty handlowej lub porady prawnej."
+      </p>
         </form>
       </div>
     </div>
