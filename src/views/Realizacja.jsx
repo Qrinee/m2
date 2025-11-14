@@ -13,10 +13,10 @@ import realizacja22 from '../assets/pawilony/3/2.png'
 import realizacja23 from '../assets/pawilony/3/3.png'
 import realizacja24 from '../assets/pawilony/3/4.png'
 
-import realizacja31 from '../assets/pawilony/2/Bez nazwy-2.png'
-import realizacja32 from '../assets/pawilony/2/dwa.png'
-import realizacja33 from '../assets/pawilony/2/trzy.jpg.png'
-import realizacja34 from '../assets/pawilony/2/cztery.png'
+import realizacja31 from '../assets/projekt3/1.jpg'
+import realizacja32 from '../assets/projekt3/2.jpg'
+import realizacja33 from '../assets/projekt3/3.jpg'
+import realizacja34 from '../assets/projekt3/4.jpg'
 import { FaHashtag, FaCubes, FaBuilding, FaLayerGroup, FaPaintBrush, FaUser, FaMapMarkerAlt, FaClock, FaIndustry } from 'react-icons/fa';
 import Gallery from '../components/Property/Gallery';
 import ContactForm from '../components/ContactForm/ContactForm';

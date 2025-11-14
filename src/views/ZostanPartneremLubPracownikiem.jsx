@@ -182,9 +182,9 @@ export default function ZostanPartneremLubPracownikiem() {
       video={vid1}
               content={
           <div style={{maxWidth: '800px'}}>
-            <h1>Zostań partnerem lub pracownikiem <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span></h1>
+            <h1>Dołącz do <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span> – jako partner lub członek zespołu</h1>
             <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}>
-              Jesteśmy zespołem łączącym doświadczenie prawne z praktyczną znajomością rynku nieruchomości, by zapewnić klientom kompleksową i bezpieczną obsługę. Jeśli chcesz rozwijać się razem z nami, zapraszamy do współpracy!
+ W M2Notarialnie tworzymy środowisko ekspertów łączących wiedzę prawną, doświadczenie biznesowe oraz praktyczne kompetencje z zakresu rynku nieruchomości i inwestycji. Naszym celem jest zapewnienie klientom pełnej, bezpiecznej i rzetelnej obsługi — od analizy, przez prowadzenie procesu, aż po finalizację transakcji czy realizację inwestycji.
             </p>
           </div>
         }
@@ -197,7 +197,11 @@ export default function ZostanPartneremLubPracownikiem() {
         <div className="career-section-header">
           <h2 className="career-section-title">Jak dołączyć?</h2>
           <p className="career-section-subtitle">
-            Wyślij swoje CV lub propozycję współpracy na adres: <a href="mailto:kontakt@m2notarialnie.pl" style={{color: 'var(--secondary-color)', fontWeight: 'bold'}}>kontakt@m2notarialnie.pl</a> lub skorzystaj z poniższego formularza kontaktowego. Skontaktujemy się z Tobą, aby omówić szczegóły.
+Jeśli widzisz swoją przyszłość w pracy z nami, wyślij CV lub propozycję współpracy na adres: <a href="mailto:kontakt@m2notarialnie.pl" style={{color: 'var(--secondary-color)', fontWeight: 'bold'}}>kontakt@m2notarialnie.pl</a> 
+          </p>
+          <p className='career-section-subtitle'>
+            Możesz także użyć formularza kontaktowego poniżej.
+Po analizie zgłoszenia skontaktujemy się z Tobą, aby przedstawić dostępne ścieżki rozwoju i omówić możliwości współpracy.
           </p>
         </div>
       </div>
@@ -208,9 +212,9 @@ export default function ZostanPartneremLubPracownikiem() {
       <div className="career-partner-section">
         <div className="career-container">
           <div className="career-section-header">
-            <h2 className="career-section-title">Zostań partnerem M2Notarialnie</h2>
+            <h2 className="career-section-title">Dołącz jako partner M2Notarialnie</h2>
             <p className="career-section-description">
-              Jako partner biznesowy dołączasz do zespołu, który łączy doświadczenie prawne i praktyczną znajomość rynku nieruchomości. Razem budujemy markę, która oferuje klientom kompleksową i bezpieczną obsługę.
+Jako partner biznesowy stajesz się częścią zespołu, który łączy kompetencje prawne, doświadczenie inwestycyjne oraz dogłębną znajomość rynku nieruchomości. Wspólnie tworzymy markę, która dostarcza klientom kompletne, nowoczesne i bezpieczne rozwiązania — od analiz, przez sprzedaż i inwestycje, po obsługę prawną i deweloperską.
             </p>
           </div>
 
@@ -221,9 +225,10 @@ export default function ZostanPartneremLubPracownikiem() {
               </div>
               <h3 className="career-benefit-title">Kogo szukamy?</h3>
               <ul className="career-benefit-list">
-                <li>Partnerów biznesowych z branży nieruchomości i prawa</li>
-                <li>Osób zorientowanych na profesjonalną, długofalową współpracę</li>
-                <li>Partnerów chcących rozwijać się i wspierać naszych klientów</li>
+                <li>Partnerów biznesowych związanych z rynkiem nieruchomości, prawa, inwestycji i finansów</li>
+                <li>Osób nastawionych na rzetelną, profesjonalną i długoterminową współpracę</li>
+                <li>Specjalistów, którzy chcą rozwijać swoje kompetencje i realnie wspierać naszych klientów</li>
+                <li></li>Ludzi przedsiębiorczych, otwartych na nowe projekty, którzy chcą współtworzyć markę opartą na zaufaniu i wysokich standardach działania
               </ul>
             </div>
 
@@ -233,15 +238,16 @@ export default function ZostanPartneremLubPracownikiem() {
               </div>
               <h3 className="career-benefit-title">Co oferujemy?</h3>
               <ul className="career-benefit-list">
-                <li>Dostęp do bazy klientów i wspólne działania marketingowe</li>
-                <li>Wsparcie merytoryczne i operacyjne</li>
-                <li>Elastyczne warunki współpracy dostosowane do Twoich potrzeb</li>
+                <li>⁠Dostęp do naszej bazy klientów oraz wspólne działania marketingowe zwiększające skuteczność sprzedaży</li>
+                <li>Wsparcie merytoryczne, prawne i operacyjne na każdym etapie współpracy</li>
+                <li>Elastyczne warunki współpracy, dopasowane do Twoich potrzeb</li>
+                <li>Nowoczesne narzędzia i sprawdzone procesy, które ułatwiają pracę i przyspieszają efekty</li>
               </ul>
             </div>
           </div>
 
           <div className="career-section-description" style={{textAlign: 'center', marginTop: '2rem', fontStyle: 'italic'}}>
-            Razem możemy stworzyć coś więcej niż tylko współpracę — możemy zbudować partnerstwo oparte na wzajemnym rozwoju i zaufaniu, które przyniesie korzyści nie tylko nam, ale przede wszystkim naszym klientom.
+Razem możemy stworzyć coś więcej niż standardową współpracę — możemy zbudować partnerską relację opartą na zaufaniu, rozwoju i wspólnych celach. Taka współpraca przyniesie realne korzyści nie tylko nam, ale przede wszystkim naszym klientom.
           </div>
 
           {/* Formularz partnerski */}
@@ -325,9 +331,9 @@ export default function ZostanPartneremLubPracownikiem() {
       <div className="career-employee-section">
         <div className="career-container">
           <div className="career-section-header">
-            <h2 className="career-section-title">Zostań pracownikiem M2Notarialnie</h2>
+            <h2 className="career-section-title">Dołącz do zespołu M2Notarialnie</h2>
             <p className="career-section-description">
-              Jeśli chcesz rozwijać się w branży nieruchomości i prawa, dołącz do naszego zespołu. Szukamy osób, które cenią profesjonalizm, rzetelność i bezpieczeństwo w obsłudze klientów.
+Jeśli chcesz rozwijać swoją karierę w obszarze nieruchomości, prawa oraz nowoczesnych usług deweloperskich, zapraszamy do naszego zespołu. Poszukujemy osób, które stawiają na profesjonalizm, odpowiedzialność i wysoką jakość obsługi — zarówno w pracy z klientem indywidualnym, jak i biznesowym.
             </p>
           </div>
 
@@ -338,9 +344,9 @@ export default function ZostanPartneremLubPracownikiem() {
               </div>
               <h3 className="career-benefit-title">Kogo szukamy?</h3>
               <ul className="career-benefit-list">
-                <li>Prawników, notariuszy i specjalistów rynku nieruchomości</li>
-                <li>Osób odpowiedzialnych i zorientowanych na klienta</li>
-                <li>Kandydatów gotowych na rozwój zawodowy i współpracę zespołową</li>
+                <li> ⁠Osób z doświadczeniem lub gotowych je zdobyć, zainteresowanych prawem, nieruchomościami lub finansami</li>
+                <li>Kandydatów odpowiedzialnych, nastawionych na rzetelną pracę i profesjonalną obsługę klienta</li>
+                <li>Osób otwartych na rozwój zawodowy, współpracę zespołową i budowanie długoterminowych relacji</li>
               </ul>
             </div>
 
@@ -350,15 +356,17 @@ export default function ZostanPartneremLubPracownikiem() {
               </div>
               <h3 className="career-benefit-title">Co oferujemy?</h3>
               <ul className="career-benefit-list">
-                <li>Stabilne zatrudnienie lub elastyczne formy współpracy</li>
-                <li>Możliwość rozwoju poprzez szkolenia i praktykę</li>
-                <li>Przyjazne środowisko pracy oparte na zaufaniu</li>
+                <li>Stabilne zatrudnienie lub elastyczne formy współpracy — dopasowane do Twoich potrzeb</li>
+                <li>Realne możliwości rozwoju dzięki szkoleniom, mentoringowi i praktycznej nauce zawodu</li>
+                <li>Przyjazne, wspierające środowisko pracy oparte na wzajemnym szacunku i zaufaniu</li>
+                <li>Dostęp do nowoczesnych narzędzi i sprawdzonych procedur ułatwiających codzienną pracę</li>
+                <li>Współpracę w zespole, który dzieli się wiedzą i doświadczeniem, by wspólnie osiągać cele</li>
               </ul>
             </div>
           </div>
 
           <div className="career-section-description" style={{textAlign: 'center', marginTop: '2rem', fontStyle: 'italic'}}>
-            W M2Notarialnie wierzymy, że sukces to efekt wspólnej pracy, pasji i ciągłego rozwoju — dołączając do nas, stajesz się częścią zespołu, który naprawdę dba o Twój rozwój i satysfakcję z pracy.
+         W M2Notarialnie wierzymy, że sukces powstaje dzięki współpracy, zaangażowaniu i ciągłemu rozwojowi. Dołączając do nas, stajesz się częścią zespołu, który realnie wspiera Twój rozwój i dba o satysfakcję z codziennej pracy.
           </div>
 
           {/* Formularz rekrutacyjny */}
@@ -451,7 +459,11 @@ export default function ZostanPartneremLubPracownikiem() {
         </div>
       </div>
 
-      <TeamSection />
+      <TeamSection content={
+                <div className='card-section__header'>
+        <p  className='p'>Poniżej znajdziesz kontakt bezpośrednio do właścicieli M2Notarialnie. Możesz odezwać się do nas w każdej sprawie związanej z nieruchomościami — szybko wrócimy do Ciebie z pomocą i konkretnymi rozwiązaniami.</p>
+       </div>
+      } />
       <NumberSection/>
       <Footer/>
     </div>

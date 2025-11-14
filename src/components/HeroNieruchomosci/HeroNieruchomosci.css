@@ -104,3 +104,11 @@
   position: relative;
   z-index: 2;
 }
+
+
+@media (max-width: 768px) {
+  .hero__contentd h1{
+    font-size: 2rem!important;
+  }
+
+}

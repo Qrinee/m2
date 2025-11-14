@@ -87,8 +87,8 @@ export default function ProjektyDomow() {
       content={
                     <div className="hero-slider__overlay">
               <div className="hero-slider__content">
-                <h1 className="hero-slider__title">Nowoczesne Projekty Domów</h1>
-                <p className="hero-slider__description">Odkryj naszą kolekcję energooszczędnych domów modułowych</p>
+                <h1 className="hero-slider__title">Wybierz projekt swojego nowego domu</h1>
+                <p className="hero-slider__description">Nowoczesne, funkcjonalne i energooszczędne domy modułowe dla Twojej rodziny.</p>
               </div>
             </div>
       }

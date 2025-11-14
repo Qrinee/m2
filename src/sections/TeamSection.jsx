@@ -4,13 +4,10 @@ import dawid from '../assets/dawid.jpg'
 import wiktoria from '../assets/wiktoria.jpg'
 import renata from '../assets/renata.png'
 import { Link } from 'react-router-dom'
-export default function TeamSection() {
+export default function TeamSection({content}) {
   return (
     <div className='card-section-wrapper'>
-        <div className='card-section__header'>
-        <h2  className='h2'>Zespół, któremu możesz zaufać</h2>
-        <p  className='p'>Jesteśmy dumni z jakości usług, które świadczymy. Nasz zespół ekspertów pomoże Ci znaleźć idealną nieruchomość lub szybko sprzedać Twoją.</p>
-       </div>
+        {content}
        <div className='card-section'>
         <Link to={'/estate_agent/68e66f7258e3141c145e3d5d'} style={{textDecoration: 'none', color: 'inherit'}}>
         <PhotoCard 

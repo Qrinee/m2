@@ -5,6 +5,7 @@ import ContactForm from '../components/ContactForm/ContactForm'
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs'
 import HeroVideo from '../components/HeroVideo/HeroVideo'
 import laptop from '../assets/videos/laptop.mp4'
+import TeamSection from '../sections/TeamSection'
 export default function Kontakt() {
   return (
     <div>
@@ -19,7 +20,7 @@ export default function Kontakt() {
               <div className="container">
                 <Breadcrumbs items={['Strona główna', "Kontakt"]} />
                 <div className='sm-separate'></div>
-                <InfoSection />
+                <TeamSection/>
                 <ContactForm />
               </div>
             </div>

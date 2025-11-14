@@ -47,9 +47,15 @@ export const PACKAGE_CONFIGS = {
       ]
     },
     {
+      title: "Taras, Weranda, Patio",
+      options: [
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0},
+      ]
+    },
+    {
       title: "Wykończenie Pod Klucz",
       options: [
-        { name: "Indywidualne kalkulacje w każdym z pakietów", price: 0 },
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
       ]
     }
   ],
@@ -102,9 +108,15 @@ export const PACKAGE_CONFIGS = {
       ]
     },
     {
+      title: "Taras, Weranda, Patio",
+      options: [
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0},
+      ]
+    },
+    {
       title: "Wykończenie Pod Klucz",
       options: [
-        { name: "Indywidualne kalkulacje w każdym z pakietów", price: 0 },
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
       ]
     }
   ],
@@ -157,9 +169,15 @@ export const PACKAGE_CONFIGS = {
       ]
     },
     {
+      title: "Taras, Weranda, Patio",
+      options: [
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0},
+      ]
+    },
+    {
       title: "Wykończenie Pod Klucz",
       options: [
-        { name: "Indywidualne kalkulacje w każdym z pakietów", price: 0 },
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
       ]
     }
   ]

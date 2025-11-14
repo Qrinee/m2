@@ -11,58 +11,49 @@ const ConstructionProcess = () => {
 const processSteps = [
   {
     step: 1,
-    title: "Czas produkcji skrócony do minimum",
-    description: `Co wyróżnia naszą ofertę budownictwa modułowego na tle standardowych, tradycyjnych metod wznoszenia budynków? W M2notarialnie produkcja odbywa się w nowoczesnych, doskonale wyposażonych halach produkcyjnych, a wszystkie jej procesy przebiegają taśmowo.
-
-To natomiast pozwala znacznie skrócić czas tworzenia budynku. Podczas gdy na tradycyjne domy lub budynki użyteczności publicznej trzeba czekać co najmniej rok, nasze budynki modułowe powstają już w około 12 do 18 tygodni.
-
-Pełne zoptymalizowanie procesu produkcji oraz możliwość zachowania jej stałych i ściśle kontrolowanych warunków to ogromna przewaga nad budownictwem tradycyjnym, ale też prawdziwe wyjście naprzeciw potrzebom nowoczesnego klienta.`,
+    title: "Szybko proces produkcji",
+    description: `
+    
+    Budynki modułowe powstają w halach produkcyjnych, gdzie wszystkie etapy realizowane są w stabilnych i kontrolowanych warunkach. Pozwala to prowadzić prace równolegle z przygotowaniem terenu, dzięki czemu cały proces trwa znacznie krócej niż w budownictwie tradycyjnym.                                                           Standardowy czas wytworzenia modułów to około 12–24 tygodnie, a sama instalacja na przygotowanych fundamentach zajmuje już tylko kilka dni. Tak zoptymalizowany proces gwarantuje szybkie, precyzyjne i powtarzalne wykonanie, przy jednoczesnym ograniczeniu kosztów i ryzyka opóźnień.
+    `,
     image: f
   },
   {
     step: 2,
-    title: "Szybki i bezpieczny transport",
-    description: `Po zakończonym procesie prefabrykacji z naszych hal produkcyjnych wysyłamy gotowe budynki modułowe na plac budowy. Transport odbywa się za pomocą odpowiednio zabezpieczonych niskopodłogowych samochodów.
-
-Nierzadko stajemy również przed wyzwaniem przetransportowania gotowych części budynków modułowych zarówno drogą lądową, jak i morską. Doskonale zabezpieczone i odpowiednio przygotowane moduły - z gotowymi instalacjami, niekiedy także elementami wyposażenia, z powodzeniem docierają w niemal dowolny region świata.`,
+    title: "Logistyka na najwyższym poziomie",
+    description: `
+    Po zakończeniu etapu prefabrykacji gotowe moduły są dostarczane bezpośrednio na plac budowy. Transport odbywa się z użyciem odpowiednio przystosowanych pojazdów niskopodwoziowych, które gwarantują stabilność i bezpieczeństwo podczas jazdy.                                         Przewóz dużych elementów konstrukcyjnych bywa wymagający, jednak odpowiednie zabezpieczenie modułów — często już wyposażonych w instalacje i elementy wykończenia — pozwala na ich bezpieczne dostarczenie zarówno drogą lądową, jak i morską. Dzięki temu gotowe budynki modułowe mogą bez przeszkód dotrzeć niemal w każdy region.
+    `, 
+    
     image: f1
   },
   {
     step: 3,
-    title: "Modularyzacja w budownictwie",
-    description: `Budownictwo modułowe to dobry wybór dla osób prywatnych, ale także doskonałe rozwiązanie dla deweloperów. W naszych halach produkcyjnych błyskawicznie powstają nie tylko pojedyncze domy modułowe czy domki letniskowe, ale całe kompleksy osiedli czy biurowców, a nawet ciągi sklepów modułowych – pawilon handlowy tworzących duże powierzchnie handlowe.
-
-Do rozpoczęcia taśmowej produkcji potrzebujemy jedynie przygotować bazowe moduły, na podstawie których wykonamy pozostałe elementy całej serii. Dzięki budownictwu modułowemu istnieje możliwość stworzenia funkcjonalnych prefabrykowanych osiedli lub powierzchni handlowych w niezwykle krótkim czasie!`,
+    title: "Kompleksy modułowe dla biznesu i deweloperów",
+    description: `
+    Budownictwo modułowe to rozwiązanie, które sprawdza się zarówno u klientów indywidualnych, jak i deweloperów. W kontrolowanych warunkach produkcyjnych powstają nie tylko domy czy domki letniskowe, ale także biura, pawilony handlowe, punkty usługowe, a nawet całe kompleksy osiedlowe.        Proces produkcji opiera się na przygotowaniu modułów bazowych, z których następnie powstają wszystkie elementy finalnego obiektu. Dzięki temu możliwe jest szybkie tworzenie funkcjonalnych przestrzeni — od budynków mieszkalnych po rozbudowane powierzchnie handlowe — w wyjątkowo krótkim czasie.
+    
+    `,
     image: f2
   },
   {
     step: 4,
-    title: "Przygotowanie fundamentów",
-    description: `Nasze działania prowadzimy dwutorowo, dzięki czemu jesteśmy w stanie dodatkowo skrócić czas trwania całej budowy. Cały proces planujemy w taki sposób, aby w trakcie prefabrykacji modułów inwestor prowadził już działania mające na celu optymalne przygotowanie terenu pod gotowe elementy.
-
-Dzięki temu wykonane przez nas budynki modułowe - domy modułowe, pawilony handlowe, pawilony biurowe, pawilony gastronomiczne, sklepy modułowe, kontenery biurowe, hotele modułowe, kontenery gastronomiczne sklepy bezobsługowe wznoszone są na wcześniej przygotowanych fundamentach.
-
-Kiedy już mamy gotowe fundamenty oraz przygotowany teren wraz z podpiętymi mediami, możemy przystąpić do szybkiego montażu budynków modułowych. Osadzanie modułów na fundamentach to proces trwający od 3 do 5 dni.`,
+    title: "Fundamenty przygotowane do modułów",
+    description: `Proces realizacji prowadzimy dwutorowo, aby maksymalnie skrócić czas budowy. Podczas gdy moduły powstają w kontrolowanych warunkach produkcyjnych, równolegle przygotowywany jest teren pod ich montaż.
+Dzięki temu gotowe budynki — domy modułowe, pawilony handlowe, biura, obiekty gastronomiczne czy moduły usługowe — mogą być osadzane na wcześniej wykonanych fundamentach bez zbędnej zwłoki.
+Gdy fundamenty oraz przyłącza mediów są gotowe, przystępujemy do szybkiego montażu modułów. Samo ustawienie budynku na przygotowanej podstawie zajmuje zwykle zaledwie od 3 do 7 dni.`,
     image: f3
   },
   {
     step: 5,
-    title: "Budownictwo ekologiczne",
-    description: `Budownictwo modułowe to ogromna oszczędność czasu, a co za tym idzie wyjątkowa wygoda dla klienta, niezależnie od tego, czy jest to osoba prywatna, poszukująca dom modułowy czy pawilon handlowy, pawilon gastronomiczny, kontener handlowy, czy duży inwestor chcący wybudować sklepy modułowe, hotel modułowy, przedszkole modułowe, czy nawet szkoły modułowe oraz biura modułowe.
-
-Istotnym walorem, wynikającym ze skróconego czasu produkcji naszych modułów, jest także znaczne ograniczenie zużycia materiałów, energii czy wody. To z kolei korzystnie wpływa nie tylko na budżet inwestycji, ale także na kondycję naszej planety.
-
-Ekologiczny charakter budownictwa modułowego dopełnia także fakt, że w procesie prefabrykacji bardzo często używa się nowoczesnych ekomateriałów przyjaznych środowisku.`,
+    title: "Energooszczędne rozwiązania w budownictwie modułowym",
+    description: `Budownictwo modułowe to nie tylko oszczędność czasu, ale także realna korzyść dla środowiska. Dzięki precyzyjnej prefabrykacji zużywane jest znacznie mniej materiałów, energii i wody, co zmniejsza ślad węglowy całej inwestycji. To rozwiązanie idealne zarówno dla klientów prywatnych, jak i inwestorów planujących domy modułowe, pawilony usługowe, obiekty gastronomiczne, biura czy większe kompleksy handlowe i hotelowe.                Skrócony czas produkcji modułów oraz ich powtarzalna jakość sprawiają, że cały proces budowy jest bardziej ekonomiczny i przewidywalny. Z kolei zastosowanie nowoczesnych, ekologicznych materiałów dodatkowo podnosi standard wykonania i wpływa korzystnie na środowisko.                                    Budownictwo modułowe to sposób na nowoczesne, trwałe i przyjazne naturze realizacje — zarówno małe obiekty usługowe, jak i duże inwestycje komercyjne.`,
     image: f4
   },
   {
     step: 6,
-    title: "Błyskawiczny montaż",
-    description: `W D&W Development doskonale wiemy, jak ważny w dzisiejszych czasach jest czas. Liczy się przede wszystkim to, co można wykonać szybko i skutecznie, to co już po krótkim czasie przygotowania nadaje się do długotrwałego użytku.
-
-Dokładnie tak prezentują się nasze budynki modułowe. Czas montażu średniej wielkości domku letniskowego lub małego sklepu modułowego to zaledwie jeden dzień, a na swój wymarzony dom modułowy czy nowe biuro modułowe, kontener biurowy lub pawilon handlowy - kontener handlowy wystarczy poczekać kilka dni.
-
-Czas montażu gotowych modułów całego osiedla mieszkaniowego to około dwa tygodnie.`,
+    title: "Ekspresowy montaż inwestycji",
+    description: `W budownictwie modułowym kluczową rolę odgrywa czas — gotowe elementy powstają wcześniej, a na placu budowy pozostaje jedynie szybkie złożenie całości. Dzięki temu cały proces jest nie tylko sprawny, ale również trwały i precyzyjny.                                                Montaż budynku modułowego średniej wielkości, takiego jak dom, biuro czy mały obiekt usługowy, zazwyczaj zajmuje zaledwie 1-2 dni. W przypadku większych realizacji, takich jak obiekty handlowe, kontenery użytkowe czy większe pawilony, czas montażu liczony jest w kilku dniach.                                           Kompletne, gotowe do użycia osiedle modułowe może zostać złożone w około dwa - trzy tygodnie, co stanowi ogromną przewagę nad tradycyjnymi metodami budowy.`,
     image: f5
   },
 ];

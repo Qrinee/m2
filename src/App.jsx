@@ -14,7 +14,7 @@ import NewProjects from "./components/NewProjects/NewProjects";
 import ConstructionProcess from "./components/ConstructionProcess/ConstructionProcess";
 import first from './assets/pawilony/5/1.jpg'
 import second from './assets/pawilony/3/1.png'
-import third from './assets/pawilony/2/Bez nazwy-2.png'
+import third from './assets/projekt3/1.jpg'
 import TwoPartText from "./layouts/TwoPartText";
 import SplitLayout from "./layouts/SplitLayout";
 import Reels from "./views/Reels/Reels";
