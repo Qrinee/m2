@@ -182,16 +182,10 @@ export default function ZostanPartneremLubPracownikiem() {
       video={vid1}
               content={
           <div style={{maxWidth: '800px'}}>
-<<<<<<< HEAD
             <h1>Dołącz do <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span> – jako partner lub członek zespołu</h1>
             <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}>
  W M2Notarialnie tworzymy środowisko ekspertów łączących wiedzę prawną, doświadczenie biznesowe oraz praktyczne kompetencje z zakresu rynku nieruchomości i inwestycji. Naszym celem jest zapewnienie klientom pełnej, bezpiecznej i rzetelnej obsługi — od analizy, przez prowadzenie procesu, aż po finalizację transakcji czy realizację inwestycji.
             </p>
-=======
-            <h1>Dołącz do <span style={{color: 'var(--secondary-color)'}}>M2Notarialnie</span> - jako partner lub członek zespołu</h1>
-  
-            <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}></p>  
->>>>>>> 6562bab72592559d06e8efa98c3948d051d0e088
           </div>
         }
       />
