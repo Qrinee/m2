@@ -31,7 +31,7 @@ export default function PasswordTab({ setSuccessMessage, setError }) {
       }
 
       const response = await fetch(`${API_BASE_URL}/auth/change-password`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },

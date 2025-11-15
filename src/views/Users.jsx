@@ -250,7 +250,7 @@ const Users = () => {
                   </div>
                 </td>
                 <td>
-                  <div className="user-name">
+                  <div className="user-named">
                     {user.name} {user.surname}
                   </div>
                 </td>

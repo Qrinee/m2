@@ -123,6 +123,7 @@ W naszym zespole każdy odpowiada za inny, kluczowy obszar — dzięki temu wsp�
                                   position={member.position}
                                   description={member.bio}
                                   phoneNumber={member.phone}
+                                  h={'300px'}
                                   email={member.contactEmail}
                                 />
                           </Link>
