@@ -26,7 +26,6 @@ import {
   FaRocket,
   FaStar
 } from 'react-icons/fa'
-import VerticalVideoPlayer from '../components/VerticalVideoPlayer/VerticalVideoPlayer'
 
 export default function CzymSaRatyNotarialne() {
 
