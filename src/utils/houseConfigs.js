@@ -117,6 +117,7 @@ import finishD115Raw from '../assets/dom2/thumbnails/elewacjasurowa.jpg'
 import finishD115BlackSlatsThumb from '../assets/dom2/thumbnails/czarnelamele.png'
 import finishD115WhiteSlatsThumb from '../assets/dom2/thumbnails/bialelamale.png'
 import finishD115DarkSlatsThumb from '../assets/dom2/thumbnails/ciemnelamele.png'
+import finisD115MetalPlasterThumb from '../assets/dom2/thumbnails/tynkiblacha.jpg'
 import finishD115SlatsThumb from '../assets/dom2/thumbnails/lamele.png'
 
 
@@ -354,7 +355,7 @@ drzwi: {
       { id: 2, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, hasColors: true },
 
       { id: 3, name: 'Lamele', thumb: finishD115SlatsThumb, image: finishD115Slats, hasColors: true },
-      { id: 4, name: 'Tynk i blacha', thumb: finishD115MineralPlasterThumb, image: finishD115PlasterMetal } // POPRAWIONE: 'Image' -> 'image'
+      { id: 4, name: 'Tynk i blacha', thumb: finisD115MetalPlasterThumb, image: finishD115PlasterMetal } // POPRAWIONE: 'Image' -> 'image'
     ],
       kolor: {
         2: [
