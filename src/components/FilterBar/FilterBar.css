@@ -13,6 +13,7 @@
 }
 
 .filter-selects {
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 8px;
