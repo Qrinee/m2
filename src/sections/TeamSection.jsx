@@ -17,7 +17,7 @@ export default function TeamSection({content, height, img1, img2, h}) {
         phoneNumber={'+48 728 866 825'}
         email={'kontakt@m2notarialnie.pl'}
         status={'Członek zarządu | CEO'}
-        description={'Współtwórca M2Notarialnie i specjalista w zakresie analiz rynku oraz procesu sprzedaży i z ...'}
+        description={'Współtwórca M2Notarialnie, specjalista w zakresie analiz rynku, procesu sprzedaży i zakupu nieruchomości oraz bezpieczeństwa transakcji..'}
         />
         </Link>
 
@@ -29,7 +29,7 @@ export default function TeamSection({content, height, img1, img2, h}) {
         image={img2 ? img2 : null}
         name={'Wiktoria Kisio'}
         status={'Członek zarządu | CEO'}
-        description={'Współzałożycielka M2 Notarialnie, z doświadczeniem w branży nieruchomości i pasją do tworz ...'}
+        description={'Współzałożycielka M2 Notarialnie, z wieloletnim doświadczeniem w branży nieruchomości i realną pasją do tworzenia bezpiecznych, przejrzystych transakcji. Specjalizuję się w sprzedaży i obsłudze klientów w zakresie trudnych stanów prawnych — prowadzę sprawy związane z egzekucjam...'}
         />
         </Link>
         </div>
