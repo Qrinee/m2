@@ -11,7 +11,7 @@ export default function TeamSection({content, height, img1, img2, h}) {
        <div className='card-section'>
         <Link to={'/estate_agent/68e66f7258e3141c145e3d5d'} style={{textDecoration: 'none', color: 'inherit'}}>
         <PhotoCard 
-        image={img1 ? img1 : dawid}
+        image={img1 ? img1 : null}
         name={'Dawid Frey'}
         h={h}
         phoneNumber={'+48 728 866 825'}
@@ -26,7 +26,7 @@ export default function TeamSection({content, height, img1, img2, h}) {
         h={h}
         phoneNumber={'+48 696 266 381'}
         email={"kontakt@m2notarialnie.pl"}
-        image={img2 ? img2 : wiktoria}
+        image={img2 ? img2 : null}
         name={'Wiktoria Kisio'}
         status={'Członek zarządu | CEO'}
         description={'Współzałożycielka M2 Notarialnie, z doświadczeniem w branży nieruchomości i pasją do tworz ...'}
