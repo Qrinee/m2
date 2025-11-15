@@ -10,7 +10,17 @@
 }
 
 
+.scrolled .login-text{
+  color: black;
+}
 
+.login-btn svg{
+  fill: white;
+}
+
+.scrolled .login-btn svg{
+  fill: black;
+}
 
 .header.scrolled .header__container .header__actions .header__user-menu .user-dropdown .user-btn .user-name{
   color: rgb(49, 49, 49);
