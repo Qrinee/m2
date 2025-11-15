@@ -8,6 +8,7 @@ export default function PhotoCard({
   status, 
   description, 
   phoneNumber, 
+  h,
   email,
   location,
   short
@@ -20,18 +21,15 @@ export default function PhotoCard({
 
   return (
     <div className="photo-card">
-      {
-          !short ? (
-                <>
-                      <img 
-                          src={image} 
-                          alt={`Portrait of ${name}`} 
-                          className="photo-card__image" 
-                          loading="lazy"
-                      />
-                </>
-          ) : null
-      }
+      {image && (
+        <img 
+          src={image} 
+          alt={`Portrait of ${name}`} 
+          className="photo-card__image" 
+          style={{height: h}}
+          loading="lazy"
+        />
+      )}
 
       <div className="photo-card__content">
         <h3 className="photo-card__name">{name}</h3>

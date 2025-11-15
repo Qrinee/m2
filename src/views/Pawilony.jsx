@@ -41,7 +41,7 @@ export default function Pawilony() {
     <div className="business-modules-page">
       <Header/>
       <HeroSlider 
-      images={[projekt1, projekt2, projekt3, projekt4, projekt5, projekt6, projekt7]} content={
+      images={[projekt1, projekt2, projekt3, projekt4, projekt5, projekt6]} content={
                     <div className="hero-slider__overlay">
               <div className="hero-slider__content">
                 <h1 className="hero-slider__title">Modułowe rozwiązania dla <span style={{color: 'var(--primary-color)'}}>biznesu</span></h1>

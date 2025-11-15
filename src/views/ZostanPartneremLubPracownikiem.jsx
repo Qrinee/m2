@@ -25,6 +25,8 @@ import {
 import './CareerPage.css'
 import Footer from '../components/Footer/Footer'
 import vid1 from '../assets/videos/vid1.mp4'
+import img1 from '../assets/zdjecia/1.jpg'
+import img2 from '../assets/zdjecia/2.jpg'
 import HeroVideo from '../components/HeroVideo/HeroVideo'
 
 export default function ZostanPartneremLubPracownikiem() {
@@ -458,8 +460,7 @@ Jeśli chcesz rozwijać swoją karierę w obszarze nieruchomości, prawa oraz no
           </div>
         </div>
       </div>
-
-      <TeamSection content={
+      <TeamSection h={'450px'} img1={img2}  img2={img1} content={
                 <div className='card-section__header'>
         <p  className='p'>Poniżej znajdziesz kontakt bezpośrednio do właścicieli M2Notarialnie. Możesz odezwać się do nas w każdej sprawie związanej z nieruchomościami — szybko wrócimy do Ciebie z pomocą i konkretnymi rozwiązaniami.</p>
        </div>
