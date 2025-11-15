@@ -46,3 +46,10 @@
     margin: 0;
     color: gray;
 }
+
+.no-properties{
+        color: gray;
+    padding: 20px;
+    border: 2px solid #e5e5e5;
+    border-radius: 20px;
+}

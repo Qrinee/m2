@@ -140,7 +140,7 @@ export default function Profil() {
                     </h2>
                     <p className='info-section__position'>{user.data.user.position}</p>
                     <p className="info-section__phone">
-                      <FaPhone style={{marginRight: '10px'}}/> 
+                     {user.data.user.phone && <FaPhone style={{marginRight: '10px'}}/> }  
                       {user.data.user.phone}
                     </p>
                     {user.data.user.contactEmail && (
