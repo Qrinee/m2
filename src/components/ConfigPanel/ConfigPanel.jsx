@@ -14,17 +14,12 @@ const ConfigPanel = ({ houseConfig, selections, onSelectionChange }) => {
   }
 
   // Funkcja do filtrowania opcji typu dachu
-  const getFilteredTypDachuOptions = () => {
-    const allOptions = houseConfig.options.typDachu || [];
-    
-    // Jeśli wybrano elewację surową (id: 0), pokazuj wszystkie opcje
-    if (selections.tynk === 0) {
-      return allOptions;
-    }
-    
-    // Dla innych elewacji, ukryj opcję "Brak" (id: 0)
-    return allOptions.filter(option => option.id !== 0);
-  }
+const getFilteredTypDachuOptions = () => {
+  const allOptions = houseConfig.options.typDachu || [];
+  
+  // Jeśli chcesz zawsze pokazywać wszystkie opcje dachu:
+  return allOptions;
+}
 
   const renderSection = (sectionKey) => {
     const section = houseConfig.options[sectionKey]

@@ -129,13 +129,13 @@ const renderElement = (type, id, className = type) => {
         />
       </div>
       
-      {/* <div className='element-pickable dach'>
+      <div className='element-pickable dach'>
         <img 
           src={houseConfig.overlayImages?.dach} 
           alt="Dach" 
           style={{ opacity: allImagesLoaded ? 1 : 0 }}
         />
-      </div> */}
+      </div>
 {selections.typDachu && selections.typDachu !== 0 && selections.kolorDachu && renderElement('kolorDachu', selections.kolorDachu, 'dach')}
       {selections.roletyEnabled && selections.rolety && selections.rolety !== 0 && renderElement('rolety', selections.rolety)}
       {selections.okna && selections.okna !== 0 && renderElement('okna', selections.okna)}

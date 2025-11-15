@@ -72,6 +72,10 @@ import finishD70DarkSlatsThumb from '../assets/dom3/thumbnails/lameleciemne.png'
 import finishD70WhiteSlatsThumb from '../assets/dom3/thumbnails/lamelebiale.png'
 import finishD70BlackSlatsThumb from '../assets/dom3/thumbnails/lameleantracyt.png'
 
+import houseD70roofAnthracite from '../assets/dom3/dach/antracyt.webp'
+import houseD70roofGreen from '../assets/dom3/dach/ciemnyzielony.webp'
+import houseD70roofOrange from '../assets/dom3/dach/pomarancz.webp'
+import houseD70roofRed from '../assets/dom3/dach/czerwony.webp'
 
 
 
@@ -109,6 +113,11 @@ import finishD115DarkSlats from '../assets/dom2/tynk/lameleciemne.webp'
 import finishD115Slats from '../assets/dom2/tynk/lamele.webp'
 import finishD115AnthraciteSlats from '../assets/dom2/tynk/lameleantracyt.webp'
 
+import houseD115roofAnthracite from '../assets/dom2/dach/antracyt.webp'
+import houseD115roofGreen from '../assets/dom2/dach/antracyt.webp'
+import houseD115roofRed from '../assets/dom2/dach/czerwony.webp'
+import houseD115roofOrange from '../assets/dom2/dach/pomarancz.webp'
+
 import houseD115windowAnthracite from '../assets/dom2/okna/antracyt.webp'
 import houseD115windowGray from '../assets/dom2/okna/szary.webp'
 import houseD115windowOak from '../assets/dom2/okna/dab.webp'
@@ -139,7 +148,6 @@ import houseD126windowWalnut from '../assets/konfigurator/okna/orzech.webp'
 import houseD126windowWhite from '../assets/konfigurator/okna/biale.webp'
 
 import houseD126roofAnthracite from '../assets/konfigurator/dach/antracyt.webp'
-import houseD126roofWhite from '../assets/konfigurator/dach/bialy.webp'
 import houseD126roofGreen from '../assets/konfigurator/dach/zielony.webp'
 import houseD126roofRed from '../assets/konfigurator/dach/czerwony.webp'
 import houseD126roofOrange from '../assets/konfigurator/dach/kremowy.webp'
@@ -184,6 +192,31 @@ export const HOUSE_CONFIGS = {
           { id: 8, name: 'Białe', thumb: finishD70WhiteSlatsThumb, image: finishD70WhiteSlats },
         ]
       },
+
+      typDachu: [
+        { id: 0, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD70Roof, price: 77000 },
+        { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD70Roof, price: 68000 }
+      ],
+
+            
+      kolorDachu: {
+        0: [ 
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD70Roof, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD70roofAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD70roofOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD70roofGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD70roofRed, price: 0 }
+        ],
+        1: [ 
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD70Roof, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD70roofAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD70roofOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD70roofGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD70roofRed, price: 0 }
+        ]
+      },
+
+      
       rolety: [
         { id: 1, name: 'Szare', thumb: blindGrayThumb, image: houseD70blindGray },
         { id: 2, name: 'Antracyt', thumb: blindBlackThumb, image: houseD70blindBlack },
@@ -230,6 +263,31 @@ export const HOUSE_CONFIGS = {
           { id: 8, name: 'Białe', thumb: finishD115WhiteSlatsThumb, image: finishD115WhiteSlats },
         ]
       },
+
+      typDachu: [
+        { id: 0, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD126Roof, price: 77000 },
+        { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD126Roof, price: 68000 }
+      ],
+
+            
+      kolorDachu: {
+        0: [ 
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD115Roof, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD115roofAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD115roofOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD115roofGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD115roofRed, price: 0 }
+        ],
+        1: [ 
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD115Roof, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD115roofAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD115roofOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD115roofGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD115roofRed, price: 0 }
+        ]
+      },
+
+      
       rolety: [
         { id: 1, name: 'Szare', thumb: blindGrayThumb, image: houseD115blindGray },
         { id: 2, name: 'Białe', thumb: blindWhiteThumb, image: houseD115blindWhite },
@@ -281,7 +339,6 @@ export const HOUSE_CONFIGS = {
 
       
       typDachu: [
-        // { id: 0, name: 'Brak', image: null, price: 0 },
         { id: 0, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD126Roof, price: 77000 },
         { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD126Roof, price: 68000 }
       ],
@@ -292,14 +349,14 @@ export const HOUSE_CONFIGS = {
           { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
           { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
           { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },
-          { id: 4, name: 'Ciemny Zielony', thumb: roofGrayThumb, image: houseD126roofGreen, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD126roofGreen, price: 0 },
           { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD126roofRed, price: 0 }
         ],
         1: [ 
           { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
           { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
           { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },
-          { id: 4, name: 'Ciemny Zielony', thumb: roofGrayThumb, image: houseD126roofGreen, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD126roofGreen, price: 0 },
           { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD126roofRed, price: 0 }
         ]
       },
