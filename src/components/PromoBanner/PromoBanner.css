@@ -29,9 +29,9 @@
 .promo-image {
   width: 160px;
   height: auto;
+  margin-bottom: -50px;
   position: relative;
   margin-top: -80px;
-  margin-bottom: -20px;
   z-index: 100;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
   transition: transform 0.3s ease;

@@ -10,11 +10,6 @@ export default function Kontakt() {
   return (
     <div>
         <Header/>
-      <HeroVideo video={laptop}
-      content={
-        <div>Skontaktuj się z nami</div>
-      }
-      />
         <div className='section'>
             <div className="app">
               <div className="container">

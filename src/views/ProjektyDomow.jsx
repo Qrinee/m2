@@ -6,11 +6,14 @@ import et2 from '../assets/konfigurator/thumbnails/2.png';
 import et3 from '../assets/konfigurator/thumbnails/3.png';
 
 
-import projekt1 from '../assets/pawilony/dwa.png'
-import projekt2 from '../assets/pawilony/3/1.png'
-import projekt3 from '../assets/pawilony/4/dsad.png'
-import projekt4 from '../assets/pawilony/5/2.png'
-import projekt5 from '../assets/pawilony/6/4.png'
+import projekt1 from '../assets/pawilony/3/ws.jpeg'
+import projekt2 from '../assets/pawilony/5/1.jpg'
+import projekt3 from '../assets/slajdykonfig/1.jpg'
+import projekt4 from '../assets/slajdykonfig/2.jpg'
+import projekt5 from '../assets/slajdykonfig/3.jpg'
+import projekt6 from '../assets/slajdykonfig/4.jpg'
+import projekt7 from '../assets/slajdykonfig/5.jpg'
+
 import './ProjektyDomow.css';
 import { 
   FaRulerCombined, 
@@ -82,7 +85,7 @@ export default function ProjektyDomow() {
   return (
     <>
       <Header red />
-      <HeroSlider images={[projekt1, projekt2,projekt3,projekt4,projekt5]}
+      <HeroSlider images={[projekt1, projekt2, projekt3, projekt4, projekt5, projekt6, projekt7]}
       
       content={
                     <div className="hero-slider__overlay">

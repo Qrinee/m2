@@ -212,7 +212,7 @@ Nasze płyty fundamentowe doskonale sprawdzają się jako baza pod:</p>
                 <li>małe domki do 35m², domki rekreacyjne i letniskowe,</li>
                 <li>konstrukcje drewniane oraz modułowe.</li>
               </ul>
-              <p>Stabilna konstrukcja płyty gwarantuje trwałość, izolację termiczną i bezpieczeństwo użytkowania."
+              <p>Stabilna konstrukcja płyty gwarantuje trwałość, izolację termiczną i bezpieczeństwo użytkowania.
     </p>
             </div>
 
@@ -229,7 +229,7 @@ Nasze płyty fundamentowe doskonale sprawdzają się jako baza pod:</p>
                 <li>hale magazynowe, warsztaty czy pomieszczenia techniczne,</li>
                 <li>zbiorniki LPG, zbiorniki gazowe i elementy techniczne wymagające stabilnego posadowienia.</li>
               </ul>
-              <p>Technologia płyty zapewnia równomierne przenoszenie obciążeń i wysoki poziom odporności na eksploatację."</p>
+              <p>Technologia płyty zapewnia równomierne przenoszenie obciążeń i wysoki poziom odporności na eksploatację.</p>
             </div>
 
             <div className="application-category">
@@ -247,7 +247,7 @@ Płyta fundamentowa świetnie sprawdza się w miejscach, gdzie tradycyjne fundam
                 <li>na terenach objętych szkodami górniczymi,</li>
                 <li>na torfach, glinach i gruntach o niskiej nośności.</li>
               </ul>
-              <p>Dzięki odpowiedniej konstrukcji i izolacji płyta zapewnia stabilność, bezpieczeństwo i trwałość inwestycji."
+              <p>Dzięki odpowiedniej konstrukcji i izolacji płyta zapewnia stabilność, bezpieczeństwo i trwałość inwestycji.
 </p>
             </div>
           </div>

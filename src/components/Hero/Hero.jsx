@@ -27,7 +27,7 @@ const Hero = () => {
         {/* Left background - Domy */}
         <div 
           className="modern-hero-bg left-bg"
-          style={{ backgroundImage: `url(dom.webp)` }}
+          style={{ backgroundImage: `url(ws.jpeg)` }}
         >
           <div className="modern-hero-overlay left-overlay"></div>
         </div>
