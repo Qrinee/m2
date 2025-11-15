@@ -48,7 +48,7 @@ const ListingCard = ({
     <div className="listing-card">
 
       <div className="listing-image">
-        <img src={image} alt={title} />
+        <img src={image } alt={title} />
         <div className="badge-container">
 
         </div>

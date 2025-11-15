@@ -80,31 +80,43 @@ export default function Profil() {
   };
 
   // Funkcja do przekształcania danych property na propsy dla ListingCard
-  const mapPropertyToCardProps = (property) => {
-    const statusBadge = getStatusBadge(property.status);
-    
-    return {
-      key: property._id,
-      image: property.multimedia?.zdjecia?.length > 0 
-        ? `${import.meta.env.VITE_BACKEND}/${property.multimedia.zdjecia.find(img => img.isCover)?.path || property.multimedia.zdjecia[0].path}`
-        : '/placeholder-image.jpg', // fallback image
-      badges: [statusBadge],
-      location: `${property.lokalizacja?.miasto || ''}, ${property.lokalizacja?.wojewodztwo || ''}`,
-      views: property.views || 0,
-      title: property.tytul || property.nazwa || 'Brak tytułu',
-      price: `${formatPrice(property.cena?.calkowita || property.cenaNum)} zł`,
-      role: property.user?.role || 'user',
-      companyName: property.user?.companyName || '',
-      description: property.opis ? 
-        (property.opis.length > 150 ? property.opis.substring(0, 150) + '...' : property.opis) 
-        : 'Brak opisu',
-      baths: property.pomieszczenia?.lazienki || property.szczegoly?.lazienki || 0,
-      beds: property.pomieszczenia?.pokoje || property.szczegoly?.pokoje || 0,
-      area: property.powierzchnia?.calkowita || property.szczegoly?.rozmiar_m2 || 0,
-      agentImage: property.user?.profilePicture || '',
-      agentName: property.user ? `${property.user.name || ''} ${property.user.surname || ''}`.trim() : ''
-    };
+const mapPropertyToCardProps = (property) => {
+  const statusBadge = getStatusBadge(property.status);
+
+  const zdjecia = property.multimedia?.zdjecia || [];
+  const cover = zdjecia.find(img => img.isCover) || zdjecia[0];
+
+  let image = '/placeholder-image.jpg';
+
+  if (cover?.path) {
+    if (cover.path.startsWith('http://gdjdcymlwc.cfolks.pl')) {
+      image = cover.path;
+    } else {
+      image = `${import.meta.env.VITE_BACKEND}/${cover.path}`;
+    }
+  }
+
+  return {
+    key: property._id,
+    image,
+    badges: [statusBadge],
+    location: `${property.lokalizacja?.miasto || ''}, ${property.lokalizacja?.wojewodztwo || ''}`,
+    views: property.views || 0,
+    title: property.tytul || property.nazwa || 'Brak tytułu',
+    price: `${formatPrice(property.cena?.calkowita || property.cenaNum)} zł`,
+    role: property.user?.role || 'user',
+    companyName: property.user?.companyName || '',
+    description: property.opis
+      ? (property.opis.length > 150 ? property.opis.substring(0, 150) + '...' : property.opis)
+      : 'Brak opisu',
+    baths: property.pomieszczenia?.lazienki || property.szczegoly?.lazienki || 0,
+    beds: property.pomieszczenia?.pokoje || property.szczegoly?.pokoje || 0,
+    area: property.powierzchnia?.calkowita || property.szczegoly?.rozmiar_m2 || 0,
+    agentImage: property.user?.profilePicture || '',
+    agentName: property.user ? `${property.user.name || ''} ${property.user.surname || ''}`.trim() : ''
   };
+};
+
 
   return (
     <div>
