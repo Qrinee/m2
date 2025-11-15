@@ -13,13 +13,15 @@ const ConfigPanel = ({ houseConfig, selections, onSelectionChange }) => {
     return selections.typDachu && selections.typDachu !== 0 && houseConfig.options.kolorDachu
   }
 
+  const shouldShowDrzwiSection = () => {
+    return selections.kolorDrzwi && selections.kolorDrzwi !== 0 && houseConfig.options.drzwi
+  }
+
   // Funkcja do filtrowania opcji typu dachu
-const getFilteredTypDachuOptions = () => {
-  const allOptions = houseConfig.options.typDachu || [];
-  
-  // Jeśli chcesz zawsze pokazywać wszystkie opcje dachu:
-  return allOptions;
-}
+  const getFilteredTypDachuOptions = () => {
+    const allOptions = houseConfig.options.typDachu || [];
+    return allOptions;
+  }
 
   const renderSection = (sectionKey) => {
     const section = houseConfig.options[sectionKey]
@@ -64,7 +66,6 @@ const getFilteredTypDachuOptions = () => {
 
       case 'typDachu':
         const filteredOptions = getFilteredTypDachuOptions();
-        // Jeśli nie ma dostępnych opcji po filtrowaniu, nie renderuj sekcji
         if (filteredOptions.length === 0) return null;
         
         return (
@@ -76,11 +77,43 @@ const getFilteredTypDachuOptions = () => {
           />
         )
 
+      case 'kolorDrzwi':
+        // Sekcja wyboru koloru drzwi
+        return (
+          <ConfigSection
+            title="Kolor drzwi"
+            options={Array.isArray(section) ? section : []}
+            activeId={selections.kolorDrzwi}
+            onSelect={(id) => {
+              // Resetuj wybór modelu drzwi przy zmianie koloru
+              onSelectionChange('drzwi', 0);
+              onSelectionChange('kolorDrzwi', id);
+            }}
+          />
+        )
+
+      case 'drzwi':
+        // Sekcja wyboru modelu drzwi - pokazuj tylko jeśli wybrano kolor
+        if (!shouldShowDrzwiSection()) return null;
+        
+        const drzwiOptions = section[selections.kolorDrzwi] || [];
+        return (
+          <ConfigSection
+            title="Model drzwi"
+            options={drzwiOptions}
+            activeId={selections.drzwi}
+            onSelect={(id) => onSelectionChange('drzwi', id)}
+          />
+        )
+
       default:
+        // Dla pozostałych sekcji, które są tablicami
+        if (!Array.isArray(section)) return null;
+        
         return (
           <ConfigSection
             title={getSectionTitle(sectionKey)}
-            options={Array.isArray(section) ? section : []}
+            options={section}
             activeId={selections[sectionKey]}
             onSelect={(id) => onSelectionChange(sectionKey, id)}
           />
@@ -94,9 +127,25 @@ const getFilteredTypDachuOptions = () => {
       kolorDachu: 'Kolor dachu',
       tynk: 'Typ elewacji',
       okna: 'Kolor okien',
-      drzwi: 'Drzwi wejściowe'
+      kolorDrzwi: 'Kolor drzwi',
+      drzwi: 'Model drzwi'
     }
     return titles[sectionKey] || sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)
+  }
+
+  // Funkcja do określania kolejności sekcji
+  const getSectionOrder = (sectionKey) => {
+    const order = {
+      tynk: 1,
+      kolor: 2,
+      typDachu: 3,
+      kolorDachu: 4,
+      okna: 5,
+      rolety: 6,
+      kolorDrzwi: 7,
+      drzwi: 8
+    };
+    return order[sectionKey] || 99;
   }
 
   return (
@@ -104,10 +153,12 @@ const getFilteredTypDachuOptions = () => {
       <div className="config-content">
         <h2>{houseConfig.name}</h2>
         
-        {/* Renderuj wszystkie dostępne sekcje */}
-        {Object.keys(houseConfig.options).map(sectionKey => 
-          renderSection(sectionKey)
-        )}
+        {/* Renderuj sekcje w określonej kolejności */}
+        {Object.keys(houseConfig.options)
+          .sort((a, b) => getSectionOrder(a) - getSectionOrder(b))
+          .map(sectionKey => 
+            renderSection(sectionKey)
+          )}
 
         <div className="config-end">
           <p>Koniec konfiguracji</p>

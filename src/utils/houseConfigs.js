@@ -1,3 +1,75 @@
+// Thumbnails dla kolorów drzwi (główne kategorie)
+import doorGrayThumb from '../assets/konfigurator/thumbnails/drzwi_szary.jpg'
+import doorOakThumb from '../assets/konfigurator/thumbnails/drzwi_dab.jpg'
+import doorAnthraciteThumb from '../assets/konfigurator/thumbnails/drzwi_antracyt.jpg'
+import doorWhiteThumb from '../assets/konfigurator/thumbnails/drzwi_bialy.jpg'
+
+// Thumbnails dla konkretnych modeli drzwi - SZARE
+import doorGrayGerdaThumb from '../assets/konfigurator/thumbnails/drzwi_szary_gerda.jpg'
+import doorGrayD6297Thumb from '../assets/konfigurator/thumbnails/drzwi_szary_6297.png'
+
+// Thumbnails dla konkretnych modeli drzwi - DĄB/ORZECH
+import doorOakHanoverThumb from '../assets/konfigurator/thumbnails/drzwi_dab_hanover.webp'
+import doorOakMilanoThumb from '../assets/konfigurator/thumbnails/drzwi_dab_milano.webp'
+import doorOakD6305Thumb from '../assets/konfigurator/thumbnails/drzwi_dab_6305.webp'
+import doorOakD5577Thumb from '../assets/konfigurator/thumbnails/drzwi_dab_5577.png'
+
+// Thumbnails dla konkretnych modeli drzwi - ANTRACYT
+import doorAnthraciteGerdaTokioThumb from '../assets/konfigurator/thumbnails/drzwi_antracyt_gerda_tokio.jpg'
+import doorAnthraciteMartomThumb from '../assets/konfigurator/thumbnails/drzwi_antracyt_martom.jpg'
+
+// Thumbnails dla konkretnych modeli drzwi - BIAŁE
+import doorWhiteGerdaWeronaThumb from '../assets/konfigurator/thumbnails/drzwi_bialy_gerda_werona.jpg'
+import doorWhiteMartomSimpleEleganceThumb from '../assets/konfigurator/thumbnails/drzwi_bialy_martom_simple_elegance.jpg'
+
+// DLA DOMU D70
+// Szare drzwi - D70
+import houseD70doorGrayGerda from '../assets/dom3/drzwi/szary_gerda.webp'
+import houseD70doorGrayD6297 from '../assets/dom3/drzwi/szary_6297.webp'
+
+// Dąb/Orzech drzwi - D70
+import houseD70doorOakHanover from '../assets/dom3/drzwi/dab_hanover.webp'
+import houseD70doorOakMilano from '../assets/dom3/drzwi/dab_milano.webp'
+import houseD70doorOakD6305 from '../assets/dom3/drzwi/dab_6305.webp'
+import houseD70doorOakD5577 from '../assets/dom3/drzwi/dab_5577.webp'
+
+// Antracyt drzwi - D70
+import houseD70doorAnthraciteGerdaTokio from '../assets/dom3/drzwi/antracyt_gerda_tokio.webp'
+import houseD70doorAnthraciteMartom from '../assets/dom3/drzwi/antracyt_martom.webp'
+
+// Białe drzwi - D70
+import houseD70doorWhiteGerdaWerona from '../assets/dom3/drzwi/bialy_gerda_werona.webp'
+import houseD70doorWhiteMartomSimpleElegance from '../assets/dom3/drzwi/bialy_martom_simple_elegance.webp'
+
+
+
+// DLA DOMU D126
+// Szare drzwi - D126
+import houseD126doorGrayGerda from '../assets/konfigurator/drzwi/szary_gerda.webp'
+import houseD126doorGrayD6297 from '../assets/konfigurator/drzwi/szary_6297.webp'
+
+// Dąb/Orzech drzwi - D126
+import houseD126doorOakHanover from '../assets/konfigurator/drzwi/dab_hanover.webp'
+import houseD126doorOakMilano from '../assets/konfigurator/drzwi/dab_milano.webp'
+import houseD126doorOakD6305 from '../assets/konfigurator/drzwi/dab_6305.webp'
+import houseD126doorOakD5577 from '../assets/konfigurator/drzwi/dab_5577.webp'
+
+// Antracyt drzwi - D126
+import houseD126doorAnthraciteGerdaTokio from '../assets/konfigurator/drzwi/antracyt_gerda_tokio.webp'
+import houseD126doorAnthraciteMartom from '../assets/konfigurator/drzwi/antracyt_martom.webp'
+
+// Białe drzwi - D126
+import houseD126doorWhiteGerdaWerona from '../assets/konfigurator/drzwi/bialy_gerda_werona.webp'
+import houseD126doorWhiteMartomSimpleElegance from '../assets/konfigurator/drzwi/bialy_martom_simple_elegance.webp'
+
+
+
+
+
+
+
+
+
 
 import houseD115Base from '../assets/dom2/base.webp'
 import houseD126Base from '../assets/konfigurator/stock.webp'
@@ -230,11 +302,32 @@ export const HOUSE_CONFIGS = {
         { id: 4, name: 'Orzech', thumb: windowWalnutThumb, image: houseD70windowWalnut },
         { id: 5, name: 'Biały', thumb: windowWhiteThumb, image: houseD70windowWhite }
       ],
-      drzwi: [
-        { id: 1, name: 'Model 11S3',  thumb: door11S3Thumb, image: houseD70door11S3 },
-        { id: 2, name: 'Model P9',  thumb: doorP9Thumb, image: houseD70doorP9 },
-        { id: 3, name: 'Model 14A', thumb: door14AThumb, image: houseD70door14A },
-      ]
+kolorDrzwi: [
+  { id: 1, name: 'Szare', thumb: doorGrayThumb , hasColors: true},
+  { id: 2, name: 'Dąb / Orzech', thumb: doorOakThumb, hasColors: true },
+  { id: 3, name: 'Antracyt', thumb: doorAnthraciteThumb, hasColors: true },
+  { id: 4, name: 'Białe', thumb: doorWhiteThumb, hasColors: true }
+],
+drzwi: {
+  1: [ // Szare
+    { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb, image: houseD70doorGrayGerda },
+    { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb, image: houseD70doorGrayD6297 }
+  ],
+  2: [ // Dąb/Orzech
+    { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb, image: houseD70doorOakHanover },
+    { id: 4, name: 'Milano', thumb: doorOakMilanoThumb, image: houseD70doorOakMilano },
+    { id: 5, name: 'D6305', thumb: doorOakD6305Thumb, image: houseD70doorOakD6305 },
+    { id: 6, name: 'D5577', thumb: doorOakD5577Thumb, image: houseD70doorOakD5577 }
+  ],
+  3: [ // Antracyt
+    { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb, image: houseD70doorAnthraciteGerdaTokio },
+    { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb, image: houseD70doorAnthraciteMartom }
+  ],
+  4: [ // Białe
+    { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb, image: houseD70doorWhiteGerdaWerona },
+    { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb, image: houseD70doorWhiteMartomSimpleElegance }
+  ]
+}
     },
   },
   d115: {
@@ -302,11 +395,32 @@ export const HOUSE_CONFIGS = {
         { id: 4, name: 'Orzech', thumb: windowWalnutThumb, image: houseD115windowWalnut },
         { id: 5, name: 'Biały', thumb: windowWhiteThumb, image: houseD115windowWhite }
       ],
-      drzwi: [
-        { id: 1, name: 'Model 11S3',  thumb: door11S3Thumb },
-        { id: 2, name: 'Model P9',  thumb: doorP9Thumb },
-        { id: 3, name: 'Model 14A', thumb: door14AThumb }
-      ],
+kolorDrzwi: [
+  { id: 1, name: 'Szare', thumb: doorGrayThumb },
+  { id: 2, name: 'Dąb / Orzech', thumb: doorOakThumb },
+  { id: 3, name: 'Antracyt', thumb: doorAnthraciteThumb },
+  { id: 4, name: 'Białe', thumb: doorWhiteThumb }
+],
+drzwi: {
+  1: [ // Szare
+    { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb },
+    { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb }
+  ],
+  2: [ // Dąb/Orzech
+    { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb},
+    { id: 4, name: 'Milano', thumb: doorOakMilanoThumb },
+    { id: 5, name: 'D6305', thumb: doorOakD6305Thumb },
+    { id: 6, name: 'D5577', thumb: doorOakD5577Thumb }
+  ],
+  3: [ // Antracyt
+    { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb },
+    { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb }
+  ],
+  4: [ // Białe
+    { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb },
+    { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb }
+  ]
+}
     },
   },
   d126: {
@@ -377,11 +491,32 @@ export const HOUSE_CONFIGS = {
         { id: 5, name: 'Biały', thumb: windowWhiteThumb, image: houseD126windowWhite, price: 0 }
       ],
       
-      drzwi: [
-        { id: 1, name: 'Model 11S3', image: houseD126door11S3, thumb: door11S3Thumb, price: 6500 },
-        { id: 2, name: 'Model P9', image: houseD126doorP9, thumb: doorP9Thumb, price: 6500 },
-        { id: 3, name: 'Model 14A', image: houseD126door14A, thumb: door14AThumb, price: 6500 },
-     ]
+kolorDrzwi: [
+  { id: 1, name: 'Szare', thumb: doorGrayThumb, price: 0 },
+  { id: 2, name: 'Dąb / Orzech', thumb: doorOakThumb, price: 0 },
+  { id: 3, name: 'Antracyt', thumb: doorAnthraciteThumb, price: 0 },
+  { id: 4, name: 'Białe', thumb: doorWhiteThumb, price: 0 }
+],
+drzwi: {
+  1: [ // Szare
+    { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb, image: houseD126doorGrayGerda, price: 6500 },
+    { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb, image: houseD126doorGrayD6297, price: 6500 }
+  ],
+  2: [ // Dąb/Orzech
+    { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb, image: houseD126doorOakHanover, price: 6500 },
+    { id: 4, name: 'Milano', thumb: doorOakMilanoThumb, image: houseD126doorOakMilano, price: 6500 },
+    { id: 5, name: 'D6305', thumb: doorOakD6305Thumb, image: houseD126doorOakD6305, price: 6500 },
+    { id: 6, name: 'D5577', thumb: doorOakD5577Thumb, image: houseD126doorOakD5577, price: 6500 }
+  ],
+  3: [ // Antracyt
+    { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb, image: houseD126doorAnthraciteGerdaTokio, price: 6500 },
+    { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb, image: houseD126doorAnthraciteMartom, price: 6500 }
+  ],
+  4: [ // Białe
+    { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb, image: houseD126doorWhiteGerdaWerona, price: 6500 },
+    { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb, image: houseD126doorWhiteMartomSimpleElegance, price: 6500 }
+  ]
+}
     },
   }
 }

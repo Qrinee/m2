@@ -47,7 +47,6 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
         
         if (isMounted) {
           setAllImagesLoaded(true);
-          // Wywołaj callback jeśli został przekazany
           if (onImagesLoad) {
             onImagesLoad();
           }
@@ -71,48 +70,56 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
     };
   }, [houseConfig, selections, onImagesLoad]);
 
-const getOptionImage = (type, id) => {
-  const section = houseConfig.options[type];
-  if (!section) return null;
+  const getOptionImage = (type, id) => {
+    const section = houseConfig.options[type];
+    if (!section) return null;
 
-  let option;
-  
-  if (type === 'kolor') {
-    const mainTynk = selections.tynk;
-    const colorOptions = section[mainTynk];
-    if (colorOptions) {
-      option = colorOptions.find(opt => opt.id === id);
+    let option;
+    
+    if (type === 'kolor') {
+      const mainTynk = selections.tynk;
+      const colorOptions = section[mainTynk];
+      if (colorOptions) {
+        option = colorOptions.find(opt => opt.id === id);
+      }
+    } else if (type === 'kolorDachu') {
+      const typDachu = selections.typDachu;
+      const colorOptions = section[typDachu];
+      if (colorOptions) {
+        option = colorOptions.find(opt => opt.id === id);
+      }
+    } else if (type === 'drzwi') {
+      // DODANA OBSŁUGA DRZWI
+      const kolorDrzwi = selections.kolorDrzwi;
+      const doorOptions = section[kolorDrzwi];
+      if (doorOptions) {
+        option = doorOptions.find(opt => opt.id === id);
+      }
+    } else {
+      option = Array.isArray(section) 
+        ? section.find(opt => opt.id === id)
+        : null;
     }
-  } else if (type === 'kolorDachu') {
-    const typDachu = selections.typDachu;
-    const colorOptions = section[typDachu];
-    if (colorOptions) {
-      option = colorOptions.find(opt => opt.id === id);
-    }
-  } else {
-    option = Array.isArray(section) 
-      ? section.find(opt => opt.id === id)
-      : null;
-  }
-  return option;
-};
-const renderElement = (type, id, className = type) => {
-  const option = getOptionImage(type, id);
-  if (!option?.image) return null;
+    return option;
+  };
 
-  return (
-    <div className={`element-pickable ${className}`}>
-      <img 
-        src={option.image} 
-        alt={option.name}
-        style={{ 
-          opacity: allImagesLoaded ? 1 : 0,
-          transition: 'opacity 0.3s ease-in-out'
-        }}
-      />
-    </div>
-  );
-};
+  const renderElement = (type, id, className = type) => {
+    const option = getOptionImage(type, id);
+    if (!option?.image) return null;
+
+    return (
+      <div className={`element-pickable ${className}`}>
+        <img 
+          src={option.image} 
+          alt={option.name}
+          style={{ 
+            opacity: allImagesLoaded ? 1 : 0,
+            transition: 'opacity 0.3s ease-in-out'
+          }}
+        />
+      </div>
+    );
+  };
 
   return (
     <div className="vis-overlay">
@@ -136,12 +143,15 @@ const renderElement = (type, id, className = type) => {
           style={{ opacity: allImagesLoaded ? 1 : 0 }}
         />
       </div>
-{selections.typDachu && selections.typDachu !== 0 && selections.kolorDachu && renderElement('kolorDachu', selections.kolorDachu, 'dach')}
+
+      {/* POPRAWIONE RENDEROWANIE - DRZWI TERAZ SĄ OSTATNIE */}
+      {selections.typDachu && selections.typDachu !== 0 && selections.kolorDachu && selections.kolorDachu !== 0 && renderElement('kolorDachu', selections.kolorDachu, 'dach')}
       {selections.roletyEnabled && selections.rolety && selections.rolety !== 0 && renderElement('rolety', selections.rolety)}
       {selections.okna && selections.okna !== 0 && renderElement('okna', selections.okna)}
-      {selections.drzwi && selections.drzwi !== 0 && renderElement('drzwi', selections.drzwi)}
       {selections.tynk && selections.tynk !== 0 && renderElement('tynk', selections.tynk)}
-      {selections.kolor && selections.kolor !== null && renderElement('kolor', selections.kolor)}
+      {selections.kolor && selections.kolor !== 0 && renderElement('kolor', selections.kolor)}
+      {/* POPRAWIONE RENDEROWANIE DRZWI */}
+      {selections.kolorDrzwi && selections.kolorDrzwi !== 0 && selections.drzwi && selections.drzwi !== 0 && renderElement('drzwi', selections.drzwi)}
     </div>
   );
 };
