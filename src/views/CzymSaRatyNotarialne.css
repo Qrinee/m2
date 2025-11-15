@@ -17,6 +17,14 @@
   height: 60px;
 }
 
+.reelsy{
+  gap: 20px;
+}
+
+.reelsy iframe{
+  border-radius: 10px;
+}
+
 /* Sekcja główna z kartami */
 .notarial-hero-cards {
   display: grid;
@@ -322,5 +330,91 @@
   
   .notarial-faq-title {
     font-size: 2rem;
+  }
+}
+
+
+
+/* Sekcja z mapą */
+.map-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.map-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.map-text h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+}
+
+.map-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.map-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.map-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+}
+
+.feature-icone {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+}
+
+.map-image {
+  text-align: center;
+}
+
+.map-image img {
+  max-width: 100%;
+  height: auto;
+  min-width: 150px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.map-image img:hover {
+  transform: scale(1.02);
+}
+
+/* Responsywność */
+@media (max-width: 968px) {
+  .map-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .map-features {
+    align-items: center;
+  }
+  
+  .map-text h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-section {
+    padding: 3rem 0;
   }
 }

@@ -21,6 +21,10 @@ import {
 import './PlytyFundamentowePage.css'
 import Footer from '../components/Footer/Footer'
 import HeroNieruchomosci from '../components/HeroNieruchomosci/HeroNieruchomosci'
+
+// Import obrazu mapy Polski - upewnij się, że ścieżka jest poprawna
+import mapaPolski from '../assets/mapa-polski.jpg'
+
 export default function PlytyFundamentowe() {
   const [formData, setFormData] = useState({
     name: '',
@@ -65,14 +69,13 @@ export default function PlytyFundamentowe() {
     <div className="plyty-fundamentowe-page">
       <Header/>
 
-
       <HeroNieruchomosci 
         img={img}
-                content={
+        content={
           <div style={{maxWidth: '800px'}}>
             <h1><span style={{color: 'var(--secondary-color)'}}>PŁYTA FUNDAMENTOWA</span> — nowoczesny standard budowy.</h1>
             <p style={{color: 'white', fontSize: '1.2rem', marginTop: '20px'}}>
-Nowoczesny fundament dopasowany do współczesnych standardów budownictwa. Zapewniamy kompleksową realizację płyt fundamentowych na terenie całej Polski – od projektu aż po wykonanie.                                                      Płyta fundamentowa to innowacyjna alternatywa dla tradycyjnych fundamentów, która gwarantuje doskonałą izolację cieplną, wysoką trwałość oraz pełną stabilność konstrukcji. Oferujemy profesjonalną obsługę, precyzję wykonania i rozwiązania dopasowane do każdego rodzaju budynku.
+              Nowoczesny fundament dopasowany do współczesnych standardów budownictwa. Zapewniamy kompleksową realizację płyt fundamentowych na terenie całej Polski – od projektu aż po wykonanie. Płyta fundamentowa to innowacyjna alternatywa dla tradycyjnych fundamentów, która gwarantuje doskonałą izolację cieplną, wysoką trwałość oraz pełną stabilność konstrukcji. Oferujemy profesjonalną obsługę, precyzję wykonania i rozwiązania dopasowane do każdego rodzaju budynku.
             </p>
           </div>
         }
@@ -93,7 +96,8 @@ Nowoczesny fundament dopasowany do współczesnych standardów budownictwa. Zape
             </div>
             <h3 className="career-benefit-title">Doskonałe parametry izolacyjne i termiczne</h3>
             <p className="career-benefit-description">
-Dzięki zaawansowanej technologii wykonania oraz precyzyjnie dobranym warstwom izolacji, nasze płyty fundamentowe zapewniają wyjątkową efektywność energetyczną i wysoki komfort cieplny. Umożliwiają realizację domów energooszczędnych oraz pasywnych, znacząco obniżając koszty ogrzewania i eksploatacji budynku. </p>
+              Dzięki zaawansowanej technologii wykonania oraz precyzyjnie dobranym warstwom izolacji, nasze płyty fundamentowe zapewniają wyjątkową efektywność energetyczną i wysoki komfort cieplny. Umożliwiają realizację domów energooszczędnych oraz pasywnych, znacząco obniżając koszty ogrzewania i eksploatacji budynku.
+            </p>
           </div>
 
           <div className="career-benefit-card">
@@ -102,7 +106,8 @@ Dzięki zaawansowanej technologii wykonania oraz precyzyjnie dobranym warstwom i
             </div>
             <h3 className="career-benefit-title">Realizacja płyty fundamentowej w zaledwie 7 dni</h3>
             <p className="career-benefit-description">
-Realizacja płyty fundamentowej w naszej technologii trwa średnio około 7 dni, obejmując wszystkie kluczowe etapy prac – od przygotowania podłoża, przez zbrojenie i instalacje, aż po wylanie betonu.  </p>
+              Realizacja płyty fundamentowej w naszej technologii trwa średnio około 7 dni, obejmując wszystkie kluczowe etapy prac – od przygotowania podłoża, przez zbrojenie i instalacje, aż po wylanie betonu.
+            </p>
           </div>
 
           <div className="career-benefit-card">
@@ -111,7 +116,8 @@ Realizacja płyty fundamentowej w naszej technologii trwa średnio około 7 dni,
             </div>
             <h3 className="career-benefit-title">Technologia skutecznie eliminuje mostki termiczne</h3>
             <p className="career-benefit-description">
-Dzięki zaawansowanej konstrukcji oraz precyzyjnie zaprojektowanym warstwom izolacji płyta fundamentowa jest całkowicie odizolowana od gruntu, co pozwala wyeliminować mostki termiczne. To jedna z kluczowych przewag płyty nad tradycyjnymi fundamentami. </p>
+              Dzięki zaawansowanej konstrukcji oraz precyzyjnie zaprojektowanym warstwom izolacji płyta fundamentowa jest całkowicie odizolowana od gruntu, co pozwala wyeliminować mostki termiczne. To jedna z kluczowych przewag płyty nad tradycyjnymi fundamentami.
+            </p>
           </div>
 
           <div className="career-benefit-card">
@@ -120,7 +126,8 @@ Dzięki zaawansowanej konstrukcji oraz precyzyjnie zaprojektowanym warstwom izol
             </div>
             <h3 className="career-benefit-title">Skuteczna ochrona przed wilgocią</h3>
             <p className="career-benefit-description">
-Płyta fundamentowa zapewnia doskonałą izolację przeciwwilgociową, chroniąc budynek przed przenikaniem wilgoci i wody. To pewne i trwałe rozwiązanie zwiększające bezpieczeństwo konstrukcji.       </p>
+              Płyta fundamentowa zapewnia doskonałą izolację przeciwwilgociową, chroniąc budynek przed przenikaniem wilgoci i wody. To pewne i trwałe rozwiązanie zwiększające bezpieczeństwo konstrukcji.
+            </p>
           </div>
 
           <div className="career-benefit-card">
@@ -129,7 +136,8 @@ Płyta fundamentowa zapewnia doskonałą izolację przeciwwilgociową, chroniąc
             </div>
             <h3 className="career-benefit-title">Ogrzewanie zintegrowane z płytą</h3>
             <p className="career-benefit-description">
-Na etapie budowy płytę można wyposażyć w system ogrzewania wodnego lub elektrycznego. Rozwiązanie to znacząco obniża koszty, zwiększa efektywność cieplną i eliminuje potrzebę wykonywania tradycyjnych wylewek.     </p>
+              Na etapie budowy płytę można wyposażyć w system ogrzewania wodnego lub elektrycznego. Rozwiązanie to znacząco obniża koszty, zwiększa efektywność cieplną i eliminuje potrzebę wykonywania tradycyjnych wylewek.
+            </p>
           </div>
 
           <div className="career-benefit-card">
@@ -138,7 +146,41 @@ Na etapie budowy płytę można wyposażyć w system ogrzewania wodnego lub elek
             </div>
             <h3 className="career-benefit-title">Instalacje zintegorwane w płycie</h3>
             <p className="career-benefit-description">
-Większość instalacji wodnych, kanalizacyjnych oraz teletechnicznych wykonujemy już na etapie budowy płyty fundamentowej. Takie rozwiązanie przyspiesza prace, zwiększa precyzję i generuje dodatkowe oszczędności.    </p>
+              Większość instalacji wodnych, kanalizacyjnych oraz teletechnicznych wykonujemy już na etapie budowy płyty fundamentowej. Takie rozwiązanie przyspiesza prace, zwiększa precyzję i generuje dodatkowe oszczędności.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className='section-spacer-lg'></div>
+
+      {/* Nowa Sekcja z Mapą Polski */}
+      <div className="map-section">
+        <div className="career-container">
+          <div className="map-content">
+            <div className="map-text">
+              <h2 className="career-section-title">Działamy na terenie całej Polski</h2>
+              <p className="map-description">
+                Realizujemy płyty fundamentowe w każdym województwie, zapewniając pełną obsługę — od przygotowania terenu po finalizację prac. Niezależnie od lokalizacji, gwarantujemy terminowość, jakość i wsparcie na każdym etapie inwestycji.
+              </p>
+              <div className="map-features">
+                <div className="map-feature">
+                  <FaCheckCircle className="feature-icone" />
+                  <span>Pełna obsługa inwestycji w całym kraju</span>
+                </div>
+                <div className="map-feature">
+                  <FaCheckCircle className="feature-icone" />
+                  <span>Terminowość i jakość wykonania</span>
+                </div>
+                <div className="map-feature">
+                  <FaCheckCircle className="feature-icone" />
+                  <span>Wsparcie na każdym etapie</span>
+                </div>
+              </div>
+            </div>
+            <div className="map-image">
+              <img src={mapaPolski} alt="Mapa Polski - obszar działania" />
+            </div>
           </div>
         </div>
       </div>
@@ -151,9 +193,11 @@ Większość instalacji wodnych, kanalizacyjnych oraz teletechnicznych wykonujem
           <div className="career-section-header">
             <h2 className="career-section-title">Kompleksowe i profesjonalne wykonanie płyty fundamentowej</h2>
             <p className="career-section-description">
-       Zapewniamy pełną realizację płyt fundamentowych — od przygotowania terenu, przez wykonanie niezbędnych instalacji, aż po finalne prace konstrukcyjne. Oferujemy szeroki zakres usług, w tym montaż ekologicznych oczyszczalni, eko-szamb, drenaży, zbiorników na deszczówkę oraz wykonanie wszystkich prac ziemnych na działce Inwestora.                                             </p>
+              Zapewniamy pełną realizację płyt fundamentowych — od przygotowania terenu, przez wykonanie niezbędnych instalacji, aż po finalne prace konstrukcyjne. Oferujemy szeroki zakres usług, w tym montaż ekologicznych oczyszczalni, eko-szamb, drenaży, zbiorników na deszczówkę oraz wykonanie wszystkich prac ziemnych na działce Inwestora.
+            </p>
             <p className="career-section-description">
-           Zakres naszych usług oraz doświadczenie umożliwiają współpracę zarówno z inwestorami prywatnymi, jak i komercyjnymi, w tym z sektorem deweloperskim.     </p>
+              Zakres naszych usług oraz doświadczenie umożliwiają współpracę zarówno z inwestorami prywatnymi, jak i komercyjnymi, w tym z sektorem deweloperskim.
+            </p>
           </div>
 
           <div className="career-benefits-gride">
@@ -163,9 +207,8 @@ Większość instalacji wodnych, kanalizacyjnych oraz teletechnicznych wykonujem
               </div>
               <h3 className="career-benefit-title">Działamy na terenie całej Polski</h3>
               <p className="career-benefit-description">
-Realizujemy płyty fundamentowe w każdym województwie, zapewniając pełną obsługę — od przygotowania terenu po finalizację prac. Niezależnie od lokalizacji, gwarantujemy terminowość, jakość i wsparcie na każdym etapie inwestycji.
+                Realizujemy płyty fundamentowe w każdym województwie, zapewniając pełną obsługę — od przygotowania terenu po finalizację prac. Niezależnie od lokalizacji, gwarantujemy terminowość, jakość i wsparcie na każdym etapie inwestycji.
               </p>
-
             </div>
 
             <div className="career-benefit-card">
@@ -178,7 +221,7 @@ Realizujemy płyty fundamentowe w każdym województwie, zapewniając pełną ob
                 <li>Pewność solidnego wykonania i wysokiej jakości technologii</li>
                 <li>Oszczędność czasu i pieniędzy dzięki sprawnej organizacji prac</li>
                 <li>Profesjonalna koordynacja i doradztwo na każdym etapie inwestycji</li>
-                <li>Nowoczesne rozwiązania, które zwiększają trwałość i komfort budynku"</li>
+                <li>Nowoczesne rozwiązania, które zwiększają trwałość i komfort budynku</li>
               </ul>
             </div>
           </div>
@@ -200,20 +243,14 @@ Realizujemy płyty fundamentowe w każdym województwie, zapewniając pełną ob
                 <FaBuilding />
               </div>
               <h3 className="application-title">Budynki mieszkalne</h3>
-           
-
-<p>           Idealne rozwiązanie dla domów jednorodzinnych
-Nasze płyty fundamentowe doskonale sprawdzają się jako baza pod:</p>
-       
-           
+              <p>Idealne rozwiązanie dla domów jednorodzinnych. Nasze płyty fundamentowe doskonale sprawdzają się jako baza pod:</p>
               <ul className="career-benefit-list">
                 <li>domy szkieletowe i pasywne,</li>
                 <li>domy murowane oraz projekty jednorodzinne,</li>
                 <li>małe domki do 35m², domki rekreacyjne i letniskowe,</li>
                 <li>konstrukcje drewniane oraz modułowe.</li>
               </ul>
-              <p>Stabilna konstrukcja płyty gwarantuje trwałość, izolację termiczną i bezpieczeństwo użytkowania.
-    </p>
+              <p>Stabilna konstrukcja płyty gwarantuje trwałość, izolację termiczną i bezpieczeństwo użytkowania.</p>
             </div>
 
             <div className="application-category">
@@ -221,8 +258,7 @@ Nasze płyty fundamentowe doskonale sprawdzają się jako baza pod:</p>
                 <FaIndustry />
               </div>
               <h3 className="application-title">Budynki gospodarcze i przemysłowe</h3>
-  
-            <p>Wytrzymałość i funkcjonalność na lata. Płyta fundamentowa idealnie nadaje się pod:</p>
+              <p>Wytrzymałość i funkcjonalność na lata. Płyta fundamentowa idealnie nadaje się pod:</p>
               <ul className="career-benefit-list">
                 <li>garaże murowane, blaszane i drewniane,</li>
                 <li>garaże do 35 m², wiaty oraz małe obiekty gospodarcze,</li>
@@ -237,18 +273,14 @@ Nasze płyty fundamentowe doskonale sprawdzają się jako baza pod:</p>
                 <FaMountain />
               </div>
               <h3 className="application-title">Trudne warunki gruntowe</h3>
-             <p>              Niezawodne posadowienie nawet na wymagającym terenie
-Płyta fundamentowa świetnie sprawdza się w miejscach, gdzie tradycyjne fundamenty zawodzą:
-</p>
-             
+              <p>Niezawodne posadowienie nawet na wymagającym terenie. Płyta fundamentowa świetnie sprawdza się w miejscach, gdzie tradycyjne fundamenty zawodzą:</p>
               <ul className="career-benefit-list">
                 <li>na terenach podmokłych i o wysokim poziomie wód gruntowych,</li>
                 <li>na gruntach wysadzinowych i niestabilnych,</li>
                 <li>na terenach objętych szkodami górniczymi,</li>
                 <li>na torfach, glinach i gruntach o niskiej nośności.</li>
               </ul>
-              <p>Dzięki odpowiedniej konstrukcji i izolacji płyta zapewnia stabilność, bezpieczeństwo i trwałość inwestycji.
-</p>
+              <p>Dzięki odpowiedniej konstrukcji i izolacji płyta zapewnia stabilność, bezpieczeństwo i trwałość inwestycji.</p>
             </div>
           </div>
 
