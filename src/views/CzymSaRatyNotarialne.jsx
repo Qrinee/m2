@@ -26,6 +26,7 @@ import {
   FaRocket,
   FaStar
 } from 'react-icons/fa'
+import VerticalVideoPlayer from '../components/VerticalVideoPlayer/VerticalVideoPlayer'
 
 export default function CzymSaRatyNotarialne() {
   return (
@@ -207,7 +208,9 @@ export default function CzymSaRatyNotarialne() {
           </div>
         </div>
       </div>
-
+<div className='section-spacer-lg'></div>
+<VerticalVideoPlayer/>
+<div className='section-spacer-lg'></div>
       {/* Sekcja FAQ */}
       <div className='notarial-faq-section'>
         <div className="notarial-container">
@@ -253,7 +256,6 @@ export default function CzymSaRatyNotarialne() {
       </>
     }
   />
-
   <FAQItem
     question={'Kiedy otrzymam klucze od swojej nowej nieruchomości?'}
     answer={
@@ -265,6 +267,7 @@ export default function CzymSaRatyNotarialne() {
     }
   />
 </div>
+
 
 
         </div>
