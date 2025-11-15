@@ -321,22 +321,22 @@ kolorDrzwi: [
 ],
 drzwi: {
   1: [ // Szare
-    { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb, image: houseD70doorGrayGerda },
-    { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb, image: houseD70doorGrayD6297 }
+    { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb, image: houseD70doorGrayGerda, price: 6500  },
+    { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb, image: houseD70doorGrayD6297, price: 6500  }
   ],
   2: [ // Dąb/Orzech
-    { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb, image: houseD70doorOakHanover },
-    { id: 4, name: 'Milano', thumb: doorOakMilanoThumb, image: houseD70doorOakMilano },
-    { id: 5, name: 'D6305', thumb: doorOakD6305Thumb, image: houseD70doorOakD6305 },
-    { id: 6, name: 'D5577', thumb: doorOakD5577Thumb, image: houseD70doorOakD5577 }
+    { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb, image: houseD70doorOakHanover, price: 6500  },
+    { id: 4, name: 'Milano', thumb: doorOakMilanoThumb, image: houseD70doorOakMilano, price: 6500  },
+    { id: 5, name: 'D6305', thumb: doorOakD6305Thumb, image: houseD70doorOakD6305 , price: 6500 },
+    { id: 6, name: 'D5577', thumb: doorOakD5577Thumb, image: houseD70doorOakD5577, price: 6500  }
   ],
   3: [ // Antracyt
-    { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb, image: houseD70doorAnthraciteGerdaTokio },
-    { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb, image: houseD70doorAnthraciteMartom }
+    { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb, image: houseD70doorAnthraciteGerdaTokio, price: 6500  },
+    { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb, image: houseD70doorAnthraciteMartom, price: 6500  }
   ],
   4: [ // Białe
-    { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb, image: houseD70doorWhiteGerdaWerona },
-    { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb, image: houseD70doorWhiteMartomSimpleElegance }
+    { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb, image: houseD70doorWhiteGerdaWerona, price: 6500  },
+    { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb, image: houseD70doorWhiteMartomSimpleElegance, price: 6500  }
   ]
 }
     },
@@ -415,22 +415,22 @@ kolorDrzwi: [
 ],
 drzwi: {
   1: [ // Szare
-    { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb },
-    { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb }
+    { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb, price: 6500 },
+    { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb, price: 6500  }
   ],
   2: [ // Dąb/Orzech
-    { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb},
-    { id: 4, name: 'Milano', thumb: doorOakMilanoThumb },
-    { id: 5, name: 'D6305', thumb: doorOakD6305Thumb },
-    { id: 6, name: 'D5577', thumb: doorOakD5577Thumb }
+    { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb, price: 6500 },
+    { id: 4, name: 'Milano', thumb: doorOakMilanoThumb, price: 6500  },
+    { id: 5, name: 'D6305', thumb: doorOakD6305Thumb, price: 6500  },
+    { id: 6, name: 'D5577', thumb: doorOakD5577Thumb, price: 6500  }
   ],
   3: [ // Antracyt
-    { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb },
-    { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb }
+    { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb, price: 6500  },
+    { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb, price: 6500  }
   ],
   4: [ // Białe
-    { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb },
-    { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb }
+    { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb, price: 6500  },
+    { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb, price: 6500  }
   ]
 }
     },
