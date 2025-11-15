@@ -21,16 +21,25 @@ export default function VisualConfigurator({onVisualPriceChange }) {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  useEffect(() => {
-    const config = HOUSE_CONFIGS[id] || HOUSE_CONFIGS.default
-    setHouseConfig(config)
-    
-    const initialSelections = {}
-    Object.keys(config.options).forEach(section => {
+useEffect(() => {
+  const config = HOUSE_CONFIGS[id] || HOUSE_CONFIGS.default
+  setHouseConfig(config)
+  
+  const initialSelections = {}
+  Object.keys(config.options).forEach(section => {
+    if (section === 'typDachu') {
+      // Dla typu dachu ustaw pierwszą dostępną opcję
       initialSelections[section] = config.options[section][0]?.id || 0
-    })
-    setSelections(initialSelections)
-  }, [id])
+    } else if (section === 'kolorDachu') {
+      // Dla koloru dachu ustaw pierwszy kolor dla domyślnego typu dachu
+      const defaultRoofType = config.options.typDachu?.[0]?.id || 0
+      initialSelections[section] = config.options.kolorDachu?.[defaultRoofType]?.[0]?.id || 0
+    } else {
+      initialSelections[section] = config.options[section][0]?.id || 0
+    }
+  })
+  setSelections(initialSelections)
+}, [id])
 
   useEffect(() => {
     if (!houseConfig) return

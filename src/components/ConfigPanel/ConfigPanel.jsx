@@ -9,9 +9,9 @@ const ConfigPanel = ({ houseConfig, selections, onSelectionChange }) => {
     return tynkOption?.hasColors && houseConfig.options.kolor
   }
 
-  const shouldShowKolorDachuSection = () => {
-    return selections.typDachu && selections.typDachu !== 0 && houseConfig.options.kolorDachu
-  }
+const shouldShowKolorDachuSection = () => {
+  return selections.typDachu !== undefined && selections.typDachu !== null && houseConfig.options.kolorDachu
+}
 
   const shouldShowDrzwiSection = () => {
     return selections.kolorDrzwi && selections.kolorDrzwi !== 0 && houseConfig.options.drzwi

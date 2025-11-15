@@ -6,6 +6,10 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
 
   const preloadImage = (src) => {
     return new Promise((resolve, reject) => {
+      if (!src) {
+        resolve(null);
+        return;
+      }
       const img = new Image();
       img.src = src;
       img.onload = () => resolve(src);
@@ -28,9 +32,6 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
         // Overlay images
         if (houseConfig.overlayImages?.light) {
           imagesToLoad.push(preloadImage(houseConfig.overlayImages.light));
-        }
-        if (houseConfig.overlayImages?.dach) {
-          imagesToLoad.push(preloadImage(houseConfig.overlayImages.dach));
         }
         
         // Aktualnie wybrane elementy
@@ -89,7 +90,6 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
         option = colorOptions.find(opt => opt.id === id);
       }
     } else if (type === 'drzwi') {
-      // DODANA OBSŁUGA DRZWI
       const kolorDrzwi = selections.kolorDrzwi;
       const doorOptions = section[kolorDrzwi];
       if (doorOptions) {
@@ -121,6 +121,35 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
     );
   };
 
+  // NOWA FUNKCJA DO RENDEROWANIA DACHU
+  const renderRoofOverlay = () => {
+    const { typDachu, kolorDachu } = selections;
+    
+    if (typDachu === undefined || kolorDachu === undefined || kolorDachu === 0) {
+      return null;
+    }
+
+    const roofTypeOptions = houseConfig.options.kolorDachu?.[typDachu];
+    const selectedRoofColor = roofTypeOptions?.find(option => option.id === kolorDachu);
+    
+    if (selectedRoofColor && selectedRoofColor.image) {
+      return (
+        <div className="element-pickable dach">
+          <img 
+            src={selectedRoofColor.image} 
+            alt="Dach"
+            style={{ 
+              opacity: allImagesLoaded ? 1 : 0,
+              transition: 'opacity 0.3s ease-in-out'
+            }}
+          />
+        </div>
+      );
+    }
+    
+    return null;
+  };
+
   return (
     <div className="vis-overlay">
       {/* Base image */}
@@ -128,6 +157,7 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
         <img src={houseConfig.baseImage} alt="Base" />
       </div>
       
+      {/* Światło */}
       <div className='element-pickable light'>
         <img 
           src={houseConfig.overlayImages?.light} 
@@ -135,22 +165,19 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
           style={{ opacity: allImagesLoaded ? 1 : 0 }}
         />
       </div>
-      
-      <div className='element-pickable dach'>
-        <img 
-          src={houseConfig.overlayImages?.dach} 
-          alt="Dach" 
-          style={{ opacity: allImagesLoaded ? 1 : 0 }}
-        />
-      </div>
 
-      {/* POPRAWIONE RENDEROWANIE - DRZWI TERAZ SĄ OSTATNIE */}
-      {selections.typDachu && selections.typDachu !== 0 && selections.kolorDachu && selections.kolorDachu !== 0 && renderElement('kolorDachu', selections.kolorDachu, 'dach')}
-      {selections.roletyEnabled && selections.rolety && selections.rolety !== 0 && renderElement('rolety', selections.rolety)}
-      {selections.okna && selections.okna !== 0 && renderElement('okna', selections.okna)}
+      {/* Elewacja */}
       {selections.tynk && selections.tynk !== 0 && renderElement('tynk', selections.tynk)}
       {selections.kolor && selections.kolor !== 0 && renderElement('kolor', selections.kolor)}
-      {/* POPRAWIONE RENDEROWANIE DRZWI */}
+      
+      {/* Dach - TERAZ UŻYWAMY NOWEJ FUNKCJI */}
+      {renderRoofOverlay()}
+      
+      {/* Okna i rolety */}
+      {selections.okna && selections.okna !== 0 && renderElement('okna', selections.okna)}
+      {selections.roletyEnabled && selections.rolety && selections.rolety !== 0 && renderElement('rolety', selections.rolety)}
+      
+      {/* Drzwi - OSTATNIE, ABY BYŁY NA WIERZCHU */}
       {selections.kolorDrzwi && selections.kolorDrzwi !== 0 && selections.drzwi && selections.drzwi !== 0 && renderElement('drzwi', selections.drzwi)}
     </div>
   );

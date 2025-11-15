@@ -129,13 +129,7 @@ import finishD126DarkSlatsThumb from '../assets/konfigurator/thumbnails/Bez nazw
 import finishD126WhiteSlatsThumb from '../assets/konfigurator/thumbnails/bialelamele.png'
 import finishD126BlackSlatsThumb from '../assets/konfigurator/thumbnails/czarnelamele.png'
 
-import doorCustomThumb from '../assets/konfigurator/thumbnails/ah_drzwi_techniczne.webp'
-import door11S3Thumb from '../assets/konfigurator/thumbnails/kmt_11s3.webp'
-import doorP9Thumb from '../assets/konfigurator/thumbnails/kmt_perfekt_9.webp'
-import door14AThumb from '../assets/konfigurator/thumbnails/kmt_14a.webp'
 
-
-import finishD70RawThumb from '../assets/dom3/thumbnails/elewacja.jpg'
 import finishD70MetalSheetThumb from '../assets/dom3/thumbnails/blachanarabek.jpg'
 import finishD70PlasterMetalThumb from '../assets/dom3/thumbnails/tynkiblacha.jpg'
 import finishD70MineralPlasterThumb from '../assets/dom3/thumbnails/tynkmineralny.jpg'
@@ -148,6 +142,14 @@ import houseD70roofAnthracite from '../assets/dom3/dach/antracyt.webp'
 import houseD70roofGreen from '../assets/dom3/dach/ciemnyzielony.webp'
 import houseD70roofOrange from '../assets/dom3/dach/pomarancz.webp'
 import houseD70roofRed from '../assets/dom3/dach/czerwony.webp'
+
+import houseD70roofDachowkaAnthracite from '../assets/dom3/dachowka/antracyt.webp'
+import houseD70roofDachowkaGreen from '../assets/dom3/dachowka/ciemnyzielony.webp'
+import houseD70roofDachowkaRed from '../assets/dom3/dachowka/czerwony.webp'
+import houseD70roofDachowkaGray from '../assets/dom3/dachowka/szary.webp'
+import houseD70roofDachowkaOrange from '../assets/dom3/dachowka/pomarancz.webp'
+
+
 
 
 
@@ -170,14 +172,12 @@ import houseD70blindBlack from '../assets/dom3/rolety/antracyt.webp'
 import houseD70blindBrown from '../assets/dom3/rolety/orzech.webp'
 import houseD70blindOak from '../assets/dom3/rolety/dab.webp'
 
-import houseD70doorCustom from '../assets/dom3/drzwi/wlasne.webp'
-import houseD70door11S3 from '../assets/dom3/drzwi/kmt11s3.webp'
-import houseD70doorP9 from '../assets/dom3/drzwi/kmtperfect9.webp'
-import houseD70door14A from '../assets/dom3/drzwi/kmt14a.webp'
+
 
 
 import finishD115MineralPlaster from '../assets/dom2/tynk/elewacjabiala.webp'
 import finishD115MetalSheet from '../assets/dom2/tynk/blachanarabek.webp'
+import finishD115PlasterMetal from '../assets/dom2/tynk/tynkiblacha.webp'
 import finishD115Anthracite from '../assets/dom2/tynk/elewacjaantracyt.webp'
 
 import finishD115WhiteSlats from '../assets/dom2/tynk/lamelebiale.webp'
@@ -186,9 +186,15 @@ import finishD115Slats from '../assets/dom2/tynk/lamele.webp'
 import finishD115AnthraciteSlats from '../assets/dom2/tynk/lameleantracyt.webp'
 
 import houseD115roofAnthracite from '../assets/dom2/dach/antracyt.webp'
-import houseD115roofGreen from '../assets/dom2/dach/antracyt.webp'
+import houseD115roofGreen from '../assets/dom2/dach/ciemnyzielony.webp'
 import houseD115roofRed from '../assets/dom2/dach/czerwony.webp'
 import houseD115roofOrange from '../assets/dom2/dach/pomarancz.webp'
+
+import houseD115roofDachowkaAnthracite from '../assets/dom2/dachowka/antracyt.webp'
+import houseD115roofDachowkaGreen from '../assets/dom2/dachowka/ciemnyzielony.webp'
+import houseD115roofDachowkaRed from '../assets/dom2/dachowka/czerwony.webp'
+import houseD115roofDachowkaOrange from '../assets/dom2/dachowka/pomarancz.webp'
+import houseD115roofDachowkaGrey from '../assets/dom2/dachowka/szary.webp'
 
 import houseD115windowAnthracite from '../assets/dom2/okna/antracyt.webp'
 import houseD115windowGray from '../assets/dom2/okna/szary.webp'
@@ -224,16 +230,19 @@ import houseD126roofGreen from '../assets/konfigurator/dach/zielony.webp'
 import houseD126roofRed from '../assets/konfigurator/dach/czerwony.webp'
 import houseD126roofOrange from '../assets/konfigurator/dach/kremowy.webp'
 
+import houseD126roofDachowkaAnthracite from '../assets/konfigurator/dachowka/antracyt.webp'
+import houseD126roofDachowkaGreen from '../assets/konfigurator/dachowka/ciemnyzielony.webp'
+import houseD126roofDachowkaRed from '../assets/konfigurator/dachowka/czerwony.webp'
+import houseD126roofDachowkaOrange from '../assets/konfigurator/dachowka/pomaranczowy.webp'
+import houseD126roofDachowkaGray from '../assets/konfigurator/dachowka/szary.webp'
+
+
 import houseD126blindGray from '../assets/konfigurator/rolety/d126_r1_szary.webp'
 import houseD126blindWhite from '../assets/konfigurator/rolety/d126_r1_bialy.webp'
-import houseD126blindBlack from '../assets/konfigurator/rolety/rolety.webp'
+import houseD126blindBlack from '../assets/konfigurator/rolety/d126_r1_bialy.webp'
 import houseD126blindBrown from '../assets/konfigurator/rolety/d126_r1_orzech.webp'
 import houseD126blindOak from '../assets/konfigurator/rolety/d126_r1_dab.webp'
 
-import houseD126doorCustom from '../assets/konfigurator/drzwi/dzrwi0.webp'
-import houseD126door11S3 from '../assets/konfigurator/drzwi/dzrwi11s3.webp'
-import houseD126doorP9 from '../assets/konfigurator/drzwi/dzrwip9.webp'
-import houseD126door14A from '../assets/konfigurator/drzwi/dzrwi14a.webp'
 
 export const HOUSE_CONFIGS = {
   d70: {
@@ -270,24 +279,23 @@ export const HOUSE_CONFIGS = {
         { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD70Roof, price: 68000 }
       ],
 
-            
-      kolorDachu: {
-        0: [ 
-          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD70Roof, price: 0 },
-          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD70roofAnthracite, price: 0 },
-          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD70roofOrange, price: 0 },
-          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD70roofGreen, price: 0 },
-          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD70roofRed, price: 0 }
-        ],
-        1: [ 
-          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD70Roof, price: 0 },
-          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD70roofAnthracite, price: 0 },
-          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD70roofOrange, price: 0 },
-          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD70roofGreen, price: 0 },
-          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD70roofRed, price: 0 }
-        ]
-      },
-
+// W HOUSE_CONFIGS.d70.options.kolorDachu popraw:
+kolorDachu: {
+  0: [ // Dachówka ceramiczna - upewnij się że używasz obrazów dachówki
+    { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD70roofDachowkaGray, price: 0 },
+    { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD70roofDachowkaAnthracite, price: 0 },
+    { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD70roofDachowkaOrange, price: 0 },
+    { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD70roofDachowkaGreen, price: 0 },
+    { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD70roofDachowkaRed, price: 0 }
+  ],
+  1: [ // Blacha na rąbek - upewnij się że używasz obrazów blachy
+    { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD70Roof, price: 0 }, // houseD70Roof to domyślny dla blachy
+    { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD70roofAnthracite, price: 0 },
+    { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD70roofOrange, price: 0 },
+    { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD70roofGreen, price: 0 },
+    { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD70roofRed, price: 0 }
+  ]
+},
       
       rolety: [
         { id: 1, name: 'Szare', thumb: blindGrayThumb, image: houseD70blindGray },
@@ -339,11 +347,12 @@ drzwi: {
       dach: houseD115Roof
     },
     options: {
-      tynk: [
-         { id: 1, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, hasColors: true },
-        { id: 2, name: 'Blacha na rąbek', thumb: finishD115MetalSheetThumb, image: finishD115MetalSheet },
-        { id: 3, name: 'Lamele', thumb: finishD115SlatsThumb, image: finishD115Slats, hasColors: true }
-      ],
+    tynk: [
+      { id: 1, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, hasColors: true },
+      { id: 2, name: 'Blacha na rąbek', thumb: finishD115MetalSheetThumb, image: finishD115MetalSheet },
+      { id: 3, name: 'Lamele', thumb: finishD115SlatsThumb, image: finishD115Slats, hasColors: true },
+      { id: 4, name: 'Tynk i blacha', thumb: finishD115MineralPlasterThumb, image: finishD115PlasterMetal } // POPRAWIONE: 'Image' -> 'image'
+    ],
       kolor: {
         1: [
           { id: 1, name: 'Biała', thumb: colorWhiteThumb, image: finishD115MineralPlaster },
@@ -358,20 +367,19 @@ drzwi: {
       },
 
       typDachu: [
-        { id: 0, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD126Roof, price: 77000 },
-        { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD126Roof, price: 68000 }
+        { id: 0, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD115Roof, price: 77000 },
+        { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD115Roof, price: 68000 }
       ],
 
-            
       kolorDachu: {
-        0: [ 
-          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD115Roof, price: 0 },
-          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD115roofAnthracite, price: 0 },
-          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD115roofOrange, price: 0 },
-          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD115roofGreen, price: 0 },
-          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD115roofRed, price: 0 }
+        0: [ // Dachówka ceramiczna
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD115roofDachowkaGrey, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD115roofDachowkaAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD115roofDachowkaOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD115roofDachowkaGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD115roofDachowkaRed, price: 0 }
         ],
-        1: [ 
+        1: [ // Blacha na rąbek
           { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD115Roof, price: 0 },
           { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD115roofAnthracite, price: 0 },
           { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD115roofOrange, price: 0 },
@@ -379,7 +387,6 @@ drzwi: {
           { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD115roofRed, price: 0 }
         ]
       },
-
       
       rolety: [
         { id: 1, name: 'Szare', thumb: blindGrayThumb, image: houseD115blindGray },
@@ -452,21 +459,20 @@ drzwi: {
       },
 
       
-      typDachu: [
+     typDachu: [
         { id: 0, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD126Roof, price: 77000 },
         { id: 1, name: 'Blacha na rąbek', thumb: blacha, image: houseD126Roof, price: 68000 }
       ],
 
-      
       kolorDachu: {
-        0: [ 
-          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
-          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
-          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },
-          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD126roofGreen, price: 0 },
-          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD126roofRed, price: 0 }
+        0: [ // Dachówka ceramiczna
+          { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126roofDachowkaGray, price: 0 },
+          { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofDachowkaAnthracite, price: 0 },
+          { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofDachowkaOrange, price: 0 },
+          { id: 4, name: 'Ciemny Zielony', thumb: roofGreenThumb, image: houseD126roofDachowkaGreen, price: 0 },
+          { id: 5, name: 'Czerwony', thumb: roofRedThumb, image: houseD126roofDachowkaRed, price: 0 }
         ],
-        1: [ 
+        1: [ // Blacha na rąbek
           { id: 1, name: 'Szary', thumb: roofGrayThumb, image: houseD126Roof, price: 0 },
           { id: 2, name: 'Antracyt', thumb: roofAnthraciteThumb, image: houseD126roofAnthracite, price: 0 },
           { id: 3, name: 'Pomarańczowy', thumb: roofOrangeThumb, image: houseD126roofOrange, price: 0 },
