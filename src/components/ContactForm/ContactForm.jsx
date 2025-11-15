@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ContactForm.css";
 
-const ContactForm = () => {
+const ContactForm = ({color}) => {
   const backend = import.meta.env.VITE_BACKEND + "/api/inquiry";
   
   const [formData, setFormData] = useState({
@@ -152,6 +152,8 @@ const ContactForm = () => {
         <button 
           type="submit" 
           disabled={isLoading}
+          style={{backgroundColor: color ? color : 'var(--secondary-color)', color: 'white', fontWeight: 'bold'}}
+          
           className={isLoading ? "loading" : ""}
         >
           {isLoading ? "Wysyłanie..." : "Wyślij E-Mail"}

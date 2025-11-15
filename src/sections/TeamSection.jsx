@@ -4,9 +4,9 @@ import dawid from '../assets/dawid.jpg'
 import wiktoria from '../assets/wiktoria.jpg'
 import renata from '../assets/renata.png'
 import { Link } from 'react-router-dom'
-export default function TeamSection({content}) {
+export default function TeamSection({content, height}) {
   return (
-    <div className='card-section-wrapper'>
+    <div className='card-section-wrapper' style={{minHeight: height ? height: '100vh'}}>
         {content}
        <div className='card-section'>
         <Link to={'/estate_agent/68e66f7258e3141c145e3d5d'} style={{textDecoration: 'none', color: 'inherit'}}>
