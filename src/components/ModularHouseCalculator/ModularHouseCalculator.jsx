@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ModularHouseCalculator.css";
 
 const ModularHouseCalculator = ({ 
   maxRepaymentMonths = 120, 
   minOwnContribution = 20,
-  defaultPropertyPrice = 299000 
+  totalPrice = 299000  // Zmieniamy z defaultPropertyPrice na totalPrice
 }) => {
-  const [propertyPrice, setPropertyPrice] = useState(defaultPropertyPrice);
+  const [propertyPrice, setPropertyPrice] = useState(totalPrice);
   const [ownContribution, setOwnContribution] = useState(minOwnContribution);
-  const [repaymentMonths, setRepaymentMonths] = useState(Math.min(maxRepaymentMonths, 120));
+  const [repaymentMonths, setRepaymentMonths] = useState(60);
+
+  // Aktualizuj propertyPrice gdy zmieni się totalPrice
+  useEffect(() => {
+    setPropertyPrice(totalPrice);
+  }, [totalPrice]);
 
   // Stopy procentowe
   const annualInterestRateFirst5 = 0.10;
@@ -74,18 +79,27 @@ const ModularHouseCalculator = ({
     return result;
   };
 
-  // Obliczenie maksymalnej ceny (150% ceny domyślnej)
-  const maxPropertyPrice = Math.round(defaultPropertyPrice * 1.5);
-  const minPropertyPrice = Math.round(defaultPropertyPrice * 0.5);
+  // Obliczenie maksymalnej i minimalnej ceny na podstawie aktualnej ceny
+  const maxPropertyPrice = Math.round(totalPrice * 1.5);
+  const minPropertyPrice = Math.round(totalPrice * 0.5);
 
   return (
     <div className="modular-calculator-container">
       <div className="calculator-header">
         <h2>Kalkulator rat dla domu modułowego</h2>
-        <p>Oblicz swoją miesięczną ratę</p>
+        <p>Oblicz swoją miesięczną ratę na podstawie wybranej konfiguracji</p>
       </div>
 
       <div className="calculator-body">
+
+
+<div className="current-config-price">
+  <div className="price-label">Wartość wybranej konfiguracji:</div>
+  <div className="price-value">{formatCurrency(totalPrice)}</div>
+  <div className="price-note" style={{fontSize: '12px', color: '#6c757d', marginTop: '5px'}}>
+    (cena uwzględnia wszystkie wybrane pakiety i opcje wizualne)
+  </div>
+</div>
 
         {/* Suwak wkładu własnego */}
         <div className="slider-group">
@@ -136,7 +150,7 @@ const ModularHouseCalculator = ({
         {/* Karty podsumowania */}
         <div className="summary-cards">
           <div className="summary-card">
-            <div className="card-label">Wysokość</div>
+            <div className="card-label">Wysokość kredytu</div>
             <div className="card-value">{formatCurrency(loanAmount)}</div>
           </div>
           <div className="summary-card">
@@ -156,7 +170,6 @@ const ModularHouseCalculator = ({
               Przy oprocentowaniu: {formatPercentage(monthlyRateData.interestRate)}
             </div>
           </div>
-          
         </div>
       </div>
     </div>
