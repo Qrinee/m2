@@ -2,7 +2,7 @@ export const PACKAGE_CONFIGS = {
   d126: [
     {
       title: "Pakiet Formalności zgłoszenia i pozwolenia na budowę",
-          vat: "8%", 
+          vat: "23%", 
       options: [
         { name: "Formalności we własnym zakresie, kupuję tylko projekt", price: 9700 },
         { name: "Zgłoszenie budynku mieszkalnego, pełna dokumentacja architektoniczno-budowlana, pełna obsługa inżynierska, adaptacja projektu, pozwolenie na budowę", price: 16000 },
@@ -50,7 +50,8 @@ export const PACKAGE_CONFIGS = {
       title: "Pakiet Fotowoltaika",
           vat: "8%", 
       options: [
-        { name: "Indywidualna wycena uzależniona od mocy systemu", price: 0 },
+        { name: "Instalacja 6KW + Magazyn Energii 10 KW", price: 44000 },
+        { name: "Instalacja 12 KW + Magazyn Energii 10 KW", price: 68000}
       ]
     },
     {
@@ -72,6 +73,7 @@ export const PACKAGE_CONFIGS = {
   d115: [
     {
       title: "Pakiet Formalności zgłoszenia i pozwolenia na budowę",
+      vat: "23%",
       options: [
         { name: "Formalności we własnym zakresie, kupuję tylko projekt", price: 9700 },
         { name: "Zgłoszenie budynku mieszkalnego, pełna dokumentacja architektoniczno-budowlana, pełna obsługa inżynierska, adaptacja projektu, pozwolenie na budowę", price: 16000 },
@@ -119,7 +121,8 @@ export const PACKAGE_CONFIGS = {
       title: "Pakiet Fotowoltaika",
           vat: "8%", 
       options: [
-        { name: "Indywidualna wycena uzależniona od mocy systemu", price: 0 },
+        { name: "Instalacja 6KW + Magazyn Energii 10 KW", price: 44000 },
+        { name: "Instalacja 12 KW + Magazyn Energii 10 KW", price: 68000}
       ]
     },
     {
@@ -141,6 +144,7 @@ export const PACKAGE_CONFIGS = {
   d70: [
     {
       title: "Pakiet Formalności zgłoszenia i pozwolenia na budowę",
+      vat: "23%",
       options: [
         { name: "Formalności we własnym zakresie, kupuję tylko projekt", price: 9700 },
         { name: "Zgłoszenie budynku mieszkalnego, pełna dokumentacja architektoniczno-budowlana, pełna obsługa inżynierska, adaptacja projektu, pozwolenie na budowę", price: 16000 },
@@ -188,7 +192,8 @@ export const PACKAGE_CONFIGS = {
       title: "Pakiet Fotowoltaika",
           vat: "8%", 
       options: [
-        { name: "Indywidualna wycena uzależniona od mocy systemu", price: 0 },
+        { name: "Instalacja 6KW + Magazyn Energii 10 KW", price: 44000 },
+        { name: "Instalacja 12 KW + Magazyn Energii 10 KW", price: 68000}
       ]
     },
     {

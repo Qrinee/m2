@@ -112,10 +112,7 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
         <img 
           src={option.image} 
           alt={option.name}
-          style={{ 
-            opacity: allImagesLoaded ? 1 : 0,
-            transition: 'opacity 0.3s ease-in-out'
-          }}
+
         />
       </div>
     );
@@ -138,10 +135,6 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
           <img 
             src={selectedRoofColor.image} 
             alt="Dach"
-            style={{ 
-              opacity: allImagesLoaded ? 1 : 0,
-              transition: 'opacity 0.3s ease-in-out'
-            }}
           />
         </div>
       );
@@ -153,7 +146,7 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
   return (
     <div className="vis-overlay">
       {/* Base image */}
-      <div className='element-pickable base' style={{ opacity: allImagesLoaded ? 1 : 0 }}>
+      <div className='element-pickable base' >
         <img src={houseConfig.baseImage} alt="Base" />
       </div>
       
@@ -162,7 +155,6 @@ const HouseVisualization = ({ houseConfig, selections, onImagesLoad }) => {
         <img 
           src={houseConfig.overlayImages?.light} 
           alt="Light" 
-          style={{ opacity: allImagesLoaded ? 1 : 0 }}
         />
       </div>
 

@@ -126,8 +126,6 @@ useEffect(() => {
       <div style={{ 
         width: '100%', 
         overflowX: 'hidden',
-        opacity: imagesLoaded ? 1 : 0,
-        transition: 'opacity 0.3s ease-in-out'
       }}>
         <div className="sticky-visualization">
           <HouseVisualization 
