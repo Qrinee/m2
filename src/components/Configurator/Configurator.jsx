@@ -7,6 +7,7 @@ const Configurator = ({
   selectOption, 
   totalPrice, 
   priceWithVAT, 
+  total,
   basePrice,
   visualOptionsPrice,
   selectedPackagesSummary,
@@ -42,6 +43,7 @@ W każdej chwili możesz usunąć wybrany pakiet lub zamienić go na inny — ko
             totalPrice={totalPrice}
             priceWithVAT={priceWithVAT}
             basePrice={basePrice}
+            total={total}
             visualOptionsPrice={visualOptionsPrice}
             visualOptionsSummary={visualOptionsSummary}
             formData={formData}

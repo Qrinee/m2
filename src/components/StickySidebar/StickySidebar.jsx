@@ -6,6 +6,7 @@ const StickySidebar = ({
   totalPrice, 
   priceWithVAT, 
   basePrice, 
+  total,
   visualOptionsPrice,
   visualOptionsSummary,
   formData,
@@ -25,7 +26,7 @@ const StickySidebar = ({
           <div className="list-title">Aktualna konfiguracja:</div>
           <div className="base-configuration">
             <div className="config-item">
-              <span>Dom bazowy 84m²</span>
+              <span>Dom bazowy</span>
               <span>{basePrice.toLocaleString('pl-PL')} zł</span>
             </div>
           </div>
@@ -60,7 +61,7 @@ const StickySidebar = ({
         <div className="total-section">
           <div className="total-price">
             <span>Cena całkowita:</span>
-            <span>{priceWithVAT.toLocaleString('pl-PL')} zł</span>
+            <span>{total.toLocaleString('pl-PL')} zł</span>
           </div>
         </div>
       </div>

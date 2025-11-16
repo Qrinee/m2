@@ -212,11 +212,23 @@ export default function CzymSaRatyNotarialne() {
         </div>
       </div>
 <div className='section-spacer-lg'></div>
-<div className='reelsy' style={{display: 'flex', justifyContent: 'center'}}> 
+<div className='reelsy' style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', maxWidth: '1500px', margin: 'auto'}}> 
+
+<iframe width="300" height="554" src="https://www.youtube.com/embed/i6H4Evo2ctE" title="Czym są &quot;raty notarialne&quot;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="300" height="554" src="https://www.youtube.com/embed/Uc2-7oFMqmE" title="Mój klient zaoszczędził 800.000 zł tylko NA JEDNEJ TRANSAKCJI!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
-<TikTokList/>
+<iframe width="300" height="554" src="https://www.youtube.com/embed/1Qbk9Il2Q74" title="Kupujesz Nieruchomość?? Sprawdź czy raty notarialne są dla Ciebie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+<iframe width="300" height="554" src="https://www.youtube.com/embed/4HNnBtsSvJs" title="Czy &quot;Raty Notarialne&quot; są legalne??" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="300" height="554" src="https://www.youtube.com/embed/kBwxUcVCsGE" title="Szukasz Nieruchomości? Bank odmawia Ci finansowania?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="300" height="554" src="https://www.youtube.com/embed/0j1osJro5FE" title="&quot;Raty Notarialne&quot;? Opłata Wstępna? Ile?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<iframe width="300" height="554" src="https://www.youtube.com/embed/SQF-zRCR2fs" title="W Czym M2Notarialnie może pomóc w Twojej inwestycji" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 <div className='section-spacer-lg'></div>
       {/* Sekcja FAQ */}

@@ -52,7 +52,7 @@ export default function ProjektyDomow() {
       area: "126 m²",
       thumbnail: et,
       shortDesc: "Dom całoroczny dla rodziny 2+3",
-      initialPrice: "od 309 000 zł netto",
+      initialPrice: "od 399 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
       bedrooms: 4,
       bathrooms: 3
@@ -63,7 +63,7 @@ export default function ProjektyDomow() {
       area: "84 m²",
       thumbnail: et2,
       shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
-      initialPrice: "od 289 000 zł netto",
+      initialPrice: "od 379 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
       bedrooms: 3,
       bathrooms: 1
@@ -74,7 +74,7 @@ export default function ProjektyDomow() {
       area: "70 m²",
       thumbnail: et3,
       shortDesc: "Dom całoroczny dla rodziny 2+1",
-      initialPrice: "od 209 000 zł netto",
+      initialPrice: "od 199 000 zł netto",
       tags: ["Dla rodziny", "Energooszczędny"],
       bedrooms: 2,
       bathrooms: 1

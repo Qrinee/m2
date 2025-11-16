@@ -250,6 +250,7 @@ export const HOUSE_CONFIGS = {
     id: 'd70',
     name: 'Dom Modelowy 3',
     baseImage: houseD70Base,
+    basePrice: 199000,
     overlayImages: {
       light: houseCommonLight,
       dach: houseD70Roof
@@ -344,6 +345,7 @@ drzwi: {
   d115: {
     id: 'd115',
     name: 'Dom Modelowy 2',
+    basePrice: 379000,
     baseImage: houseD115Base,
     overlayImages: {
       light: houseCommonLight,
@@ -439,6 +441,7 @@ drzwi: {
     id: 'd126',
     name: 'Dom Modelowy 1',
     baseImage: houseD126Base,
+    basePrice: 399000,
     overlayImages: {
       light: houseCommonLight
     },
@@ -515,17 +518,17 @@ drzwi: {
     { id: 1, name: 'Gerda', thumb: doorGrayGerdaThumb, image: houseD126doorGrayGerda, price: 6500 },
     { id: 2, name: 'D6297', thumb: doorGrayD6297Thumb, image: houseD126doorGrayD6297, price: 6500 }
   ],
-  2: [ // Dąb/Orzech
+  2: [ 
     { id: 3, name: 'Hanover', thumb: doorOakHanoverThumb, image: houseD126doorOakHanover, price: 6500 },
     { id: 4, name: 'Milano', thumb: doorOakMilanoThumb, image: houseD126doorOakMilano, price: 6500 },
     { id: 5, name: 'D6305', thumb: doorOakD6305Thumb, image: houseD126doorOakD6305, price: 6500 },
     { id: 6, name: 'D5577', thumb: doorOakD5577Thumb, image: houseD126doorOakD5577, price: 6500 }
   ],
-  3: [ // Antracyt
+  3: [ 
     { id: 7, name: 'Gerda Tokio', thumb: doorAnthraciteGerdaTokioThumb, image: houseD126doorAnthraciteGerdaTokio, price: 6500 },
     { id: 8, name: 'Martom', thumb: doorAnthraciteMartomThumb, image: houseD126doorAnthraciteMartom, price: 6500 }
   ],
-  4: [ // Białe
+  4: [
     { id: 9, name: 'Gerda Werona', thumb: doorWhiteGerdaWeronaThumb, image: houseD126doorWhiteGerdaWerona, price: 6500 },
     { id: 10, name: 'Martom Simple Elegance', thumb: doorWhiteMartomSimpleEleganceThumb, image: houseD126doorWhiteMartomSimpleElegance, price: 6500 }
   ]

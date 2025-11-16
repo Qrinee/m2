@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '../components/Header/Header';
 import Configurator from '../components/Configurator/Configurator';
@@ -24,7 +23,7 @@ const HouseConfigurator = () => {
     phone: '',
   });
 
-  const basePrice = 299000;
+  const basePrice = HOUSE_CONFIGS[id].basePrice;
 
   
   const selectOption = (optionId, packageIndex) => {
@@ -75,25 +74,68 @@ const HouseConfigurator = () => {
     setSelectedVisualOptions(selections);
   };
 
+
+const getVisualOptionsSummary = () => {
+  if (!selectedVisualOptions || Object.keys(selectedVisualOptions).length === 0) {
+    return [];
+  }
+
+  const summary = [];
+  const houseConfig = HOUSE_CONFIGS[id]; // UŻYJ AKTUALNEGO ID, NIE d126
+
+  Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
+    const categoryOptions = houseConfig.options[category];
+    if (Array.isArray(categoryOptions)) {
+      const selectedOption = categoryOptions.find(opt => opt.id === optionId);
+      if (selectedOption && selectedOption.price > 0) {
+        summary.push({
+          name: `${category.charAt(0).toUpperCase() + category.slice(1)}: ${selectedOption.name}`,
+          price: selectedOption.price
+        });
+      }
+    }
+  });
+
+  return summary;
+};
+
+  const visualOptionsSummary = getVisualOptionsSummary();
   
-  const calculateTotal = () => {
-    let total = basePrice + visualOptionsPrice;
-    
-    
-    const housePackages = PACKAGE_CONFIGS[id] || [];
-    
-    
-    housePackages.forEach((packageConfig, packageIndex) => {
-      packageConfig.options.forEach((option, optionIndex) => {
-        const optionId = `${id}-${packageIndex}-${optionIndex}`;
-        if (selectedOptions[optionId]) {
-          total += option.price;
+const calculateTotal = () => {
+  let totalNetto = basePrice;
+  let totalVAT = basePrice * 0.08;
+
+  
+  const housePackages = PACKAGE_CONFIGS[id] || [];
+
+
+  housePackages.forEach((packageConfig, packageIndex) => {
+    packageConfig.options.forEach((option, optionIndex) => {
+      const optionId = `${id}-${packageIndex}-${optionIndex}`;
+      if (selectedOptions[optionId]) {
+        totalNetto += option.price;
+        if (packageConfig.title === "Pakiet Formalności zgłoszenia i pozwolenia na budowę") {
+          totalVAT += option.price * 0.23; 
+        } else {
+          totalVAT += option.price * 0.08;
         }
-      });
+      }
     });
-    
-    return total;
+  });
+  
+  
+  visualOptionsSummary.forEach((option, index) => {
+    console.log(option.name + " " + option.price)
+    totalNetto += option.price
+    totalVAT += option.price * 0.08
+  })
+
+  return {
+    netto: totalNetto,
+    vat: totalVAT,
+    brutto: totalNetto + totalVAT
   };
+};
 
   const handleInputChange = (e) => {
     setFormData({
@@ -103,7 +145,7 @@ const HouseConfigurator = () => {
   };
 
   
-  const prepareConfigurationData = () => {
+  const prepareConfigurationData = (total) => {
     
     const houseConfig = HOUSE_CONFIGS[id] || {};
     
@@ -119,6 +161,7 @@ const HouseConfigurator = () => {
             packageName: packageConfig.title,
             optionName: option.name,
             optionPrice: option.price,
+            vatRate: packageConfig.title === "Pakiet Formalności zgłoszenia i pozwolenia na budowę" ? "23%" : "8%",
             packageIndex,
             optionIndex
           });
@@ -127,25 +170,27 @@ const HouseConfigurator = () => {
     });
 
     
-    const visualSelections = [];
-    if (selectedVisualOptions && Object.keys(selectedVisualOptions).length > 0) {
-      const houseConfig = HOUSE_CONFIGS.d126; 
-      
-      Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
-        const categoryOptions = houseConfig.options[category];
-        if (Array.isArray(categoryOptions)) {
-          const selectedOption = categoryOptions.find(opt => opt.id === optionId);
-          if (selectedOption) {
-            visualSelections.push({
-              category: category,
-              optionName: selectedOption.name,
-              optionPrice: selectedOption.price,
-              optionId: selectedOption.id
-            });
-          }
+
+  const visualSelections = [];
+  if (selectedVisualOptions && Object.keys(selectedVisualOptions).length > 0) {
+    const houseConfig = HOUSE_CONFIGS[id];
+    
+    Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
+      const categoryOptions = houseConfig.options[category];
+      if (Array.isArray(categoryOptions)) {
+        const selectedOption = categoryOptions.find(opt => opt.id === optionId);
+        if (selectedOption) {
+          visualSelections.push({
+            category: category,
+            optionName: selectedOption.name,
+            optionPrice: selectedOption.price,
+            vatRate: "8%",
+            optionId: selectedOption.id
+          });
         }
-      });
-    }
+      }
+    });
+  }
 
     return {
       
@@ -171,9 +216,9 @@ const HouseConfigurator = () => {
       
       
       pricing: {
-        subtotal: totalPrice,
-        vat: totalPrice * 0.08,
-        total: priceWithVAT
+        subtotal: total.netto,
+        vat: total.vat,
+        total: total.brutto
       },
       
       
@@ -185,20 +230,19 @@ const HouseConfigurator = () => {
     };
   };
 
-// W HouseConfigurator.js zaktualizuj funkcję handleSubmit:
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   
-  // Przygotuj dane konfiguracji
-  const configurationData = prepareConfigurationData();
+  const total = calculateTotal();
+  const configurationData = prepareConfigurationData(total);
   
   console.log('📦 Dane konfiguracji do wysłania:', configurationData);
   
   try {
-    // Wyślij dane do backendu
     const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/emails/house-configuration`, {
       method: 'POST',
+
+
       headers: {
         'Content-Type': 'application/json',
       },
@@ -227,8 +271,9 @@ const handleSubmit = async (e) => {
   }
 };
 
-  const totalPrice = calculateTotal();
-  const priceWithVAT = totalPrice * 1.08;
+  const total = calculateTotal();
+  const totalPrice = total.netto;
+  const priceWithVAT = total.brutto;
 
   
   const getPackageInfo = (optionId) => {
@@ -274,31 +319,7 @@ const handleSubmit = async (e) => {
   const selectedPackagesSummary = getSelectedPackagesSummary();
 
   
-  const getVisualOptionsSummary = () => {
-    if (!selectedVisualOptions || Object.keys(selectedVisualOptions).length === 0) {
-      return [];
-    }
 
-    const summary = [];
-    const houseConfig = HOUSE_CONFIGS.d126;
-
-    Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
-      const categoryOptions = houseConfig.options[category];
-      if (Array.isArray(categoryOptions)) {
-        const selectedOption = categoryOptions.find(opt => opt.id === optionId);
-        if (selectedOption && selectedOption.price > 0) {
-          summary.push({
-            name: `${category.charAt(0).toUpperCase() + category.slice(1)}: ${selectedOption.name}`,
-            price: selectedOption.price
-          });
-        }
-      }
-    });
-
-    return summary;
-  };
-
-  const visualOptionsSummary = getVisualOptionsSummary();
 
   return (
     <>
@@ -314,6 +335,7 @@ const handleSubmit = async (e) => {
           selectOption={selectOption}
           totalPrice={totalPrice}
           priceWithVAT={priceWithVAT}
+          total={total.netto + total.vat}
           basePrice={basePrice}
           visualOptionsPrice={visualOptionsPrice}
           selectedPackagesSummary={selectedPackagesSummary}
@@ -326,7 +348,7 @@ const handleSubmit = async (e) => {
       </div>
       <ModularHouseCalculator totalPrice={priceWithVAT} minOwnContribution={50}/>
       <p style={{maxWidth: '700px', margin: '50px auto', color: 'gray', fontSize: '14px'}}>
-Ogłoszenie ma charakter wyłącznie informacyjny i nie stanowi oferty w rozumieniu art. 66 § 1 ani art. 71 Kodeksu cywilnego. Nie jest to również oferta handlowa, porada prawna ani zaproszenie do rokowań. Wszelkie podane kwoty i wyliczenia mają charakter orientacyjny i nie stanowią wiążącej oferty.    </p>
+Ogłoszenie ma charakter wyłącznie informacyjny i nie stanowi oferty w rozumieniu art. 66 § 1 ani art. 71 Kodeksu cywilnego. Nie jest to również oferta handlowa, porada prawna ani zaproszenie do rokowań. Wszystkie podane kwoty i wyliczenia mają charakter orientacyjny i nie stanowią wiążącej oferty.    </p>
       <Footer/>
     </>
   );
