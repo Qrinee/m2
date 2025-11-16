@@ -38,6 +38,8 @@ import PlytyFundamentowe from './views/PlytyFundamentowe.jsx'
 import Pawilony from './views/Pawilony';
 import { PromoBannerProvider } from './context/PromoBannerContext.jsx'
 import ScrollToTop from './hooks/ScrollToTop.jsx'
+import CookiesPolicy from './views/CookiesPolicy.jsx'
+import Regulamin from './views/Regulamin.jsx'
 
 
 // Zmień tę wartość na false, aby wyłączyć tryb prac
@@ -62,6 +64,8 @@ createRoot(document.getElementById('root')).render(
             <Route path='/wpis/:id' element={<Wpis />} />
             <Route path='/nieruchomosci' element={<Nieruchomosci/>}></Route>
             <Route path='/privacy-policy' element={<PolitykaPrywatnosci/>} />
+            <Route path='/cookies-policy' element={<CookiesPolicy/>} />
+            <Route path='/regulamin' element={<Regulamin/>} />
             <Route path='/kontakt' element={<Kontakt />} />
             <Route path='/realizacja/:id' element={<Realizacja />} />
             <Route path='/nasz-zespol' element={<NaszZespol />} />

@@ -81,6 +81,8 @@ export default function Footer() {
         <div className="footer-bottom-content">
           <p className="copyright">© 2025 Wszystkie prawa zastrzeżone.</p>
           <Link to={'/privacy-policy'} className="privacy-link">Polityka Prywatności</Link>
+          <Link to={'/cookies-policy'} className="privacy-link">Ciasteczka</Link>
+          <Link to={'/regulamin'} className="privacy-link">Regulamin</Link>
         </div>
       </div>
     </footer>
