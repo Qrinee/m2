@@ -29,7 +29,7 @@ export default function WidokOgloszenia() {
   const { property, loading, error } = useProperty(id);
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [down, setDown] = useState(0);
-  const [years, setYears] = useState(30);
+  const [years, setYears] = useState(5);
 
   // Obliczenia kredytu - używamy nowej struktury ceny
   const price = property ? parsePrice(property.cena?.calkowita) : 0;

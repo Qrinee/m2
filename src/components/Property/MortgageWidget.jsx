@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const MortgageWidget = ({
   price,
@@ -8,6 +8,12 @@ const MortgageWidget = ({
   setYears,
   monthlyPayment,
 }) => {
+  useEffect(() => {
+    if (down < price / 2) {
+      setDown(price / 2);
+    }
+  }, [price]);
+
   const percent = Math.round(((price - (down || 0)) / price) * 100);
   const loanPercent = Math.min(100, Math.max(0, percent));
   const size = 120;
@@ -22,7 +28,6 @@ const MortgageWidget = ({
       currency: "PLN",
       maximumFractionDigits: 0,
     });
-
   return (
     <div className="prop-card prop-mortgage-widget">
       <div className="prop-mortgage-top">
@@ -82,7 +87,7 @@ const MortgageWidget = ({
           <input
             className="form-range"
             type="range"
-            min="0"
+            min={price/2}
             max={price}
             value={down}
             onChange={(e) => setDown(Number(e.target.value))}
@@ -95,7 +100,7 @@ const MortgageWidget = ({
             className="form-range"
             type="range"
             min="1"
-            max="40"
+            max="10"
             value={years}
             onChange={(e) => setYears(Number(e.target.value))}
           />
