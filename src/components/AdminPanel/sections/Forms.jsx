@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './Forms.css';
 
@@ -8,19 +7,23 @@ const Forms = () => {
   const [selectedForm, setSelectedForm] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [filterType, setFilterType] = useState('all');
 
   useEffect(() => {
     fetchForms();
-  }, [currentPage]);
+  }, [currentPage, filterType]);
 
   const fetchForms = async () => {
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_BACKEND}/api/inquiry/submissions?page=${currentPage}&limit=20`,
-        {
-          credentials: 'include'
-        }
-      );
+      let url = `${import.meta.env.VITE_BACKEND}/api/inquiry/submissions?page=${currentPage}&limit=20`;
+      
+      if (filterType !== 'all') {
+        url += `&type=${filterType}`;
+      }
+
+      const response = await fetch(url, {
+        credentials: 'include'
+      });
 
       if (response.ok) {
         const result = await response.json();
@@ -99,7 +102,8 @@ const Forms = () => {
       'contact_inquiry': 'Formularz kontaktowy',
       'property_submission': 'Zgłoszenie nieruchomości',
       'partner_inquiry': 'Formularz partnerski',
-      'employee_inquiry': 'Formularz rekrutacyjny'
+      'employee_inquiry': 'Formularz rekrutacyjny',
+      'house_configuration': 'Konfiguracja domu'
     };
     return types[formType] || formType;
   };
@@ -138,9 +142,120 @@ const Forms = () => {
         return form.partnerInquiry?.message || 'Brak wiadomości';
       case 'employee_inquiry':
         return form.employeeInquiry?.message || 'Brak wiadomości';
+      case 'house_configuration':
+        return `Konfiguracja: ${form.houseConfiguration?.houseName || 'Brak nazwy'} - ${form.houseConfiguration?.pricing?.total || 'Brak ceny'}`;
       default:
         return 'Brak wiadomości';
     }
+  };
+
+  // Funkcja do renderowania szczegółów konfiguracji domu
+  const renderHouseConfigurationDetails = (houseConfig) => {
+    if (!houseConfig) return null;
+
+    return (
+      <div className="house-configuration-details">
+        <div className="detail-section">
+          <h4>Podstawowe informacje</h4>
+          <div className="detail-grid">
+            <div className="detail-item">
+              <label>Model domu:</label>
+              <span>{houseConfig.houseName} ({houseConfig.houseId})</span>
+            </div>
+            <div className="detail-item">
+              <label>Cena bazowa:</label>
+              <span>{houseConfig.basePrice}</span>
+            </div>
+            <div className="detail-item">
+              <label>Cena końcowa:</label>
+              <span className="total-price">{houseConfig.pricing?.total}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Wybrane pakiety */}
+        {houseConfig.configuration?.packages && houseConfig.configuration.packages.length > 0 && (
+          <div className="detail-section">
+            <h4>Wybrane pakiety ({houseConfig.configuration.packages.length})</h4>
+            <div className="packages-list">
+              {houseConfig.configuration.packages.map((pkg, index) => (
+                <div key={index} className="package-item">
+                  <div className="package-header">
+                    <strong>{pkg.packageName}</strong>
+                    {pkg.optionPrice && pkg.optionPrice !== '0 PLN' && (
+                      <span className="package-price">+{pkg.optionPrice}</span>
+                    )}
+                  </div>
+                  <div className="package-option">{pkg.optionName}</div>
+                </div>
+              ))}
+            </div>
+            <div className="packages-total">
+              <strong>Suma pakietów: {houseConfig.configuration.totalPackagesPrice || '0 PLN'}</strong>
+            </div>
+          </div>
+        )}
+
+        {/* Opcje wizualne */}
+        {houseConfig.configuration?.visualOptions && houseConfig.configuration.visualOptions.length > 0 && (
+          <div className="detail-section">
+            <h4>Opcje wizualne ({houseConfig.configuration.visualOptions.length})</h4>
+            <div className="visual-options-list">
+              {houseConfig.configuration.visualOptions.map((option, index) => (
+                <div key={index} className="visual-option-item">
+                  <div className="option-category">{option.category}:</div>
+                  <div className="option-details">
+                    <span className="option-name">{option.optionName}</span>
+                    {option.optionPrice && option.optionPrice !== '0 PLN' && (
+                      <span className="option-price">+{option.optionPrice}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="visual-options-total">
+              <strong>Suma opcji wizualnych: {houseConfig.configuration.totalVisualOptionsPrice || '0 PLN'}</strong>
+            </div>
+          </div>
+        )}
+
+        {/* Szczegółowe wyliczenie ceny */}
+        <div className="detail-section">
+          <h4>Szczegółowe wyliczenie</h4>
+          <div className="pricing-breakdown">
+            <div className="pricing-row">
+              <span>Podsuma:</span>
+              <span>{houseConfig.pricing?.subtotal || '0 PLN'}</span>
+            </div>
+            <div className="pricing-row">
+              <span>VAT (8%):</span>
+              <span>{houseConfig.pricing?.vat || '0 PLN'}</span>
+            </div>
+            <div className="pricing-row total">
+              <span><strong>RAZEM:</strong></span>
+              <span><strong>{houseConfig.pricing?.total || '0 PLN'}</strong></span>
+            </div>
+          </div>
+        </div>
+
+        {/* Podsumowanie konfiguracji */}
+        {houseConfig.configurationSummary && (
+          <div className="detail-section">
+            <h4>Podsumowanie konfiguracji</h4>
+            <div className="detail-grid">
+              <div className="detail-item">
+                <label>Liczba opcji:</label>
+                <span>{houseConfig.configurationSummary.totalOptions || 0}</span>
+              </div>
+              <div className="detail-item">
+                <label>Dostosowania:</label>
+                <span>{houseConfig.configurationSummary.hasCustomizations ? 'Tak' : 'Nie'}</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
   };
 
   const renderFormDetails = (form) => {
@@ -319,6 +434,9 @@ const Forms = () => {
             </div>
           );
         
+        case 'house_configuration':
+          return renderHouseConfigurationDetails(form.houseConfiguration);
+        
         default:
           return null;
       }
@@ -343,6 +461,27 @@ const Forms = () => {
         <p>Zarządzaj formularzami wysłanymi przez użytkowników</p>
       </div>
 
+      {/* Filtry */}
+      <div className="forms-filters">
+        <select 
+          value={filterType}
+          onChange={(e) => {
+            setFilterType(e.target.value);
+            setCurrentPage(1);
+          }}
+          className="filter-select"
+        >
+          <option value="all">Wszystkie typy</option>
+          <option value="property_inquiry">Zapytania o nieruchomości</option>
+          <option value="loan_inquiry">Kalkulator kredytu</option>
+          <option value="contact_inquiry">Formularze kontaktowe</option>
+          <option value="house_configuration">Konfiguracje domów</option>
+          <option value="property_submission">Zgłoszenia nieruchomości</option>
+          <option value="partner_inquiry">Formularze partnerskie</option>
+          <option value="employee_inquiry">Rekrutacje</option>
+        </select>
+      </div>
+
       <div className="forms-stats">
         <div className="stat-card">
           <div className="stat-number">{forms.length}</div>
@@ -362,9 +501,9 @@ const Forms = () => {
         </div>
         <div className="stat-card">
           <div className="stat-number">
-            {forms.filter(f => f.formType === 'contact_inquiry').length}
+            {forms.filter(f => f.formType === 'house_configuration').length}
           </div>
-          <div className="stat-label">Formularze kontaktowe</div>
+          <div className="stat-label">Konfiguracje domów</div>
         </div>
       </div>
 
@@ -473,7 +612,10 @@ const Forms = () => {
                   placeholder="Dodaj notatkę..."
                   value={selectedForm.internalNotes || ''}
                   onChange={(e) => {
-                    
+                    setSelectedForm({
+                      ...selectedForm,
+                      internalNotes: e.target.value
+                    });
                   }}
                   onBlur={(e) => updateFormStatus(selectedForm._id, selectedForm.status, e.target.value)}
                 />
