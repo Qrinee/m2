@@ -359,6 +359,7 @@
   
   .play-icon-center {
     width: 25px;
+    aspect-ratio: 1/1;
     height: 25px;
   }
   

@@ -1852,7 +1852,8 @@ img {
   }
   
   .gallery-arrow {
-
+      width: auto!important;
+      height: auto!important;
   }
   
   .gallery-arrow-left {
@@ -1869,8 +1870,8 @@ img {
   }
   
   .gallery-close-fullscreen {
-    width: 44px;
-    height: 44px;
+    width: auto;
+    height: auto;
     top: 20px;
     right: 20px;
   }
@@ -1904,8 +1905,8 @@ img {
   }
   
   .gallery-fullscreen-btn {
-    width: 34px;
-    height: 34px;
+    width: auto;
+    height: auto;
   }
   
   .prop-thumb-btn img {
