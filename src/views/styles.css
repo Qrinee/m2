@@ -1610,7 +1610,7 @@ img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.116);
   border: none;
   aspect-ratio: 1/1;
   border-radius: 50%;
@@ -1618,7 +1618,7 @@ img {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #333;
+  color: #ffffff;
   z-index: 2;
   transition: all 0.3s ease;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
