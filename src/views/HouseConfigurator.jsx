@@ -1,4 +1,4 @@
-// HouseConfigurator.js
+
 import React, { useState } from 'react';
 import Header from '../components/Header/Header';
 import Configurator from '../components/Configurator/Configurator';
@@ -22,33 +22,32 @@ const HouseConfigurator = () => {
     name: '',
     email: '',
     phone: '',
-    message: ''
   });
 
   const basePrice = 299000;
 
-  // Zmodyfikowana funkcja - pozwala na odznaczanie pojedynczych opcji
+  
   const selectOption = (optionId, packageIndex) => {
     setSelectedOptions(prev => {
       const newState = { ...prev };
       const optionParts = optionId.split('-');
       const currentPackageIndex = optionParts[1];
       
-      // Sprawdź czy pakiet ma tylko jedną opcję
+      
       const housePackages = PACKAGE_CONFIGS[id] || [];
       const currentPackage = housePackages[packageIndex];
       const hasSingleOption = currentPackage.options.length === 1;
       
       if (hasSingleOption) {
-        // Dla pakietów z jedną opcją - toggle
+        
         if (newState[optionId]) {
           delete newState[optionId];
         } else {
           newState[optionId] = true;
         }
       } else {
-        // Dla pakietów z wieloma opcjami - zachowanie radio
-        // Usuń wszystkie opcje z tego samego pakietu
+        
+        
         Object.keys(newState).forEach(key => {
           const keyParts = key.split('-');
           if (keyParts.length === 3) {
@@ -59,31 +58,31 @@ const HouseConfigurator = () => {
           }
         });
         
-        // Jeśli kliknięta opcja nie była wcześniej zaznaczona, dodaj ją
+        
         if (!prev[optionId]) {
           newState[optionId] = true;
         }
-        // Jeśli była zaznaczona, to po usunięciu wszystkich pozostanie odznaczona
+        
       }
       
       return newState;
     });
   };
 
-  // Aktualizacja cen opcji wizualnych
+  
   const handleVisualPriceChange = (price, selections) => {
     setVisualOptionsPrice(price);
     setSelectedVisualOptions(selections);
   };
 
-  // Obliczanie całkowitej ceny na podstawie PACKAGE_CONFIGS
+  
   const calculateTotal = () => {
     let total = basePrice + visualOptionsPrice;
     
-    // Pobierz konfigurację dla danego domu
+    
     const housePackages = PACKAGE_CONFIGS[id] || [];
     
-    // Przejdź przez wszystkie pakiety i ich opcje
+    
     housePackages.forEach((packageConfig, packageIndex) => {
       packageConfig.options.forEach((option, optionIndex) => {
         const optionId = `${id}-${packageIndex}-${optionIndex}`;
@@ -103,15 +102,135 @@ const HouseConfigurator = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Dziękujemy za zapytanie! Skontaktujemy się z Tobą wkrótce.');
+  
+  const prepareConfigurationData = () => {
+    
+    const houseConfig = HOUSE_CONFIGS[id] || {};
+    
+    
+    const selectedPackages = [];
+    const housePackages = PACKAGE_CONFIGS[id] || [];
+    
+    housePackages.forEach((packageConfig, packageIndex) => {
+      packageConfig.options.forEach((option, optionIndex) => {
+        const optionId = `${id}-${packageIndex}-${optionIndex}`;
+        if (selectedOptions[optionId]) {
+          selectedPackages.push({
+            packageName: packageConfig.title,
+            optionName: option.name,
+            optionPrice: option.price,
+            packageIndex,
+            optionIndex
+          });
+        }
+      });
+    });
+
+    
+    const visualSelections = [];
+    if (selectedVisualOptions && Object.keys(selectedVisualOptions).length > 0) {
+      const houseConfig = HOUSE_CONFIGS.d126; 
+      
+      Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
+        const categoryOptions = houseConfig.options[category];
+        if (Array.isArray(categoryOptions)) {
+          const selectedOption = categoryOptions.find(opt => opt.id === optionId);
+          if (selectedOption) {
+            visualSelections.push({
+              category: category,
+              optionName: selectedOption.name,
+              optionPrice: selectedOption.price,
+              optionId: selectedOption.id
+            });
+          }
+        }
+      });
+    }
+
+    return {
+      
+      houseId: id,
+      houseName: houseConfig.name || `Dom ${id}`,
+      basePrice: basePrice,
+      
+      
+      customer: {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message
+      },
+      
+      
+      configuration: {
+        packages: selectedPackages,
+        visualOptions: visualSelections,
+        totalPackagesPrice: selectedPackages.reduce((sum, pkg) => sum + pkg.optionPrice, 0),
+        totalVisualOptionsPrice: visualOptionsPrice
+      },
+      
+      
+      pricing: {
+        subtotal: totalPrice,
+        vat: totalPrice * 0.08,
+        total: priceWithVAT
+      },
+      
+      
+      timestamp: new Date().toISOString(),
+      configurationSummary: {
+        totalOptions: selectedPackages.length + visualSelections.length,
+        hasCustomizations: selectedPackages.length > 0 || visualSelections.length > 0
+      }
+    };
   };
+
+// W HouseConfigurator.js zaktualizuj funkcję handleSubmit:
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  // Przygotuj dane konfiguracji
+  const configurationData = prepareConfigurationData();
+  
+  console.log('📦 Dane konfiguracji do wysłania:', configurationData);
+  
+  try {
+    // Wyślij dane do backendu
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/emails/house-configuration`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(configurationData)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert('Dziękujemy za zapytanie! Skontaktujemy się z Tobą wkrótce.\n\nDane konfiguracji zostały zapisane.');
+      
+      // Opcjonalnie: reset formularza
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    } else {
+      alert('Wystąpił błąd podczas wysyłania formularza: ' + result.error);
+    }
+
+  } catch (error) {
+    console.error('Błąd wysyłania formularza:', error);
+    alert('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+  }
+};
 
   const totalPrice = calculateTotal();
   const priceWithVAT = totalPrice * 1.08;
 
-  // Pobieranie nazw i cen pakietów z PACKAGE_CONFIGS
+  
   const getPackageInfo = (optionId) => {
     if (!optionId) return { name: '', price: 0 };
     
@@ -132,7 +251,7 @@ const HouseConfigurator = () => {
     };
   };
 
-  // Pobieranie podsumowania wybranych pakietów
+  
   const getSelectedPackagesSummary = () => {
     const summary = [];
     
@@ -154,7 +273,7 @@ const HouseConfigurator = () => {
 
   const selectedPackagesSummary = getSelectedPackagesSummary();
 
-  // Funkcja do uzyskania nazw wybranych opcji wizualnych
+  
   const getVisualOptionsSummary = () => {
     if (!selectedVisualOptions || Object.keys(selectedVisualOptions).length === 0) {
       return [];
@@ -207,7 +326,7 @@ const HouseConfigurator = () => {
       </div>
       <ModularHouseCalculator totalPrice={priceWithVAT} minOwnContribution={50}/>
       <p style={{maxWidth: '700px', margin: '50px auto', color: 'gray', fontSize: '14px'}}>
-Ogłoszenie ma charakter wyłącznie informacyjny i nie stanowi oferty w rozumieniu art. 66 § 1 ani art. 71 Kodeksu cywilnego. Nie jest to również oferta handlowa, porada prawna ani zaproszenie do rokowań. Wszelkie podane kwoty i wyliczenia mają charakter orientacyjny i nie stanowią wiążącej oferty.    </p>
+Ogłoszenie ma charakter wyłącznie informacyjny i nie stanowi oferty w rozumieniu art. 66 § 1 ani art. 71 Kodeksu cywilnego. Nie jest to również oferta handlowa, porada prawna ani zaproszenie do rokowań. Wszelkie podane kwoty i wyliczenia mają charakter orientacyjny i nie stanowią wiążącej oferty.    </p>
       <Footer/>
     </>
   );

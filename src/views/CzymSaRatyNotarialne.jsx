@@ -26,6 +26,7 @@ import {
   FaRocket,
   FaStar
 } from 'react-icons/fa'
+import TikTokList from '../components/TiktokEmbed/TiktokList'
 
 export default function CzymSaRatyNotarialne() {
 
@@ -212,13 +213,10 @@ export default function CzymSaRatyNotarialne() {
       </div>
 <div className='section-spacer-lg'></div>
 <div className='reelsy' style={{display: 'flex', justifyContent: 'center'}}> 
-<iframe width="337" height="554" src="https://www.youtube.com/embed/1hJchuEwB-s" title="Grilled appetizer ribs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<iframe width="337" height="554" src="https://www.youtube.com/embed/1hJchuEwB-s" title="Grilled appetizer ribs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<iframe width="337" height="554" src="https://www.youtube.com/embed/1hJchuEwB-s" title="Grilled appetizer ribs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<TikTokList/>
 
-<iframe width="337" height="554" src="https://www.youtube.com/embed/1hJchuEwB-s" title="Grilled appetizer ribs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 <div className='section-spacer-lg'></div>
       {/* Sekcja FAQ */}
