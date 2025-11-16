@@ -28,12 +28,17 @@ useEffect(() => {
   const initialSelections = {}
   Object.keys(config.options).forEach(section => {
     if (section === 'typDachu') {
-      // Dla typu dachu ustaw pierwszą dostępną opcję
       initialSelections[section] = config.options[section][0]?.id || 0
     } else if (section === 'kolorDachu') {
-      // Dla koloru dachu ustaw pierwszy kolor dla domyślnego typu dachu
       const defaultRoofType = config.options.typDachu?.[0]?.id || 0
       initialSelections[section] = config.options.kolorDachu?.[defaultRoofType]?.[0]?.id || 0
+    } else if (section === 'kolorDrzwi') {
+      // Dla koloru drzwi ustaw pierwszą opcję
+      initialSelections[section] = config.options.kolorDrzwi[0]?.id || 0
+    } else if (section === 'drzwi') {
+      // Dla konkretnych drzwi ustaw pierwszy model z pierwszego koloru
+      const firstColorId = config.options.kolorDrzwi[0]?.id || 0
+      initialSelections[section] = config.options.drzwi[firstColorId]?.[0]?.id || 0
     } else {
       initialSelections[section] = config.options[section][0]?.id || 0
     }

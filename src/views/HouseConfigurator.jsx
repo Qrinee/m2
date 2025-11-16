@@ -81,9 +81,32 @@ const getVisualOptionsSummary = () => {
   }
 
   const summary = [];
-  const houseConfig = HOUSE_CONFIGS[id]; // UŻYJ AKTUALNEGO ID, NIE d126
+  const houseConfig = HOUSE_CONFIGS[id];
 
   Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
+    // SPECJALNA OBSŁUGA DLA DRZWI
+    if (category === 'drzwi') {
+      const selectedColorId = selectedVisualOptions.kolorDrzwi;
+      if (selectedColorId && houseConfig.options.drzwi[selectedColorId]) {
+        const doorOptions = houseConfig.options.drzwi[selectedColorId];
+        const selectedDoor = doorOptions.find(opt => opt.id === optionId);
+        if (selectedDoor && selectedDoor.price > 0) {
+          summary.push({
+            name: `Drzwi: ${selectedDoor.name}`,
+            price: selectedDoor.price
+          });
+        }
+      }
+      return; // Wyjdź z iteracji dla kategorii 'drzwi'
+    }
+
+    // SPECJALNA OBSŁUGA DLA KOLORU DRZWI (głównej kategorii)
+    if (category === 'kolorDrzwi') {
+      // Pomijamy główną kategorię koloru drzwi, bo cena jest w konkretnym modelu
+      return;
+    }
+
+    // STANDARDOWA OBSŁUGA DLA POZOSTAŁYCH KATEGORII
     const categoryOptions = houseConfig.options[category];
     if (Array.isArray(categoryOptions)) {
       const selectedOption = categoryOptions.find(opt => opt.id === optionId);

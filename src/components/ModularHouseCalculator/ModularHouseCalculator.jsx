@@ -150,7 +150,7 @@ const ModularHouseCalculator = ({
         {/* Karty podsumowania */}
         <div className="summary-cards">
           <div className="summary-card">
-            <div className="card-label">Wysokość kredytu</div>
+            <div className="card-label">Wysokość</div>
             <div className="card-value">{formatCurrency(loanAmount)}</div>
           </div>
           <div className="summary-card">
