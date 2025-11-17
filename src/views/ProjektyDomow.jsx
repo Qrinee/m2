@@ -48,7 +48,7 @@ export default function ProjektyDomow() {
   const houseProjects = [
     {
       id: 'd126',
-      name: "Model D-126",
+      name: "Projekt 126",
       area: "126 m²",
       thumbnail: et,
       shortDesc: "Dom całoroczny dla rodziny 2+3",
@@ -59,7 +59,7 @@ export default function ProjektyDomow() {
     },
     {
       id: 'd115',
-      name: "Model D-115",
+      name: "Projekt 115",
       area: "84 m²",
       thumbnail: et2,
       shortDesc: "Dom parterowy, 3 sypialnie, 1 łazienka",
@@ -70,7 +70,7 @@ export default function ProjektyDomow() {
     },
         {
       id: 'd70',
-      name: "Model D-70",
+      name: "Projekt 70",
       area: "70 m²",
       thumbnail: et3,
       shortDesc: "Dom całoroczny dla rodziny 2+1",
