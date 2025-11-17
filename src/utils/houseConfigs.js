@@ -240,7 +240,7 @@ import houseD126roofDachowkaGray from '../assets/konfigurator/dachowka/szary.web
 
 import houseD126blindGray from '../assets/konfigurator/rolety/d126_r1_szary.webp'
 import houseD126blindWhite from '../assets/konfigurator/rolety/d126_r1_bialy.webp'
-import houseD126blindBlack from '../assets/konfigurator/rolety/d126_r1_bialy.webp'
+import houseD126blindBlack from '../assets/konfigurator/rolety/rolety.webp'
 import houseD126blindBrown from '../assets/konfigurator/rolety/d126_r1_orzech.webp'
 import houseD126blindOak from '../assets/konfigurator/rolety/d126_r1_dab.webp'
 
