@@ -155,7 +155,7 @@ export default function PlytyFundamentowe() {
       <div className='section-spacer-lg'></div>
 
       {/* Nowa Sekcja z Mapą Polski */}
-      <div className="map-section">
+      <div className="map-section" style={{padding: '10vw', backgroundColor: 'white'}}>
         <div className="career-container">
           <div className="map-content">
             <div className="map-text">
@@ -179,7 +179,7 @@ export default function PlytyFundamentowe() {
               </div>
             </div>
             <div className="map-image">
-              <img src={mapaPolski} alt="Mapa Polski - obszar działania" />
+              <img src={mapaPolski} alt="Mapa Polski - obszar działania" width={600} />
             </div>
           </div>
         </div>

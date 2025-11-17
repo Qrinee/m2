@@ -338,7 +338,6 @@
 /* Sekcja z mapą */
 .map-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .map-content {
@@ -388,7 +387,6 @@
   height: auto;
   min-width: 150px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
