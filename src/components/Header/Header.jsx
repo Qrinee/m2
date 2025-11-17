@@ -158,7 +158,7 @@ const Header = ({ black }) => {
       label: "Dla sprzedających", 
       key: "sprzedajacy",
       children: [
-        { label: "Zgłoś nieruchomość", href: "/zglos-nieruchomosc" },
+        { label: "Dodaj ogłoszenie", href: "/zglos-nieruchomosc" },
       ],
     },
     { 
