@@ -257,15 +257,16 @@ export const HOUSE_CONFIGS = {
     },
     options: {
       tynk: [
-        { id: 1, name: 'Tynk + blacha', thumb: finishD70PlasterMetalThumb, image: finishD70PlasterMetal, price: 50500 },
-        { id: 2, name: 'Blacha na rąbek', thumb: finishD70MetalSheetThumb, image: finishD70MetalSheet, price: 49000},
+          { id: 1, name: 'Tynk mineralny', thumb: finishD70MineralPlasterThumb, image: finishD70MineralPlaster, price: 41000,  hasColors: true },
+        { id: 2, name: 'Tynk + blacha', thumb: finishD70PlasterMetalThumb, image: finishD70PlasterMetal, price: 50500 },
+        { id: 3, name: 'Blacha na rąbek', thumb: finishD70MetalSheetThumb, image: finishD70MetalSheet, price: 49000},
 
-        { id: 3, name: 'Tynk mineralny', thumb: finishD70MineralPlasterThumb, image: finishD70MineralPlaster, price: 41000,  hasColors: true },
+      
         { id: 4, name: 'Lamele', price: 49800, thumb: finishD70SlatsThumb, image: finishD70Slats, hasColors: true }
       ],
 
       kolor : {
-        3: [
+        1: [
           { id: 1, name: 'Biała', thumb: colorWhiteThumb, image: finishD70MineralPlaster },
           { id: 2, name: 'Antracyt', thumb: colorAnthraciteThumb, image: finishD70Anthracite }
         ],
@@ -353,14 +354,15 @@ drzwi: {
     },
     options: {
     tynk: [
-      { id: 1, name: 'Blacha na rąbek', thumb: finishD115MetalSheetThumb, image: finishD115MetalSheet, price: 57000 },
-      { id: 2, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, price: 54000, hasColors: true },
+            { id: 1, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, price: 54000, hasColors: true },
+      { id: 2, name: 'Blacha na rąbek', thumb: finishD115MetalSheetThumb, image: finishD115MetalSheet, price: 57000 },
+
 
       { id: 3, name: 'Lamele', price: 58600, thumb: finishD115SlatsThumb, image: finishD115Slats, hasColors: true },
       { id: 4, name: 'Tynk i blacha', thumb: finisD115MetalPlasterThumb, image: finishD115PlasterMetal, price: 56500 } 
     ],
       kolor: {
-        2: [
+        1: [
           { id: 1, name: 'Biała', thumb: colorWhiteThumb, image: finishD115MineralPlaster },
           { id: 2, name: 'Antracyt', thumb: colorAnthraciteThumb, image: finishD115Anthracite }
         ],
@@ -447,15 +449,16 @@ drzwi: {
     },
     options: {
       tynk: [
-                { id: 1, name: 'Tynk + blacha', thumb: finishD126PlasterMetalThumb, image: finishD126PlasterMetal, price: 53500 },
-        { id: 2, name: 'Blacha na rąbek', thumb: finishD126MetalSheetThumb, image: finishD126MetalSheet, price: 54000 },
+                { id: 1, name: 'Tynk mineralny', thumb: finishD126MineralPlasterThumb, image: finishD126MineralPlaster, hasColors: true, price: 51200 },
+                { id: 2, name: 'Tynk + blacha', thumb: finishD126PlasterMetalThumb, image: finishD126PlasterMetal, price: 53500 },
+        { id: 3, name: 'Blacha na rąbek', thumb: finishD126MetalSheetThumb, image: finishD126MetalSheet, price: 54000 },
 
-        { id: 3, name: 'Tynk mineralny', thumb: finishD126MineralPlasterThumb, image: finishD126MineralPlaster, hasColors: true, price: 51200 },
+
         { id: 4, name: 'Lamele', thumb: finishD126SlatsThumb, image: finishD126Slats, hasColors: true, price: 54300 }
       ],
 
       kolor: {
-        3: [ 
+        1: [ 
           { id: 3, name: 'Biała', thumb: colorWhiteThumb, image: finishD126MineralPlaster, price: 0 },
           { id: 5, name: 'Antracyt', thumb: colorAnthraciteThumb, image: finishD126Anthracite, price: 0 }
         ],
