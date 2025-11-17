@@ -248,7 +248,7 @@ import houseD126blindOak from '../assets/konfigurator/rolety/d126_r1_dab.webp'
 export const HOUSE_CONFIGS = {
   d70: {
     id: 'd70',
-    name: 'Dom Modelowy 3',
+    name: 'Projekt 70',
     baseImage: houseD70Base,
     basePrice: 199000,
     overlayImages: {
@@ -345,7 +345,7 @@ drzwi: {
   },
   d115: {
     id: 'd115',
-    name: 'Dom Modelowy 2',
+    name: 'Projekt 115',
     basePrice: 379000,
     baseImage: houseD115Base,
     overlayImages: {
@@ -441,7 +441,7 @@ drzwi: {
   },
   d126: {
     id: 'd126',
-    name: 'Dom Modelowy 1',
+    name: 'Projekt 126',
     baseImage: houseD126Base,
     basePrice: 399000,
     overlayImages: {
