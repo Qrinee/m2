@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './VisualConfigurator.css'
 import { HOUSE_CONFIGS } from '../../utils/houseConfigs'
@@ -21,7 +21,7 @@ export default function VisualConfigurator({onVisualPriceChange }) {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-useEffect(() => {
+useLayoutEffect(() => {
   const config = HOUSE_CONFIGS[id] || HOUSE_CONFIGS.default
   setHouseConfig(config)
   
