@@ -20,17 +20,7 @@ export default function Footer() {
             znajomością rynku, by oferować klientom więcej niż standardową
             obsługę przy kupnie i sprzedaży nieruchomości.
           </p>
-          <div className="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61577857168786" className="social-icon">
-              <FaFacebookF />
-            </a>
-            <a href="https://www.tiktok.com/@m2notarialnie?_t=ZN-8xWOz04Zon8&_r=1" className="social-icon">
-              <FaTiktok />
-            </a>
-            <a href="https://www.instagram.com/m2notarialnie.pl/" className="social-icon">
-              <FaInstagram />
-            </a>
-          </div>
+
         </div>
 
         <div className="footer-section">
@@ -65,13 +55,15 @@ export default function Footer() {
             </div>
           </div>
 
-          <h4 className="platforms-title">Znajdziesz nas na:</h4>
-          <div className="platforms-grid">
-            <a href="https://www.olx.pl/" className="platform-logo">
-              <img src={OLX} alt="OLX" />
+           <div className="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61577857168786" className="social-icon">
+              <FaFacebookF style={{margin: '0'}}  />
             </a>
-            <a href="https://www.otodom.pl/" className="platform-logo">
-              <img src={Otodom} alt="Otodom" />
+            <a href="https://www.tiktok.com/@m2notarialnie?_t=ZN-8xWOz04Zon8&_r=1" className="social-icon">
+              <FaTiktok style={{margin: '0'}}  />
+            </a>
+            <a href="https://www.instagram.com/m2notarialnie.pl/" className="social-icon">
+              <FaInstagram style={{margin: '0'}} />
             </a>
           </div>
         </div>
