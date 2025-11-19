@@ -351,7 +351,7 @@ const handleSubmit = async (e) => {
       
       <div className="configurator">
         <VisualConfigurator onVisualPriceChange={handleVisualPriceChange} />
-        <HousePlan/>
+        <HousePlan houseid={id}/>
 
         <Configurator
           selectedOptions={selectedOptions}

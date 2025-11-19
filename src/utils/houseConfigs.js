@@ -1,3 +1,6 @@
+
+
+
 // Thumbnails dla kolorów drzwi (główne kategorie)
 import doorGrayThumb from '../assets/konfigurator/thumbnails/drzwi_szary.jpg'
 import doorOakThumb from '../assets/konfigurator/thumbnails/drzwi_dab.jpg'
@@ -250,19 +253,19 @@ export const HOUSE_CONFIGS = {
     id: 'd70',
     name: 'Projekt 70',
     baseImage: houseD70Base,
-    basePrice: 199000,
+    basePrice: 240000,
     overlayImages: {
       light: houseCommonLight,
       dach: houseD70Roof
     },
     options: {
       tynk: [
-          { id: 1, name: 'Tynk mineralny', thumb: finishD70MineralPlasterThumb, image: finishD70MineralPlaster, price: 41000,  hasColors: true },
-        { id: 2, name: 'Tynk + blacha', thumb: finishD70PlasterMetalThumb, image: finishD70PlasterMetal, price: 50500 },
-        { id: 3, name: 'Blacha na rąbek', thumb: finishD70MetalSheetThumb, image: finishD70MetalSheet, price: 49000},
+          { id: 1, name: 'Tynk mineralny', thumb: finishD70MineralPlasterThumb, image: finishD70MineralPlaster, price: 44700,  hasColors: true },
+        { id: 2, name: 'Tynk + blacha', thumb: finishD70PlasterMetalThumb, image: finishD70PlasterMetal, price: 44500 },
+        { id: 3, name: 'Blacha na rąbek', thumb: finishD70MetalSheetThumb, image: finishD70MetalSheet, price: 43700},
 
       
-        { id: 4, name: 'Lamele', price: 49800, thumb: finishD70SlatsThumb, image: finishD70Slats, hasColors: true }
+        { id: 4, name: 'Lamele', price: 47000, thumb: finishD70SlatsThumb, image: finishD70Slats, hasColors: true }
       ],
 
       kolor : {
@@ -279,7 +282,7 @@ export const HOUSE_CONFIGS = {
       },
 
       typDachu: [
-          { id: 0, name: 'Blacha na rąbek', thumb: blacha, image: houseD70Roof, price: 52000 },
+          { id: 0, name: 'Blacha na rąbek', thumb: blacha, image: houseD70Roof, price: 43700 },
         { id: 1, name: 'Dachówka ceramiczna', thumb: dachowka, image: houseD70Roof, price: 64000 },
 
       ],
@@ -346,7 +349,7 @@ drzwi: {
   d115: {
     id: 'd115',
     name: 'Projekt 115',
-    basePrice: 379000,
+    basePrice: 319000,
     baseImage: houseD115Base,
     overlayImages: {
       light: houseCommonLight,
@@ -354,12 +357,12 @@ drzwi: {
     },
     options: {
     tynk: [
-            { id: 1, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, price: 54000, hasColors: true },
-      { id: 2, name: 'Blacha na rąbek', thumb: finishD115MetalSheetThumb, image: finishD115MetalSheet, price: 57000 },
+            { id: 1, name: 'Tynk mineralny', thumb: finishD115MineralPlasterThumb, image: finishD115MineralPlaster, price: 48500, hasColors: true },
+      { id: 2, name: 'Blacha na rąbek', thumb: finishD115MetalSheetThumb, image: finishD115MetalSheet, price: 48000 },
 
 
-      { id: 3, name: 'Lamele', price: 58600, thumb: finishD115SlatsThumb, image: finishD115Slats, hasColors: true },
-      { id: 4, name: 'Tynk i blacha', thumb: finisD115MetalPlasterThumb, image: finishD115PlasterMetal, price: 56500 } 
+      { id: 3, name: 'Lamele', price: 59700, thumb: finishD115SlatsThumb, image: finishD115Slats, hasColors: true },
+      { id: 4, name: 'Tynk + blacha', thumb: finisD115MetalPlasterThumb, image: finishD115PlasterMetal, price: 49400 } 
     ],
       kolor: {
         1: [
@@ -443,7 +446,7 @@ drzwi: {
     id: 'd126',
     name: 'Projekt 126',
     baseImage: houseD126Base,
-    basePrice: 399000,
+    basePrice: 345000,
     overlayImages: {
       light: houseCommonLight
     },
