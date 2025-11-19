@@ -6,7 +6,7 @@ export const PACKAGE_CONFIGS = {
       options: [
         { name: "Formalności we własnym zakresie, kupuję tylko projekt", price: 9700 },
         { name: "Zgłoszenie budynku mieszkalnego, pełna dokumentacja architektoniczno-budowlana, pełna obsługa inżynierska, adaptacja projektu, pozwolenie na budowę", price: 16000 },
-        { name: "Kierownictwo budowy", price: 27000}
+        { name: "Zgłoszenie budynku mieszkalnego, pełna dokumentacja architektoniczno-budowlana, pełna obsługa inżynierska, adaptacja projektu, pozwolenie na budowę + Kierownictwo budowy", price: 27000}
       ]
     },
 
@@ -178,7 +178,7 @@ export const PACKAGE_CONFIGS = {
       vat: "23%",
       options: [
         { name: "Formalności we własnym zakresie, kupuję tylko projekt", price: 9700 },
-        { name: "Zgłoszenie budynku mieszkalnego, pełna dokumentacja architektoniczno-budowlana, pełna obsługa inżynierska, adaptacja projektu, pozwolenie na budowę", price: 16000 },
+        { name: "Zgłoszenie budynku mieszkalnego, pełna dokumentacja architektoniczno-budowlana, pełna obsługa inżynierska, adaptacja projektu, pozwolenie na budowę + Kierownictwo budowy", price: 16000 },
         { name: "Kierownictwo budowy", price: 27000}
       ]
     },
