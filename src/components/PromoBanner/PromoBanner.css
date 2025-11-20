@@ -1,6 +1,6 @@
 .promo-banner {
-  position: fixed;        /* było: sticky */
-  bottom: 0;              /* trzyma się dolnej krawędzi ekranu */
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
@@ -15,6 +15,7 @@
   box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.18);
   z-index: 9999;
   overflow: visible;
+  box-sizing: border-box;
 }
 
 /* ===== Left - Image ===== */
@@ -55,24 +56,37 @@
   margin-bottom: 20px;
 }
 
-.promo-sub {
+.promo-suba {
+  
+
+
+
+
+align-items: flex-start;
   margin-top: 6px;
   font-size: 15px;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .promo-phone {
   color: var(--secondary-color);
   background-color: #fff;
-
   border-radius: 5px;
-  margin-left: 20px;
   padding: 10px;
   text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .promo-phone:hover {
   text-decoration: underline;
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
 }
 
 /* ===== Right - Button ===== */
@@ -126,76 +140,251 @@
 /* ======== RESPONSIVE DESIGN ======== */
 
 /* Tablets and smaller laptops */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .promo-banner {
-    flex-wrap: wrap;
-    gap: 14px;
-    padding: 14px;
+    gap: 16px;
+    padding: 14px 16px;
   }
 
   .promo-image {
     width: 140px;
-    margin-top: -30px;
+    margin-top: -60px;
   }
 
   .promo-main {
-    font-size: 18px;
+    font-size: 24px;
+    margin-bottom: 15px;
   }
 
-  .promo-sub {
+  .promo-suba {
     font-size: 14px;
   }
 
   .promo-button {
-    padding: 8px 14px;
+    padding: 9px 14px;
     font-size: 14px;
   }
 }
 
-/* Phones */
-@media (max-width: 640px) {
+/* Tablets */
+@media (max-width: 900px) {
   .promo-banner {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-radius: 0;
-  }
-
-  .promo-left {
-    order: -1;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 12px 14px;
   }
 
   .promo-image {
     width: 120px;
-    margin-top: -20px;
-  }
-
-  .promo-center {
-    text-align: center;
+    margin-top: -40px;
+    margin-bottom: -30px;
   }
 
   .promo-main {
-    font-size: 17px;
+    font-size: 20px;
+    margin-bottom: 12px;
   }
 
-  .promo-sub {
+  .promo-suba {
     font-size: 13px;
+    gap: 6px;
   }
 
-  .promo-actions {
-    width: 100%;
-    margin-left: 0;
+  .promo-phone {
+    padding: 8px;
   }
 
   .promo-button {
-    width: 100%;
-    padding: 10px;
-    font-size: 15px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Large Phones */
+@media (max-width: 768px) {
+  .promo-banner {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .promo-left {
+    order: 1;
+    flex: 0 0 auto;
+  }
+
+  .promo-center {
+    order: 2;
+    flex: 1 1 auto;
+    text-align: center;
+    min-width: unset;
+  }
+
+  .promo-actions {
+    order: 3;
+    flex: 0 0 auto;
+    margin-left: 0;
+  }
+
+  .promo-image {
+    width: 100px;
+    margin-top: -30px;
+    margin-bottom: -20px;
+  }
+
+  .promo-main {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .promo-suba {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .promo-phone {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .promo-button {
+    padding: 8px 10px;
+    font-size: 12px;
+    white-space: normal;
   }
 
   .promo-close {
     font-size: 28px;
     top: 4px;
     right: 6px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .promo-banner {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 0;
+  }
+
+  .promo-left {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .promo-center {
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .promo-actions {
+    order: 2;
+    width: 100%;
+  }
+
+  .promo-image {
+    width: 80px;
+    margin-top: -20px;
+    margin-bottom: -10px;
+  }
+
+  .promo-main {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .promo-suba {
+    font-size: 11px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .promo-phone {
+    padding: 5px 6px;
+    font-size: 10px;
+    min-width: 140px;
+  }
+
+  .promo-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .promo-close {
+    font-size: 24px;
+    top: 2px;
+    right: 4px;
+  }
+}
+
+/* Extra Small Phones */
+@media (max-width: 360px) {
+  .promo-banner {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .promo-image {
+    width: 70px;
+    margin-top: -15px;
+    margin-bottom: -5px;
+  }
+
+  .promo-main {
+    font-size: 14px;
+  }
+
+  .promo-suba {
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .promo-phone {
+    padding: 4px;
+    font-size: 9px;
+    min-width: 120px;
+  }
+
+  .promo-button {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .promo-close {
+    font-size: 20px;
+  }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .promo-banner {
+    position: sticky;
+    padding: 8px 12px;
+  }
+  
+  .promo-image {
+    width: 80px;
+    margin-top: -20px;
+    margin-bottom: -10px;
+  }
+  
+  .promo-main {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .promo-suba {
+    font-size: 11px;
   }
 }

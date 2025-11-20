@@ -26,7 +26,7 @@ const PromoBanner = ({ imageSrc, closable = true }) => {
         <p className="promo-main">
           <strong>Skontaktuj się z nami!</strong>
         </p>
-        <p className="promo-sub">
+        <p className="promo-suba">
           <a href="tel:+48728866825 " className="promo-phone">
           DAWID FREY +48 728 866 825 
           </a>

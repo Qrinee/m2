@@ -349,7 +349,7 @@ drzwi: {
   d115: {
     id: 'd115',
     name: 'Projekt 115',
-    basePrice: 319000,
+    basePrice: 315000,
     baseImage: houseD115Base,
     overlayImages: {
       light: houseCommonLight,
@@ -446,7 +446,7 @@ drzwi: {
     id: 'd126',
     name: 'Projekt 126',
     baseImage: houseD126Base,
-    basePrice: 345000,
+    basePrice: 335000,
     overlayImages: {
       light: houseCommonLight
     },
