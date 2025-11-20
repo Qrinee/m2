@@ -11,7 +11,7 @@ const ConstructionProcess = () => {
 const processSteps = [
   {
     step: 1,
-    title: "Szybko proces produkcji",
+    title: "Szybki proces produkcji",
     description: `
     
     Budynki modułowe powstają w halach produkcyjnych, gdzie wszystkie etapy realizowane są w stabilnych i kontrolowanych warunkach. Pozwala to prowadzić prace równolegle z przygotowaniem terenu, dzięki czemu cały proces trwa znacznie krócej niż w budownictwie tradycyjnym.                                                           Standardowy czas wytworzenia modułów to około 12–24 tygodnie, a sama instalacja na przygotowanych fundamentach zajmuje już tylko kilka dni. Tak zoptymalizowany proces gwarantuje szybkie, precyzyjne i powtarzalne wykonanie, przy jednoczesnym ograniczeniu kosztów i ryzyka opóźnień.
