@@ -70,20 +70,21 @@ export const PACKAGE_CONFIGS = {
         { name: "Wycena indywidualna na podstawie projektu domu", price: 0},
       ]
     },
-    {
-      title: "Transport i montaż na działce",
-      vat: "8%",
-      options: [
-        {name: "Montaż i transport", price: 0}
-      ]
-    },
+
     {
       title: "Wykończenie Pod Klucz",
           vat: "8%", 
       options: [
         { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
       ]
-    }
+    },
+        {
+      title: "Transport i montaż na działce",
+      vat: "8%",
+      options: [
+        {name: "Montaż i transport", price: 0}
+      ]
+    },
   ],
 
   d115: [
@@ -156,6 +157,13 @@ export const PACKAGE_CONFIGS = {
         { name: "Wycena indywidualna na podstawie projektu domu", price: 0},
       ]
     },
+        {
+      title: "Wykończenie Pod Klucz",
+          vat: "8%", 
+      options: [
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
+      ]
+    },
     {
       title: "Transport i montaż na działce",
       vat: "8%",
@@ -163,13 +171,7 @@ export const PACKAGE_CONFIGS = {
         {name: "Montaż i transport", price: 0}
       ]
     },
-    {
-      title: "Wykończenie Pod Klucz",
-          vat: "8%", 
-      options: [
-        { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
-      ]
-    }
+
   ],
 
   d70: [
@@ -242,6 +244,13 @@ export const PACKAGE_CONFIGS = {
         { name: "Wycena indywidualna na podstawie projektu domu", price: 0},
       ]
     },   
+        {
+      title: "Wykończenie Pod Klucz",
+          vat: "8%", 
+      options: [
+        { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
+      ]
+    },
     {
       title: "Transport i montaż na działce",
       vat: "8%",
@@ -249,12 +258,6 @@ export const PACKAGE_CONFIGS = {
         {name: "Montaż i transport", price: 0}
       ]
     },
-    {
-      title: "Wykończenie Pod Klucz",
-          vat: "8%", 
-      options: [
-        { name: "Wycena indywidualna na podstawie projektu domu", price: 0 },
-      ]
-    }
+
   ]
 };

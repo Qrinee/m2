@@ -17,7 +17,7 @@ import { PACKAGE_CONFIGS } from '../../utils/packageConfigs';
 
 const PackageList = ({ selectedOptions, selectOption, houseId }) => {
   const housePackages = PACKAGE_CONFIGS[houseId] || [];
-  const packageImages = [p1, p2, p3, p6, p4, p7, p8, rekuperacja, p9, transport, p10];
+  const packageImages = [p1, p2, p3, p6, p4, p7, p8, rekuperacja, p9,p10,transport];
 
   return (
     <div className="packages-section">

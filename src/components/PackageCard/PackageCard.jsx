@@ -58,7 +58,8 @@ const PackageCard = ({
                 <h4>{opt.name}</h4>
               </div>
               <p className="info"><FaCircleInfo style={{marginRight: 10}}/> Informacje</p>
-              <p className="prices">{opt.price == 0 ? "Wycena indywidualna": opt.price + " zł"}</p>
+
+              <p className="prices">{opt.price == 0 && opt.name != 'Montaż i transport' ? 'Wycena indywidualna' : opt.price == 0 && opt.name == 'Montaż i transport' ? 'W cenie' : opt.price + " zł"}</p>
             </div>
           ))}
         </div>

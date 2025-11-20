@@ -253,7 +253,7 @@ export const HOUSE_CONFIGS = {
     id: 'd70',
     name: 'Projekt 70',
     baseImage: houseD70Base,
-    basePrice: 240000,
+    basePrice: 230000,
     overlayImages: {
       light: houseCommonLight,
       dach: houseD70Roof
