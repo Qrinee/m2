@@ -81,6 +81,12 @@ const getVisualOptionsSummary = () => {
   const houseConfig = HOUSE_CONFIGS[id];
 
   Object.entries(selectedVisualOptions).forEach(([category, optionId]) => {
+
+    if(category === 'rolety'){
+      if(!selectedVisualOptions.roletyEnabled){
+        return
+      }
+    }
     // SPECJALNA OBSŁUGA DLA DRZWI
     if (category === 'drzwi') {
       const selectedColorId = selectedVisualOptions.kolorDrzwi;
