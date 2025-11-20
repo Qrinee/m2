@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Hero from '../components/Hero/Hero'
 import Header from '../components/Header/Header'
-import video from '../assets/videos/vid.mp4'
 import img from '../assets/plytafundamentowa.jpg'
 import { 
   FaThermometerHalf,
