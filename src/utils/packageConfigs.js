@@ -15,15 +15,15 @@ export const PACKAGE_CONFIGS = {
       allowMultiple: true, 
       vat: "8%", 
       options: [
-        { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 116000},
-        { name: "Wodna instalacja ogrzewania podłogowego", price: 27360}
+        { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 97500},
+        { name: "Wodna instalacja ogrzewania podłogowego", price: 19000}
       ]
     },
     {
       title: "Instalacje Sanitarne i Elektryczne",
           vat: "8%", 
       options: [
-        { name: "Instalacja elektryczna oraz teletechniczna, wodno-kanalizacyjna.", price: 84600 },
+        { name: "Instalacja elektryczna oraz teletechniczna, wodno-kanalizacyjna.", price: 74600 },
       ]
     },
     {
@@ -103,15 +103,15 @@ export const PACKAGE_CONFIGS = {
             allowMultiple: true, 
           vat: "8%", 
       options: [
-        { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 109000 },
-      { name: "Wodna instalacja ogrzewania podłogowego", price: 22800}
+        { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 82400 },
+      { name: "Wodna instalacja ogrzewania podłogowego", price: 17000}
       ]
     },
     {
       title: "Instalacje Sanitarne i Elektryczne",
           vat: "8%", 
       options: [
-        { name: "Instalacja elektryczna oraz teletechniczna, wodno-kanalizacyjna.", price: 76000 },
+        { name: "Instalacja elektryczna oraz teletechniczna, wodno-kanalizacyjna.", price: 66000 },
       ]
     },
     {
@@ -191,8 +191,8 @@ export const PACKAGE_CONFIGS = {
             allowMultiple: true, 
           vat: "8%", 
       options: [
-        { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 78600 },
-        { name: "Wodna instalacja ogrzewania podłogowego", price: 19000}
+        { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 76000 },
+        { name: "Wodna instalacja ogrzewania podłogowego", price: 15000}
       ]
     },
     {

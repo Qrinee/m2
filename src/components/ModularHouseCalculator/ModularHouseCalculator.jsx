@@ -2,28 +2,29 @@ import React, { useState, useEffect } from "react";
 import "./ModularHouseCalculator.css";
 
 const ModularHouseCalculator = ({ 
-  maxRepaymentMonths = 120, 
   minOwnContribution = 20,
-  totalPrice = 299000  // Zmieniamy z defaultPropertyPrice na totalPrice
+  houseId,
+  totalPrice = 299000  
 }) => {
+  const house = {
+    d115: 180,
+    d70: 120,
+    d126: 180,
+  }
   const [propertyPrice, setPropertyPrice] = useState(totalPrice);
   const [ownContribution, setOwnContribution] = useState(minOwnContribution);
   const [repaymentMonths, setRepaymentMonths] = useState(60);
 
-  // Aktualizuj propertyPrice gdy zmieni się totalPrice
   useEffect(() => {
     setPropertyPrice(totalPrice);
   }, [totalPrice]);
 
-  // Stopy procentowe
   const annualInterestRateFirst5 = 0.10;
   const annualInterestRateAfter5 = 0.15;
   
-  // Obliczenia kwot
   const loanAmount = propertyPrice * (1 - ownContribution / 100);
   const ownContributionAmount = propertyPrice * ownContribution / 100;
   
-  // Obliczenie miesięcznej raty
   const calculateMonthlyRate = () => {
     if (loanAmount <= 0) {
       return { monthlyRate: 0, interestRate: annualInterestRateFirst5 };
@@ -44,18 +45,14 @@ const ModularHouseCalculator = ({
 
   const monthlyRateData = calculateMonthlyRate();
 
-  // Formatowanie waluty
   const formatCurrency = (value) => {
     if (isNaN(value) || value === Infinity) return '0 zł';
     return Math.round(value).toLocaleString('pl-PL', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' zł';
   };
-
-  // Formatowanie procentów
   const formatPercentage = (value) => {
     return Math.round(value * 100) + '%';
   };
 
-  // Formatowanie miesięcy
   const formatMonths = (months) => {
     const years = Math.floor(months / 12);
     const remainingMonths = months % 12;
@@ -79,9 +76,6 @@ const ModularHouseCalculator = ({
     return result;
   };
 
-  // Obliczenie maksymalnej i minimalnej ceny na podstawie aktualnej ceny
-  const maxPropertyPrice = Math.round(totalPrice * 1.5);
-  const minPropertyPrice = Math.round(totalPrice * 0.5);
 
   return (
     <div className="modular-calculator-container">
@@ -101,7 +95,6 @@ const ModularHouseCalculator = ({
   </div>
 </div>
 
-        {/* Suwak wkładu własnego */}
         <div className="slider-group">
           <div className="slider-label">
             <label htmlFor="ownContribution">Wkład własny</label>
@@ -125,7 +118,6 @@ const ModularHouseCalculator = ({
           </div>
         </div>
 
-        {/* Suwak okresu spłaty */}
         <div className="slider-group">
           <div className="slider-label">
             <label htmlFor="repaymentMonths">Okres spłaty</label>
@@ -135,7 +127,7 @@ const ModularHouseCalculator = ({
             id="repaymentMonths"
             type="range"
             min="12"
-            max={maxRepaymentMonths}
+            max={house[houseId]}
             step="12"
             value={repaymentMonths}
             onChange={(e) => setRepaymentMonths(Number(e.target.value))}
@@ -143,11 +135,10 @@ const ModularHouseCalculator = ({
           />
           <div className="slider-minmax">
             <span>1 rok</span>
-            <span>{formatMonths(maxRepaymentMonths)}</span>
+            <span>{formatMonths(house[houseId])}</span>
           </div>
         </div>
 
-        {/* Karty podsumowania */}
         <div className="summary-cards">
           <div className="summary-card">
             <div className="card-label">Wysokość</div>
@@ -159,7 +150,6 @@ const ModularHouseCalculator = ({
           </div>
         </div>
 
-        {/* Wynik główny */}
         <div className="result-container">
           <div className="result-section">
             <div className="result-label">Twoja miesięczna rata wyniesie:</div>
