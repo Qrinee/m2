@@ -12,6 +12,7 @@ export const PACKAGE_CONFIGS = {
 
     {
       title: "Fundamenty",
+      allowMultiple: true, 
       vat: "8%", 
       options: [
         { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 116000},
@@ -99,6 +100,7 @@ export const PACKAGE_CONFIGS = {
     },
     {
       title: "Fundamenty",
+            allowMultiple: true, 
           vat: "8%", 
       options: [
         { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 109000 },
@@ -186,6 +188,7 @@ export const PACKAGE_CONFIGS = {
     },
     {
       title: "Fundamenty",
+            allowMultiple: true, 
           vat: "8%", 
       options: [
         { name: "Energooszczędna i ciepła płyta fundamentowa wyposażona w instalacje wodną i kanalizacyjną.", price: 78600 },

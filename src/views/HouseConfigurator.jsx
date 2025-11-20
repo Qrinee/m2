@@ -26,48 +26,50 @@ const HouseConfigurator = () => {
   const basePrice = HOUSE_CONFIGS[id].basePrice;
 
   
-  const selectOption = (optionId, packageIndex) => {
-    setSelectedOptions(prev => {
-      const newState = { ...prev };
-      const optionParts = optionId.split('-');
-      const currentPackageIndex = optionParts[1];
-      
-      
-      const housePackages = PACKAGE_CONFIGS[id] || [];
-      const currentPackage = housePackages[packageIndex];
+const selectOption = (optionId, packageIndex, allowMultiple = false) => {
+  setSelectedOptions(prev => {
+    const newState = { ...prev };
+    const housePackages = PACKAGE_CONFIGS[id] || [];
+    const currentPackage = housePackages[packageIndex];
+    
+    if (allowMultiple) {
+      // Dla wielokrotnego wyboru - toggle zaznaczenia
+      if (newState[optionId]) {
+        delete newState[optionId];
+      } else {
+        newState[optionId] = true;
+      }
+    } else {
+      // Dla pojedynczego wyboru - toggle zaznaczenia, ale tylko dla tej opcji
       const hasSingleOption = currentPackage.options.length === 1;
       
       if (hasSingleOption) {
-        
+        // Dla pakietów z jedną opcją - toggle
         if (newState[optionId]) {
           delete newState[optionId];
         } else {
           newState[optionId] = true;
         }
       } else {
+        // Dla pakietów z wieloma opcjami - toggle: jeśli już zaznaczona, odznacz, w przeciwnym razie zaznacz i odznacz inne
+        const isCurrentlySelected = newState[optionId];
         
-        
-        Object.keys(newState).forEach(key => {
-          const keyParts = key.split('-');
-          if (keyParts.length === 3) {
-            const keyPackageIndex = keyParts[1];
-            if (keyPackageIndex === currentPackageIndex) {
-              delete newState[key];
-            }
-          }
+        // Odznacz wszystkie opcje w tym pakiecie
+        currentPackage.options.forEach((option, optIndex) => {
+          const generatedId = `${id}-${packageIndex}-${optIndex}`;
+          delete newState[generatedId];
         });
         
-        
-        if (!prev[optionId]) {
+        // Jeśli opcja nie była zaznaczona, to ją zaznacz
+        if (!isCurrentlySelected) {
           newState[optionId] = true;
         }
-        
       }
-      
-      return newState;
-    });
-  };
-
+    }
+    
+    return newState;
+  });
+};
   
   const handleVisualPriceChange = (price, selections) => {
     setVisualOptionsPrice(price);

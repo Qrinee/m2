@@ -28,11 +28,12 @@ const PackageList = ({ selectedOptions, selectOption, houseId }) => {
             title={packageConfig.title || null}
             vat={packageConfig.vat || "VAT 23%"}
             image={packageImages[index] || p1}
-            packageIndex={index} // Przekazujemy index pakietu
+            packageIndex={index}
+            allowMultiple={packageConfig.allowMultiple || false} // Przekazujemy informację o wielokrotnym wyborze
             options={packageConfig.options.map((option, optionIndex) => ({
-              id: `${houseId}-${index}-${optionIndex}`,
+              id: `${houseId}-${index}-${optionIndex}`, // Zachowujemy obecny format ID
               name: option.name,
-              price: option.price.toLocaleString('pl-PL')
+              price: option.price // Nie formatujemy tutaj, bo potrzebujemy liczby do obliczeń
             }))}
             selectedOptions={selectedOptions}
             onSelect={selectOption}
